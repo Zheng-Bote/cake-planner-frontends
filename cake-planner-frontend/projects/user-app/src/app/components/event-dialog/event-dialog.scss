@@ -1,0 +1,30 @@
+.full-width {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.dialog-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.file-upload-container {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.file-name {
+  font-size: 0.9em;
+  color: green;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+
+  .check-icon {
+    font-size: 18px;
+    height: 18px;
+    width: 18px;
+  }
+}

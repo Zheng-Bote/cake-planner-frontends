@@ -1,0 +1,38 @@
+<div class="calendar-container">
+  <div class="header">
+    <button mat-icon-button (click)="prevMonth()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <h2>{{ viewDate() | date : 'MMMM yyyy' }}</h2>
+    <button mat-icon-button (click)="nextMonth()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+
+  <div class="weekdays-grid">
+    @for (day of weekDays; track day) {
+    <div class="weekday">{{ day }}</div>
+    }
+  </div>
+
+  <div class="days-grid">
+    @for (day of days(); track day.toISOString()) {
+    <div
+      class="day-cell"
+      [class.other-month]="!isSameMonth(day, viewDate())"
+      [class.today]="isToday(day)"
+      (click)="openAddDialog(day)"
+    >
+      <div class="date-number">{{ day | date : 'd' }}</div>
+
+      <div class="events-list">
+        @for (event of getEventsForDay(day); track event.id) {
+        <div class="cake-event" [matTooltip]="event.description || 'Keine Beschreibung'">
+          🍰 {{ event.bakerName }}
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>

@@ -1,0 +1,58 @@
+.calendar-container {
+  padding: 20px;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.weekdays-grid,
+.days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+.weekday {
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.day-cell {
+  min-height: 100px; /* Platz für Events */
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 5px;
+  background: white;
+}
+.other-month {
+  background: #fafafa;
+  color: #999;
+}
+.today {
+  border: 2px solid #3f51b5;
+}
+
+.date-number {
+  font-size: 0.9rem;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.events-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.cake-event {
+  background-color: #ffccbc; /* Leichte Kuchen-Farbe */
+  color: #bf360c;
+  font-size: 0.75rem;
+  padding: 2px 4px;
+  border-radius: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

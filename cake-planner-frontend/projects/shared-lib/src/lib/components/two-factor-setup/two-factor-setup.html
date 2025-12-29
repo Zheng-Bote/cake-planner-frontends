@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>2FA Einrichten</h2>
+
+<mat-dialog-content>
+  @if (isLoading()) {
+  <div class="spinner-container">
+    <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+  </div>
+  } @else {
+  <div class="setup-container">
+    <p>Scannen Sie diesen Code mit Microsoft Authenticator:</p>
+
+    @if (setupData()?.otpauth) {
+    <div class="qr-wrapper">
+      <qrcode
+        [qrdata]="setupData()!.otpauth"
+        [width]="200"
+        [errorCorrectionLevel]="'M'"
+        [allowEmptyString]="true"
+      >
+      </qrcode>
+    </div>
+    }
+
+    <p class="secret-text">Secret: {{ setupData()?.secret }}</p>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Code eingeben (6 Ziffern)</mat-label>
+      <input matInput [formControl]="codeControl" placeholder="123456" maxlength="6" />
+      @if (codeControl.hasError('pattern')) {
+      <mat-error>Nur Zahlen erlaubt</mat-error>
+      }
+    </mat-form-field>
+
+    @if (errorMessage()) {
+    <div class="error">{{ errorMessage() }}</div>
+    }
+  </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Abbrechen</button>
+  <button
+    mat-flat-button
+    color="primary"
+    [disabled]="codeControl.invalid || isActivating()"
+    (click)="activate()"
+  >
+    @if (isActivating()) { Aktiviere... } @else { Aktivieren }
+  </button>
+</mat-dialog-actions>

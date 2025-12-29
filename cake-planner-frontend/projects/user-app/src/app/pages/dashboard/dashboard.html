@@ -1,0 +1,30 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav mode="side" opened class="sidenav">
+    <mat-toolbar>Cake Planner</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="calendar">
+        <mat-icon matListItemIcon>calendar_today</mat-icon>
+        <span matListItemTitle>Kalender</span>
+      </a>
+
+      <a mat-list-item (click)="open2FASetup()" style="cursor: pointer">
+        <mat-icon matListItemIcon>security</mat-icon>
+        <span matListItemTitle>2FA Einrichten</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <span>Willkommen, {{ authService.currentUser()?.name }}</span>
+      <span class="spacer"></span>
+      <button mat-icon-button (click)="logout()">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
