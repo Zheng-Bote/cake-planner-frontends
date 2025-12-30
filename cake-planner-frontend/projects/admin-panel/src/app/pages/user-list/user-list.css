@@ -1,0 +1,12 @@
+.spacer {
+  flex: 1 1 auto;
+}
+.content {
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+table {
+  width: 100%;
+  margin-top: 20px;
+}

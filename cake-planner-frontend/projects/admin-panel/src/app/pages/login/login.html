@@ -1,0 +1,68 @@
+<div class="login-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Admin Panel Login</mat-card-title>
+    </mat-card-header>
+
+    <mat-card-content>
+      @if (!requires2FA()) {
+      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Email</mat-label>
+          <input matInput formControlName="email" type="email" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Passwort</mat-label>
+          <input matInput formControlName="password" type="password" />
+        </mat-form-field>
+
+        @if (errorMessage()) {
+        <div class="error-msg">{{ errorMessage() }}</div>
+        }
+
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid || isLoading()"
+          class="full-width"
+        >
+          @if(isLoading()) {
+          <mat-spinner diameter="20"></mat-spinner>
+          } @else { Einloggen }
+        </button>
+      </form>
+      } @if (requires2FA()) {
+      <div class="step-2fa">
+        <div class="msg">Bitte 2FA Code eingeben:</div>
+
+        <mat-form-field appearance="outline" class="full-width">
+          <mat-label>Code (6-stellig)</mat-label>
+          <input matInput [formControl]="codeControl" maxlength="6" />
+        </mat-form-field>
+
+        @if (errorMessage()) {
+        <div class="error-msg">{{ errorMessage() }}</div>
+        }
+
+        <button
+          mat-flat-button
+          color="primary"
+          (click)="onCodeSubmit()"
+          [disabled]="codeControl.invalid || isLoading()"
+          class="full-width"
+        >
+          @if(isLoading()) {
+          <mat-spinner diameter="20"></mat-spinner>
+          } @else { Bestätigen }
+        </button>
+
+        <button mat-button (click)="cancel2FA()" class="full-width" style="margin-top: 8px">
+          Abbrechen
+        </button>
+      </div>
+      }
+    </mat-card-content>
+  </mat-card>
+</div>

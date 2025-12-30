@@ -1,5 +1,10 @@
-
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
+
+## Project
+
+- Use Angular v21+ features
+- Use TypeScript v5+ features
+- Use english for all code and comments
 
 ## TypeScript Best Practices
 
@@ -9,6 +14,7 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 
 ## Angular Best Practices
 
+- Always use Angular v21+ features
 - Always use standalone components over NgModules
 - Must NOT set `standalone: true` inside Angular decorators. It's the default in Angular v20+.
 - Use signals for state management
