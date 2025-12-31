@@ -5,6 +5,11 @@ export const routes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full' },
 
   {
+    path: 'register',
+    loadComponent: () =>
+      import('./pages/register-user/register-user').then((m) => m.RegisterUserComponent),
+  },
+  {
     path: 'login',
     loadComponent: () => import('./pages/login/login').then((m) => m.LoginComponent),
   },

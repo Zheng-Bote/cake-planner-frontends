@@ -3,8 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 
-// Korrekte Imports basierend auf deinen Dateien
-import { AuthResponse, User } from '../models/user.model';
+import { AuthResponse, User, RegisterUser } from '../models/user.model';
 import { TwoFactorSetupResponse } from '../models/2fa.model';
 
 @Injectable({
@@ -17,18 +16,22 @@ export class AuthService {
   // --- STATE ---
   // Wir initialisieren das Token direkt aus dem Storage, falls vorhanden
   private _currentUser = signal<User | null>(null);
-  private _token = signal<string | null>(localStorage.getItem('access_token'));
+  private _token = signal<string | null>(sessionStorage.getItem('access_token'));
 
   // --- PUBLIC SIGNALS (Read-only) ---
   currentUser = this._currentUser.asReadonly();
   isAuthenticated = computed(() => !!this._token());
 
   constructor() {
-    // Beim App-Start: Versuchen, den User aus dem LocalStorage wiederherzustellen
+    // Beim App-Start: Versuchen, den User aus dem sessionStorage wiederherzustellen
     this.restoreSession();
   }
 
   // --- ACTIONS ---
+
+  registerUser(data: RegisterUser) {
+    return this.http.post('/api/register', data);
+  }
 
   login(email: string, password: string, code?: string) {
     const payload: any = { email, password };
@@ -52,11 +55,19 @@ export class AuthService {
     this._currentUser.set(null);
 
     // 2. Storage bereinigen
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('user_data'); // Wichtig für den Restore
+    sessionStorage.removeItem('access_token');
+    sessionStorage.removeItem('user_data'); // Wichtig für den Restore
 
     // 3. Redirect
     this.router.navigate(['/login']);
+  }
+
+  changePassword(newPassword: string) {
+    // Wir senden das neue Passwort an den Server.
+    // Der Server weiß durch das Token (im Header/Cookie), wer der User ist.
+    return this.http.post<void>('/api/user/change-password', {
+      newPassword,
+    });
   }
 
   // --- INTERNALS (Session Management) ---
@@ -69,15 +80,15 @@ export class AuthService {
     this._currentUser.set(authResult.user);
 
     // Persistieren für Page Refresh (F5)
-    localStorage.setItem('access_token', authResult.token);
+    sessionStorage.setItem('access_token', authResult.token);
 
     // Wir speichern das User-Objekt als JSON, damit wir den Namen nach F5 noch haben
-    localStorage.setItem('user_data', JSON.stringify(authResult.user));
+    sessionStorage.setItem('user_data', JSON.stringify(authResult.user));
   }
 
   private restoreSession() {
-    const token = localStorage.getItem('access_token');
-    const userJson = localStorage.getItem('user_data');
+    const token = sessionStorage.getItem('access_token');
+    const userJson = sessionStorage.getItem('user_data');
 
     if (token && userJson) {
       try {

@@ -33,6 +33,10 @@
           } @else { Einloggen }
         </button>
       </form>
+
+      <div class="register-link-container">
+        <a routerLink="/register" class="link-text"> Noch keinen Account? Registrieren </a>
+      </div>
       } @if (requires2FA()) {
       <div class="step-2fa">
         <div class="msg">Bitte 2FA Code eingeben:</div>
@@ -58,9 +62,7 @@
           } @else { Bestätigen }
         </button>
 
-        <button mat-button (click)="cancel2FA()" class="full-width" style="margin-top: 5px">
-          Abbrechen
-        </button>
+        <button mat-button (click)="cancel2FA()" class="full-width cancel-btn">Abbrechen</button>
       </div>
       }
     </mat-card-content>

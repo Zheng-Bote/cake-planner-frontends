@@ -1,13 +1,15 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, ReactiveFormsModule, FormControl } from '@angular/forms'; // <--- FormControl war wichtig
-import { Router } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
-import { AuthService } from 'shared-lib';
+import { Router, RouterLink } from '@angular/router';
+
+import { AuthService, AuthResponse } from 'shared-lib';
+import { RegisterUserComponent } from '../register-user/register-user';
 
 @Component({
   selector: 'app-login',
@@ -22,6 +24,7 @@ import { AuthService } from 'shared-lib';
     MatInputModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
+    RouterLink,
   ],
 })
 export class LoginComponent {
@@ -43,6 +46,21 @@ export class LoginComponent {
   // Control für Step 2
   codeControl = new FormControl('', [Validators.required, Validators.pattern('^[0-9]{6}$')]);
 
+  // Hilfsmethode, um Redundanz zu vermeiden
+  private finalizeLogin(res: AuthResponse) {
+    if (res.token) {
+      // 1. Session Token speichern (jetzt mit sessionStorage wie besprochen)
+      sessionStorage.setItem('token', res.token);
+
+      // 2. Prüfen auf Passwort-Zwang
+      if (res.user?.mustChangePassword) {
+        this.router.navigate(['/change-password']); // <--- Neue Route
+      } else {
+        this.router.navigate(['/dashboard']);
+      }
+    }
+  }
+
   onSubmit() {
     if (this.loginForm.valid) {
       this.isLoading.set(true);
@@ -56,9 +74,8 @@ export class LoginComponent {
 
           if (res.require2fa) {
             this.requires2FA.set(true);
-            this.errorMessage.set('');
-          } else if (res.token) {
-            this.router.navigate(['/dashboard']);
+          } else {
+            this.finalizeLogin(res);
           }
         },
         error: (err) => {
@@ -80,9 +97,7 @@ export class LoginComponent {
       this.authService.login(email!, password!, code).subscribe({
         next: (res) => {
           this.isLoading.set(false);
-          if (res.token) {
-            this.router.navigate(['/dashboard']);
-          }
+          this.finalizeLogin(res);
         },
         error: (err) => {
           this.isLoading.set(false);

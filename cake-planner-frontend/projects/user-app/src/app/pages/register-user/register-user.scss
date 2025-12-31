@@ -1,0 +1,25 @@
+/* Falls du CSS statt SCSS nutzt, ist der Inhalt identisch */
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  padding-top: 50px;
+}
+
+mat-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+/* Der ausgelagerte Style */
+.login-link-container {
+  margin-top: 15px;
+  text-align: center;
+}

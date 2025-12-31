@@ -27,3 +27,19 @@ mat-card {
   margin-bottom: 15px;
   font-weight: 500;
 }
+
+/* NEU: Ausgelagerte Styles */
+.register-link-container {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.link-text {
+  text-decoration: none;
+  color: var(--mat-sys-primary); /* Nutzt Angular Material Primary Color */
+  font-weight: 500;
+}
+
+.cancel-btn {
+  margin-top: 8px;
+}

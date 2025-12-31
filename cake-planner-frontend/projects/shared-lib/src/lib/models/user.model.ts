@@ -4,6 +4,14 @@ export interface User {
   email: string;
   isAdmin: boolean;
   isActive: boolean;
+  mustChangePassword?: boolean;
+  groupId?: string;
+}
+
+export interface RegisterUser {
+  name: string;
+  email: string;
+  password: string;
 }
 
 export interface AuthResponse {
@@ -16,4 +24,9 @@ export interface AuthResponse {
 export interface TotpSetup {
   secret: string;
   qrCodeUrl: string; // Wenn wir das im Backend generieren
+}
+
+export interface Group {
+  id: string;
+  name: string;
 }

@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-import { User } from '../models/user.model';
+import { User, Group } from 'shared-lib';
 
 @Injectable({ providedIn: 'root' })
 export class AdminService {
@@ -15,5 +15,21 @@ export class AdminService {
 
   toggleUserActive(userId: string, isActive: boolean): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/users/toggle-active`, { userId, isActive });
+  }
+
+  forcePasswordChange(userId: string, mustChange: boolean): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/users/force-password-change`, {
+      userId,
+      mustChange,
+    });
+  }
+
+  // Groups
+  getGroups() {
+    return this.http.get<Group[]>('/api/admin/groups');
+  }
+
+  assignGroup(userId: string, groupId: string) {
+    return this.http.post('/api/admin/users/assign-group', { userId, groupId });
   }
 }
