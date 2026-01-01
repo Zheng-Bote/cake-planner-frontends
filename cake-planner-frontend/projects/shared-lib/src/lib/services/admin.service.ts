@@ -32,4 +32,12 @@ export class AdminService {
   assignGroup(userId: string, groupId: string) {
     return this.http.post('/api/admin/users/assign-group', { userId, groupId });
   }
+
+  setGroupRole(userId: string, groupId: string, role: 'admin' | 'member') {
+    return this.http.post('/api/admin/groups/set-role', {
+      userId,
+      groupId,
+      role,
+    });
+  }
 }

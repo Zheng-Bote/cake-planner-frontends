@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco'; // <--- Import
 
 import { AdminService, User, AuthService, Group } from 'shared-lib';
 
@@ -24,6 +25,7 @@ import { AdminService, User, AuthService, Group } from 'shared-lib';
     MatSnackBarModule,
     MatTooltipModule,
     MatSelectModule,
+    TranslocoModule,
   ],
   templateUrl: './user-list.html',
   styleUrls: ['./user-list.css'],
@@ -32,12 +34,13 @@ export class UserListComponent implements OnInit {
   private adminService = inject(AdminService);
   authService = inject(AuthService);
   private snackBar = inject(MatSnackBar);
+  translocoService = inject(TranslocoService); // Optional, falls wir im Code übersetzen müssen
 
   users = signal<User[]>([]);
   groups = signal<Group[]>([]);
 
   // 'isAdmin' Spalte nicht vergessen, falls wir sie vorhin hinzugefügt haben
-  cols = ['name', 'email', 'group', 'isAdmin', 'active', 'actions'];
+  cols = ['name', 'email', 'group', 'role', 'isAdmin', 'active', 'actions'];
 
   ngOnInit() {
     this.loadData();
@@ -55,24 +58,21 @@ export class UserListComponent implements OnInit {
   }
 
   toggleUser(user: User, isActive: boolean) {
-    // 1. Backend Anfrage
     this.adminService.toggleUserActive(user.id, isActive).subscribe({
       next: () => {
-        // Erfolg: Grüne/Neutrale Info
-        this.snackBar.open(`Status für ${user.name} aktualisiert.`, 'OK', {
-          duration: 3000,
+        // Dynamische Übersetzung mit Parameter {{name}}
+        const msg = this.translocoService.translate('ADMIN.MSGS.STATUS_UPDATED', {
+          name: user.name,
         });
+        this.snackBar.open(msg, 'OK', { duration: 3000 });
       },
       error: (err) => {
         console.error(err);
-
-        // UI Reset: Schalter zurücksetzen, da es nicht geklappt hat
         user.isActive = !isActive;
-
-        // Fehler: Rote SnackBar (über CSS Klasse 'error-snackbar')
-        this.snackBar.open('Fehler: Status konnte nicht gespeichert werden!', 'Schließen', {
+        const msg = this.translocoService.translate('ADMIN.MSGS.STATUS_ERROR');
+        this.snackBar.open(msg, 'X', {
           duration: 5000,
-          panelClass: ['error-snackbar'], // <--- Das verweist auf unser CSS
+          panelClass: ['error-snackbar'],
         });
       },
     });
@@ -82,14 +82,16 @@ export class UserListComponent implements OnInit {
     const newState = !user.mustChangePassword;
     this.adminService.forcePasswordChange(user.id, newState).subscribe({
       next: () => {
-        user.mustChangePassword = newState; // UI update
-        const msg = newState
-          ? `Passwort-Änderung für ${user.name} erzwungen.`
-          : `Passwort-Zwang für ${user.name} aufgehoben.`;
+        user.mustChangePassword = newState;
+
+        // Dynamische Nachricht je nach Status
+        const key = newState ? 'ADMIN.MSGS.PWD_FORCE_ON' : 'ADMIN.MSGS.PWD_FORCE_OFF';
+        const msg = this.translocoService.translate(key, { name: user.name });
+
         this.snackBar.open(msg, 'OK', { duration: 3000 });
       },
       error: () => {
-        this.snackBar.open('Fehler beim Speichern!', 'Zu', {
+        this.snackBar.open(this.translocoService.translate('ADMIN.MSGS.SAVE_ERROR'), 'X', {
           panelClass: ['error-snackbar'],
         });
       },
@@ -99,12 +101,41 @@ export class UserListComponent implements OnInit {
   onGroupChange(user: User, groupId: string) {
     this.adminService.assignGroup(user.id, groupId).subscribe({
       next: () => {
-        user.groupId = groupId; // UI Update
-        this.snackBar.open('Gruppe zugewiesen', 'OK', { duration: 2000 });
+        user.groupId = groupId;
+        this.snackBar.open(this.translocoService.translate('ADMIN.MSGS.GROUP_ASSIGNED'), 'OK', {
+          duration: 2000,
+        });
       },
       error: () => {
-        this.snackBar.open('Fehler beim Zuweisen', 'X', { panelClass: ['error-snackbar'] });
+        this.snackBar.open(this.translocoService.translate('ADMIN.MSGS.GROUP_ERROR'), 'X', {
+          panelClass: ['error-snackbar'],
+        });
       },
     });
+  }
+
+  // NEU: Rolle ändern
+  onRoleChange(user: User, newRole: string) {
+    if (!user.groupId) return; // Sicherheitscheck
+
+    this.adminService.setGroupRole(user.id, user.groupId, newRole as 'admin' | 'member').subscribe({
+      next: () => {
+        // Optimistisches Update im Frontend (falls wir das Feld im Model hätten)
+        // Besser: Liste neu laden oder User patchen
+        this.snackBar.open(this.translocoService.translate('ADMIN.MSGS.ROLE_UPDATED'), 'OK', {
+          duration: 2000,
+        });
+      },
+      error: () => {
+        this.snackBar.open(this.translocoService.translate('ADMIN.MSGS.ERROR'), 'X', {
+          panelClass: ['error-snackbar'],
+        });
+      },
+    });
+  }
+
+  // Hilfsfunktion zum Umschalten der Sprache (Button dafür kann in die Toolbar)
+  switchLang(lang: 'en' | 'de') {
+    this.translocoService.setActiveLang(lang);
   }
 }

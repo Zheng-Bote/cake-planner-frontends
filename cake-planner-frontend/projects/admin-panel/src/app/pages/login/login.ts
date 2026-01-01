@@ -7,6 +7,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco'; // Import
 
 import { AuthService, AuthResponse } from 'shared-lib'; //
 
@@ -21,6 +22,7 @@ import { AuthService, AuthResponse } from 'shared-lib'; //
     MatInputModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
+    TranslocoModule,
   ],
   templateUrl: './login.html',
   styleUrls: ['./login.css'],
@@ -29,6 +31,7 @@ export class AdminLoginComponent {
   private fb = inject(FormBuilder);
   private auth = inject(AuthService);
   private router = inject(Router);
+  private translocoService = inject(TranslocoService); // NEU
 
   // State (übernommen aus User-App)
   requires2FA = signal(false);
@@ -67,7 +70,7 @@ export class AdminLoginComponent {
         },
         error: (err) => {
           this.isLoading.set(false);
-          this.errorMessage.set('Login fehlgeschlagen. Bitte Daten prüfen.');
+          this.errorMessage.set(this.translocoService.translate('ADMIN.LOGIN.ERR_LOGIN_FAILED'));
           console.error(err);
         },
       });
@@ -91,7 +94,7 @@ export class AdminLoginComponent {
         },
         error: (err) => {
           this.isLoading.set(false);
-          this.errorMessage.set('Falscher Code oder abgelaufen.');
+          this.errorMessage.set(this.translocoService.translate('ADMIN.LOGIN.ERR_WRONG_CODE'));
         },
       });
     }
@@ -99,10 +102,16 @@ export class AdminLoginComponent {
 
   // Gemeinsame Logik für den Abschluss (Admin-Check)
   private finalizeLogin(res: AuthResponse) {
-    if (res.user?.isAdmin) {
+    const user = res.user;
+
+    // Check: Globaler Admin ODER Gruppen-Admin
+    const isGlobalAdmin = user?.isAdmin;
+    const isLocalAdmin = user?.groupRole === 'admin' && !!user?.groupId;
+
+    if (isGlobalAdmin || isLocalAdmin) {
       this.router.navigate(['/users']);
     } else {
-      this.errorMessage.set('Zugriff verweigert: Keine Admin-Rechte');
+      this.errorMessage.set(this.translocoService.translate('ADMIN.LOGIN.ERR_ACCESS_DENIED'));
       this.auth.logout(); // Token vernichten, falls vorhanden
       this.requires2FA.set(false); // Reset UI
       this.loginForm.reset();

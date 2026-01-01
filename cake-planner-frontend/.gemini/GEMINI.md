@@ -47,6 +47,11 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Keep state transformations pure and predictable
 - Do NOT use `mutate` on signals, use `update` or `set` instead
 
+## RxJS & Signals
+
+- Use `toSignal` to convert Observables to Signals for template rendering
+- Avoid nested subscriptions; use flattening operators (`switchMap`, `concatMap`) or Signals
+
 ## Templates
 
 - Keep templates simple and avoid complex logic
@@ -55,8 +60,18 @@ You are an expert in TypeScript, Angular, and scalable web application developme
 - Do not assume globals like (`new Date()`) are available.
 - Do not write arrow functions in templates (they are not supported).
 
+## Performance
+
+- Use `@defer` blocks to lazy load heavy components or content below the fold
+- Use `runOutsideAngular` for high-frequency events (like scroll or mousemove) if they don't affect the view
+
 ## Services
 
 - Design services around a single responsibility
 - Use the `providedIn: 'root'` option for singleton services
 - Use the `inject()` function instead of constructor injection
+
+## Testing
+
+- Use `ComponentFixture` for unit tests
+- Test accessibility in unit tests

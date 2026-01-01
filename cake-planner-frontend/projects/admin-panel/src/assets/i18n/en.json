@@ -1,0 +1,44 @@
+{
+  "ADMIN": {
+    "TITLE": "User Administration",
+    "HEADER_FOR": "for",
+    "TABLE": {
+      "NAME": "Name",
+      "EMAIL": "Email",
+      "GROUP": "Group",
+      "ROLE": "Group Role",
+      "IS_ADMIN": "Global Admin",
+      "ACTIVE": "Active",
+      "ACTIONS": "Actions",
+      "NONE": "None"
+    },
+    "ROLES": {
+      "MEMBER": "Member",
+      "ADMIN": "Group Admin"
+    },
+    "LOGIN": {
+      "TITLE": "Admin Panel Login",
+      "EMAIL": "Email",
+      "PASSWORD": "Password",
+      "BTN_LOGIN": "Log in",
+      "BTN_CONFIRM": "Confirm",
+      "BTN_CANCEL": "Cancel",
+      "MSG_2FA": "Please enter 2FA code:",
+      "LABEL_CODE": "Code (6 digits)",
+      "ERR_LOGIN_FAILED": "Login failed. Please check credentials.",
+      "ERR_WRONG_CODE": "Wrong code or expired.",
+      "ERR_ACCESS_DENIED": "Access denied: Insufficient permissions"
+    },
+    "MSGS": {
+      "ROLE_UPDATED": "Role updated successfully",
+      "ERROR": "An error occurred",
+      "STATUS_UPDATED": "Status for {{name}} updated.",
+      "STATUS_ERROR": "Error: Could not save status!",
+      "PWD_FORCE_ON": "Password change forced for {{name}}.",
+      "PWD_FORCE_OFF": "Password force removed for {{name}}.",
+      "SAVE_ERROR": "Error while saving!",
+      "GROUP_ASSIGNED": "Group assigned",
+      "GROUP_ERROR": "Error assigning group"
+    }
+  }
+}

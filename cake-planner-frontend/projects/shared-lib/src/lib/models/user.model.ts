@@ -6,6 +6,7 @@ export interface User {
   isActive: boolean;
   mustChangePassword?: boolean;
   groupId?: string;
+  groupRole?: string; // 'admin' | 'member'
 }
 
 export interface RegisterUser {

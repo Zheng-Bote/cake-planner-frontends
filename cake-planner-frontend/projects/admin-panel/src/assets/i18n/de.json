@@ -1,0 +1,44 @@
+{
+  "ADMIN": {
+    "TITLE": "Benutzerverwaltung",
+    "HEADER_FOR": "für",
+    "TABLE": {
+      "NAME": "Name",
+      "EMAIL": "Email",
+      "GROUP": "Gruppe",
+      "ROLE": "Gruppen-Rolle",
+      "IS_ADMIN": "Globaler Admin",
+      "ACTIVE": "Aktiv",
+      "ACTIONS": "Aktionen",
+      "NONE": "Keine"
+    },
+    "ROLES": {
+      "MEMBER": "Mitglied",
+      "ADMIN": "Gruppen-Admin"
+    },
+    "LOGIN": {
+      "TITLE": "Admin Panel Login",
+      "EMAIL": "E-Mail",
+      "PASSWORD": "Passwort",
+      "BTN_LOGIN": "Einloggen",
+      "BTN_CONFIRM": "Bestätigen",
+      "BTN_CANCEL": "Abbrechen",
+      "MSG_2FA": "Bitte 2FA Code eingeben:",
+      "LABEL_CODE": "Code (6-stellig)",
+      "ERR_LOGIN_FAILED": "Login fehlgeschlagen. Bitte Daten prüfen.",
+      "ERR_WRONG_CODE": "Falscher Code oder abgelaufen.",
+      "ERR_ACCESS_DENIED": "Zugriff verweigert: Keine Admin-Rechte"
+    },
+    "MSGS": {
+      "ROLE_UPDATED": "Rolle erfolgreich aktualisiert",
+      "ERROR": "Ein Fehler ist aufgetreten",
+      "STATUS_UPDATED": "Status für {{name}} aktualisiert.",
+      "STATUS_ERROR": "Fehler: Status konnte nicht gespeichert werden!",
+      "PWD_FORCE_ON": "Passwort-Änderung für {{name}} erzwungen.",
+      "PWD_FORCE_OFF": "Passwort-Zwang für {{name}} aufgehoben.",
+      "SAVE_ERROR": "Fehler beim Speichern!",
+      "GROUP_ASSIGNED": "Gruppe zugewiesen",
+      "GROUP_ERROR": "Fehler beim Zuweisen"
+    }
+  }
+}

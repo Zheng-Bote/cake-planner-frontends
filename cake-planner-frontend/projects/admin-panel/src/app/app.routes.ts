@@ -1,6 +1,6 @@
 import { Routes } from '@angular/router';
 // WICHTIG: Wir nutzen den lokalen Guard, der zur Admin-Login Seite leitet
-import { panelGuard } from './guards/panel.guard';
+import { adminGuard } from 'shared-lib';
 
 export const routes: Routes = [
   {
@@ -16,8 +16,8 @@ export const routes: Routes = [
   },
   {
     path: 'users',
-    // Hier schützt der panelGuard die Route
-    canActivate: [panelGuard],
+    // Hier schützt der adminGuard die Route
+    canActivate: [adminGuard],
     // Lazy Loading der Listen-Komponente
     loadComponent: () => import('./pages/user-list/user-list').then((m) => m.UserListComponent),
   },

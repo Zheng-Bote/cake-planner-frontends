@@ -1,19 +1,19 @@
-<div class="login-container">
+<div class="login-container" *transloco="let t">
   <mat-card>
     <mat-card-header>
-      <mat-card-title>Admin Panel Login</mat-card-title>
+      <mat-card-title>{{ t('ADMIN.LOGIN.TITLE') }}</mat-card-title>
     </mat-card-header>
 
     <mat-card-content>
       @if (!requires2FA()) {
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Email</mat-label>
+          <mat-label>{{ t('ADMIN.LOGIN.EMAIL') }}</mat-label>
           <input matInput formControlName="email" type="email" />
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Passwort</mat-label>
+          <mat-label>{{ t('ADMIN.LOGIN.PASSWORD') }}</mat-label>
           <input matInput formControlName="password" type="password" />
         </mat-form-field>
 
@@ -30,15 +30,15 @@
         >
           @if(isLoading()) {
           <mat-spinner diameter="20"></mat-spinner>
-          } @else { Einloggen }
+          } @else { {{ t('ADMIN.LOGIN.BTN_LOGIN') }} }
         </button>
       </form>
       } @if (requires2FA()) {
       <div class="step-2fa">
-        <div class="msg">Bitte 2FA Code eingeben:</div>
+        <div class="msg">{{ t('ADMIN.LOGIN.MSG_2FA') }}</div>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Code (6-stellig)</mat-label>
+          <mat-label>{{ t('ADMIN.LOGIN.LABEL_CODE') }}</mat-label>
           <input matInput [formControl]="codeControl" maxlength="6" />
         </mat-form-field>
 
@@ -55,11 +55,11 @@
         >
           @if(isLoading()) {
           <mat-spinner diameter="20"></mat-spinner>
-          } @else { Bestätigen }
+          } @else { {{ t('ADMIN.LOGIN.BTN_CONFIRM') }} }
         </button>
 
         <button mat-button (click)="cancel2FA()" class="full-width" style="margin-top: 8px">
-          Abbrechen
+          {{ t('ADMIN.LOGIN.BTN_CANCEL') }}
         </button>
       </div>
       }

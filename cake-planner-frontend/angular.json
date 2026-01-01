@@ -26,7 +26,8 @@
             "assets": [
               {
                 "glob": "**/*",
-                "input": "projects/admin-panel/public"
+                "input": "projects/admin-panel/src/assets",
+                "output": "/assets"
               }
             ],
             "styles": ["projects/admin-panel/src/styles.scss"]
