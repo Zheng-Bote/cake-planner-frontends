@@ -1,0 +1,39 @@
+{
+  "APP": { "TITLE": "Kuchen Planer" },
+  "MENU": {
+    "CALENDAR": "Kalender",
+    "2FA": "2FA Einrichten",
+    "PASSWORD": "Passwort ändern"
+  },
+  "DASHBOARD": {
+    "WELCOME": "Willkommen"
+  },
+  "CALENDAR": {
+    "TODAY": "Heute",
+    "NEW_MSG": "Neuer Kuchen! {{baker}} bringt am {{date}} etwas mit."
+  },
+  "EVENT": {
+    "CREATE_TITLE": "Neuen Kuchen eintragen",
+    "DETAILS": "Kuchen Details",
+    "CAKE_BY": "Kuchen von",
+    "MY_EVENT": "Mein Event",
+    "DATE_LABEL": "Datum",
+    "DESC_LABEL": "Beschreibung (optional)",
+    "PHOTO_BTN": "Foto hinzufügen (optional)",
+    "PHOTO_SELECTED": "Datei ausgewählt",
+    "NO_DESC": "Keine Beschreibung verfügbar.",
+    "UPLOAD_PHOTO": "Foto hochladen",
+    "VOTES": "Stimmen"
+  },
+  "BTN": {
+    "SAVE": "Speichern",
+    "CANCEL": "Abbrechen",
+    "CLOSE": "Schließen",
+    "DELETE": "Löschen"
+  },
+  "MSG": {
+    "SAVE_SUCCESS": "Erfolgreich gespeichert!",
+    "UPLOAD_SUCCESS": "Foto hochgeladen!",
+    "DELETE_SUCCESS": "Eintrag gelöscht."
+  }
+}

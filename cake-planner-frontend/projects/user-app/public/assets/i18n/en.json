@@ -1,0 +1,39 @@
+{
+  "APP": { "TITLE": "Cake Planner" },
+  "MENU": {
+    "CALENDAR": "Calendar",
+    "2FA": "2FA Setup",
+    "PASSWORD": "Password Change"
+  },
+  "DASHBOARD": {
+    "WELCOME": "Welcome"
+  },
+  "CALENDAR": {
+    "TODAY": "Today",
+    "NEW_MSG": "New cake! {{baker}} brings something on {{date}}."
+  },
+  "EVENT": {
+    "CREATE_TITLE": "Create new cake",
+    "DETAILS": "Cake Details",
+    "CAKE_BY": "Cake by",
+    "MY_EVENT": "My Event",
+    "DATE_LABEL": "Date",
+    "DESC_LABEL": "Description (optional)",
+    "PHOTO_BTN": "Add photo (optional)",
+    "PHOTO_SELECTED": "File selected",
+    "NO_DESC": "No description available.",
+    "UPLOAD_PHOTO": "Upload photo",
+    "VOTES": "Votes"
+  },
+  "BTN": {
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+    "CLOSE": "Close",
+    "DELETE": "Delete"
+  },
+  "MSG": {
+    "SAVE_SUCCESS": "Saved!",
+    "UPLOAD_SUCCESS": "Photo uploaded!",
+    "DELETE_SUCCESS": "Entry deleted."
+  }
+}

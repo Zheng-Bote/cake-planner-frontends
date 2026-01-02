@@ -8,7 +8,8 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { format } from 'date-fns';
-import { MatIconModule } from '@angular/material/icon'; // Optional: Für ein Icon beim Upload
+import { MatIconModule } from '@angular/material/icon';
+import { TranslocoModule } from '@jsverse/transloco'; // <--- WICHTIG
 
 @Component({
   selector: 'app-event-dialog',
@@ -22,7 +23,8 @@ import { MatIconModule } from '@angular/material/icon'; // Optional: Für ein Ic
     MatInputModule,
     MatDatepickerModule,
     ReactiveFormsModule,
-    MatIconModule, // Neu dazu
+    MatIconModule,
+    TranslocoModule, // <--- WICHTIG
   ],
   templateUrl: './event-dialog.html',
   styleUrl: './event-dialog.scss',
@@ -31,7 +33,6 @@ export class EventDialogComponent {
   private fb = inject(FormBuilder);
   private dialogRef = inject(MatDialogRef<EventDialogComponent>);
 
-  // Variable für die ausgewählte Datei
   selectedFile: File | null = null;
 
   form = this.fb.group({
@@ -45,7 +46,6 @@ export class EventDialogComponent {
     }
   }
 
-  // NEU: Datei-Auswahl verarbeiten
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -58,7 +58,6 @@ export class EventDialogComponent {
       const rawVal = this.form.value;
       const formattedDate = format(rawVal.date!, 'yyyy-MM-dd');
 
-      // NEU: Wir geben ein Objekt zurück mit 'event' UND 'file'
       this.dialogRef.close({
         event: {
           date: formattedDate,

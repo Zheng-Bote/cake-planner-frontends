@@ -1,0 +1,166 @@
+// Header Bereich mit Titel und Badge
+.dialog-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+
+  h2 {
+    margin: 0;
+    // Material Dialog Title Reset/Anpassung falls nötig
+  }
+
+  .owner-badge {
+    background-color: var(--mat-sys-tertiary-container);
+    color: var(--mat-sys-on-tertiary-container);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 16px;
+    letter-spacing: 0.5px;
+  }
+}
+
+// Der Rahmen für das Foto oder den Platzhalter
+.photo-frame {
+  position: relative;
+  width: 100%;
+  height: 250px; // Feste Höhe für Einheitlichkeit
+  background-color: var(--mat-sys-surface-container-high);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid var(--mat-sys-outline-variant);
+
+  .event-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; // Bild füllt den Bereich, schneidet Ränder ab
+    transition: transform 0.3s ease;
+  }
+
+  // Platzhalter Design wenn kein Bild da ist
+  .placeholder-img {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: var(--mat-sys-on-surface-variant);
+    opacity: 0.6;
+
+    mat-icon {
+      font-size: 48px;
+      width: 48px;
+      height: 48px;
+    }
+
+    span {
+      font-size: 0.9rem;
+    }
+  }
+
+  // Der Floating Action Button zum Upload
+  .upload-fab {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 2;
+  }
+}
+
+// Meta Daten Zeile (Datum, Gruppe)
+.meta-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-bottom: 16px;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.9rem;
+
+  div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// Beschreibungstext
+.description {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 16px 0;
+  color: var(--mat-sys-on-surface);
+  white-space: pre-wrap; // Erhält Zeilenumbrüche
+}
+
+// Bewertungsbereich
+.rating-section {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--mat-sys-surface-container);
+  padding: 12px 16px;
+  border-radius: 12px;
+
+  .stars {
+    display: flex;
+    gap: 4px;
+
+    mat-icon {
+      cursor: pointer;
+      color: var(--mat-sys-outline); // Leer: Grau/Outline Farbe
+      transition: color 0.2s, transform 0.1s;
+
+      // Hover Effekt für UX
+      &:hover {
+        transform: scale(1.2);
+      }
+
+      &.filled {
+        color: #ffb400; // Gold für Durchschnitt
+      }
+
+      &.my-rating {
+        color: #ffca28; // Helleres/Anderes Gold für eigene Bewertung
+        // Optional: Drop-Shadow für eigene Bewertung
+        filter: drop-shadow(0 0 2px rgba(255, 202, 40, 0.5));
+      }
+    }
+  }
+
+  .rating-text {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+
+    .avg {
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: var(--mat-sys-on-surface);
+    }
+
+    .count {
+      font-size: 0.85rem;
+      color: var(--mat-sys-on-surface-variant);
+    }
+  }
+}
+
+// Loading Spinner Container
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+}

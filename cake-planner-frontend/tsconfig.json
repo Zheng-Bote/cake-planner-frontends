@@ -15,7 +15,7 @@
       "shared-lib": ["./projects/shared-lib/src/public-api"]
     },
     "importHelpers": true,
-    "target": "ES2022",
+    "target": "ES2023",
     "module": "preserve"
   },
   "angularCompilerOptions": {

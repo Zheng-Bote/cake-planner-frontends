@@ -1,0 +1,87 @@
+<ng-container *transloco="let t">
+  @if (event(); as e) {
+  <div class="dialog-header">
+    <h2 mat-dialog-title>{{ t('EVENT.CAKE_BY') }} {{ e.bakerName }}</h2>
+    @if (e.isOwner) {
+    <span class="owner-badge">{{ t('EVENT.MY_EVENT') }}</span>
+    }
+  </div>
+
+  <mat-dialog-content>
+    <div class="photo-frame">
+      @if (e.photoUrl) {
+      <img [src]="e.photoUrl" class="event-img" alt="Kuchen" />
+      } @else {
+      <div class="placeholder-img">
+        <mat-icon>cake</mat-icon>
+        <span>No photo yet</span>
+      </div>
+      }
+
+      <button
+        mat-mini-fab
+        color="primary"
+        class="upload-fab"
+        (click)="triggerUpload(fileInput)"
+        [matTooltip]="t('EVENT.UPLOAD_PHOTO')"
+      >
+        <mat-icon>add_a_photo</mat-icon>
+      </button>
+      <input #fileInput type="file" hidden (change)="onFileSelected($event)" accept="image/*" />
+    </div>
+
+    <div class="meta-info">
+      <div class="date-row">
+        <mat-icon>event</mat-icon>
+        <span>{{ e.date | date : 'fullDate' }}</span>
+      </div>
+      @if (e.groupName) {
+      <div class="group-row">
+        <mat-icon>group</mat-icon>
+        <span>{{ e.groupName }}</span>
+      </div>
+      }
+    </div>
+
+    <p class="description">{{ e.description || t('EVENT.NO_DESC') }}</p>
+
+    <mat-divider></mat-divider>
+
+    <div class="rating-section">
+      <div class="stars">
+        @for (star of [1,2,3,4,5]; track star) {
+        <mat-icon
+          (click)="rate(star)"
+          [class.filled]="e.rating.average >= star"
+          [class.my-rating]="e.rating.myRating >= star"
+        >
+          star
+        </mat-icon>
+        }
+      </div>
+      <div class="rating-text">
+        <span class="avg">{{ e.rating.average | number : '1.1-1' }}</span>
+        <span class="count">({{ e.rating.count }} {{ t('EVENT.VOTES') }})</span>
+      </div>
+    </div>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="downloadIcs()"><mat-icon>download</mat-icon> ICS</button>
+
+    @if (e.canDelete) {
+    <button mat-button color="warn" (click)="deleteEvent()">
+      <mat-icon>delete</mat-icon> {{ t('BTN.DELETE') }}
+    </button>
+    }
+
+    <button mat-flat-button mat-dialog-close>
+      {{ t('BTN.CLOSE') }}
+    </button>
+  </mat-dialog-actions>
+  } @else {
+  <div class="loading-container">
+    <mat-spinner diameter="40"></mat-spinner>
+  </div>
+  }
+</ng-container>

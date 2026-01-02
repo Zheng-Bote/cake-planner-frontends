@@ -1,4 +1,5 @@
-import { Component, inject, signal, computed, effect } from '@angular/core';
+import { Component, inject, signal, computed, effect, DestroyRef } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -6,8 +7,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
-
-import { EventService, CakeEvent } from 'shared-lib';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
 import {
   startOfMonth,
   endOfMonth,
@@ -20,9 +21,10 @@ import {
   isSameMonth,
   isSameDay,
 } from 'date-fns';
-// Locale entfernen oder nutzen, falls gewünscht
 
-import { EventDialogComponent } from '../../components/event-dialog/event-dialog'; // Pfad prüfen!
+import { SseService, EventService, CakeEvent } from 'shared-lib';
+import { EventDialogComponent } from '../../components/event-dialog/event-dialog';
+import { EventDetailComponent } from '../../components/event-detail/event-detail';
 
 @Component({
   selector: 'app-calendar',
@@ -34,6 +36,7 @@ import { EventDialogComponent } from '../../components/event-dialog/event-dialog
     MatCardModule,
     MatChipsModule,
     MatTooltipModule,
+    TranslocoModule,
   ],
   templateUrl: './calendar.html',
   styleUrl: './calendar.scss',
@@ -41,10 +44,13 @@ import { EventDialogComponent } from '../../components/event-dialog/event-dialog
 export class CalendarComponent {
   private eventService = inject(EventService);
   private dialog = inject(MatDialog);
+  private sseService = inject(SseService);
+  private snackBar = inject(MatSnackBar);
+  private transloco = inject(TranslocoService);
+  private destroyRef = inject(DestroyRef);
 
   viewDate = signal(new Date());
   events = signal<CakeEvent[]>([]);
-
   weekDays = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
 
   days = computed(() => {
@@ -57,6 +63,18 @@ export class CalendarComponent {
     effect(() => {
       this.loadEvents();
     });
+
+    this.sseService
+      .getServerSentEvents('/api/events/stream')
+      .pipe(takeUntilDestroyed())
+      .subscribe((msg) => {
+        const text = this.transloco.translate('CALENDAR.NEW_MSG', {
+          baker: msg.bakerName,
+          date: msg.date,
+        });
+        this.snackBar.open(text, 'Yummy!', { duration: 5000 });
+        this.loadEvents();
+      });
   }
 
   loadEvents() {
@@ -66,9 +84,10 @@ export class CalendarComponent {
     );
     const end = format(endOfWeek(endOfMonth(this.viewDate()), { weekStartsOn: 1 }), 'yyyy-MM-dd');
 
-    this.eventService.getEvents(start, end).subscribe((data) => {
-      this.events.set(data);
-    });
+    this.eventService
+      .getEvents(start, end)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((data) => this.events.set(data));
   }
 
   isSameMonth(d1: Date, d2: Date) {
@@ -90,6 +109,7 @@ export class CalendarComponent {
     this.viewDate.update((d) => subMonths(d, 1));
   }
 
+  // ACTION: Erstellen
   openAddDialog(day: Date) {
     const dialogRef = this.dialog.open(EventDialogComponent, {
       width: '400px',
@@ -98,20 +118,30 @@ export class CalendarComponent {
 
     dialogRef.afterClosed().subscribe((result) => {
       if (result) {
-        // KORREKTUR: Wir entpacken result.event und result.file
-        // result sieht jetzt so aus: { event: { date: '...', description: '...' }, file: File | null }
-
         this.eventService.createEvent(result.event, result.file).subscribe({
           next: () => {
-            console.log('Event erstellt!');
+            this.snackBar.open(this.transloco.translate('MSG.SAVE_SUCCESS'), 'OK', {
+              duration: 2000,
+            });
             this.loadEvents();
           },
-          error: (err) => {
-            console.error('Fehler beim Erstellen', err);
-            // Hier könntest du noch eine Snackbar/Alert anzeigen
-          },
+          error: (err) => console.error(err),
         });
       }
+    });
+  }
+
+  // ACTION: Details/Editieren
+  openEventDetails(event: CakeEvent, e: Event) {
+    e.stopPropagation();
+    const dialogRef = this.dialog.open(EventDetailComponent, {
+      data: { eventId: event.id },
+      width: '500px',
+      maxWidth: '95vw',
+    });
+
+    dialogRef.afterClosed().subscribe((res) => {
+      if (res === 'deleted') this.loadEvents();
     });
   }
 }

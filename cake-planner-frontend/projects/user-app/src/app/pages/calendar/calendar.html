@@ -1,5 +1,5 @@
-<div class="calendar-container">
-  <div class="header">
+<ng-container *transloco="let t">
+  <div class="calendar-header">
     <button mat-icon-button (click)="prevMonth()">
       <mat-icon>chevron_left</mat-icon>
     </button>
@@ -9,30 +9,31 @@
     </button>
   </div>
 
-  <div class="weekdays-grid">
+  <div class="calendar-grid">
     @for (day of weekDays; track day) {
-    <div class="weekday">{{ day }}</div>
-    }
-  </div>
-
-  <div class="days-grid">
-    @for (day of days(); track day.toISOString()) {
+    <div class="weekday-header">{{ day }}</div>
+    } @for (day of days(); track day) {
     <div
       class="day-cell"
-      [class.other-month]="!isSameMonth(day, viewDate())"
+      [class.outside-month]="!isSameMonth(day, viewDate())"
       [class.today]="isToday(day)"
       (click)="openAddDialog(day)"
     >
-      <div class="date-number">{{ day | date : 'd' }}</div>
+      <span class="day-number">{{ day | date : 'd' }}</span>
 
       <div class="events-list">
-        @for (event of getEventsForDay(day); track event.id) {
-        <div class="cake-event" [matTooltip]="event.description || 'Keine Beschreibung'">
-          🍰 {{ event.bakerName }}
-        </div>
+        @for (evt of getEventsForDay(day); track evt.id) {
+        <mat-chip-option
+          color="accent"
+          selected
+          (click)="openEventDetails(evt, $event)"
+          [matTooltip]="evt.bakerName"
+        >
+          {{ evt.bakerName }}
+        </mat-chip-option>
         }
       </div>
     </div>
     }
   </div>
-</div>
+</ng-container>

@@ -1,58 +1,90 @@
 .calendar-container {
-  padding: 20px;
+  padding: 16px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-.header {
+
+.calendar-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 20px;
+  margin-bottom: 16px;
+
+  h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
 }
 
-.weekdays-grid,
-.days-grid {
+// FIX: Ein Grid für alles (Wochentage + Datum)
+.calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
+  grid-template-columns: repeat(7, 1fr); // Genau 7 Spalten
+  gap: 8px;
+  // Wochentage sind die ersten 7 Elemente, danach fließen die Tage automatisch rein
 }
-.weekday {
+
+.weekday-header {
   text-align: center;
-  font-weight: bold;
-  padding: 10px;
+  font-weight: 500;
+  padding-bottom: 8px;
+  color: #666;
+  text-transform: uppercase;
+  font-size: 0.85rem;
 }
 
 .day-cell {
-  min-height: 100px; /* Platz für Events */
+  background-color: white;
   border: 1px solid #e0e0e0;
-  border-radius: 4px;
-  padding: 5px;
-  background: white;
-}
-.other-month {
-  background: #fafafa;
-  color: #999;
-}
-.today {
-  border: 2px solid #3f51b5;
+  border-radius: 8px;
+  padding: 8px;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: background-color 0.2s;
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
+
+  &.outside-month {
+    background-color: #fafafa;
+    opacity: 0.6;
+  }
+
+  &.today {
+    border: 2px solid var(--mat-sys-primary);
+    background-color: var(--mat-sys-primary-container);
+  }
 }
 
-.date-number {
+.day-number {
   font-size: 0.9rem;
-  margin-bottom: 5px;
   font-weight: 500;
+  margin-bottom: 4px;
+  align-self: flex-end;
 }
 
 .events-list {
   display: flex;
   flex-direction: column;
-  gap: 2px;
+  gap: 4px;
 }
-.cake-event {
-  background-color: #ffccbc; /* Leichte Kuchen-Farbe */
-  color: #bf360c;
-  font-size: 0.75rem;
-  padding: 2px 4px;
-  border-radius: 4px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+
+// Styling für die Chips im Kalender
+mat-chip-option {
+  width: 100%;
+  --mdc-chip-label-text-size: 0.75rem;
+  --mdc-chip-container-height: 24px;
+
+  ::ng-deep .mdc-evolution-chip__text-label {
+    padding-left: 8px;
+    padding-right: 8px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 }
