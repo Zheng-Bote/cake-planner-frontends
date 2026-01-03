@@ -22,7 +22,14 @@
     "SAVE_SUCCESS": "Einstellungen gespeichert!",
     "DELETE_CONFIRM": "Bist du sicher? Dein Account wird unwiderruflich gelöscht!"
   },
-  "DASHBOARD": { "WELCOME": "Willkommen" },
+  "DASHBOARD": {
+    "WELCOME": "Willkommen",
+    "TITLE": "Dashboard Übersicht",
+    "SEC_TITLE": "Sicherheit",
+    "SEC_SUB": "2-Faktor Authentifizierung",
+    "SEC_DESC": "Erhöhe die Sicherheit deines Kontos durch Aktivierung von 2FA.",
+    "BTN_SETUP": "Einrichten"
+  },
   "CALENDAR": {
     "TODAY": "Heute",
     "NEW_MSG": "Neuer Kuchen! {{baker}} bringt am {{date}} etwas mit."

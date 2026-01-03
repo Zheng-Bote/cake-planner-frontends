@@ -22,7 +22,14 @@
     "SAVE_SUCCESS": "Settings saved!",
     "DELETE_CONFIRM": "Are you sure? This cannot be undone!"
   },
-  "DASHBOARD": { "WELCOME": "Welcome" },
+  "DASHBOARD": {
+    "WELCOME": "Welcome",
+    "TITLE": "Dashboard Overview",
+    "SEC_TITLE": "Security",
+    "SEC_SUB": "2-Factor Authentication",
+    "SEC_DESC": "Increase your account security by enabling 2FA.",
+    "BTN_SETUP": "Setup"
+  },
   "CALENDAR": {
     "TODAY": "Today",
     "NEW_MSG": "New Cake! {{baker}} is bringing something on {{date}}."

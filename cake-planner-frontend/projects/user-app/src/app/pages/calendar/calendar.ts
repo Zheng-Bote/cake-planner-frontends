@@ -1,5 +1,5 @@
 import { Component, inject, signal, computed, effect, DestroyRef } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop'; // toSignal dazu
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,6 +9,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'; // Dazu
+import { map } from 'rxjs/operators'; // Dazu
 import {
   startOfMonth,
   endOfMonth,
@@ -48,15 +50,30 @@ export class CalendarComponent {
   private snackBar = inject(MatSnackBar);
   private transloco = inject(TranslocoService);
   private destroyRef = inject(DestroyRef);
+  private breakpointObserver = inject(BreakpointObserver); // Inject
 
   viewDate = signal(new Date());
   events = signal<CakeEvent[]>([]);
   weekDays = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
 
+  // Signal für Mobile-Erkennung
+  isMobile = toSignal(
+    this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((result) => result.matches)),
+    { initialValue: false }
+  );
+
   days = computed(() => {
-    const start = startOfWeek(startOfMonth(this.viewDate()), { weekStartsOn: 1 });
-    const end = endOfWeek(endOfMonth(this.viewDate()), { weekStartsOn: 1 });
-    return eachDayOfInterval({ start, end });
+    // Auf Mobile zeigen wir nur den Monat selbst an, um Scrollen zu sparen,
+    // auf Desktop zeigen wir das volle Grid (inkl. Vor/Nach-Monatstage)
+    if (this.isMobile()) {
+      const start = startOfMonth(this.viewDate());
+      const end = endOfMonth(this.viewDate());
+      return eachDayOfInterval({ start, end });
+    } else {
+      const start = startOfWeek(startOfMonth(this.viewDate()), { weekStartsOn: 1 });
+      const end = endOfWeek(endOfMonth(this.viewDate()), { weekStartsOn: 1 });
+      return eachDayOfInterval({ start, end });
+    }
   });
 
   constructor() {
@@ -78,6 +95,7 @@ export class CalendarComponent {
   }
 
   loadEvents() {
+    // Range Berechnung abhängig von View (Mobile lädt etwas weniger, aber Logik bleibt gleich)
     const start = format(
       startOfWeek(startOfMonth(this.viewDate()), { weekStartsOn: 1 }),
       'yyyy-MM-dd'
@@ -109,7 +127,6 @@ export class CalendarComponent {
     this.viewDate.update((d) => subMonths(d, 1));
   }
 
-  // ACTION: Erstellen
   openAddDialog(day: Date) {
     const dialogRef = this.dialog.open(EventDialogComponent, {
       width: '400px',
@@ -131,7 +148,6 @@ export class CalendarComponent {
     });
   }
 
-  // ACTION: Details/Editieren
   openEventDetails(event: CakeEvent, e: Event) {
     e.stopPropagation();
     const dialogRef = this.dialog.open(EventDetailComponent, {

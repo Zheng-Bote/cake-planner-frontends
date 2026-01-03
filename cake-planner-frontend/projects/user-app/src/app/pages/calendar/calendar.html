@@ -9,6 +9,7 @@
     </button>
   </div>
 
+  @if (!isMobile()) {
   <div class="calendar-grid">
     @for (day of weekDays; track day) {
     <div class="weekday-header">{{ day }}</div>
@@ -36,4 +37,27 @@
     </div>
     }
   </div>
+  } @else {
+  <div class="mobile-list">
+    @for (day of days(); track day) {
+    <div class="mobile-day-row" [class.today-row]="isToday(day)" (click)="openAddDialog(day)">
+      <div class="mobile-date">
+        <span class="day-name">{{ day | date : 'EEE' }}</span>
+        <span class="day-num">{{ day | date : 'dd.MM' }}</span>
+      </div>
+
+      <div class="mobile-events">
+        @if (getEventsForDay(day).length === 0) {
+        <span class="no-event-placeholder">+</span>
+        } @for (evt of getEventsForDay(day); track evt.id) {
+        <div class="mobile-event-chip" (click)="openEventDetails(evt, $event)">
+          <mat-icon class="cake-icon">cake</mat-icon>
+          <span>{{ evt.bakerName }}</span>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+  }
 </ng-container>
