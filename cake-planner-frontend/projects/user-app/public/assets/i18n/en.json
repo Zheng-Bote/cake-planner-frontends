@@ -2,28 +2,54 @@
   "APP": { "TITLE": "Cake Planner" },
   "MENU": {
     "CALENDAR": "Calendar",
-    "2FA": "2FA Setup",
-    "PASSWORD": "Password Change"
+    "PROFILE": "My Profile",
+    "2FA": "Setup 2FA",
+    "PASSWORD": "Change Password"
   },
-  "DASHBOARD": {
-    "WELCOME": "Welcome"
+  "PROFILE": {
+    "TITLE": "My Profile",
+    "ROLE": "Role",
+    "SETTINGS": "Settings",
+    "EMAIL_LANG": "E-Mail Language",
+    "LANG_DE": "German",
+    "LANG_EN": "English",
+    "SECURITY": "Security",
+    "BTN_PW": "Change Password",
+    "BTN_2FA": "Configure 2FA",
+    "DANGER_ZONE": "Danger Zone",
+    "DELETE_ACCOUNT": "Delete Account",
+    "DELETE_DESC": "Warning: Your account will be deactivated and anonymized. Your cakes will remain.",
+    "SAVE_SUCCESS": "Settings saved!",
+    "DELETE_CONFIRM": "Are you sure? This cannot be undone!"
   },
+  "DASHBOARD": { "WELCOME": "Welcome" },
   "CALENDAR": {
     "TODAY": "Today",
-    "NEW_MSG": "New cake! {{baker}} brings something on {{date}}."
+    "NEW_MSG": "New Cake! {{baker}} is bringing something on {{date}}."
   },
   "EVENT": {
-    "CREATE_TITLE": "Create new cake",
+    "CREATE_TITLE": "Add New Cake",
     "DETAILS": "Cake Details",
     "CAKE_BY": "Cake by",
     "MY_EVENT": "My Event",
     "DATE_LABEL": "Date",
     "DESC_LABEL": "Description (optional)",
-    "PHOTO_BTN": "Add photo (optional)",
+    "PHOTO_BTN": "Add Photo (optional)",
     "PHOTO_SELECTED": "File selected",
     "NO_DESC": "No description available.",
-    "UPLOAD_PHOTO": "Upload photo",
+    "UPLOAD_PHOTO": "Upload Photo",
     "VOTES": "Votes"
+  },
+  "CHANGE_PW": {
+    "TITLE": "Set New Password",
+    "FORCED_MSG": "The administrator requires you to change your password.",
+    "LABEL_NEW": "New Password",
+    "LABEL_CONFIRM": "Confirm Password",
+    "ERR_REQUIRED": "Required field",
+    "ERR_MIN8": "At least 8 characters",
+    "ERR_MISMATCH": "Passwords do not match",
+    "BTN_SAVE": "Saving...",
+    "BTN_CHANGE": "Change Password"
   },
   "BTN": {
     "SAVE": "Save",
@@ -32,7 +58,7 @@
     "DELETE": "Delete"
   },
   "MSG": {
-    "SAVE_SUCCESS": "Saved!",
+    "SAVE_SUCCESS": "Saved successfully!",
     "UPLOAD_SUCCESS": "Photo uploaded!",
     "DELETE_SUCCESS": "Entry deleted."
   }

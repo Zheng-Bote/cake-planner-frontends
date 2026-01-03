@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { TranslocoModule } from '@jsverse/transloco'; // <--- WICHTIG: Importieren
+
 import { AuthService, AuthResponse } from 'shared-lib';
 
 @Component({
@@ -18,6 +20,7 @@ import { AuthService, AuthResponse } from 'shared-lib';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
+    TranslocoModule,
   ],
   templateUrl: './change-password.html',
   styleUrls: ['./change-password.css'],

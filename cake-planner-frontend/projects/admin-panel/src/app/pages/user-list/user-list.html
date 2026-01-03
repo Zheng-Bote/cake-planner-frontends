@@ -1,5 +1,10 @@
 <ng-container *transloco="let t">
   <mat-toolbar color="primary">
+    <img
+      src="assets/logo_500x500.png"
+      alt="Logo"
+      style="height: 40px; width: 40px; border-radius: 8px"
+    />
     <span>{{ t('ADMIN.TITLE') }}</span>
     &nbsp;
     <span>{{ t('ADMIN.HEADER_FOR') }} {{ authService.currentUser()?.name }}</span>

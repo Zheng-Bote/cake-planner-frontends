@@ -1,0 +1,22 @@
+.profile-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr; /* Mobile: 1 Spalte */
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr; /* Desktop: 2 Spalten */
+  }
+}
+
+.danger-zone {
+  border: 1px solid var(--mat-sys-error);
+  .warn-text {
+    color: var(--mat-sys-error);
+  }
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}

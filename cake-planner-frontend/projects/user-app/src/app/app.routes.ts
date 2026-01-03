@@ -13,25 +13,34 @@ export const routes: Routes = [
     path: 'login',
     loadComponent: () => import('./pages/login/login').then((m) => m.LoginComponent),
   },
-  // 3. Protected Area (Dashboard) - Lazy Loaded & Guarded
+
+  // WICHTIG: Die wiederhergestellte Route für Passwort-Änderung (geschützt)
+  {
+    path: 'change-password',
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import('./pages/change-password/change-password').then((m) => m.ChangePasswordComponent),
+  },
+
+  // Protected Area (Dashboard)
   {
     path: 'dashboard',
     canActivate: [authGuard],
     loadComponent: () =>
       import('../app/pages/dashboard/dashboard').then((m) => m.DashboardComponent),
-    // Kind-Routen für das Dashboard
     children: [
       { path: '', redirectTo: 'calendar', pathMatch: 'full' },
       {
         path: 'calendar',
-        // Hier würden wir später die CalendarComponent lazy laden
         loadComponent: () =>
           import('../app/pages/calendar/calendar').then((m) => m.CalendarComponent),
       },
-      // Platzhalter für weitere Routes
-      // { path: 'history', loadComponent: ... }
+      {
+        path: 'profile',
+        loadComponent: () => import('./pages/profile/profile').then((m) => m.ProfileComponent),
+      },
     ],
   },
-  // Fallback für unbekannte URLs (Optional)
+
   { path: '**', redirectTo: 'login' },
 ];

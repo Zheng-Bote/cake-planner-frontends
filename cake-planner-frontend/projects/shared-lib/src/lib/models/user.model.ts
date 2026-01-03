@@ -7,6 +7,7 @@ export interface User {
   mustChangePassword?: boolean;
   groupId?: string;
   groupRole?: string; // 'admin' | 'member'
+  emailLanguage?: string; // 'de' | 'en'
 }
 
 export interface RegisterUser {
@@ -21,10 +22,9 @@ export interface AuthResponse {
   require2fa?: boolean; // Neu
 }
 
-// Für später (TOTP)
 export interface TotpSetup {
   secret: string;
-  qrCodeUrl: string; // Wenn wir das im Backend generieren
+  qrCodeUrl: string;
 }
 
 export interface Group {

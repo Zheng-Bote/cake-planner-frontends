@@ -2,12 +2,27 @@
   "APP": { "TITLE": "Kuchen Planer" },
   "MENU": {
     "CALENDAR": "Kalender",
+    "PROFILE": "Mein Profil",
     "2FA": "2FA Einrichten",
     "PASSWORD": "Passwort ändern"
   },
-  "DASHBOARD": {
-    "WELCOME": "Willkommen"
+  "PROFILE": {
+    "TITLE": "Mein Profil",
+    "ROLE": "Rolle",
+    "SETTINGS": "Einstellungen",
+    "EMAIL_LANG": "E-Mail Sprache",
+    "LANG_DE": "Deutsch",
+    "LANG_EN": "Englisch",
+    "SECURITY": "Sicherheit",
+    "BTN_PW": "Passwort ändern",
+    "BTN_2FA": "2FA Konfigurieren",
+    "DANGER_ZONE": "Gefahrenzone",
+    "DELETE_ACCOUNT": "Account löschen",
+    "DELETE_DESC": "Vorsicht: Dein Account wird deaktiviert und dein Name anonymisiert. Deine Kuchen bleiben erhalten.",
+    "SAVE_SUCCESS": "Einstellungen gespeichert!",
+    "DELETE_CONFIRM": "Bist du sicher? Dein Account wird unwiderruflich gelöscht!"
   },
+  "DASHBOARD": { "WELCOME": "Willkommen" },
   "CALENDAR": {
     "TODAY": "Heute",
     "NEW_MSG": "Neuer Kuchen! {{baker}} bringt am {{date}} etwas mit."
@@ -24,6 +39,17 @@
     "NO_DESC": "Keine Beschreibung verfügbar.",
     "UPLOAD_PHOTO": "Foto hochladen",
     "VOTES": "Stimmen"
+  },
+  "CHANGE_PW": {
+    "TITLE": "Neues Passwort festlegen",
+    "FORCED_MSG": "Der Administrator hat festgelegt, dass du dein Passwort ändern musst.",
+    "LABEL_NEW": "Neues Passwort",
+    "LABEL_CONFIRM": "Passwort bestätigen",
+    "ERR_REQUIRED": "Pflichtfeld",
+    "ERR_MIN8": "Mindestens 8 Zeichen",
+    "ERR_MISMATCH": "Passwörter stimmen nicht überein",
+    "BTN_SAVE": "Speichern...",
+    "BTN_CHANGE": "Passwort ändern"
   },
   "BTN": {
     "SAVE": "Speichern",

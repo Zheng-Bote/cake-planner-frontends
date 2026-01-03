@@ -11,14 +11,9 @@
           <span matListItemTitle>{{ t('MENU.CALENDAR') }}</span>
         </a>
 
-        <a mat-list-item (click)="open2FASetup()" style="cursor: pointer">
-          <mat-icon matListItemIcon>security</mat-icon>
-          <span matListItemTitle>{{ t('MENU.2FA') }}</span>
-        </a>
-
-        <a mat-list-item routerLink="/change-password">
-          <mat-icon matListItemIcon>lock</mat-icon>
-          <span matListItemTitle>{{ t('MENU.PASSWORD') }}</span>
+        <a mat-list-item routerLink="profile">
+          <mat-icon matListItemIcon>account_circle</mat-icon>
+          <span matListItemTitle>{{ t('MENU.PROFILE') }}</span>
         </a>
       </mat-nav-list>
     </mat-sidenav>

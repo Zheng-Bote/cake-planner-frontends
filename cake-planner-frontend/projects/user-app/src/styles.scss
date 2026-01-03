@@ -1,38 +1,69 @@
-
-// Include theming for Angular Material with `mat.theme()`.
-// This Sass mixin will define CSS variables that are used for styling Angular Material
-// components according to the Material 3 design spec.
-// Learn more about theming and how to use it for your application's
-// custom components at https://material.angular.dev/guide/theming
+// 1. Material Theming Setup (Muss oben bleiben!)
 @use '@angular/material' as mat;
 
 html {
   height: 100%;
-  @include mat.theme((
-    color: (
-      primary: mat.$azure-palette,
-      tertiary: mat.$blue-palette,
-    ),
-    typography: Roboto,
-    density: 0,
-  ));
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
 }
 
+// 2. Body Styling & Reset (Theming + Layout)
 body {
-  // Default the application to a light color theme. This can be changed to
-  // `dark` to enable the dark color theme, or to `light dark` to defer to the
-  // user's system settings.
   color-scheme: light;
-
-  // Set a default background, font and text colors for the application using
-  // Angular Material's system-level CSS variables. Learn more about these
-  // variables at https://material.angular.dev/guide/system-variables
+  // Nutzt Material Variablen für Standardfarben
   background-color: var(--mat-sys-surface);
   color: var(--mat-sys-on-surface);
   font: var(--mat-sys-body-medium);
-
-  // Reset the user agent margin.
   margin: 0;
   height: 100%;
+
+  // NEU: Hintergrund für den Bereich AUSSERHALB der App (bei großen Screens)
+  background-color: #f0f2f5;
 }
-/* You can add global styles to this file, and also import other style files */
+
+// 3. App-Container Begrenzung (Mobile First / Max Width)
+app-root {
+  display: block;
+  width: 100%;
+  max-width: 1600px; /* Die gewünschte Begrenzung */
+  margin: 0 auto; /* Zentrierung */
+  min-height: 100%;
+
+  // Wichtig: Die App selbst braucht wieder den Material Hintergrund
+  background-color: var(--mat-sys-surface);
+
+  // Optional: Schatten für den "Card"-Look auf großen Screens
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+// 4. Eigene Helper Klassen
+.container {
+  padding: 16px; // Mobile
+  @media (min-width: 768px) {
+    padding: 32px; // Desktop
+  }
+}
+
+.flex-column-mobile {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+// Reset für Dialoge (damit sie nicht durch app-root beschränkt werden)
+.cdk-overlay-container {
+  max-width: none !important;
+  z-index: 1000;
+}
