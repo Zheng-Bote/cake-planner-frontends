@@ -31,6 +31,13 @@ export const routes: Routes = [
           import('./pages/dashboard/dashboard').then((m) => m.DashboardComponent),
       },
 
+      // Hall of Fame
+      {
+        path: 'hall-of-fame',
+        loadComponent: () =>
+          import('./components/hall-of-fame/hall-of-fame').then((m) => m.HallOfFameComponent),
+      },
+
       // Kalender
       {
         path: 'calendar',

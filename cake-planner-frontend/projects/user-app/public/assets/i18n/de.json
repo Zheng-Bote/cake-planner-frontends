@@ -4,7 +4,8 @@
     "CALENDAR": "Kalender",
     "PROFILE": "Mein Profil",
     "2FA": "2FA Einrichten",
-    "PASSWORD": "Passwort ändern"
+    "PASSWORD": "Passwort ändern",
+    "HALL_OF_FAME": "Ruhmeshalle"
   },
   "PROFILE": {
     "TITLE": "Mein Profil",
@@ -52,7 +53,12 @@
     "PHOTO_SELECTED": "Datei ausgewählt",
     "NO_DESC": "Keine Beschreibung verfügbar.",
     "UPLOAD_PHOTO": "Foto hochladen",
-    "VOTES": "Stimmen"
+    "VOTES": "Stimmen",
+    "COMMUNITY_PHOTOS": "Community Fotos",
+    "ME": "Ich",
+    "UPLOAD_YOURS": "Eigenes Foto hochladen",
+    "NO_GALLERY": "Noch keine Community-Fotos. Sei der Erste!",
+    "NO_PHOTO_YET": "Noch kein Foto"
   },
   "CHANGE_PW": {
     "TITLE": "Neues Passwort festlegen",

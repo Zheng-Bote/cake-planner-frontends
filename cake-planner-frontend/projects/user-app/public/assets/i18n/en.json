@@ -4,7 +4,8 @@
     "CALENDAR": "Calendar",
     "PROFILE": "My Profile",
     "2FA": "Setup 2FA",
-    "PASSWORD": "Change Password"
+    "PASSWORD": "Change Password",
+    "HALL_OF_FAME": "Hall of Fame"
   },
   "PROFILE": {
     "TITLE": "My Profile",
@@ -52,7 +53,12 @@
     "PHOTO_SELECTED": "File selected",
     "NO_DESC": "No description available.",
     "UPLOAD_PHOTO": "Upload Photo",
-    "VOTES": "Votes"
+    "VOTES": "Votes",
+    "COMMUNITY_PHOTOS": "Community Photos",
+    "ME": "Me",
+    "UPLOAD_YOURS": "Upload yours",
+    "NO_GALLERY": "No community photos yet. Be the first!",
+    "NO_PHOTO_YET": "No photo yet"
   },
   "CHANGE_PW": {
     "TITLE": "Set New Password",

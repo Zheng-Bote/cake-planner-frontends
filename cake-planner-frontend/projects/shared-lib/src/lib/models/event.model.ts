@@ -1,3 +1,9 @@
+export interface GalleryItem {
+  userName: string;
+  url: string;
+  isMine: boolean;
+}
+
 export interface EventRating {
   average: number;
   count: number;
@@ -12,7 +18,8 @@ export interface CakeEvent {
   bakerName: string;
   date: string; // YYYY-MM-DD
   description: string;
-  photoUrl?: string; // Pfad zum Bild des Erstellers
+  photoUrl?: string; // Pfad zum Bild des Erstellers bzw. logo als Default
+  gallery: GalleryItem[]; // Liste der Community Fotos
 
   // Berechtigungen & Status
   isOwner: boolean;

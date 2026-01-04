@@ -33,6 +33,16 @@
 
         <a
           mat-list-item
+          routerLink="/hall-of-fame"
+          routerLinkActive="active-link"
+          (click)="closeSideNavIfMobile()"
+        >
+          <mat-icon matListItemIcon>emoji_events</mat-icon>
+          <span matListItemTitle>{{ t('MENU.HALL_OF_FAME') }}</span>
+        </a>
+
+        <a
+          mat-list-item
           routerLink="/profile"
           routerLinkActive="active-link"
           (click)="closeSideNavIfMobile()"

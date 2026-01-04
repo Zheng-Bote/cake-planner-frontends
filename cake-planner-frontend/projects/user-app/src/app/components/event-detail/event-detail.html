@@ -1,5 +1,6 @@
 <ng-container *transloco="let t">
   @if (event(); as e) {
+
   <div class="dialog-header">
     <h2 mat-dialog-title>{{ t('EVENT.CAKE_BY') }} {{ e.bakerName }}</h2>
     @if (e.isOwner) {
@@ -10,24 +11,18 @@
   <mat-dialog-content>
     <div class="photo-frame">
       @if (e.photoUrl) {
-      <img [src]="e.photoUrl" class="event-img" alt="Kuchen" />
+      <img
+        [src]="e.photoUrl"
+        class="event-img cover"
+        (click)="openOverlay(e.photoUrl)"
+        matTooltip="Click to zoom"
+      />
       } @else {
-      <div class="placeholder-img">
-        <mat-icon>cake</mat-icon>
-        <span>No photo yet</span>
+      <div class="placeholder-logo">
+        <img src="assets/logo_500x500.png" alt="CakePlanner Logo" />
+        <span>{{ t('EVENT.NO_PHOTO_YET') }}</span>
       </div>
       }
-
-      <button
-        mat-mini-fab
-        color="primary"
-        class="upload-fab"
-        (click)="triggerUpload(fileInput)"
-        [matTooltip]="t('EVENT.UPLOAD_PHOTO')"
-      >
-        <mat-icon>add_a_photo</mat-icon>
-      </button>
-      <input #fileInput type="file" hidden (change)="onFileSelected($event)" accept="image/*" />
     </div>
 
     <div class="meta-info">
@@ -64,6 +59,35 @@
         <span class="count">({{ e.rating.count }} {{ t('EVENT.VOTES') }})</span>
       </div>
     </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="gallery-section">
+      <h3>{{ t('EVENT.COMMUNITY_PHOTOS') }}</h3>
+
+      @if (e.gallery && e.gallery.length > 0) {
+      <div class="gallery-list">
+        @for (item of e.gallery; track item.url) {
+        <div class="gallery-item" (click)="openOverlay(item.url)">
+          <img [src]="item.url" class="thumb" />
+          <div class="info">
+            <span class="name">{{ item.userName }}</span>
+            @if (item.isMine) { <span class="me-badge">({{ t('EVENT.ME') }})</span> }
+          </div>
+        </div>
+        }
+      </div>
+      } @else {
+      <p class="no-photos">{{ t('EVENT.NO_GALLERY') }}</p>
+      }
+
+      <div class="upload-area">
+        <button mat-stroked-button color="primary" (click)="triggerUpload(fileInput)">
+          <mat-icon>add_a_photo</mat-icon> {{ t('EVENT.UPLOAD_YOURS') }}
+        </button>
+        <input #fileInput type="file" hidden (change)="onFileSelected($event)" accept="image/*" />
+      </div>
+    </div>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">
@@ -82,6 +106,15 @@
   } @else {
   <div class="loading-container">
     <mat-spinner diameter="40"></mat-spinner>
+  </div>
+  } @if (overlayUrl()) {
+  <div class="lightbox" (click)="closeOverlay()">
+    <div class="lightbox-content" (click)="$event.stopPropagation()">
+      <img [src]="overlayUrl()" />
+      <button mat-icon-button class="close-btn" (click)="closeOverlay()">
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
   </div>
   }
 </ng-container>

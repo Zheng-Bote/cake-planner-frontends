@@ -30,6 +30,11 @@ export class EventService {
     return this.http.post<any>(this.baseUrl, formData);
   }
 
+  // 1c. Hall of Fame (Ranked Events)
+  getRankedEvents(): Observable<CakeEvent[]> {
+    return this.http.get<CakeEvent[]>(`${this.baseUrl}/ranked`);
+  }
+
   // 2a. Einzelnes Event laden (Detailansicht)
   getById(id: string): Observable<CakeEvent> {
     return this.http.get<CakeEvent>(`${this.baseUrl}/${id}`);
