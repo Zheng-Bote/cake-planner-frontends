@@ -23,12 +23,19 @@
     "DELETE_CONFIRM": "Bist du sicher? Dein Account wird unwiderruflich gelöscht!"
   },
   "DASHBOARD": {
-    "WELCOME": "Willkommen",
-    "TITLE": "Dashboard Übersicht",
-    "SEC_TITLE": "Sicherheit",
-    "SEC_SUB": "2-Faktor Authentifizierung",
-    "SEC_DESC": "Erhöhe die Sicherheit deines Kontos durch Aktivierung von 2FA.",
-    "BTN_SETUP": "Einrichten"
+    "TITLE": "Übersicht",
+    "MORNING": "Guten Morgen",
+    "AFTERNOON": "Guten Tag",
+    "EVENING": "Guten Abend",
+    "SUBTITLE": "Hier ist dein Kuchen-Status.",
+    "NEXT_CAKE": "Der nächste Kuchen",
+    "NO_UPCOMING": "Keine Kuchen in Sicht! Zeit, das zu ändern.",
+    "SEC_TITLE_WARN": "Sicherheit: Handlungsbedarf",
+    "SEC_TITLE_OK": "Sicherheit: Alles im Grünen",
+    "SEC_DESC": "Dein Konto ist nicht optimal geschützt. Bitte aktiviere 2FA.",
+    "SEC_DESC_OK": "Dein Konto ist durch 2-Faktor-Authentifizierung geschützt.",
+    "BTN_SETUP": "2FA Einrichten",
+    "QUICK_ACTIONS": "Schnellzugriff"
   },
   "CALENDAR": {
     "TODAY": "Heute",

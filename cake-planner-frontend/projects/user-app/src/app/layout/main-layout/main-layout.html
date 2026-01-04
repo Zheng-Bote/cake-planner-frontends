@@ -53,16 +53,14 @@
 
         <div class="logo-area">
           <img src="assets/logo_500x500.png" alt="Logo" />
-          <span class="hide-on-mobile"
-            >{{ t('DASHBOARD.WELCOME') }}, {{ authService.currentUser()?.name }}</span
-          >
+          <span>{{ t(greetingKey()) }}, {{ authService.currentUser()?.name }} 👋</span>
         </div>
 
         <span class="spacer"></span>
 
         <div class="lang-switch">
-          <button mat-button (click)="switchLang('en')">🇬🇧</button>
-          <button mat-button (click)="switchLang('de')">🇩🇪</button>
+          <button mat-button (click)="switchLang('en')">🇬🇧 EN</button>
+          <button mat-button (click)="switchLang('de')">🇩🇪 DE</button>
         </div>
 
         <button mat-icon-button (click)="logout()">

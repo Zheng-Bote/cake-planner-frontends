@@ -7,11 +7,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar'; // NEU
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 
 import { AuthService, TwoFactorSetupComponent } from 'shared-lib';
+// NEU: Importieren für den Dialog-Aufruf
+import { ChangePasswordComponent } from '../../pages/change-password/change-password';
 
 @Component({
   selector: 'app-profile',
@@ -34,30 +37,35 @@ export class ProfileComponent implements OnInit {
   private http = inject(HttpClient);
   private router = inject(Router);
   private dialog = inject(MatDialog);
+  private snackBar = inject(MatSnackBar); // NEU
   private transloco = inject(TranslocoService);
 
   user = this.authService.currentUser;
-  selectedLanguage = signal('en'); // Default Fallback
+  selectedLanguage = signal('en');
 
   constructor() {
-    // Sprache aus dem User-Objekt laden, sobald die Komponente erstellt wird
     const currentLang = this.user()?.emailLanguage;
     if (currentLang) {
       this.selectedLanguage.set(currentLang);
     }
   }
 
-  ngOnInit() {
-    // Optional: Hier könnte man User-Daten refreshen
-  }
+  ngOnInit() {}
 
   saveSettings(lang: string) {
     this.selectedLanguage.set(lang);
     this.http.post('/api/user/settings', { language: lang }).subscribe({
       next: () => {
-        alert(this.transloco.translate('PROFILE.SAVE_SUCCESS'));
+        // 1a. Hässliches Alert durch SnackBar ersetzt
+        this.snackBar.open(this.transloco.translate('PROFILE.SAVE_SUCCESS'), 'OK', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'bottom',
+        });
       },
-      error: () => alert('Error saving settings'),
+      error: () => {
+        this.snackBar.open('Error saving settings', 'Close', { duration: 3000 });
+      },
     });
   }
 
@@ -65,8 +73,12 @@ export class ProfileComponent implements OnInit {
     this.dialog.open(TwoFactorSetupComponent, { width: '400px' });
   }
 
+  // 1b. Passwort ändern als Dialog
   changePassword() {
-    this.router.navigate(['/change-password']);
+    this.dialog.open(ChangePasswordComponent, {
+      width: '400px',
+      disableClose: false, // User kann abbrechen
+    });
   }
 
   deleteAccount() {

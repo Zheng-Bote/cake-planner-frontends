@@ -9,7 +9,7 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { format } from 'date-fns';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslocoModule } from '@jsverse/transloco'; // <--- WICHTIG
+import { TranslocoModule } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-event-dialog',
@@ -24,7 +24,7 @@ import { TranslocoModule } from '@jsverse/transloco'; // <--- WICHTIG
     MatDatepickerModule,
     ReactiveFormsModule,
     MatIconModule,
-    TranslocoModule, // <--- WICHTIG
+    TranslocoModule,
   ],
   templateUrl: './event-dialog.html',
   styleUrl: './event-dialog.scss',
@@ -35,6 +35,7 @@ export class EventDialogComponent {
 
   selectedFile: File | null = null;
 
+  // KORREKTUR: bakerName entfernt. Das Backend nimmt den User aus dem Token.
   form = this.fb.group({
     date: [new Date(), Validators.required],
     description: [''],

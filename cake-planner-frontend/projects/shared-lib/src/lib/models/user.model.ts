@@ -8,6 +8,7 @@ export interface User {
   groupId?: string;
   groupRole?: string; // 'admin' | 'member'
   emailLanguage?: string; // 'de' | 'en'
+  has2FA?: boolean;
 }
 
 export interface RegisterUser {

@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild, signal } from '@angular/core';
+import { Component, inject, ViewChild, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router'; // Wichtig für router-outlet
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
@@ -41,6 +41,13 @@ export class MainLayoutComponent {
     this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((result) => result.matches)),
     { initialValue: false }
   );
+
+  greetingKey = computed(() => {
+    const hour = new Date().getHours();
+    if (hour < 12) return 'DASHBOARD.MORNING';
+    if (hour < 18) return 'DASHBOARD.AFTERNOON';
+    return 'DASHBOARD.EVENING';
+  });
 
   logout() {
     this.authService.logout();

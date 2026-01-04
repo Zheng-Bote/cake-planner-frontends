@@ -23,12 +23,19 @@
     "DELETE_CONFIRM": "Are you sure? This cannot be undone!"
   },
   "DASHBOARD": {
-    "WELCOME": "Welcome",
-    "TITLE": "Dashboard Overview",
-    "SEC_TITLE": "Security",
-    "SEC_SUB": "2-Factor Authentication",
-    "SEC_DESC": "Increase your account security by enabling 2FA.",
-    "BTN_SETUP": "Setup"
+    "TITLE": "Overview",
+    "MORNING": "Good morning",
+    "AFTERNOON": "Good afternoon",
+    "EVENING": "Good evening",
+    "SUBTITLE": "Here is your cake status.",
+    "NEXT_CAKE": "Up Next",
+    "NO_UPCOMING": "No cakes in sight! Time to change that.",
+    "SEC_TITLE_WARN": "Security: Action Required",
+    "SEC_TITLE_OK": "Security: All Good",
+    "SEC_DESC": "Your account is not fully secured. Please enable 2FA.",
+    "SEC_DESC_OK": "Your account is secured with 2-Factor Authentication.",
+    "BTN_SETUP": "Setup 2FA",
+    "QUICK_ACTIONS": "Quick Actions"
   },
   "CALENDAR": {
     "TODAY": "Today",

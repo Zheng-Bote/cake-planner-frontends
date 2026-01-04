@@ -14,28 +14,19 @@ export class EventService {
     return this.http.get<CakeEvent[]>(this.baseUrl, { params });
   }
 
-  // --- NEU & WIEDERHERGESTELLT ---
-
   // 1b. Event erstellen (Multipart)
-  createEvent(event: Partial<CakeEvent>, file?: File): Observable<any> {
+  createEvent(eventData: Partial<CakeEvent>, file?: File): Observable<any> {
     const formData = new FormData();
 
-    // Pflichtfelder
-    if (event.date) {
-      formData.append('date', event.date);
-    }
+    // WICHTIG: Das gesamte Objekt als JSON-String in das Feld 'event' packen
+    formData.append('event', JSON.stringify(eventData));
 
-    // Optionale Felder
-    if (event.description) {
-      formData.append('description', event.description);
-    }
-
-    // Datei (optional beim Erstellen)
+    // Datei separat anhängen (falls vorhanden)
     if (file) {
-      formData.append('photo', file);
+      // Backend erwartet 'image' als Feldnamen (siehe C++ Controller)
+      formData.append('image', file, file.name);
     }
 
-    // Wir senden 'formData', Angular setzt den Content-Type Header automatisch korrekt
     return this.http.post<any>(this.baseUrl, formData);
   }
 
@@ -44,19 +35,16 @@ export class EventService {
     return this.http.get<CakeEvent>(`${this.baseUrl}/${id}`);
   }
 
-  // ICS Download (Via Blob damit Token gesendet wird)
+  // ICS Download
   downloadIcs(id: string) {
     this.http.get(`${this.baseUrl}/${id}/ics`, { responseType: 'blob' }).subscribe({
       next: (blob) => {
-        // Temporären Download-Link erzeugen
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = `event-${id}.ics`; // Dateiname
+        a.download = `event-${id}.ics`;
         document.body.appendChild(a);
         a.click();
-
-        // Aufräumen
         document.body.removeChild(a);
         window.URL.revokeObjectURL(url);
       },
@@ -71,7 +59,7 @@ export class EventService {
     return this.http.post<void>(`${this.baseUrl}/${id}/photo`, formData);
   }
 
-  // 2d. Bewerten (1-5 Sterne)
+  // 2d. Bewerten
   rateEvent(id: string, stars: number, comment: string = ''): Observable<void> {
     return this.http.post<void>(`${this.baseUrl}/${id}/rate`, { stars, comment });
   }
