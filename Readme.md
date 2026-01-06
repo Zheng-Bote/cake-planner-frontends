@@ -66,11 +66,11 @@ _(some previews from within the dev environment)_
 
 |             Dashboard              |             Calendar              |
 | :--------------------------------: | :-------------------------------: |
-| ![Dashboard](cake-planner-frontend/docs/img/dashboard_en.png) | ![Calendart](img/calendar_en.png) |
+| ![Dashboard](cake-planner-frontend/docs/img/dashboard_en.png) | ![Calendart](cake-planner-frontend/docs/img/calendar_en.png) |
 
 |              Event Detail               |               Hall of Fame               |
 | :-------------------------------------: | :--------------------------------------: |
-| ![Dashboard](cake-planner-frontend/docsimg/calendar-event_en.png) | ![Hall of Fame](cake-planner-frontend/docsimg/hall-of-fame_en.png) |
+| ![Dashboard](cake-planner-frontend/docs/img/calendar-event_en.png) | ![Hall of Fame](cake-planner-frontend/docs/img/hall-of-fame_en.png) |
 
 |            Profile             | 2 Factor Authentication |
 | :----------------------------: | :---------------------: |
