@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [🍰 CakePlanner](#-cakeplanner)
+  - [🌟 What is CakePlanner?](#-what-is-cakeplanner)
+    - [✨ Key Features](#-key-features)
+  - [🚀 How it works](#-how-it-works)
+  - [🖼️ Screenshots](#-screenshots)
+  - [🛠️ For Administrators (The Technical Stuff)](#-for-administrators-the-technical-stuff)
+    - [Quick Start](#quick-start)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 🍰 CakePlanner
 
 **The sweetest way to organize your group events.**

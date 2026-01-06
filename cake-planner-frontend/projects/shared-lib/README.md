@@ -1,3 +1,17 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [SharedLib](#sharedlib)
+  - [Code scaffolding](#code-scaffolding)
+  - [Building](#building)
+    - [Publishing the Library](#publishing-the-library)
+  - [Running unit tests](#running-unit-tests)
+  - [Running end-to-end tests](#running-end-to-end-tests)
+  - [Additional Resources](#additional-resources)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # SharedLib
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.0.

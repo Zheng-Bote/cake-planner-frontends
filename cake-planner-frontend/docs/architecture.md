@@ -1,3 +1,18 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [🏗️ CakePlanner Architecture](#-cakeplanner-architecture)
+  - [1. System Context (The Big Picture)](#1-system-context-the-big-picture)
+  - [2. Container Architecture](#2-container-architecture)
+  - [3. Domain Design (Bounded Contexts)](#3-domain-design-bounded-contexts)
+    - [🔎 Context Descriptions](#-context-descriptions)
+  - [4. Key Workflows](#4-key-workflows)
+  - [5. Database Schema (Simplified)](#5-database-schema-simplified)
+  - [6. Directory Structure](#6-directory-structure)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # 🏗️ CakePlanner Architecture
 
 This document provides a high-level overview of the **CakePlanner** architecture, covering the system design, domain boundaries, and key technical workflows.
