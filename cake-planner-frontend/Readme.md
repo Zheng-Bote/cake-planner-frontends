@@ -6,6 +6,14 @@ Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake ne
 
 ---
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+---
+
 ## 🌟 What is CakePlanner?
 
 CakePlanner is a simple app that helps groups coordinate who brings what and when. It adds a layer of fun by allowing everyone to rate the creations and share photos of the delicious results.
