@@ -9,13 +9,15 @@ Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake ne
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
 
-- [🍰 CakePlanner](#-cakeplanner)
-  - [🌟 What is CakePlanner?](#-what-is-cakeplanner)
-    - [✨ Key Features](#-key-features)
-  - [🚀 How it works](#-how-it-works)
-  - [🖼️ Screenshots](#-screenshots)
-  - [🛠️ For Administrators (The Technical Stuff)](#-for-administrators-the-technical-stuff)
-    - [Quick Start](#quick-start)
+- [🌟 What is CakePlanner?](#-what-is-cakeplanner)
+  - [✨ Key Features](#-key-features)
+- [🚀 How it works](#-how-it-works)
+- [🖼️ Screenshots](#-screenshots)
+- [🛠️ For Administrators (The Technical Stuff)](#-for-administrators-the-technical-stuff)
+  - [Admin-Panel](#admin-panel)
+    - [Screenshots](#screenshots)
+  - [Quick Start](#quick-start)
+  - [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 ---
