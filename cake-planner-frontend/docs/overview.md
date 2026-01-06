@@ -1,3 +1,10 @@
+# 🍰 CakePlanner
+
+**The sweetest way to organize your group events.**
+
+Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake next Friday?" in the group chat. **CakePlanner** makes organizing baking events, office parties, or club gatherings easy, fun, and visually stunning.
+
+---
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
@@ -11,13 +18,6 @@
     - [Quick Start](#quick-start)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# 🍰 CakePlanner
-
-**The sweetest way to organize your group events.**
-
-Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake next Friday?" in the group chat. **CakePlanner** makes organizing baking events, office parties, or club gatherings easy, fun, and visually stunning.
-
 ---
 
 ## 🌟 What is CakePlanner?
