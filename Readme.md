@@ -107,6 +107,10 @@ CakePlanner is built with performance and modern standards in mind:
 3.  Build the Angular Frontend (`ng build`).
 4.  Run the executable.
 
+### Architecture
+
+architecture overview can be found here [Architecture overview](cake-planner-frontend/docs/architecture.md)
+
 ---
 
 Made with ❤️ and a lot of sugar.
