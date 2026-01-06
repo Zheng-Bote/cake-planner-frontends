@@ -6,6 +6,15 @@ Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake ne
 
 ---
 
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
+**Table of Contents**
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+---
+
 ## 🌟 What is CakePlanner?
 
 CakePlanner is a simple app that helps groups coordinate who brings what and when. It adds a layer of fun by allowing everyone to rate the creations and share photos of the delicious results.
@@ -46,13 +55,19 @@ CakePlanner is a simple app that helps groups coordinate who brings what and whe
 
 ## 🖼️ Screenshots
 
-_(Place your screenshots here, e.g., images of the Dashboard, the Calendar, and the Hall of Fame)_
+_(some previews from within the dev environment)_
 
-|                    Dashboard                    |                 Hall of Fame                 |               Event Detail                |
-| :---------------------------------------------: | :------------------------------------------: | :---------------------------------------: |
-| ![Dashboard](docs/images/dashboard_preview.png) | ![Hall of Fame](docs/images/hof_preview.png) | ![Detail](docs/images/detail_preview.png) |
+|             Dashboard              |             Calendar              |
+| :--------------------------------: | :-------------------------------: |
+| ![Dashboard](img/dashboard_en.png) | ![Calendart](img/calendar_en.png) |
 
-> _Note: If you don't have screenshots yet, simply delete this table or replace the paths later._
+|              Event Detail               |               Hall of Fame               |
+| :-------------------------------------: | :--------------------------------------: |
+| ![Dashboard](img/calendar-event_en.png) | ![Hall of Fame](img/hall-of-fame_en.png) |
+
+|            Profile             | 2 Factor Authentication |
+| :----------------------------: | :---------------------: |
+| ![Profile](img/profile_en.png) | ![2FA](img/2fa_de.png)  |
 
 ---
 
@@ -66,6 +81,17 @@ CakePlanner is built with performance and modern standards in mind:
 - **Backend:** Modern **Qt6 C++23** using the [Crow](https://crowcpp.org/) framework.
 - **Database:** SQLite3 (Lightweight and fast).
 - **Image Processing:** Qt6-based image optimization (Automatic WebP conversion for fast loading times).
+
+### Admin-Panel
+
+> \[!NOTE]
+> The Admin-Panel is currently rudimentary implemented (user management works stable, group-mgmt. still under construction)
+
+#### Screenshots
+
+| user management                       |
+| ------------------------------------- |
+| ![Profile](img/admin-usermgmt_en.png) |
 
 ### Quick Start
 
