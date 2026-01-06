@@ -9,21 +9,23 @@ This document provides a high-level overview of the **CakePlanner** architecture
 CakePlanner is designed as a monolithic application that serves baking groups (companies, clubs, friends) to organize events. It acts as the central hub for planning, rating, and sharing photos.
 
 ```mermaid
-graph LR
+graph TB
     User((User/Baker))
+    Admin((Administrator))
+    EmailSys[External Email System<br/>SMTP]
 
     subgraph "CakePlanner System"
-        WebApp[User App(Angular)]
-        Backend[Backend API(C++ / Crow)]
-        DB[(SQLite DB)]
-        FS[File System\n(Uploads)]
+        direction TB
+        WebApp[User App & Admin Panel<br/>Angular]
+        Backend[Backend API<br/>C++ / Crow]
+        DB[("SQLite DB")]
+        FS[File System<br/>Uploads]
     end
 
-    EmailSys[External Email System\n(SMTP)]
-
     User -->|Uses via Browser| WebApp
+    Admin -->|Manages System| WebApp
     WebApp -->|JSON / HTTP| Backend
-    Backend -->|Reads/Writes| DB
+    Backend <-->|Reads/Writes| DB
     Backend -->|Stores Images| FS
     Backend -.->|Sends Notifications| EmailSys
 ```
@@ -32,59 +34,71 @@ graph LR
 
 The system consists of a modern Single Page Application (SPA) frontend and a high-performance C++ backend.
 
-| Component    | Technology                                                    | Description                                                                     |
-| ------------ | ------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| Frontend     | Angular 21+                                                   | Material Design, Signals, Transloco (i18n). Responsive UI for Desktop & Mobile. |
-| Backend      | C++23 (Crow)                                                  | REST API, Business Logic, Image Processing.                                     |
-| Database     | SQLite3                                                       | Zero-configuration SQL engine. Stores users, events, and ratings.               |
-| Media Engine | Qt6,Server-side image processing (scaling & WebP conversion). |
+| Component    | Technology   | Description                                                                     |
+| ------------ | ------------ | ------------------------------------------------------------------------------- |
+| Frontend     | Angular 21+  | Material Design, Signals, Transloco (i18n). Responsive UI for Desktop & Mobile. |
+| Backend      | C++23 (Crow) | REST API, Business Logic, Image Processing.                                     |
+| Database     | SQLite3      | Zero-configuration SQL engine. Stores users, events, and ratings.               |
+| Media Engine | Qt6          | Server-side image processing (scaling & WebP conversion).                       |
 
 ## 3. Domain Design (Bounded Contexts)
 
 To keep the logic organized, the application is conceptually divided into distinct Bounded Contexts. Each context handles a specific part of the business domain.
 
 ```mermaid
-block-beta
-columns 2
-
-    block:Identity["Identity & Access Context"]
+graph TB
+    subgraph Identity ["Identity & Access Context"]
+        direction TB
         style Identity fill:#e1f5fe,stroke:#01579b
-        Auth["Authentication"]
-        Users["User Management"]
-        Groups["Group Membership"]
+        Auth[Authentication]
+        Users[User Management]
+        Groups[Group Membership]
     end
 
-    block:Planning["Planning Context"]
+    subgraph Planning ["Planning Context"]
+        direction TB
         style Planning fill:#e8f5e9,stroke:#1b5e20
-        Calendar["Calendar"]
-        Events["Event Scheduling"]
-        ICS["iCal Export"]
+        Calendar[Calendar]
+        Events[Event Scheduling]
+        ICS[iCal Export]
     end
 
-    block:Social["Engagement Context"]
-        style Social fill:#fff3e0,stroke:#e65100
-        Voting["Star Rating"]
-        Reviews["Hall of Fame"]
-        Ranking["Leaderboards"]
+    subgraph Engagement ["Engagement Context"]
+        direction TB
+        style Engagement fill:#fff3e0,stroke:#e65100
+        Voting[Star Rating]
+        Reviews[Hall of Fame]
+        Ranking[Leaderboards]
     end
 
-    block:Media["Media Context"]
+    subgraph Media ["Media Context"]
+        direction TB
         style Media fill:#f3e5f5,stroke:#4a148c
-        Upload["Upload Handling"]
-        Process["Image Processing\n(Qt/WebP)"]
-        Gallery["Event Gallery"]
+        Upload[Upload Handling]
+        Process[Image Processing<br/>Qt/WebP]
+        Gallery[Event Gallery]
+    end
+
+    subgraph Admin ["Administration Context"]
+        direction TB
+        style Admin fill:#eceff1,stroke:#455a64
+        UserMod[User Moderation]
+        SysConfig[System Settings]
+        Logs[Audit Logs]
     end
 ```
 
 ### 🔎 Context Descriptions
 
-1. Identity & Access: Handles user registration, login, and group assignments. Ensures that only group members can see their events.
+1. **Identity & Access**: Handles user registration, login, and group assignments. Ensures that only group members can see their events.
 
-2. Planning: The core calendar logic. Manages dates, baker assignments, and prevents scheduling conflicts.
+2. **Planning**: The core calendar logic. Manages dates, baker assignments, and prevents scheduling conflicts.
 
-3. Engagement: Contains the logic for the "Hall of Fame". It calculates average ratings and sorts events by popularity.
+3. **Engagement**: Contains the logic for the "Hall of Fame". It calculates average ratings and sorts events by popularity.
 
-4. Media: A specialized technical context responsible for handling file uploads, generating thumbnails, and optimizing images for the web (WebP).
+4. **Media**: A specialized technical context responsible for handling file uploads, generating thumbnails, and optimizing images for the web (WebP).
+
+5. **Administration**: Provides tools for system maintainers to manage users, reset passwords, configure global settings, and view system logs.
 
 ## 4. Key Workflows
 
