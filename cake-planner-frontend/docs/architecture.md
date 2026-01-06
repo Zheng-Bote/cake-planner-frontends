@@ -1,3 +1,8 @@
+# 🏗️ CakePlanner Architecture
+
+This document provides a high-level overview of the **CakePlanner** architecture, covering the system design, domain boundaries, and key technical workflows.
+
+---
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 **Table of Contents**
@@ -12,11 +17,6 @@
   - [6. Directory Structure](#6-directory-structure)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-# 🏗️ CakePlanner Architecture
-
-This document provides a high-level overview of the **CakePlanner** architecture, covering the system design, domain boundaries, and key technical workflows.
-
 ---
 
 ## 1. System Context (The Big Picture)
