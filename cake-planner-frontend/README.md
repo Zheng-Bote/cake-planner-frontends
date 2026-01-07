@@ -8,7 +8,6 @@ Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake ne
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
 **Table of Contents**
 
 - [🌟 What is CakePlanner?](#-what-is-cakeplanner)
@@ -16,7 +15,10 @@ Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake ne
 - [🚀 How it works](#-how-it-works)
 - [🖼️ Screenshots](#-screenshots)
 - [🛠️ For Administrators (The Technical Stuff)](#-for-administrators-the-technical-stuff)
+  - [Admin-Panel](#admin-panel)
+    - [Screenshots](#screenshots)
   - [Quick Start](#quick-start)
+  - [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -106,6 +108,10 @@ CakePlanner is built with performance and modern standards in mind:
 2.  Build the C++ Backend (`cmake . && make`).
 3.  Build the Angular Frontend (`ng build`).
 4.  Run the executable.
+
+### Architecture
+
+architecture overview can be found here [Architecture overview](docs/architecture.md)
 
 ---
 
