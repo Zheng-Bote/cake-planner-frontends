@@ -8,6 +8,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco'; // <--- Import
 
 import { AdminService, User, AuthService, Group } from 'shared-lib';
@@ -25,6 +26,7 @@ import { AdminService, User, AuthService, Group } from 'shared-lib';
     MatSnackBarModule,
     MatTooltipModule,
     MatSelectModule,
+    MatChipsModule,
     TranslocoModule,
   ],
   templateUrl: './user-list.html',

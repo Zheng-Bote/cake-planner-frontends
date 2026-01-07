@@ -1,10 +1,14 @@
 {
+  "APP": { "TITLE": "Kuchen Planer" },
+  "MORNING": "Guten Morgen",
+  "AFTERNOON": "Guten Tag",
+  "EVENING": "Guten Abend",
   "ADMIN": {
     "TITLE": "Benutzerverwaltung",
     "HEADER_FOR": "für",
     "TABLE": {
       "NAME": "Name",
-      "EMAIL": "Email",
+      "EMAIL": "E-Mail",
       "GROUP": "Gruppe",
       "ROLE": "Gruppen-Rolle",
       "IS_ADMIN": "Globaler Admin",
@@ -30,15 +34,34 @@
       "ERR_ACCESS_DENIED": "Zugriff verweigert: Keine Admin-Rechte"
     },
     "MSGS": {
+      "PWD_FORCE_ON": "Passwort-Zwang aktiviert",
+      "PWD_FORCE_OFF": "Passwort-Zwang aufgehoben",
+      "GROUP_CREATED": "Gruppe erstellt",
+      "GROUP_DELETED": "Gruppe gelöscht",
+      "GROUP_DELETE_ERR": "Löschen nicht möglich (Gruppe evtl. nicht leer)",
       "ROLE_UPDATED": "Rolle erfolgreich aktualisiert",
       "ERROR": "Ein Fehler ist aufgetreten",
       "STATUS_UPDATED": "Status für {{name}} aktualisiert.",
       "STATUS_ERROR": "Fehler: Status konnte nicht gespeichert werden!",
-      "PWD_FORCE_ON": "Passwort-Änderung für {{name}} erzwungen.",
-      "PWD_FORCE_OFF": "Passwort-Zwang für {{name}} aufgehoben.",
       "SAVE_ERROR": "Fehler beim Speichern!",
       "GROUP_ASSIGNED": "Gruppe zugewiesen",
-      "GROUP_ERROR": "Fehler beim Zuweisen"
+      "GROUP_ERROR": "Fehler beim Zuweisen",
+      "GROUPS": {
+        "CONFIRM_DELETE": "Möchten Sie die Gruppe {{name}} wirklich löschen?",
+        "DELETE_SUCCESS": "Gruppe {{name}} gelöscht",
+        "DELETE_ERROR": "Fehler beim Löschen"
+      }
+    },
+    "GROUPS": {
+      "TITLE": "Gruppenverwaltung",
+      "LABEL_NAME": "Gruppenname",
+      "BTN_ADD": "Hinzufügen",
+      "NEW_GROUP": "Neue Gruppe erstellen",
+      "TABLE": {
+        "NAME": "Name",
+        "ID": "ID",
+        "ACTIONS": "Aktionen"
+      }
     }
   }
 }

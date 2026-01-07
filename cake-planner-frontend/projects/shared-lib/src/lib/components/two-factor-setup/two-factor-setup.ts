@@ -7,6 +7,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+
 import { AuthService } from '../../services/auth.service';
 import { TwoFactorSetupResponse } from '../../models/2fa.model';
 
@@ -22,6 +24,7 @@ import { TwoFactorSetupResponse } from '../../models/2fa.model';
     MatInputModule,
     MatProgressSpinnerModule,
     ReactiveFormsModule,
+    TranslocoModule,
   ],
   templateUrl: './two-factor-setup.html',
   styleUrl: './two-factor-setup.css',
@@ -29,6 +32,7 @@ import { TwoFactorSetupResponse } from '../../models/2fa.model';
 export class TwoFactorSetupComponent {
   private authService = inject(AuthService);
   private dialogRef = inject(MatDialogRef<TwoFactorSetupComponent>);
+  private translocoService = inject(TranslocoService);
 
   isLoading = signal(true);
   isActivating = signal(false);
@@ -45,7 +49,7 @@ export class TwoFactorSetupComponent {
         this.isLoading.set(false);
       },
       error: (err) => {
-        this.errorMessage.set('Fehler beim Laden der 2FA-Daten');
+        this.errorMessage.set(this.translocoService.translate('SHARED.2FA.ERR_LOAD'));
         this.isLoading.set(false);
       },
     });
@@ -66,7 +70,7 @@ export class TwoFactorSetupComponent {
         },
         error: (err) => {
           this.isActivating.set(false);
-          this.errorMessage.set('Code ungültig. Bitte erneut versuchen.');
+          this.errorMessage.set(this.translocoService.translate('SHARED.2FA.ERR_INVALID'));
         },
       });
     }

@@ -1,7 +1,13 @@
+/**
+ * AdminService
+ * @description Service for admin operations
+ * @author Zheng Bote
+ * @version 1.1.0
+ */
+
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
 import { User, Group } from 'shared-lib';
 
 @Injectable({ providedIn: 'root' })
@@ -14,7 +20,7 @@ export class AdminService {
   }
 
   toggleUserActive(userId: string, isActive: boolean): Observable<void> {
-    return this.http.post<void>(`${this.baseUrl}/users/toggle-active`, { userId, isActive });
+    return this.http.put<void>(`${this.baseUrl}/users/${userId}/status`, { isActive });
   }
 
   forcePasswordChange(userId: string, mustChange: boolean): Observable<void> {
@@ -24,20 +30,28 @@ export class AdminService {
     });
   }
 
-  // Groups
-  getGroups() {
-    return this.http.get<Group[]>('/api/admin/groups');
+  deleteUser(userId: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/users/${userId}`);
   }
 
-  assignGroup(userId: string, groupId: string) {
-    return this.http.post('/api/admin/users/assign-group', { userId, groupId });
+  // --- Groups Management ---
+  getGroups(): Observable<Group[]> {
+    return this.http.get<Group[]>(`${this.baseUrl}/groups`);
   }
 
-  setGroupRole(userId: string, groupId: string, role: 'admin' | 'member') {
-    return this.http.post('/api/admin/groups/set-role', {
-      userId,
-      groupId,
-      role,
-    });
+  createGroup(name: string): Observable<Group> {
+    return this.http.post<Group>(`${this.baseUrl}/groups`, { name });
+  }
+
+  deleteGroup(groupId: string): Observable<void> {
+    return this.http.delete<void>(`${this.baseUrl}/groups/${groupId}`);
+  }
+
+  assignGroup(userId: string, groupId: string): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/users/assign-group`, { userId, groupId });
+  }
+
+  setGroupRole(userId: string, groupId: string, role: 'admin' | 'member'): Observable<void> {
+    return this.http.post<void>(`${this.baseUrl}/groups/set-role`, { userId, groupId, role });
   }
 }

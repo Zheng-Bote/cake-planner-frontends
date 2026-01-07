@@ -81,5 +81,19 @@
     "SAVE_SUCCESS": "Saved successfully!",
     "UPLOAD_SUCCESS": "Photo uploaded!",
     "DELETE_SUCCESS": "Entry deleted."
+  },
+  "SHARED": {
+    "2FA": {
+      "TITLE": "Setup 2FA",
+      "INSTRUCTION": "Scan this code with your Authenticator App (e.g. Microsoft Authenticator):",
+      "SECRET": "Secret:",
+      "LABEL_CODE": "Enter code (6 digits)",
+      "ERR_NUMBERS_ONLY": "Numbers only",
+      "ERR_LOAD": "Error loading 2FA data",
+      "ERR_INVALID": "Invalid code. Please try again.",
+      "BTN_CANCEL": "Cancel",
+      "BTN_ACTIVATE": "Activate",
+      "BTN_ACTIVATING": "Activating..."
+    }
   }
 }

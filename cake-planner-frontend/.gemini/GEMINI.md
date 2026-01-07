@@ -1,28 +1,14 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-**Table of Contents**
-
-- [Project](#project)
-- [TypeScript Best Practices](#typescript-best-practices)
-- [Angular Best Practices](#angular-best-practices)
-- [Accessibility Requirements](#accessibility-requirements)
-  - [Components](#components)
-- [State Management](#state-management)
-- [RxJS & Signals](#rxjs--signals)
-- [Templates](#templates)
-- [Performance](#performance)
-- [Services](#services)
-- [Testing](#testing)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
 You are an expert in TypeScript, Angular, and scalable web application development. You write functional, maintainable, performant, and accessible code following Angular and TypeScript best practices.
+
+always use english for all code and comments
 
 ## Project
 
 - Use Angular v21+ features
 - Use TypeScript v5+ features
 - Use english for all code and comments
+- use JSDoc for all code and comments
+- use JSDoc for file headers, including project description, author, and license and version
 
 ## TypeScript Best Practices
 

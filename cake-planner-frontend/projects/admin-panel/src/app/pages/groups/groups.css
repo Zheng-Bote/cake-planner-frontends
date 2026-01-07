@@ -1,0 +1,24 @@
+:host {
+  display: block;
+  background-color: #fafafa;
+  min-height: 100vh;
+}
+
+.mat-column-actions {
+  width: 80px;
+  text-align: center;
+}
+
+.mat-column-id {
+  width: 320px;
+}
+
+.mat-mdc-table {
+  background: white;
+  border-radius: 8px;
+}
+
+/* Anpassung für die Material Form Field / Button Aligment */
+.h-\[56px\] {
+  height: 56px !important;
+}

@@ -4,6 +4,8 @@
       <mat-card-title>{{ t('ADMIN.LOGIN.TITLE') }}</mat-card-title>
     </mat-card-header>
 
+    <br />
+
     <mat-card-content>
       @if (!requires2FA()) {
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">

@@ -81,5 +81,19 @@
     "SAVE_SUCCESS": "Erfolgreich gespeichert!",
     "UPLOAD_SUCCESS": "Foto hochgeladen!",
     "DELETE_SUCCESS": "Eintrag gelöscht."
+  },
+  "SHARED": {
+    "2FA": {
+      "TITLE": "2FA Einrichten",
+      "INSTRUCTION": "Scannen Sie diesen Code mit Ihrer Authenticator App (z.B. Microsoft Authenticator):",
+      "SECRET": "Secret:",
+      "LABEL_CODE": "Code eingeben (6 Ziffern)",
+      "ERR_NUMBERS_ONLY": "Nur Zahlen erlaubt",
+      "ERR_LOAD": "Fehler beim Laden der 2FA-Daten",
+      "ERR_INVALID": "Code ungültig. Bitte erneut versuchen.",
+      "BTN_CANCEL": "Abbrechen",
+      "BTN_ACTIVATE": "Aktivieren",
+      "BTN_ACTIVATING": "Aktiviere..."
+    }
   }
 }
