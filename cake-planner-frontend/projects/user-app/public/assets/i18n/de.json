@@ -11,6 +11,7 @@
     "TITLE": "Mein Profil",
     "ROLE": "Rolle",
     "SETTINGS": "Einstellungen",
+    "LANG": "Sprache",
     "EMAIL_LANG": "E-Mail Sprache",
     "LANG_DE": "Deutsch",
     "LANG_EN": "Englisch",
@@ -21,7 +22,14 @@
     "DELETE_ACCOUNT": "Account löschen",
     "DELETE_DESC": "Vorsicht: Dein Account wird deaktiviert und dein Name anonymisiert. Deine Kuchen bleiben erhalten.",
     "SAVE_SUCCESS": "Einstellungen gespeichert!",
-    "DELETE_CONFIRM": "Bist du sicher? Dein Account wird unwiderruflich gelöscht!"
+    "SAVE_ERROR": "Fehler beim Speichern der Einstellungen",
+    "DELETE_CONFIRM": "Bist du sicher? Dein Account wird unwiderruflich gelöscht!",
+
+    "SEC_TITLE_WARN": "Sicherheit: Handlungsbedarf",
+    "SEC_TITLE_OK": "Sicherheit: Alles im Grünen",
+    "SEC_DESC": "Dein Konto ist nicht optimal geschützt. Bitte aktiviere 2FA.",
+    "SEC_DESC_OK": "Dein Konto ist durch 2-Faktor-Authentifizierung geschützt.",
+    "BTN_SETUP": "2FA Einrichten"
   },
   "DASHBOARD": {
     "TITLE": "Übersicht",
@@ -87,13 +95,40 @@
       "TITLE": "2FA Einrichten",
       "INSTRUCTION": "Scannen Sie diesen Code mit Ihrer Authenticator App (z.B. Microsoft Authenticator):",
       "SECRET": "Secret:",
-      "LABEL_CODE": "Code eingeben (6 Ziffern)",
+      "ENTER_CODE_MSG": "Geben Sie den Code aus Ihrer Authentifizierungs-App ein.",
+      "LABEL_CODE": "Code (6 Ziffern)",
       "ERR_NUMBERS_ONLY": "Nur Zahlen erlaubt",
       "ERR_LOAD": "Fehler beim Laden der 2FA-Daten",
       "ERR_INVALID": "Code ungültig. Bitte erneut versuchen.",
+      "BTN_CONFIRM": "Bestätigen",
       "BTN_CANCEL": "Abbrechen",
       "BTN_ACTIVATE": "Aktivieren",
       "BTN_ACTIVATING": "Aktiviere..."
     }
+  },
+  "LOGIN": {
+    "TITLE": "Kuchenplaner Login",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Passwort",
+    "LOGIN_BTN": "Einloggen",
+    "REGISTER_LINK": "Noch keinen Account? Registrieren",
+    "WRONG_CREDENTIALS": "Falsche Zugangsdaten",
+    "ACCOUNT_INACTIVE": "Account inaktiv",
+    "SERVER_ERROR": "Server Fehler"
+  },
+  "REGISTER": {
+    "TITLE": "Kuchenplaner Registrierung",
+    "NAME_LABEL": "Name",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Passwort",
+    "CONFIRM_PASSWORD_LABEL": "Passwort bestätigen",
+    "MIN_LENGTH_ERROR": "Mindestens 8 Zeichen",
+    "PASSWORD_MISMATCH_ERROR": "Passwörter stimmen nicht überein",
+    "SUBMIT_BTN": "Registrieren",
+    "LOGIN_LINK": "Bereits registriert? Einloggen",
+    "ERROR_ACCOUNT_ALREADY_EXISTS": "Account existiert bereits",
+    "ERROR_MSG": "Registrierung fehlgeschlagen",
+    "SUCCESS_MSG": "Registrierung erfolgreich! Bitte warte auf die Freischaltung durch einen Administrator.",
+    "CLOSE": "Schließen"
   }
 }

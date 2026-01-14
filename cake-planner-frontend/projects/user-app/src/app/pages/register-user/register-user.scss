@@ -1,9 +1,10 @@
 /* Falls du CSS statt SCSS nutzt, ist der Inhalt identisch */
-.login-container {
+.register-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
+  /* padding-top: 50px;  <-- Ggf. entfernen, wenn es exakt mittig sein soll wie Login */
   padding-top: 50px;
 }
 
@@ -13,13 +14,35 @@ mat-card {
   padding: 20px;
 }
 
+/* NEU: Header Layout für Titel + Sprach-Icon */
+.register-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+/* Font-Size Angleichung falls nötig */
+mat-card-title {
+  font-size: 1.5rem;
+}
+
 .full-width {
   width: 100%;
   margin-bottom: 10px;
 }
 
-/* Der ausgelagerte Style */
-.login-link-container {
+.register-link-container {
   margin-top: 15px;
   text-align: center;
+}
+
+.error-msg {
+  color: #f44336;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+.success-msg {
+  color: green;
+  margin-bottom: 10px;
+  font-size: 0.9em;
 }

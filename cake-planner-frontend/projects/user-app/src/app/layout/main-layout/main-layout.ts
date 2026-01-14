@@ -6,6 +6,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { toSignal } from '@angular/core/rxjs-interop';
@@ -24,6 +25,7 @@ import { AuthService } from 'shared-lib';
     MatListModule,
     MatIconModule,
     MatButtonModule,
+    MatMenuModule,
     TranslocoModule,
   ],
   templateUrl: './main-layout.html',

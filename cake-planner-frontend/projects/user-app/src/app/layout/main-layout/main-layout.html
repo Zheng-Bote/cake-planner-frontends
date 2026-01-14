@@ -68,10 +68,22 @@
 
         <span class="spacer"></span>
 
-        <div class="lang-switch">
-          <button mat-button (click)="switchLang('en')">🇬🇧 EN</button>
-          <button mat-button (click)="switchLang('de')">🇩🇪 DE</button>
-        </div>
+        <button
+          type="button"
+          mat-icon-button
+          [matMenuTriggerFor]="langMenu"
+          aria-label="Sprache wechseln"
+        >
+          <mat-icon>language</mat-icon>
+        </button>
+        <mat-menu #langMenu="matMenu">
+          <button type="button" mat-menu-item (click)="switchLang('de')">
+            <span>🇩🇪 DE</span>
+          </button>
+          <button type="button" mat-menu-item (click)="switchLang('en')">
+            <span>🇬🇧 EN</span>
+          </button>
+        </mat-menu>
 
         <button mat-icon-button (click)="logout()">
           <mat-icon>logout</mat-icon>

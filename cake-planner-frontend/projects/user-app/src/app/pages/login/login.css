@@ -12,6 +12,19 @@ mat-card {
   padding: 20px;
 }
 
+/* NEU: Flex-Layout für den Header */
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Optional etwas Abstand zum Content */
+}
+
+/* Sicherstellen, dass der Title nicht umbricht, wenn möglich */
+mat-card-title {
+  font-size: 1.5rem; /* Oder Standard lassen */
+}
+
 .full-width {
   width: 100%;
   margin-bottom: 10px;
@@ -22,13 +35,17 @@ mat-card {
   margin-bottom: 10px;
   font-size: 0.9em;
 }
+.success-msg {
+  color: green;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
 
 .msg {
   margin-bottom: 15px;
   font-weight: 500;
 }
 
-/* NEU: Ausgelagerte Styles */
 .register-link-container {
   margin-top: 15px;
   text-align: center;
@@ -36,7 +53,7 @@ mat-card {
 
 .link-text {
   text-decoration: none;
-  color: var(--mat-sys-primary); /* Nutzt Angular Material Primary Color */
+  color: var(--mat-sys-primary);
   font-weight: 500;
 }
 

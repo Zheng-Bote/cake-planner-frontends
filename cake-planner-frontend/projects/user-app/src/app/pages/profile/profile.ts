@@ -42,9 +42,14 @@ export class ProfileComponent implements OnInit {
 
   user = this.authService.currentUser;
   selectedLanguage = signal('en');
+  selectedEmailLanguage = signal('en');
 
   constructor() {
-    const currentLang = this.user()?.emailLanguage;
+    const currentLangMail = this.user()?.emailLanguage;
+    if (currentLangMail) {
+      this.selectedEmailLanguage.set(currentLangMail);
+    }
+    const currentLang = this.user()?.language;
     if (currentLang) {
       this.selectedLanguage.set(currentLang);
     }
@@ -52,7 +57,29 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit() {}
 
-  saveSettings(lang: string) {
+  saveSettingsEmailLanguage(lang: string) {
+    this.selectedEmailLanguage.set(lang);
+    this.http.post('/api/user/settings', { languageEmail: lang }).subscribe({
+      next: () => {
+        // 1a. Hässliches Alert durch SnackBar ersetzt
+        this.snackBar.open(this.transloco.translate('PROFILE.SAVE_SUCCESS'), 'OK', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'bottom',
+          panelClass: ['success-snackbar'],
+        });
+      },
+      error: () => {
+        this.snackBar.open(this.transloco.translate('PROFILE.SAVE_ERROR'), 'OK', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'bottom',
+          panelClass: ['error-snackbar'],
+        });
+      },
+    });
+  }
+  saveSettingsLanguage(lang: string) {
     this.selectedLanguage.set(lang);
     this.http.post('/api/user/settings', { language: lang }).subscribe({
       next: () => {
@@ -61,10 +88,16 @@ export class ProfileComponent implements OnInit {
           duration: 3000,
           horizontalPosition: 'end',
           verticalPosition: 'bottom',
+          panelClass: ['success-snackbar'],
         });
       },
       error: () => {
-        this.snackBar.open('Error saving settings', 'Close', { duration: 3000 });
+        this.snackBar.open(this.transloco.translate('PROFILE.SAVE_ERROR'), 'OK', {
+          duration: 3000,
+          horizontalPosition: 'end',
+          verticalPosition: 'bottom',
+          panelClass: ['error-snackbar'],
+        });
       },
     });
   }

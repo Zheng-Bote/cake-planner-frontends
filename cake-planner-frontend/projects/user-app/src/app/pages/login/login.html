@@ -1,19 +1,31 @@
-<div class="login-container">
+<div class="login-container" *transloco="let t">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>Cake Planner Login</mat-card-title>
+    <mat-card-header class="login-header">
+      <mat-card-title>{{ t('LOGIN.TITLE') }}</mat-card-title>
+
+      <button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Sprache wechseln">
+        <mat-icon>language</mat-icon>
+      </button>
+      <mat-menu #langMenu="matMenu">
+        <button mat-menu-item (click)="switchLanguage('de')">
+          <span>🇩🇪 DE</span>
+        </button>
+        <button mat-menu-item (click)="switchLanguage('en')">
+          <span>🇬🇧 EN</span>
+        </button>
+      </mat-menu>
     </mat-card-header>
 
     <mat-card-content>
       @if (!requires2FA()) {
       <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Email</mat-label>
+          <mat-label>{{ t('LOGIN.EMAIL_LABEL') }}</mat-label>
           <input matInput formControlName="email" type="email" />
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Passwort</mat-label>
+          <mat-label>{{ t('LOGIN.PASSWORD_LABEL') }}</mat-label>
           <input matInput formControlName="password" type="password" />
         </mat-form-field>
 
@@ -30,19 +42,19 @@
         >
           @if(isLoading()) {
           <mat-spinner diameter="20"></mat-spinner>
-          } @else { Einloggen }
+          } @else { {{ t('LOGIN.LOGIN_BTN') }} }
         </button>
       </form>
 
       <div class="register-link-container">
-        <a routerLink="/register" class="link-text"> Noch keinen Account? Registrieren </a>
+        <a routerLink="/register" class="link-text"> {{ t('LOGIN.REGISTER_LINK') }} </a>
       </div>
       } @if (requires2FA()) {
       <div class="step-2fa">
-        <div class="msg">Bitte 2FA Code eingeben:</div>
+        <div class="msg">{{ t('SHARED.2FA.ENTER_CODE_MSG') }}</div>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Code (6-stellig)</mat-label>
+          <mat-label>{{ t('SHARED.2FA.LABEL_CODE') }}</mat-label>
           <input matInput [formControl]="codeControl" maxlength="6" />
         </mat-form-field>
 
@@ -59,10 +71,12 @@
         >
           @if(isLoading()) {
           <mat-spinner diameter="20"></mat-spinner>
-          } @else { Bestätigen }
+          } @else { {{ t('SHARED.2FA.BTN_CONFIRM') }} }
         </button>
 
-        <button mat-button (click)="cancel2FA()" class="full-width cancel-btn">Abbrechen</button>
+        <button mat-button (click)="cancel2FA()" class="full-width cancel-btn">
+          {{ t('SHARED.2FA.BTN_CANCEL') }}
+        </button>
       </div>
       }
     </mat-card-content>

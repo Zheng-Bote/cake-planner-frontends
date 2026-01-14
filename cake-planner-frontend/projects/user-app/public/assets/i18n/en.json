@@ -11,6 +11,7 @@
     "TITLE": "My Profile",
     "ROLE": "Role",
     "SETTINGS": "Settings",
+    "LANG": "Language",
     "EMAIL_LANG": "E-Mail Language",
     "LANG_DE": "German",
     "LANG_EN": "English",
@@ -21,7 +22,14 @@
     "DELETE_ACCOUNT": "Delete Account",
     "DELETE_DESC": "Warning: Your account will be deactivated and anonymized. Your cakes will remain.",
     "SAVE_SUCCESS": "Settings saved!",
-    "DELETE_CONFIRM": "Are you sure? This cannot be undone!"
+    "SAVE_ERROR": "Error saving settings",
+    "DELETE_CONFIRM": "Are you sure? This cannot be undone!",
+
+    "SEC_TITLE_WARN": "Security: Action Required",
+    "SEC_TITLE_OK": "Security: All Good",
+    "SEC_DESC": "Your account is not fully secured. Please enable 2FA.",
+    "SEC_DESC_OK": "Your account is secured with 2-Factor Authentication.",
+    "BTN_SETUP": "Setup 2FA"
   },
   "DASHBOARD": {
     "TITLE": "Overview",
@@ -87,13 +95,40 @@
       "TITLE": "Setup 2FA",
       "INSTRUCTION": "Scan this code with your Authenticator App (e.g. Microsoft Authenticator):",
       "SECRET": "Secret:",
+      "ENTER_CODE_MSG": "Enter the code from your Authenticator App",
       "LABEL_CODE": "Enter code (6 digits)",
       "ERR_NUMBERS_ONLY": "Numbers only",
       "ERR_LOAD": "Error loading 2FA data",
       "ERR_INVALID": "Invalid code. Please try again.",
+      "BTN_CONFIRM": "Confirm",
       "BTN_CANCEL": "Cancel",
       "BTN_ACTIVATE": "Activate",
       "BTN_ACTIVATING": "Activating..."
     }
+  },
+  "LOGIN": {
+    "TITLE": "Cake Planner Login",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Password",
+    "LOGIN_BTN": "Login",
+    "REGISTER_LINK": "No account? Register",
+    "WRONG_CREDENTIALS": "Wrong credentials",
+    "ACCOUNT_INACTIVE": "Account inactive",
+    "SERVER_ERROR": "Server error"
+  },
+  "REGISTER": {
+    "TITLE": "Cake Planner Register",
+    "NAME_LABEL": "Name",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Password",
+    "CONFIRM_PASSWORD_LABEL": "Confirm Password",
+    "MIN_LENGTH_ERROR": "At least 8 characters",
+    "PASSWORD_MISMATCH_ERROR": "Passwords do not match",
+    "SUBMIT_BTN": "Register",
+    "LOGIN_LINK": "Already registered? Login",
+    "ERROR_ACCOUNT_ALREADY_EXISTS": "Account already exists",
+    "ERROR_MSG": "Registration failed",
+    "SUCCESS_MSG": "Registration successful! Please wait for activation by an administrator.",
+    "CLOSE": "Close"
   }
 }

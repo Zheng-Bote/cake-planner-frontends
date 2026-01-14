@@ -8,6 +8,9 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 
 import { AuthService } from 'shared-lib';
 
@@ -24,6 +27,9 @@ import { AuthService } from 'shared-lib';
     MatFormFieldModule,
     MatSnackBarModule,
     MatProgressSpinnerModule,
+    MatMenuModule,
+    MatIconModule,
+    TranslocoModule,
   ],
   templateUrl: './register-user.html',
   styleUrl: './register-user.scss',
@@ -33,8 +39,33 @@ export class RegisterUserComponent {
   private auth = inject(AuthService);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
+  private translocoService = inject(TranslocoService);
 
   isLoading = signal(false);
+  errorMessage = signal('');
+  successMessage = signal('');
+
+  constructor() {
+    this.initializeLanguage();
+  }
+
+  // --- Logik zur Spracherkennung ---
+  private initializeLanguage() {
+    const savedLang = localStorage.getItem('app-lang');
+    if (savedLang) {
+      this.translocoService.setActiveLang(savedLang);
+    } else {
+      const browserLang = navigator.language;
+      const targetLang = browserLang.startsWith('de') ? 'de' : 'en';
+      localStorage.setItem('app-lang', targetLang);
+      this.translocoService.setActiveLang(targetLang);
+    }
+  }
+
+  switchLanguage(lang: string) {
+    this.translocoService.setActiveLang(lang);
+    localStorage.setItem('app-lang', lang);
+  }
 
   passwordMatchValidator(g: AbstractControl) {
     return g.get('password')?.value === g.get('confirmPassword')?.value ? null : { mismatch: true };
@@ -54,25 +85,34 @@ export class RegisterUserComponent {
     if (this.regForm.valid) {
       this.isLoading.set(true);
       const { name, email, password } = this.regForm.value;
+      const lang = localStorage.getItem('app-lang');
 
-      this.auth.registerUser({ name: name!, email: email!, password: password! }).subscribe({
-        next: () => {
-          this.isLoading.set(false);
-          this.snackBar.open(
-            'Registrierung erfolgreich! Bitte warten Sie auf die Freischaltung durch einen Admin.',
-            'OK',
-            { duration: 8000 }
-          );
-          this.router.navigate(['/login']);
-        },
-        error: (err) => {
-          this.isLoading.set(false);
-          // Backend sendet 409 bei Konflikt
-          const msg =
-            err.status === 409 ? 'Email existiert bereits' : 'Registrierung fehlgeschlagen';
-          this.snackBar.open(msg, 'Schließen', { duration: 5000, panelClass: ['error-snackbar'] });
-        },
-      });
+      this.auth
+        .registerUser({ name: name!, email: email!, password: password!, language: lang! })
+        .subscribe({
+          next: () => {
+            this.isLoading.set(false);
+            this.successMessage.set(this.translocoService.translate('REGISTER.SUCCESS_MSG'));
+            this.snackBar.open(this.translocoService.translate('REGISTER.SUCCESS_MSG'), 'OK', {
+              duration: 8000,
+              panelClass: ['success-snackbar'],
+            });
+            //this.router.navigate(['/login']);
+          },
+          error: (err) => {
+            this.isLoading.set(false);
+            // Backend sendet 409 bei Konflikt
+            const msg =
+              err.status === 409
+                ? this.translocoService.translate('REGISTER.ERROR_ACCOUNT_ALREADY_EXISTS')
+                : this.translocoService.translate('REGISTER.ERROR_MSG');
+            this.errorMessage.set(msg);
+            this.snackBar.open(msg, this.translocoService.translate('REGISTER.CLOSE'), {
+              duration: 5000,
+              panelClass: ['error-snackbar'],
+            });
+          },
+        });
     }
   }
 }

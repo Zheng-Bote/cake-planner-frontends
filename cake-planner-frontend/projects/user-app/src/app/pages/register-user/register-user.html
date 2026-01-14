@@ -1,38 +1,56 @@
-<div class="login-container">
+<div class="register-container" *transloco="let t">
   <mat-card>
-    <mat-card-header>
-      <mat-card-title>Neuen Account erstellen</mat-card-title>
+    <mat-card-header class="register-header">
+      <mat-card-title>{{ t('REGISTER.TITLE') }}</mat-card-title>
+
+      <button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Sprache wechseln">
+        <mat-icon>language</mat-icon>
+      </button>
+      <mat-menu #langMenu="matMenu">
+        <button mat-menu-item (click)="switchLanguage('de')">
+          <span>🇩🇪 DE</span>
+        </button>
+        <button mat-menu-item (click)="switchLanguage('en')">
+          <span>🇬🇧 EN</span>
+        </button>
+      </mat-menu>
     </mat-card-header>
+
     <mat-card-content>
       <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Vollständiger Name</mat-label>
+          <mat-label>{{ t('REGISTER.NAME_LABEL') }}</mat-label>
           <input matInput formControlName="name" placeholder="Max Mustermann" />
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Email</mat-label>
+          <mat-label>{{ t('REGISTER.EMAIL_LABEL') }}</mat-label>
           <input matInput formControlName="email" type="email" />
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Passwort</mat-label>
+          <mat-label>{{ t('REGISTER.PASSWORD_LABEL') }}</mat-label>
           <input matInput formControlName="password" type="password" />
 
           @if (regForm.get('password')?.hasError('minlength')) {
-          <mat-error>Mindestens 8 Zeichen</mat-error>
+          <mat-error>{{ t('REGISTER.MIN_LENGTH_ERROR') }}</mat-error>
           }
         </mat-form-field>
 
         <mat-form-field appearance="outline" class="full-width">
-          <mat-label>Passwort bestätigen</mat-label>
+          <mat-label>{{ t('REGISTER.CONFIRM_PASSWORD_LABEL') }}</mat-label>
           <input matInput formControlName="confirmPassword" type="password" />
 
           @if (regForm.hasError('mismatch')) {
-          <mat-error>Passwörter stimmen nicht überein</mat-error>
+          <mat-error>{{ t('REGISTER.PASSWORD_MISMATCH_ERROR') }}</mat-error>
           }
         </mat-form-field>
 
+        @if (errorMessage()) {
+        <div class="error-msg">{{ errorMessage() }}</div>
+        } @if (successMessage()) {
+        <div class="success-msg">{{ successMessage() }}</div>
+        }
         <button
           mat-flat-button
           color="primary"
@@ -42,11 +60,11 @@
         >
           @if(isLoading()) {
           <mat-spinner diameter="20"></mat-spinner>
-          } @else { Registrieren }
+          } @else { {{ t('REGISTER.SUBMIT_BTN') }} }
         </button>
 
-        <div class="login-link-container">
-          <a routerLink="/login" mat-button>Bereits einen Account? Login</a>
+        <div class="register-link-container">
+          <a routerLink="/login" mat-button>{{ t('REGISTER.LOGIN_LINK') }}</a>
         </div>
       </form>
     </mat-card-content>
