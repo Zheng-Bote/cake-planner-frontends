@@ -1,0 +1,457 @@
+:root {
+  color-scheme: light dark;
+
+  /* --- 1. VARIABLEN AUS DEINER DATEI --- */
+  --font-family:
+    "Inter", -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, "Segeo UI",
+    "Helvetica Neue", Arial, sans-serif;
+  --font-family-mono: "Orbitron", monospace; /* Für Logos/Titel behalten */
+
+  --font-size: 1rem;
+  --font-size-small: 0.8rem;
+  --font-size-large: 1.2rem;
+
+  /* Angepasste Farben basierend auf deiner main.css */
+  --font-color: light-dark(hsla(0 0% 0% / 0.9), hsla(0 0% 100% / 0.9));
+  --font-color-muted: light-dark(hsla(0 0% 0% / 0.6), hsla(0 0% 100% / 0.6));
+  /*--font-color-code: light-dark(#00ff41, #1fbf48);*/
+  --font-color-code: light-dark(hsla(0 0% 0% / 0.9), hsla(0 0% 100% / 0.9));
+
+  /* Backgrounds: Light (Hellgrau/Weiß) | Dark (Dunkelblau/Grau) */
+  --bg-body: light-dark(#f8f9fa, #0d1117);
+  --bg-panel: light-dark(#ffffff, #161b22);
+  --bg-code: light-dark(#d9dcde, #161b22);
+  --border-color: light-dark(#e1e4e8, #30363d);
+
+  /* Deine Primary Colors (Blue) */
+  --primary-color: light-dark(
+    oklch(0.55 0.15 240),
+    /* Kräftigeres Blau für Light Mode */ oklch(0.7 0.12 240)
+      /* Helleres Blau für Dark Mode */
+  );
+
+  --secondary-color: light-dark(
+    oklch(0.8059 0.057 236.25),
+    oklch(0.4956 0.0757 237.94)
+  );
+
+  --border-radius: 8px;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
+  --universal-padding: 1rem;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@starting-style {
+  html {
+    font-display: swap;
+  }
+  body {
+    background-color: var(--bg-body);
+  }
+}
+
+@view-transition {
+  navigation: auto;
+}
+
+/* --- GRUNDLAYOUT (Identisch zur HTML-Struktur) --- */
+
+html {
+  height: 100%;
+  font-family: var(--font-family);
+  font-size: 16px;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+  background-color: var(--bg-body);
+  color: var(--font-color);
+  /* Sanfter Übergang beim Theme-Wechsel */
+  transition:
+    background-color 0.3s,
+    color 0.3s;
+}
+
+body {
+  min-height: 100dvh;
+  margin: 0;
+  display: grid;
+  grid-template-areas: "header" "aside" "main" "footer";
+  grid-template-rows: 70px auto 1fr auto;
+}
+
+/* --- LINKS --- */
+a:link,
+a:active,
+a:visited {
+  color: var(--font-color);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover {
+  color: var(--primary-color);
+}
+
+/* --- HEADER & FOOTER --- */
+header,
+footer {
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  background-color: var(--bg-panel);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 10;
+}
+
+header {
+  grid-area: header;
+  box-shadow: var(--shadow-sm);
+}
+
+footer {
+  grid-area: footer;
+  height: 50px;
+  border-top: 1px solid var(--border-color);
+  border-bottom: none;
+  font-size: var(--font-size-small);
+  color: var(--font-color-muted);
+}
+
+/* Flexbox Helfer für Header/Footer */
+.header_left {
+  cursor: pointer;
+  & img {
+    width: 30px;
+    height: auto;
+    decoding: auto;
+    vertical-align: middle;
+  }
+}
+
+.header_left,
+.footer-section_left {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+.header_middle,
+.footer-section_center {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.header_right,
+.footer-section_right {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+header h1 {
+  font-family: var(--font-family-mono); /* Optional: Orbitron für Logo lassen */
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-left: 12px;
+}
+
+/* --- BUTTONS (Header) --- */
+/* Statt Neon-Glow jetzt solider Business-Look */
+.tron-btn {
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--font-color);
+  padding: 6px 14px;
+  border-radius: var(--border-radius);
+  font-family: var(--font-family);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tron-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  background-color: light-dark(rgba(0, 0, 0, 0.03), rgba(255, 255, 255, 0.05));
+}
+
+/* --- SIDEBAR NAV (Strukturierter Tree-View) --- */
+aside {
+  grid-area: aside;
+  padding: 20px;
+  background-color: var(--bg-body); /* Leichter Kontrast zum Main */
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color); /* Mobile fix */
+  overflow-y: auto;
+}
+
+.nav-list,
+.nav-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav-list {
+  gap: 12px;
+} /* Abstand zwischen Hauptkategorien */
+
+/* Level 1: Folder Title */
+.nav-list > li > strong {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+  color: var(--font-color-muted);
+  margin-bottom: 8px;
+  padding-left: 5px;
+}
+
+/* Level 2 & 3: Einrückung und Linie */
+.nav-list ul {
+  gap: 2px;
+  margin-left: 12px;
+  padding-left: 12px;
+  border-left: 1px solid var(--border-color); /* Solide Linie statt Glow */
+}
+
+/* Links in Navigation */
+.nav-list a {
+  display: block;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  color: var(--font-color);
+}
+
+.nav-list a:hover {
+  background-color: light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.1));
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.nav-list a.active {
+  background-color: light-dark(
+    #eef2ff,
+    #1c212f
+  ); /* Helles Blau im Hintergrund */
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+/* Sub-Folder Titel (Level 2+) */
+.nav-list ul strong {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--font-color);
+  margin-top: 8px;
+  margin-bottom: 4px;
+  padding-left: 8px;
+  font-weight: 600;
+}
+
+/* --- MAIN CONTENT --- */
+main {
+  grid-area: main;
+  margin: 20px;
+  padding: 30px;
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  min-height: 400px;
+}
+
+/*
+main h1 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--font-color);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+main h2 {
+  font-size: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+*/
+main h1 {
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 0.5rem;
+}
+
+main h1,
+h2,
+h3,
+h4 {
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+main h2,
+h3,
+h4 {
+  margin-top: 1.5rem;
+}
+
+main p {
+  line-height: 1.6;
+  color: var(--font-color);
+  margin-bottom: 1rem;
+}
+
+/* --- coding --- */
+code,
+kbd,
+pre,
+samp {
+  font-family: Menlo, Consolas, monospace;
+  /*margin: 0 20px 0 20px;*/
+}
+
+code {
+  background: var(--bg-code);
+  color: var(
+    --font-color-code
+  ); /* Matrix-Grün (alternativ: 'lime' oder '#4caf50') */
+  text-wrap: pretty;
+  padding: 2px;
+  width: fit-content;
+  max-width: 100%;
+
+  /* Ergänzungen für den "Rechteck"-Look */
+  display: inline-block; /* Stellt sicher, dass es ein Block/Rechteck bildet */
+  border-radius: 4px; /* Optional: Leicht abgerundete Ecken */
+  border: 1px solid var(--border-color); /* Optional: Subtiler Rand zur Abgrenzung */
+}
+
+/* --- BLUE THEME CARD GRID --- */
+
+/* Base image reset */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Card grid */
+.card-wrapper {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0; /* Etwas Abstand oben/unten */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(35ch, 1fr));
+  gap: 1.5rem;
+}
+
+/* Card Container */
+.card {
+  background-color: var(--bg-panel);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-sm);
+  padding-bottom: 1rem;
+  position: relative;
+  transition:
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px); /* Leichtes Anheben */
+}
+
+/* Typography inside Card */
+.card h3 {
+  margin: 1rem;
+  font-size: 1.15rem;
+  color: var(--primary-color);
+  font-weight: 600;
+}
+
+.card p,
+.card ul {
+  margin: 0 1rem 1rem 1rem;
+  color: var(--font-color);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.card ul {
+  padding-left: 1.2rem; /* Einrückung für Listenpunkte */
+}
+
+/* Image Styling & Zoom Logic */
+.card img {
+  width: 100%;
+  /* Radius nur oben passend zur Karte */
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+  border-bottom: 1px solid var(--border-color);
+
+  transition:
+    transform 0.35s ease,
+    z-index 0s;
+  transform-origin: center top; /* Zoomt von oben mittig */
+  position: relative;
+  z-index: 1;
+  background-color: var(
+    --bg-panel
+  ); /* Verhindert Transparenz-Probleme beim Zoom */
+}
+
+/* Hover zoom outside */
+.card img:hover {
+  transform: scale(1.8); /* Etwas reduziert, 2.0 ist oft zu extrem */
+  z-index: 100; /* Muss sehr hoch sein */
+  cursor: zoom-in;
+  border-radius: var(--border-radius); /* Wieder rundum Radius beim Zoom */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3); /* Schatten beim Schweben */
+  border: 1px solid var(--primary-color);
+}
+
+/* --- RESPONSIVE / DESKTOP --- */
+@media screen and (min-width: 1024px) {
+  body {
+    grid-template-columns: 260px 1fr;
+    grid-template-rows: 70px 1fr auto;
+    grid-template-areas:
+      "header header"
+      "aside main"
+      "footer footer";
+    max-width: 1600px;
+    margin: auto;
+  }
+
+  aside {
+    border-bottom: none;
+    background-color: var(
+      --bg-panel
+    ); /* Auf Desktop gleicher Hintergrund wie Header */
+  }
+
+  main {
+    border: none;
+    box-shadow: none;
+    background-color: transparent; /* Main Area blendet sich ein */
+    padding: 0 40px; /* Mehr Platz auf Desktop */
+  }
+}
