@@ -66,17 +66,17 @@ CakePlanner is a simple app that helps groups coordinate who brings what and whe
 
 _(some previews from within the dev environment)_
 
-|                                  Dashboard                                  |                                  Calendar                                  |
-| :-------------------------------------------------------------------------: | :------------------------------------------------------------------------: |
-| ![Dashboard](theme/blue/assets/img/screenshots/frontend-user/dashboard.png) | ![Calendart](theme/blue/assets/img/screenshots/frontend-user/calendar.png) |
+|                            Dashboard                            |                            Calendar                            |
+| :-------------------------------------------------------------: | :------------------------------------------------------------: |
+| ![Dashboard](theme/blue/assets/img/frontend-user/dashboard.png) | ![Calendart](theme/blue/assets/img/frontend-user/calendar.png) |
 
-|                                    Event Detail                                    |                                   Hall of Fame                                    |
-| :--------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
-| ![Dashboard](theme/blue/assets/img/screenshots/frontend-user/cake-event_photo.png) | ![Hall of Fame](theme/blue/assets/img/screenshots/frontend-user/hall-of-fame.png) |
+|                              Event Detail                              |                             Hall of Fame                              |
+| :--------------------------------------------------------------------: | :-------------------------------------------------------------------: |
+| ![Dashboard](theme/blue/assets/img/frontend-user/cake-event_photo.png) | ![Hall of Fame](theme/blue/assets/img/frontend-user/hall-of-fame.png) |
 
-|                                 Profile                                 |                               System Info                                |
-| :---------------------------------------------------------------------: | :----------------------------------------------------------------------: |
-| ![Profile](theme/blue/assets/img/screenshots/frontend-user/profile.png) | ![2FA](theme/blue/assets/img/screenshots/frontend-user/systemm-info.png) |
+|                           Profile                           |                         System Info                         |
+| :---------------------------------------------------------: | :---------------------------------------------------------: |
+| ![Profile](theme/blue/assets/img/frontend-user/profile.png) | ![2FA](theme/blue/assets/img/frontend-user/system-info.png) |
 
 ---
 
@@ -95,9 +95,9 @@ CakePlanner is built with performance and modern standards in mind:
 
 #### Screenshots
 
-|                                 user management                                  |                                 group management                                  |
-| :------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
-| ![Profile](theme/blue/assets/img/screenshots/frontend-admin/admin_user-mgmt.png) | ![Profile](theme/blue/assets/img/screenshots/frontend-admin/admin_group-mgmt.png) |
+|                           user management                            |                           group management                            |
+| :------------------------------------------------------------------: | :-------------------------------------------------------------------: |
+| ![Profile](theme/blue/assets/img/frontend-admin/admin_user-mgmt.png) | ![Profile](theme/blue/assets/img/frontend-admin/admin_group-mgmt.png) |
 
 ### Quick Start
 
