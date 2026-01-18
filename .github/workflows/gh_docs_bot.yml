@@ -29,3 +29,14 @@ jobs:
           assets: 'theme/blue/assets'
           output: 'public'
           docs: 'docs'
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: static-site
+          path: public/
+
+      - name: Deploy to gh-pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: public
