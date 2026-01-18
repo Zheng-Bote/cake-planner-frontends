@@ -8,17 +8,19 @@ Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake ne
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
-- [🌟 What is CakePlanner?](#-what-is-cakeplanner)
-  - [✨ Key Features](#-key-features)
-- [🚀 How it works](#-how-it-works)
-- [🖼️ Screenshots](#-screenshots)
-- [🛠️ For Administrators (The Technical Stuff)](#-for-administrators-the-technical-stuff)
-  - [Admin-Panel](#admin-panel)
-    - [Screenshots](#screenshots)
-  - [Quick Start](#quick-start)
-  - [Architecture](#architecture)
+- [� CakePlanner](#-cakeplanner)
+  - [🌟 What is CakePlanner?](#-what-is-cakeplanner)
+    - [✨ Key Features](#-key-features)
+  - [🚀 How it works](#-how-it-works)
+  - [🖼️ Screenshots](#️-screenshots)
+  - [🛠️ For Administrators (The Technical Stuff)](#️-for-administrators-the-technical-stuff)
+    - [Admin-Panel](#admin-panel)
+      - [Screenshots](#screenshots)
+    - [Quick Start](#quick-start)
+    - [Architecture](#architecture)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -35,12 +37,10 @@ CakePlanner is a simple app that helps groups coordinate who brings what and whe
 
 - **🏆 Hall of Fame**
   Who is the master baker in your group? The Hall of Fame showcases the best-rated cakes.
-
   - **Voting:** Give 1 to 5 stars for every creation.
   - **Rankings:** See the top-rated cakes sorted by popularity.
 
 - **📸 Photo Galleries**
-
   - **Baker's Pride:** The event creator can upload a cover photo.
   - **Community Gallery:** Did you take a picture of the cake before it was gone? Upload it! Everyone can contribute photos to an event.
   - **Lightbox View:** Click on any photo to see it in high quality with a beautiful blur effect.
@@ -66,17 +66,17 @@ CakePlanner is a simple app that helps groups coordinate who brings what and whe
 
 _(some previews from within the dev environment)_
 
-|             Dashboard              |             Calendar              |
-| :--------------------------------: | :-------------------------------: |
+|                Dashboard                |                Calendar                |
+| :-------------------------------------: | :------------------------------------: |
 | ![Dashboard](docs/img/dashboard_en.png) | ![Calendart](docs/img/calendar_en.png) |
 
-|              Event Detail               |               Hall of Fame               |
-| :-------------------------------------: | :--------------------------------------: |
+|                 Event Detail                 |                 Hall of Fame                  |
+| :------------------------------------------: | :-------------------------------------------: |
 | ![Dashboard](docs/img/calendar-event_en.png) | ![Hall of Fame](docs/img/hall-of-fame_en.png) |
 
-|            Profile             | 2 Factor Authentication |
-| :----------------------------: | :---------------------: |
-| ![Profile](docs/img/profile_en.png) | ![2FA](docs/img/2fa_de.png)  |
+|               Profile               |   2 Factor Authentication   |
+| :---------------------------------: | :-------------------------: |
+| ![Profile](docs/img/profile_en.png) | ![2FA](docs/img/2fa_de.png) |
 
 ---
 
@@ -87,19 +87,16 @@ _This section is for the person hosting the app._
 CakePlanner is built with performance and modern standards in mind:
 
 - **Frontend:** [Angular 21+](https://angular.io/) (Material Design, Signals, Transloco for i18n).
-- **Backend:** Modern **Qt6 C++23** using the [Crow](https://crowcpp.org/) framework.
+- **Backend:** Modern **C++23** using the [Crow](https://crowcpp.org/) framework.
 - **Database:** SQLite3 (Lightweight and fast).
 - **Image Processing:** Qt6-based image optimization (Automatic WebP conversion for fast loading times).
 
 ### Admin-Panel
 
-> \[!NOTE]
-> The Admin-Panel is currently rudimentary implemented (user management works stable, group-mgmt. still under construction)
-
 #### Screenshots
 
-| user management                       |
-| ------------------------------------- |
+| user management                            |
+| ------------------------------------------ |
 | ![Profile](docs/img/admin-usermgmt_en.png) |
 
 ### Quick Start
