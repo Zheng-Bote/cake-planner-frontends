@@ -3,30 +3,30 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>GHP | build</title>
+    <title>GHP | admin-panel</title>
 
     <link
       rel="shortcut icon"
-      href="../assets/favicon.ico"
+      href="../../assets/favicon.ico"
       type="image/x-icon"
     />
     <link
       rel="icon"
       type="image/svg+xml"
-      href="../assets/img/favicon.svg"
+      href="../../assets/img/favicon.svg"
     />
 
     <link
       href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../assets/css/main.css" />
+    <link rel="stylesheet" href="../../assets/css/main.css" />
   </head>
   <body>
     <header>
       <div class="header_left">
         <img
-          src="../assets/img/favicon.svg"
+          src="../../assets/img/favicon.svg"
           alt="Logo"
           loading="eager"
         />
@@ -55,34 +55,39 @@
   </li>
   <li><strong>frontend-admin</strong>
 <ul class="nav-list">
-  <li><a href="../screenshots/frontend-admin/admin-panel.html">admin-panel</a></li>
+  <li><a href="../../screenshots/frontend-admin/admin-panel.html" class="active">admin-panel</a></li>
 </ul>
   </li>
   <li><strong>frontend-user</strong>
 <ul class="nav-list">
-  <li><a href="../screenshots/frontend-user/user-app.html">user-app</a></li>
+  <li><a href="../../screenshots/frontend-user/user-app.html">user-app</a></li>
 </ul>
   </li>
 </ul>
   </li>
   <li><strong>setup</strong>
 <ul class="nav-list">
-  <li><a href="../setup/build.html" class="active">build</a></li>
+  <li><a href="../../setup/build.html">build</a></li>
 </ul>
   </li>
 </ul>
 </nav>
     </aside>
 
-    <main class="main"><!-- DOCTOC SKIP -->
-<h1>CakePlannerFrontend</h1>
-<p>This monorepo project was generated using <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 21.0.1.</p>
-<h2>Development server</h2>
-<p>To start the local development server instances, run:</p>
-<pre><code class="language-bash">nvm use --lts
-ng serve admin-panel --port 4201
-ng serve user-app
-</code></pre>
+    <main class="main"><h1>Admin Panel Screenshots</h1>
+
+<div class="card-wrapper">
+  <div class="card">
+    <img src="admin_group-mgmt.png" alt="admin_group-mgmt.png" loading="lazy" />
+    <h3>admin_group-mgmt</h3>
+    <p>Group Management</p>
+  </div>
+  <div class="card">
+    <img src="admin_user-mgmt.png" alt="admin_user-mgmt.png" loading="lazy" />
+    <h3>admin_user-mgmt</h3>
+    <p>User Management</p>
+  </div>
+</div>
 </main>
 
     <footer class="footer">
@@ -91,6 +96,6 @@ ng serve user-app
       <div class="footer-section_right">CLEARANCE_LEVEL: 5</div>
     </footer>
 
-    <script src="../assets/js/main.js" defer></script>
+    <script src="../../assets/js/main.js" defer></script>
   </body>
 </html>
