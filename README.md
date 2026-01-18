@@ -1,6 +1,6 @@
 # 🍰 CakePlanner
 
-**The sweetest way to organize your group events.**
+**The sweetest way to organize your cake events.**
 
 Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake next Friday?" in the group chat. **CakePlanner** makes organizing baking events, office parties, or club gatherings easy, fun, and visually stunning.
 
@@ -70,9 +70,9 @@ _(some previews from within the dev environment)_
 | :--------------------------------------------------------: | :-------------------------------------------------------: |
 | ![Dashboard](docs/screenshots/frontend-user/dashboard.png) | ![Calendart](docs/screenshots/frontend-user/calendar.png) |
 
-|                        Event Detail                         |                           Hall of Fame                           |
-| :---------------------------------------------------------: | :--------------------------------------------------------------: |
-| ![Dashboard](docs/screenshots/frontend-user/cake-event.png) | ![Hall of Fame](docs/screenshots/frontend-user/hall-of-fame.png) |
+|                           Event Detail                            |                           Hall of Fame                           |
+| :---------------------------------------------------------------: | :--------------------------------------------------------------: |
+| ![Dashboard](docs/screenshots/frontend-user/cake-event_photo.png) | ![Hall of Fame](docs/screenshots/frontend-user/hall-of-fame.png) |
 
 |                        Profile                         |                       System Info                       |
 | :----------------------------------------------------: | :-----------------------------------------------------: |
