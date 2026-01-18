@@ -3,9 +3,9 @@
 
   /* --- 1. VARIABLEN AUS DEINER DATEI --- */
   --font-family:
-    "Inter", -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, "Segeo UI",
-    "Helvetica Neue", Arial, sans-serif;
-  --font-family-mono: "Orbitron", monospace; /* Für Logos/Titel behalten */
+    'Inter', -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, 'Segeo UI', 'Helvetica Neue', Arial,
+    sans-serif;
+  --font-family-mono: 'Orbitron', monospace; /* Für Logos/Titel behalten */
 
   --font-size: 1rem;
   --font-size-small: 0.8rem;
@@ -26,16 +26,14 @@
   /* Deine Primary Colors (Blue) */
   --primary-color: light-dark(
     oklch(0.55 0.15 240),
-    /* Kräftigeres Blau für Light Mode */ oklch(0.7 0.12 240)
-      /* Helleres Blau für Dark Mode */
+    /* Kräftigeres Blau für Light Mode */ oklch(0.7 0.12 240) /* Helleres Blau für Dark Mode */
   );
 
-  --secondary-color: light-dark(
-    oklch(0.8059 0.057 236.25),
-    oklch(0.4956 0.0757 237.94)
-  );
+  --secondary-color: light-dark(oklch(0.8059 0.057 236.25), oklch(0.4956 0.0757 237.94));
 
   --border-radius: 8px;
+  --border-width: 1px;
+  --border-style: solid;
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.12);
   --universal-padding: 1rem;
 }
@@ -84,7 +82,7 @@ body {
   min-height: 100dvh;
   margin: 0;
   display: grid;
-  grid-template-areas: "header" "aside" "main" "footer";
+  grid-template-areas: 'header' 'aside' 'main' 'footer';
   grid-template-rows: 70px auto 1fr auto;
 }
 
@@ -246,10 +244,7 @@ aside {
 }
 
 .nav-list a.active {
-  background-color: light-dark(
-    #eef2ff,
-    #1c212f
-  ); /* Helles Blau im Hintergrund */
+  background-color: light-dark(#eef2ff, #1c212f); /* Helles Blau im Hintergrund */
   color: var(--primary-color);
   font-weight: 600;
 }
@@ -329,9 +324,7 @@ samp {
 
 code {
   background: var(--bg-code);
-  color: var(
-    --font-color-code
-  ); /* Matrix-Grün (alternativ: 'lime' oder '#4caf50') */
+  color: var(--font-color-code); /* Matrix-Grün (alternativ: 'lime' oder '#4caf50') */
   text-wrap: pretty;
   padding: 2px;
   width: fit-content;
@@ -413,9 +406,7 @@ img {
   transform-origin: center top; /* Zoomt von oben mittig */
   position: relative;
   z-index: 1;
-  background-color: var(
-    --bg-panel
-  ); /* Verhindert Transparenz-Probleme beim Zoom */
+  background-color: var(--bg-panel); /* Verhindert Transparenz-Probleme beim Zoom */
 }
 
 /* Hover zoom outside */
@@ -434,18 +425,16 @@ img {
     grid-template-columns: 260px 1fr;
     grid-template-rows: 70px 1fr auto;
     grid-template-areas:
-      "header header"
-      "aside main"
-      "footer footer";
+      'header header'
+      'aside main'
+      'footer footer';
     max-width: 1600px;
     margin: auto;
   }
 
   aside {
     border-bottom: none;
-    background-color: var(
-      --bg-panel
-    ); /* Auf Desktop gleicher Hintergrund wie Header */
+    background-color: var(--bg-panel); /* Auf Desktop gleicher Hintergrund wie Header */
   }
 
   main {
@@ -453,5 +442,42 @@ img {
     box-shadow: none;
     background-color: transparent; /* Main Area blendet sich ein */
     padding: 0 40px; /* Mehr Platz auf Desktop */
+  }
+}
+
+/* --- TABLE --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: var(--border-width) var(--border-style)
+    light-dark(var(--primary-color), var(--secondary-color));
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+th,
+td {
+  border: var(--border-width) var(--border-style)
+    light-dark(var(--primary-color), var(--secondary-color));
+  padding: 5px;
+}
+
+th {
+  color: var(--font-color-header);
+}
+td {
+  color: black;
+  & a:link,
+  a:active,
+  a:visited {
+    color: black;
+    font-style: italic;
+    text-decoration: none;
   }
 }
