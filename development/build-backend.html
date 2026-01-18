@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CakePlanner | build</title>
+    <title>CakePlanner | build-backend</title>
 
     <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon" />
     <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
@@ -18,7 +18,7 @@
     <header>
       <div class="header_left">
         <img src="../assets/img/favicon.svg" alt="Logo" loading="eager" />
-        <h1>GHP</h1>
+        <h1>CakePlanner</h1>
       </div>
       <div class="header_middle">
         <span>System Status: Active</span>
@@ -34,6 +34,17 @@
   <li><strong>architecture</strong>
 <ul class="nav-list">
   <li><a href="../architecture/overview.html">overview</a></li>
+</ul>
+  </li>
+  <li><strong>deployment</strong>
+<ul class="nav-list">
+  <li><a href="../deployment/overview.html">overview</a></li>
+</ul>
+  </li>
+  <li><strong>development</strong>
+<ul class="nav-list">
+  <li><a href="../development/build-backend.html" class="active">build-backend</a></li>
+  <li><a href="../development/build-frontend.html">build-frontend</a></li>
 </ul>
   </li>
   <li><strong>screenshots</strong>
@@ -55,23 +66,21 @@
   </li>
 </ul>
   </li>
-  <li><strong>setup</strong>
-<ul class="nav-list">
-  <li><a href="../setup/build.html" class="active">build</a></li>
-</ul>
-  </li>
 </ul>
 </nav>
     </aside>
 
     <main class="main"><!-- DOCTOC SKIP -->
-<h1>CakePlannerFrontend</h1>
-<p>This monorepo project was generated using <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 21.0.1.</p>
-<h2>Development server</h2>
-<p>To start the local development server instances, run:</p>
-<pre><code class="language-bash">nvm use --lts
-ng serve admin-panel --port 4201
-ng serve user-app
+<h1>CakePlanner Backend</h1>
+<h2>Build</h2>
+<pre><code class="language-bash">cmake -S . -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j$(nproc)
+</code></pre>
+<h2>Run</h2>
+<pre><code class="language-bash">./build/CakePlanner
+</code></pre>
+<h2>kill</h2>
+<pre><code class="language-bash">pkill -f CakePlanner
 </code></pre>
 </main>
 
