@@ -8,13 +8,15 @@ Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake ne
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
+- [🍰 CakePlanner](#-cakeplanner)
   - [🌟 What is CakePlanner?](#-what-is-cakeplanner)
     - [✨ Key Features](#-key-features)
   - [🚀 How it works](#-how-it-works)
-  - [🖼️ Screenshots](#-screenshots)
-  - [🛠️ For Administrators (The Technical Stuff)](#-for-administrators-the-technical-stuff)
+  - [🖼️ Screenshots](#️-screenshots)
+  - [🛠️ For Administrators (The Technical Stuff)](#️-for-administrators-the-technical-stuff)
     - [Admin-Panel](#admin-panel)
       - [Screenshots](#screenshots)
     - [Quick Start](#quick-start)
@@ -64,17 +66,17 @@ CakePlanner is a simple app that helps groups coordinate who brings what and whe
 
 _(some previews from within the dev environment)_
 
-|                         Dashboard                          |                         Calendar                          |
-| :--------------------------------------------------------: | :-------------------------------------------------------: |
-| ![Dashboard](docs/screenshots/frontend-user/dashboard.png) | ![Calendart](docs/screenshots/frontend-user/calendar.png) |
+|                                  Dashboard                                  |                                  Calendar                                  |
+| :-------------------------------------------------------------------------: | :------------------------------------------------------------------------: |
+| ![Dashboard](theme/blue/assets/img/screenshots/frontend-user/dashboard.png) | ![Calendart](theme/blue/assets/img/screenshots/frontend-user/calendar.png) |
 
-|                           Event Detail                            |                           Hall of Fame                           |
-| :---------------------------------------------------------------: | :--------------------------------------------------------------: |
-| ![Dashboard](docs/screenshots/frontend-user/cake-event_photo.png) | ![Hall of Fame](docs/screenshots/frontend-user/hall-of-fame.png) |
+|                                    Event Detail                                    |                                   Hall of Fame                                    |
+| :--------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
+| ![Dashboard](theme/blue/assets/img/screenshots/frontend-user/cake-event_photo.png) | ![Hall of Fame](theme/blue/assets/img/screenshots/frontend-user/hall-of-fame.png) |
 
-|                        Profile                         |                       System Info                       |
-| :----------------------------------------------------: | :-----------------------------------------------------: |
-| ![Profile](docs/screenshots/frontend-user/profile.png) | ![2FA](docs/screenshots/frontend-user/systemm-info.png) |
+|                                 Profile                                 |                               System Info                                |
+| :---------------------------------------------------------------------: | :----------------------------------------------------------------------: |
+| ![Profile](theme/blue/assets/img/screenshots/frontend-user/profile.png) | ![2FA](theme/blue/assets/img/screenshots/frontend-user/systemm-info.png) |
 
 ---
 
@@ -93,9 +95,9 @@ CakePlanner is built with performance and modern standards in mind:
 
 #### Screenshots
 
-|                         user management                         |                         group management                         |
-| :-------------------------------------------------------------: | :--------------------------------------------------------------: |
-| ![Profile](docs/screenshots/frontend-admin/admin_user-mgmt.png) | ![Profile](docs/screenshots/frontend-admin/admin_group-mgmt.png) |
+|                                 user management                                  |                                 group management                                  |
+| :------------------------------------------------------------------------------: | :-------------------------------------------------------------------------------: |
+| ![Profile](theme/blue/assets/img/screenshots/frontend-admin/admin_user-mgmt.png) | ![Profile](theme/blue/assets/img/screenshots/frontend-admin/admin_group-mgmt.png) |
 
 ### Quick Start
 
