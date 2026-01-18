@@ -8,13 +8,15 @@ Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake ne
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
+- [🍰 CakePlanner](#-cakeplanner)
   - [🌟 What is CakePlanner?](#-what-is-cakeplanner)
     - [✨ Key Features](#-key-features)
   - [🚀 How it works](#-how-it-works)
-  - [🖼️ Screenshots](#-screenshots)
-  - [🛠️ For Administrators (The Technical Stuff)](#-for-administrators-the-technical-stuff)
+  - [🖼️ Screenshots](#️-screenshots)
+  - [🛠️ For Administrators (The Technical Stuff)](#️-for-administrators-the-technical-stuff)
     - [Admin-Panel](#admin-panel)
       - [Screenshots](#screenshots)
     - [Quick Start](#quick-start)
@@ -93,9 +95,9 @@ CakePlanner is built with performance and modern standards in mind:
 
 #### Screenshots
 
-|                          user management                          |                          group management                          | system info |
-| :---------------------------------------------------------------: | :----------------------------------------------------------------: | ----------- |
-| ![Profile](docs/screenshots/frontend-admin/admin-usermgmt_en.png) | ![Profile](docs/screenshots/frontend-admin/admin-groupmgmt_en.png) |             |
+|                         user management                         |                         group management                         | system info |
+| :-------------------------------------------------------------: | :--------------------------------------------------------------: | ----------- |
+| ![Profile](docs/screenshots/frontend-admin/admin_user-mgmt.png) | ![Profile](docs/screenshots/frontend-admin/admin_group-mgmt.png) |             |
 
 ### Quick Start
 
