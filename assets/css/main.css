@@ -2,9 +2,8 @@
   color-scheme: light dark;
 
   /* --- 1. VARIABLEN AUS DEINER DATEI --- */
-  --font-family:
-    'Inter', -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, 'Segeo UI', 'Helvetica Neue', Arial,
-    sans-serif;
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, 'Segeo UI',
+    'Helvetica Neue', Arial, sans-serif;
   --font-family-mono: 'Orbitron', monospace; /* Für Logos/Titel behalten */
 
   --font-size: 1rem;
@@ -73,9 +72,7 @@ html {
   background-color: var(--bg-body);
   color: var(--font-color);
   /* Sanfter Übergang beim Theme-Wechsel */
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  transition: background-color 0.3s, color 0.3s;
 }
 
 body {
@@ -249,11 +246,11 @@ aside {
   font-weight: 600;
 }
 
-/* Sub-Folder Titel (Level 2+) */
+/* -- Sub-Folder Titel (Level 2+) -- shit */
 .nav-list ul strong {
   display: block;
-  font-size: 0.85rem;
-  color: var(--font-color);
+  font-size: 0.75rem;
+  color: var(--font-color-muted);
   margin-top: 8px;
   margin-bottom: 4px;
   padding-left: 8px;
@@ -363,9 +360,7 @@ img {
   box-shadow: var(--shadow-sm);
   padding-bottom: 1rem;
   position: relative;
-  transition:
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
 }
 
 .card:hover {
@@ -400,9 +395,7 @@ img {
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   border-bottom: 1px solid var(--border-color);
 
-  transition:
-    transform 0.35s ease,
-    z-index 0s;
+  transition: transform 0.35s ease, z-index 0s;
   transform-origin: center top; /* Zoomt von oben mittig */
   position: relative;
   z-index: 1;
