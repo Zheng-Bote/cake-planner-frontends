@@ -1,0 +1,118 @@
+<div class="page-container" *transloco="let t">
+  <header class="app-header">
+    <div class="brand-container">
+      <img src="assets/logo_500x500.png" alt="Cake Planner Logo" class="logo" />
+      <div class="header-text">
+        <h1 class="brand-title">{{ t('APP.TITLE') }}</h1>
+        <p class="brand-slogan">{{ t('APP.SLOGAN') }}</p>
+      </div>
+    </div>
+
+    <div class="language-switch">
+      <button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Sprache wechseln">
+        <mat-icon>language</mat-icon>
+      </button>
+      <mat-menu #langMenu="matMenu">
+        <button mat-menu-item (click)="switchLanguage('de')">
+          <span>Deutsch</span>
+        </button>
+        <button mat-menu-item (click)="switchLanguage('en')">
+          <span>English</span>
+        </button>
+      </mat-menu>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <mat-card class="register-card">
+      <mat-card-header>
+        <mat-card-title>{{ t('REGISTER.TITLE') }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ t('REGISTER.NAME_LABEL') }}</mat-label>
+            <input matInput formControlName="name" placeholder="Max Mustermann" />
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>{{ t('REGISTER.EMAIL_LABEL') }}</mat-label>
+            <input matInput formControlName="email" type="email" />
+          </mat-form-field>
+
+          <div class="row-inputs">
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>{{ t('REGISTER.PASSWORD_LABEL') }}</mat-label>
+              <input matInput formControlName="password" type="password" />
+              @if (regForm.get('password')?.hasError('minlength')) {
+                <mat-error>{{ t('REGISTER.MIN_LENGTH_ERROR') }}</mat-error>
+              }
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="half-width">
+              <mat-label>{{ t('REGISTER.CONFIRM_PASSWORD_LABEL') }}</mat-label>
+              <input matInput formControlName="confirmPassword" type="password" />
+              @if (regForm.hasError('mismatch')) {
+                <mat-error>{{ t('REGISTER.PASSWORD_MISMATCH_ERROR') }}</mat-error>
+              }
+            </mat-form-field>
+          </div>
+
+          <div class="privacy-container">
+            <mat-checkbox formControlName="privacyPolicy" color="primary">
+              {{ t('REGISTER.AGREE_TEXT') }}
+              <a routerLink="/privacy-policy" target="_blank" (click)="$event.stopPropagation()">
+                {{ t('REGISTER.PRIVACY_LINK') }}
+              </a>
+            </mat-checkbox>
+
+            @if (
+              regForm.get('privacyPolicy')?.touched &&
+              regForm.get('privacyPolicy')?.hasError('required')
+            ) {
+              <mat-error class="checkbox-error">
+                {{ t('REGISTER.PRIVACY_REQUIRED_ERROR') }}
+              </mat-error>
+            }
+          </div>
+
+          @if (errorMessage()) {
+            <div class="error-msg">{{ errorMessage() }}</div>
+          }
+          @if (successMessage()) {
+            <div class="success-msg">{{ successMessage() }}</div>
+          }
+
+          <button
+            mat-flat-button
+            color="primary"
+            type="submit"
+            [disabled]="regForm.invalid || isLoading()"
+            class="submit-btn"
+          >
+            @if (isLoading()) {
+              <mat-spinner diameter="20"></mat-spinner>
+            } @else {
+              {{ t('REGISTER.SUBMIT_BTN') }}
+            }
+          </button>
+
+          <div class="register-link-container">
+            <a routerLink="/login" class="login-link">{{ t('REGISTER.LOGIN_LINK') }}</a>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </main>
+
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="copyright">&copy; {{ copyrightYear }} Cake Planner</div>
+      <div class="footer-links">
+        <a routerLink="/legal-notice" target="_blank">{{ t('MENU.IMPRINT') }}</a>
+        <a routerLink="/privacy-policy" target="_blank">{{ t('MENU.DATA_PROTECTION') }}</a>
+      </div>
+    </div>
+  </footer>
+</div>

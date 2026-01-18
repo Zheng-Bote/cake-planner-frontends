@@ -1,0 +1,116 @@
+<div class="page-container" *transloco="let t">
+  <header class="app-header">
+    <div class="brand-container">
+      <img src="assets/logo_500x500.png" alt="Logo" class="logo" />
+      <div class="header-text">
+        <h1 class="brand-title">Cake Planner</h1>
+        <p class="brand-slogan">Administration</p>
+      </div>
+    </div>
+
+    <div class="language-switch">
+      <button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Sprache wechseln">
+        <mat-icon>language</mat-icon>
+      </button>
+      <mat-menu #langMenu="matMenu">
+        <button mat-menu-item (click)="switchLanguage('de')">
+          <span>Deutsch</span>
+        </button>
+        <button mat-menu-item (click)="switchLanguage('en')">
+          <span>English</span>
+        </button>
+      </mat-menu>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>{{ t('ADMIN.LOGIN.TITLE') }}</mat-card-title>
+      </mat-card-header>
+
+      <mat-card-content>
+        @if (!requires2FA()) {
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>{{ t('ADMIN.LOGIN.EMAIL') }}</mat-label>
+              <input matInput formControlName="email" type="email" />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>{{ t('ADMIN.LOGIN.PASSWORD') }}</mat-label>
+              <input matInput formControlName="password" type="password" />
+            </mat-form-field>
+
+            @if (errorMessage()) {
+              <div class="error-msg">{{ errorMessage() }}</div>
+            }
+
+            <button
+              mat-flat-button
+              color="primary"
+              type="submit"
+              [disabled]="loginForm.invalid || isLoading()"
+              class="submit-btn"
+            >
+              @if (isLoading()) {
+                <mat-spinner diameter="20"></mat-spinner>
+              } @else {
+                {{ t('ADMIN.LOGIN.BTN_LOGIN') }}
+              }
+            </button>
+          </form>
+        }
+
+        @if (requires2FA()) {
+          <div class="step-2fa">
+            <div class="msg">
+              <mat-icon class="lock-icon">security</mat-icon>
+              <p>{{ t('ADMIN.LOGIN.MSG_2FA') }}</p>
+            </div>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>{{ t('ADMIN.LOGIN.LABEL_CODE') }}</mat-label>
+              <input matInput [formControl]="codeControl" maxlength="6" class="code-input" />
+              <mat-hint align="end">{{ codeControl.value?.length || 0 }} / 6</mat-hint>
+            </mat-form-field>
+
+            @if (errorMessage()) {
+              <div class="error-msg">{{ errorMessage() }}</div>
+            }
+
+            <div class="actions-2fa">
+              <button
+                mat-flat-button
+                color="primary"
+                (click)="onCodeSubmit()"
+                [disabled]="codeControl.invalid || isLoading()"
+                class="submit-btn"
+              >
+                @if (isLoading()) {
+                  <mat-spinner diameter="20"></mat-spinner>
+                } @else {
+                  {{ t('ADMIN.LOGIN.BTN_CONFIRM') }}
+                }
+              </button>
+
+              <button mat-stroked-button (click)="cancel2FA()" class="cancel-btn">
+                {{ t('ADMIN.LOGIN.BTN_CANCEL') }}
+              </button>
+            </div>
+          </div>
+        }
+      </mat-card-content>
+    </mat-card>
+  </main>
+
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="copyright">&copy; {{ copyrightYear }} Cake Planner Admin</div>
+      <div class="footer-links">
+        <a routerLink="/legal-notice" target="_blank">{{ t('MENU.IMPRINT') }}</a>
+        <a routerLink="/privacy-policy" target="_blank">{{ t('MENU.DATA_PROTECTION') }}</a>
+      </div>
+    </div>
+  </footer>
+</div>

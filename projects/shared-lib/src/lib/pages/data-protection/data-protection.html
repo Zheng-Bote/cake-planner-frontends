@@ -1,0 +1,12 @@
+<ng-container>
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Data Protection</mat-card-title>
+      <mat-card-subtitle>
+        <button (click)="getGerman()">🇩🇪 Deutsch</button>
+        <button (click)="getEnglish()">🇬🇧 English</button>
+      </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content [innerHTML]="loadedHtml()"></mat-card-content>
+  </mat-card>
+</ng-container>

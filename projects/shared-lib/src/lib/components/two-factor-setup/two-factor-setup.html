@@ -1,0 +1,53 @@
+<ng-container *transloco="let t; read: 'SHARED.2FA'">
+  <h2 mat-dialog-title>{{ t('TITLE') }}</h2>
+
+  <mat-dialog-content>
+    @if (isLoading()) {
+    <div class="spinner-container">
+      <mat-progress-spinner mode="indeterminate" diameter="40"></mat-progress-spinner>
+    </div>
+    } @else {
+    <div class="setup-container">
+      <p>{{ t('INSTRUCTION') }}</p>
+
+      @if (setupData()?.otpauth) {
+      <div class="qr-wrapper">
+        <qrcode
+          [qrdata]="setupData()!.otpauth"
+          [width]="200"
+          [errorCorrectionLevel]="'M'"
+          [allowEmptyString]="true"
+        >
+        </qrcode>
+      </div>
+      }
+
+      <p class="secret-text">{{ t('SECRET') }} {{ setupData()?.secret }}</p>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ t('LABEL_CODE') }}</mat-label>
+        <input matInput [formControl]="codeControl" placeholder="123456" maxlength="6" />
+        @if (codeControl.hasError('pattern')) {
+        <mat-error>{{ t('ERR_NUMBERS_ONLY') }}</mat-error>
+        }
+      </mat-form-field>
+
+      @if (errorMessage()) {
+      <div class="error">{{ errorMessage() }}</div>
+      }
+    </div>
+    }
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="close()">{{ t('BTN_CANCEL') }}</button>
+    <button
+      mat-flat-button
+      color="primary"
+      [disabled]="codeControl.invalid || isActivating()"
+      (click)="activate()"
+    >
+      @if (isActivating()) { {{ t('BTN_ACTIVATING') }} } @else { {{ t('BTN_ACTIVATE') }} }
+    </button>
+  </mat-dialog-actions>
+</ng-container>

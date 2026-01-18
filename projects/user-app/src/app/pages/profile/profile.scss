@@ -1,0 +1,47 @@
+.profile-grid {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr; /* Mobile: 1 Spalte */
+
+  @media (min-width: 900px) {
+    grid-template-columns: 1fr 1fr; /* Desktop: 2 Spalten */
+  }
+}
+
+.danger-zone {
+  border: 1px solid var(--mat-sys-error);
+  .warn-text {
+    color: var(--mat-sys-error);
+  }
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+// Security Styling
+.security-card {
+  &.warning {
+    border-left: 6px solid var(--mat-sys-error);
+  }
+  &.success {
+    border-left: 6px solid #4caf50; // Grün
+    .shield-icon {
+      color: #4caf50;
+      margin-right: 8px;
+    }
+  }
+}
+
+.error-msg {
+  color: #f44336;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+.success-msg {
+  color: green;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}

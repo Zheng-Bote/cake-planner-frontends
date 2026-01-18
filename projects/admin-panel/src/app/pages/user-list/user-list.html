@@ -1,0 +1,104 @@
+<ng-container *transloco="let t">
+  <div class="content">
+    <div class="header-area">
+      <h2>{{ t('ADMIN.TITLE') }}</h2>
+      @if (!authService.currentUser()?.isAdmin) {
+      <small class="text-secondary"
+        >({{ t('ADMIN.HEADER_FOR') }} {{ authService.currentUser()?.name }})</small
+      >
+      }
+    </div>
+
+    <table mat-table [dataSource]="users()" class="mat-elevation-z4 w-full">
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>{{ t('ADMIN.TABLE.NAME') }}</th>
+        <td mat-cell *matCellDef="let u">{{ u.name }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef>{{ t('ADMIN.TABLE.EMAIL') }}</th>
+        <td mat-cell *matCellDef="let u">{{ u.email }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="group">
+        <th mat-header-cell *matHeaderCellDef>{{ t('ADMIN.TABLE.GROUP') }}</th>
+        <td mat-cell *matCellDef="let user">
+          <mat-form-field appearance="outline" style="width: 150px; margin-top: 5px">
+            <mat-select
+              [value]="user.groupId"
+              (selectionChange)="onGroupChange(user, $event.value)"
+              [disabled]="!authService.currentUser()?.isAdmin"
+            >
+              <mat-option [value]="null">-- {{ t('ADMIN.TABLE.NONE') }} --</mat-option>
+              @for (g of groups(); track g.id) {
+              <mat-option [value]="g.id">{{ g.name }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef>{{ t('ADMIN.TABLE.ROLE') }}</th>
+        <td mat-cell *matCellDef="let u">
+          @if (u.groupId) {
+          <mat-form-field appearance="outline" style="width: 130px; margin-top: 5px">
+            <mat-select
+              [value]="u.groupRole || 'member'"
+              (selectionChange)="onRoleChange(u, $event.value)"
+            >
+              <mat-option value="member">{{ t('ADMIN.ROLES.MEMBER') }}</mat-option>
+              <mat-option value="admin">{{ t('ADMIN.ROLES.ADMIN') }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          } @else {
+          <span style="color: grey">-</span>
+          }
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="isAdmin">
+        <th mat-header-cell *matHeaderCellDef>{{ t('ADMIN.TABLE.IS_ADMIN') }}</th>
+        <td mat-cell *matCellDef="let u">
+          @if(u.isAdmin) {
+          <mat-icon style="color: var(--mat-sys-primary)" matTooltip="Global Admin"
+            >verified_user</mat-icon
+          >
+          }
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="active">
+        <th mat-header-cell *matHeaderCellDef>{{ t('ADMIN.TABLE.ACTIVE') }}</th>
+        <td mat-cell *matCellDef="let u">
+          <mat-slide-toggle
+            [checked]="u.isActive"
+            [disabled]="u.isAdmin"
+            (change)="toggleUser(u, $event.checked)"
+            color="primary"
+          >
+          </mat-slide-toggle>
+        </td>
+      </ng-container>
+
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>{{ t('ADMIN.TABLE.ACTIONS') }}</th>
+        <td mat-cell *matCellDef="let u">
+          <button
+            mat-icon-button
+            [color]="u.mustChangePassword ? 'warn' : ''"
+            (click)="togglePasswordForce(u)"
+            [matTooltip]="
+              u.mustChangePassword ? t('ADMIN.MSGS.PWD_FORCE_OFF') : t('ADMIN.MSGS.PWD_FORCE_ON')
+            "
+          >
+            <mat-icon>{{ u.mustChangePassword ? 'lock_reset' : 'lock' }}</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="cols"></tr>
+      <tr mat-row *matRowDef="let row; columns: cols"></tr>
+    </table>
+  </div>
+</ng-container>

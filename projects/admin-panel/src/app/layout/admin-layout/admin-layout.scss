@@ -1,0 +1,41 @@
+.sidenav-container {
+  height: 100vh;
+}
+.sidenav {
+  width: 250px;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+
+.content {
+  padding: 20px;
+  // Mobile Padding
+  @media (max-width: 600px) {
+    padding: 10px;
+  }
+}
+
+.active-link {
+  background-color: rgba(0, 0, 0, 0.05);
+  border-left: 4px solid var(--mat-primary-color); // Optional: Marker
+}
+
+.logo-area {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 10px;
+  img {
+    height: 40px;
+    width: 40px;
+    border-radius: 8px;
+  }
+}
+
+// Mobile Hide Helper
+@media (max-width: 600px) {
+  .hide-on-mobile {
+    display: none;
+  }
+}

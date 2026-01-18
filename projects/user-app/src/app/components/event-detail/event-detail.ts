@@ -1,0 +1,102 @@
+import { Component, Inject, signal, inject } from '@angular/core';
+import { CommonModule, DatePipe, DecimalPipe } from '@angular/common';
+import { MAT_DIALOG_DATA, MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatDividerModule } from '@angular/material/divider';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { EventService, CakeEvent } from 'shared-lib';
+
+@Component({
+  selector: 'app-event-detail',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule,
+    MatProgressSpinnerModule,
+    MatDividerModule,
+    TranslocoModule,
+    DatePipe,
+    DecimalPipe,
+  ],
+  templateUrl: './event-detail.html',
+  styleUrls: ['./event-detail.scss'],
+})
+export class EventDetailComponent {
+  private eventService = inject(EventService);
+  private dialogRef = inject(MatDialogRef<EventDetailComponent>);
+  private snackBar = inject(MatSnackBar);
+  private transloco = inject(TranslocoService);
+
+  event = signal<CakeEvent | null>(null);
+
+  // Signal für das Overlay (Lightbox)
+  overlayUrl = signal<string | null>(null);
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: { eventId: string }) {
+    this.loadEvent();
+  }
+
+  loadEvent() {
+    this.eventService.getById(this.data.eventId).subscribe({
+      next: (e) => this.event.set(e),
+      error: () => this.dialogRef.close(),
+    });
+  }
+
+  // Overlay Methoden
+  openOverlay(url: string) {
+    this.overlayUrl.set(url);
+  }
+
+  closeOverlay() {
+    this.overlayUrl.set(null);
+  }
+
+  downloadIcs() {
+    if (!this.event()) return;
+    this.eventService.downloadIcs(this.event()!.id);
+  }
+
+  triggerUpload(input: HTMLInputElement) {
+    input.click();
+  }
+
+  onFileSelected(event: any) {
+    const file = event.target.files[0];
+    if (file && this.event()) {
+      this.eventService.uploadPhoto(this.event()!.id, file).subscribe({
+        next: () => {
+          this.snackBar.open(this.transloco.translate('MSG.UPLOAD_SUCCESS'), 'OK', {
+            duration: 3000,
+          });
+          this.loadEvent(); // Neu laden um neues Bild in Galerie zu sehen
+        },
+        error: () => {
+          this.snackBar.open('Upload failed', 'OK', { duration: 3000 });
+        },
+      });
+    }
+  }
+
+  rate(stars: number) {
+    if (!this.event()) return;
+    this.eventService.rateEvent(this.event()!.id, stars).subscribe(() => {
+      this.loadEvent();
+    });
+  }
+
+  deleteEvent() {
+    if (!this.event()) return;
+    this.eventService.deleteEvent(this.event()!.id).subscribe(() => {
+      this.snackBar.open(this.transloco.translate('MSG.DELETE_SUCCESS'), 'OK', { duration: 3000 });
+      this.dialogRef.close('deleted');
+    });
+  }
+}

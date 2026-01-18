@@ -1,0 +1,208 @@
+/* Layout Container: Sichert volle Höhe und Flex-Ausrichtung */
+.page-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f7fa; /* Heller Grauton für Modernität */
+  font-family: 'Roboto', sans-serif;
+}
+
+/* --- HEADER --- */
+.app-header {
+  background-color: #fff;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  z-index: 10;
+}
+
+.brand-container {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.logo {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
+
+.header-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+  line-height: 1.2;
+}
+
+.brand-slogan {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #666;
+}
+
+/* --- MAIN CONTENT --- */
+.main-content {
+  flex: 1; /* Nimmt den restlichen Platz ein -> Footer nach unten */
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Oben ausgerichtet mit Abstand */
+  padding: 40px 20px;
+}
+
+.register-card {
+  width: 100%;
+  max-width: 500px; /* Etwas breiter für die 2-Spalten Inputs */
+  padding: 24px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important; /* Material Shadow verstärken */
+  border-radius: 12px !important;
+}
+
+mat-card-header {
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+mat-card-title {
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--mat-sys-primary);
+}
+
+/* --- FORM ELEMENTS --- */
+.full-width {
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+/* Grid für Passwort Felder nebeneinander auf Desktop */
+.row-inputs {
+  display: flex;
+  gap: 16px;
+
+  .half-width {
+    flex: 1;
+  }
+}
+
+/* Mobile Breakpoint für Inputs */
+@media (max-width: 600px) {
+  .row-inputs {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .brand-slogan {
+    display: none; /* Text auf Handy ausblenden falls zu lang */
+  }
+
+  .app-header {
+    padding: 1rem;
+  }
+}
+
+.submit-btn {
+  width: 100%;
+  height: 48px;
+  font-size: 1rem;
+  margin-top: 16px;
+  border-radius: 8px;
+}
+
+/* Links & Footer */
+.register-link-container {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.login-link {
+  color: var(--mat-sys-primary);
+  text-decoration: none;
+  font-weight: 500;
+  margin-left: 5px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Privacy */
+.privacy-container {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.privacy-container a {
+  color: var(--mat-sys-primary);
+  text-decoration: none;
+}
+
+.checkbox-error {
+  font-size: 0.75rem;
+  margin-top: 4px;
+  margin-left: 16px;
+  color: #f44336;
+}
+
+.error-msg {
+  color: #f44336;
+  background: rgba(244, 67, 54, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.success-msg {
+  color: #2e7d32;
+  background: rgba(46, 125, 50, 0.1);
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+/* --- FOOTER --- */
+.app-footer {
+  background-color: #fff;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  padding: 20px 0;
+  color: #666;
+  font-size: 0.85rem;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s;
+
+    &:hover {
+      color: var(--mat-sys-primary);
+    }
+  }
+}

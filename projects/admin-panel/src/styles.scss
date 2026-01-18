@@ -1,0 +1,57 @@
+@use '@angular/material' as mat;
+
+html {
+  height: 100%;
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette,
+      ),
+      typography: Roboto,
+      density: 0,
+    )
+  );
+}
+
+body {
+  color-scheme: light;
+  background-color: var(--mat-sys-surface);
+  color: var(--mat-sys-on-surface);
+  font: var(--mat-sys-body-medium);
+  margin: 0;
+  height: 100%;
+
+  // NEU: Hintergrund außen
+  background-color: #f0f2f5;
+}
+
+// NEU: App Begrenzung
+app-root {
+  display: block;
+  width: 100%;
+  max-width: 1600px;
+  margin: 0 auto;
+  min-height: 100%;
+  background-color: var(--mat-sys-surface);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+// Fehler-SnackBar Styles (Beibehalten)
+.error-snackbar {
+  --mdc-snackbar-container-color: #f44336;
+  --mdc-snackbar-supporting-text-color: #ffffff;
+  --mat-snack-bar-button-color: #ffeb3b;
+}
+
+.error-snackbar .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+  background-color: #d32f2f !important;
+}
+.error-snackbar .mat-mdc-snack-bar-label {
+  color: white !important;
+  font-weight: 500;
+}
+.error-snackbar .mat-mdc-button {
+  color: #ffd740 !important;
+}
