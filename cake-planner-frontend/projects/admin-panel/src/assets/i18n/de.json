@@ -16,6 +16,7 @@
       "ACTIONS": "Aktionen",
       "NONE": "Keine"
     },
+
     "ROLES": {
       "MEMBER": "Mitglied",
       "ADMIN": "Gruppen-Admin"
@@ -63,5 +64,9 @@
         "ACTIONS": "Aktionen"
       }
     }
+  },
+  "MENU": {
+    "IMPRINT": "Impressum",
+    "DATA_PROTECTION": "Datenschutz"
   }
 }

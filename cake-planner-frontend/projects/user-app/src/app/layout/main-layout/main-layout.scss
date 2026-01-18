@@ -8,8 +8,16 @@
   flex: 1 1 auto;
 }
 
+/* --Footer-- */
+.main-content-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%; // Stellt sicher, dass der Container die volle Höhe nutzt
+}
+
 .content {
   padding: 20px;
+  flex: 1;
   // Mobile Padding
   @media (max-width: 600px) {
     padding: 10px;
@@ -30,6 +38,41 @@
     height: 40px;
     width: 40px;
     border-radius: 8px;
+  }
+  text-wrap: pretty;
+}
+
+/* --Footer-- */
+.app-footer {
+  color: white;
+  padding: 10px;
+}
+.app-footer {
+  padding: 16px 20px;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  margin-top: auto; // Sicherheitshalber
+  font-size: 0.85rem;
+  color: rgba(0, 0, 0, 0.6);
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap; // Falls auf Mobile wenig Platz ist
+    gap: 10px;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 15px;
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
   }
 }
 

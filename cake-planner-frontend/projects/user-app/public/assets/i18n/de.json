@@ -1,11 +1,16 @@
 {
-  "APP": { "TITLE": "Kuchen Planer" },
+  "APP": {
+    "TITLE": "Kuchen Planer",
+    "SLOGAN": "Der süsseste Weg, deine Kuchen-Events zu organisieren."
+  },
   "MENU": {
     "CALENDAR": "Kalender",
     "PROFILE": "Mein Profil",
     "2FA": "2FA Einrichten",
     "PASSWORD": "Passwort ändern",
-    "HALL_OF_FAME": "Ruhmeshalle"
+    "HALL_OF_FAME": "Ruhmeshalle",
+    "IMPRINT": "Impressum",
+    "DATA_PROTECTION": "Datenschutz"
   },
   "PROFILE": {
     "TITLE": "Mein Profil",
@@ -129,6 +134,9 @@
     "ERROR_ACCOUNT_ALREADY_EXISTS": "Account existiert bereits",
     "ERROR_MSG": "Registrierung fehlgeschlagen",
     "SUCCESS_MSG": "Registrierung erfolgreich! Bitte warte auf die Freischaltung durch einen Administrator.",
-    "CLOSE": "Schließen"
+    "CLOSE": "Schließen",
+    "AGREE_TEXT": "Ich habe die",
+    "PRIVACY_LINK": "Datenschutzerklärung gelesen",
+    "PRIVACY_REQUIRED_ERROR": "Die Datenschutzerklärung muss akzeptiert werden."
   }
 }

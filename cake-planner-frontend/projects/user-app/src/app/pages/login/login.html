@@ -1,84 +1,120 @@
-<div class="login-container" *transloco="let t">
-  <mat-card>
-    <mat-card-header class="login-header">
-      <mat-card-title>{{ t('LOGIN.TITLE') }}</mat-card-title>
+<div class="page-container" *transloco="let t">
+  <header class="app-header">
+    <div class="brand-container">
+      <img src="assets/logo_500x500.png" alt="Cake Planner Logo" class="logo" />
+      <div class="header-text">
+        <h1 class="brand-title">{{ t('APP.TITLE') }}</h1>
+        <p class="brand-slogan">{{ t('APP.SLOGAN') }}</p>
+      </div>
+    </div>
 
+    <div class="language-switch">
       <button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Sprache wechseln">
         <mat-icon>language</mat-icon>
       </button>
       <mat-menu #langMenu="matMenu">
         <button mat-menu-item (click)="switchLanguage('de')">
-          <span>🇩🇪 DE</span>
+          <span>Deutsch</span>
         </button>
         <button mat-menu-item (click)="switchLanguage('en')">
-          <span>🇬🇧 EN</span>
+          <span>English</span>
         </button>
       </mat-menu>
-    </mat-card-header>
+    </div>
+  </header>
 
-    <mat-card-content>
-      @if (!requires2FA()) {
-      <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>{{ t('LOGIN.EMAIL_LABEL') }}</mat-label>
-          <input matInput formControlName="email" type="email" />
-        </mat-form-field>
+  <main class="main-content">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>{{ t('LOGIN.TITLE') }}</mat-card-title>
+      </mat-card-header>
 
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>{{ t('LOGIN.PASSWORD_LABEL') }}</mat-label>
-          <input matInput formControlName="password" type="password" />
-        </mat-form-field>
+      <mat-card-content>
+        @if (!requires2FA()) {
+          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>{{ t('LOGIN.EMAIL_LABEL') }}</mat-label>
+              <input matInput formControlName="email" type="email" placeholder="max@example.com" />
+            </mat-form-field>
 
-        @if (errorMessage()) {
-        <div class="error-msg">{{ errorMessage() }}</div>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>{{ t('LOGIN.PASSWORD_LABEL') }}</mat-label>
+              <input matInput formControlName="password" type="password" />
+            </mat-form-field>
+
+            @if (errorMessage()) {
+              <div class="error-msg">{{ errorMessage() }}</div>
+            }
+
+            <button
+              mat-flat-button
+              color="primary"
+              type="submit"
+              [disabled]="loginForm.invalid || isLoading()"
+              class="submit-btn"
+            >
+              @if (isLoading()) {
+                <mat-spinner diameter="20"></mat-spinner>
+              } @else {
+                {{ t('LOGIN.LOGIN_BTN') }}
+              }
+            </button>
+          </form>
+
+          <div class="register-link-container">
+            <a routerLink="/register" class="register-link"> {{ t('LOGIN.REGISTER_LINK') }} </a>
+          </div>
         }
 
-        <button
-          mat-flat-button
-          color="primary"
-          type="submit"
-          [disabled]="loginForm.invalid || isLoading()"
-          class="full-width"
-        >
-          @if(isLoading()) {
-          <mat-spinner diameter="20"></mat-spinner>
-          } @else { {{ t('LOGIN.LOGIN_BTN') }} }
-        </button>
-      </form>
+        @if (requires2FA()) {
+          <div class="step-2fa">
+            <div class="msg">
+              <mat-icon class="lock-icon">lock</mat-icon>
+              <p>{{ t('SHARED.2FA.ENTER_CODE_MSG') }}</p>
+            </div>
 
-      <div class="register-link-container">
-        <a routerLink="/register" class="link-text"> {{ t('LOGIN.REGISTER_LINK') }} </a>
-      </div>
-      } @if (requires2FA()) {
-      <div class="step-2fa">
-        <div class="msg">{{ t('SHARED.2FA.ENTER_CODE_MSG') }}</div>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>{{ t('SHARED.2FA.LABEL_CODE') }}</mat-label>
+              <input matInput [formControl]="codeControl" maxlength="6" class="code-input" />
+              <mat-hint align="end">{{ codeControl.value?.length || 0 }} / 6</mat-hint>
+            </mat-form-field>
 
-        <mat-form-field appearance="outline" class="full-width">
-          <mat-label>{{ t('SHARED.2FA.LABEL_CODE') }}</mat-label>
-          <input matInput [formControl]="codeControl" maxlength="6" />
-        </mat-form-field>
+            @if (errorMessage()) {
+              <div class="error-msg">{{ errorMessage() }}</div>
+            }
 
-        @if (errorMessage()) {
-        <div class="error-msg">{{ errorMessage() }}</div>
+            <div class="actions-2fa">
+              <button
+                mat-flat-button
+                color="primary"
+                (click)="onCodeSubmit()"
+                [disabled]="codeControl.invalid || isLoading()"
+                class="submit-btn"
+              >
+                @if (isLoading()) {
+                  <mat-spinner diameter="20"></mat-spinner>
+                } @else {
+                  {{ t('SHARED.2FA.BTN_CONFIRM') }}
+                }
+              </button>
+
+              <button mat-stroked-button (click)="cancel2FA()" class="cancel-btn">
+                {{ t('SHARED.2FA.BTN_CANCEL') }}
+              </button>
+            </div>
+          </div>
         }
+      </mat-card-content>
+    </mat-card>
+  </main>
 
-        <button
-          mat-flat-button
-          color="primary"
-          (click)="onCodeSubmit()"
-          [disabled]="codeControl.invalid || isLoading()"
-          class="full-width"
-        >
-          @if(isLoading()) {
-          <mat-spinner diameter="20"></mat-spinner>
-          } @else { {{ t('SHARED.2FA.BTN_CONFIRM') }} }
-        </button>
-
-        <button mat-button (click)="cancel2FA()" class="full-width cancel-btn">
-          {{ t('SHARED.2FA.BTN_CANCEL') }}
-        </button>
+  <footer class="app-footer">
+    <div class="footer-inner">
+      <div class="copyright">&copy; {{ copyrightYear }} Cake Planner</div>
+      <div class="footer-links">
+        <a routerLink="/legal-notice" target="_blank">{{ t('MENU.IMPRINT') }}</a>
+        <a routerLink="/privacy-policy" target="_blank">{{ t('MENU.DATA_PROTECTION') }}</a>
       </div>
-      }
-    </mat-card-content>
-  </mat-card>
+    </div>
+  </footer>
 </div>

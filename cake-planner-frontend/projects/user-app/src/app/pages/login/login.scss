@@ -1,13 +1,13 @@
-/* Layout Container: Sichert volle Höhe und Flex-Ausrichtung */
+/* Page Container */
 .page-container {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: #f5f7fa; /* Heller Grauton für Modernität */
+  background-color: #f5f7fa; /* Heller Grauton */
   font-family: 'Roboto', sans-serif;
 }
 
-/* --- HEADER --- */
+/* --- HEADER (Identisch zur Register-Seite) --- */
 .app-header {
   background-color: #fff;
   padding: 1rem 2rem;
@@ -51,18 +51,18 @@
 
 /* --- MAIN CONTENT --- */
 .main-content {
-  flex: 1; /* Nimmt den restlichen Platz ein -> Footer nach unten */
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: flex-start; /* Oben ausgerichtet mit Abstand */
-  padding: 40px 20px;
+  padding: 60px 20px; /* Etwas mehr Abstand nach oben als bei Register */
 }
 
-.register-card {
+.login-card {
   width: 100%;
-  max-width: 500px; /* Etwas breiter für die 2-Spalten Inputs */
+  max-width: 420px; /* Kompakter als Register-Card */
   padding: 24px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important; /* Material Shadow verstärken */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08) !important;
   border-radius: 12px !important;
 }
 
@@ -83,41 +83,15 @@ mat-card-title {
   margin-bottom: 12px;
 }
 
-/* Grid für Passwort Felder nebeneinander auf Desktop */
-.row-inputs {
-  display: flex;
-  gap: 16px;
-
-  .half-width {
-    flex: 1;
-  }
-}
-
-/* Mobile Breakpoint für Inputs */
-@media (max-width: 600px) {
-  .row-inputs {
-    flex-direction: column;
-    gap: 0;
-  }
-
-  .brand-slogan {
-    display: none; /* Text auf Handy ausblenden falls zu lang */
-  }
-
-  .app-header {
-    padding: 1rem;
-  }
-}
-
 .submit-btn {
   width: 100%;
   height: 48px;
   font-size: 1rem;
-  margin-top: 16px;
+  margin-top: 10px;
   border-radius: 8px;
 }
 
-/* Links & Footer */
+/* Links & Footer Messages */
 .register-link-container {
   margin-top: 24px;
   text-align: center;
@@ -125,7 +99,7 @@ mat-card-title {
   color: #666;
 }
 
-.login-link {
+.register-link {
   color: var(--mat-sys-primary);
   text-decoration: none;
   font-weight: 500;
@@ -136,24 +110,6 @@ mat-card-title {
   }
 }
 
-/* Privacy */
-.privacy-container {
-  margin-top: 8px;
-  margin-bottom: 8px;
-}
-
-.privacy-container a {
-  color: var(--mat-sys-primary);
-  text-decoration: none;
-}
-
-.checkbox-error {
-  font-size: 0.75rem;
-  margin-top: 4px;
-  margin-left: 16px;
-  color: #f44336;
-}
-
 .error-msg {
   color: #f44336;
   background: rgba(244, 67, 54, 0.1);
@@ -161,15 +117,60 @@ mat-card-title {
   border-radius: 4px;
   margin-bottom: 16px;
   text-align: center;
+  font-size: 0.9rem;
 }
 
-.success-msg {
-  color: #2e7d32;
-  background: rgba(46, 125, 50, 0.1);
-  padding: 10px;
-  border-radius: 4px;
-  margin-bottom: 16px;
+/* --- 2FA SPECIFIC --- */
+.step-2fa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.msg {
+  margin-bottom: 20px;
   text-align: center;
+  color: #444;
+
+  .lock-icon {
+    font-size: 48px;
+    height: 48px;
+    width: 48px;
+    color: var(--mat-sys-primary);
+    margin-bottom: 10px;
+  }
+
+  p {
+    margin: 0;
+  }
+}
+
+.code-input {
+  letter-spacing: 4px; /* Code besser lesbar machen */
+  font-weight: bold;
+  text-align: center;
+}
+
+.actions-2fa {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cancel-btn {
+  width: 100%;
+  height: 48px;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 600px) {
+  .brand-slogan {
+    display: none;
+  }
+  .app-header {
+    padding: 1rem;
+  }
 }
 
 /* --- FOOTER --- */

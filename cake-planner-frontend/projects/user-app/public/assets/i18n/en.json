@@ -1,11 +1,16 @@
 {
-  "APP": { "TITLE": "Cake Planner" },
+  "APP": {
+    "TITLE": "Cake Planner",
+    "SLOGAN": "The sweetest way to organize your cake events."
+  },
   "MENU": {
     "CALENDAR": "Calendar",
     "PROFILE": "My Profile",
     "2FA": "Setup 2FA",
     "PASSWORD": "Change Password",
-    "HALL_OF_FAME": "Hall of Fame"
+    "HALL_OF_FAME": "Hall of Fame",
+    "IMPRINT": "Legal Notice",
+    "DATA_PROTECTION": "Privacy Policy"
   },
   "PROFILE": {
     "TITLE": "My Profile",
@@ -129,6 +134,9 @@
     "ERROR_ACCOUNT_ALREADY_EXISTS": "Account already exists",
     "ERROR_MSG": "Registration failed",
     "SUCCESS_MSG": "Registration successful! Please wait for activation by an administrator.",
-    "CLOSE": "Close"
+    "CLOSE": "Close",
+    "AGREE_TEXT": "I have read the",
+    "PRIVACY_LINK": "Privacy Policy",
+    "PRIVACY_REQUIRED_ERROR": "You must accept the privacy policy."
   }
 }

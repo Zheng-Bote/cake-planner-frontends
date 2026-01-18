@@ -30,7 +30,7 @@ export class AuthService {
   // --- ACTIONS ---
 
   registerUser(data: RegisterUser) {
-    return this.http.post('/api/auth/register', data);
+    return this.http.post('/api/register', data);
   }
 
   login(email: string, password: string, code?: string) {
@@ -45,7 +45,7 @@ export class AuthService {
         if (response.token && response.user) {
           this.setSession(response);
         }
-      })
+      }),
     );
   }
 

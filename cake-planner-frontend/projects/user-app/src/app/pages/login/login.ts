@@ -19,7 +19,7 @@ import { RegisterUserComponent } from '../register-user/register-user';
   selector: 'app-login',
   standalone: true,
   templateUrl: './login.html', // Wir nutzen jetzt die externe Datei
-  styleUrls: ['./login.css'], // Optional, falls du styles hast
+  styleUrls: ['./login.scss'], // Optional, falls du styles hast
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -47,6 +47,9 @@ export class LoginComponent {
   errorMessage = signal('');
 
   currentLang = this.translocoService.langChanges$;
+
+  currentYear = new Date().getFullYear();
+  copyrightYear = this.currentYear > 2026 ? `2026–${this.currentYear}` : '2026';
 
   constructor() {
     this.initializeLanguage();

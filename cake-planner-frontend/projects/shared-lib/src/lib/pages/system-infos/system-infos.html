@@ -1,0 +1,111 @@
+<div class="container" *transloco="let t">
+  <div class="header-section">
+    <h1>{{ t('system_info.title') }}</h1>
+    <p class="subtitle">{{ t('system_info.subtitle') }}</p>
+  </div>
+
+  <div class="cards-layout">
+    <mat-card class="info-card">
+      <mat-card-header>
+        <mat-card-title>{{ t('system_info.frontend_title') }}</mat-card-title>
+        <mat-card-subtitle>{{ t('system_info.frontend_subtitle') }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        @if (frontendSystemInfo(); as fe) {
+          <div class="info-grid">
+            <div class="section-label">{{ t('system_info.general') }}</div>
+
+            <span class="label">{{ t('system_info.description') }}:</span>
+            <span class="value">{{ fe.description || '-' }}</span>
+
+            <span class="label">{{ t('system_info.author') }}:</span>
+            <span class="value">{{ fe.author || '-' }}</span>
+
+            <span class="label">{{ t('system_info.created') }}:</span>
+            <span class="value">{{ fe.created || '-' }}</span>
+
+            <span class="label">{{ t('system_info.license') }}:</span>
+            <span class="value">{{ fe.license || '-' }}</span>
+
+            <span class="label">{{ t('system_info.homepage') }}:</span>
+            <a [href]="fe.homepage" target="_blank" class="value link">{{ fe.homepage || '-' }}</a>
+
+            <mat-divider class="grid-divider"></mat-divider>
+
+            <div class="section-label">{{ t('system_info.versions') }}</div>
+
+            <span class="label">{{ t('system_info.user_app_version') }}:</span>
+            <span class="value">{{ fe.userAppVersion || '-' }}</span>
+
+            <span class="label">{{ t('system_info.admin_app_version') }}:</span>
+            <span class="value">{{ fe.adminAppVersion || '-' }}</span>
+
+            <span class="label">{{ t('system_info.angular_version') }}:</span>
+            <span class="value">{{ fe.AngularVersion || '-' }}</span>
+          </div>
+        } @else {
+          <div class="loading-container">
+            <mat-spinner diameter="40"></mat-spinner>
+          </div>
+        }
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card class="info-card">
+      <mat-card-header>
+        <mat-card-title>{{ t('system_info.backend_title') }}</mat-card-title>
+        <mat-card-subtitle>{{ t('system_info.backend_subtitle') }}</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        @if (backendSystemInfo(); as be) {
+          <div class="info-grid">
+            <div class="section-label">{{ t('system_info.project_info') }}</div>
+
+            <span class="label">{{ t('system_info.name') }}:</span>
+            <span class="value">{{ be.prog_longname }} ({{ be.project_name }})</span>
+
+            <span class="label">{{ t('system_info.description') }}:</span>
+            <span class="value">{{ be.description || '-' }}</span>
+
+            <span class="label">{{ t('system_info.author') }}:</span>
+            <span class="value">{{ be.author || '-' }}</span>
+
+            <span class="label">{{ t('system_info.created') }}:</span>
+            <span class="value">{{ be.created_year || '-' }}</span>
+
+            <span class="label">{{ t('system_info.license') }}:</span>
+            <span class="value">{{ be.license || '-' }}</span>
+
+            <span class="label">{{ t('system_info.homepage') }}:</span>
+            <a [href]="be.homepage" target="_blank" class="value link">{{ be.homepage || '-' }}</a>
+
+            <span class="label">{{ t('system_info.organization') }}:</span>
+            <span class="value">{{ be.organization }} ({{ be.domain }})</span>
+
+            <mat-divider class="grid-divider"></mat-divider>
+
+            <div class="section-label">{{ t('system_info.technical') }}</div>
+
+            <span class="label">{{ t('system_info.version') }}:</span>
+            <span class="value">{{ be.version }}</span>
+
+            <span class="label">{{ t('system_info.compiler') }}:</span>
+            <span class="value">{{ be.compiler || '-' }}</span>
+
+            <span class="label">{{ t('system_info.standard') }}:</span>
+            <span class="value">{{ be.cxx_standard || '-' }}</span>
+
+            <span class="label">{{ t('system_info.qt_version') }}:</span>
+            <span class="value">{{ be.qt_version || '-' }}</span>
+          </div>
+        } @else {
+          <div class="loading-container">
+            <mat-spinner diameter="40"></mat-spinner>
+          </div>
+        }
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

@@ -14,6 +14,19 @@ export const routes: Routes = [
       import('./pages/register-user/register-user').then((m) => m.RegisterUserComponent),
   },
 
+  {
+    path: 'privacy-policy',
+    loadComponent: () =>
+      import('../../../shared-lib/src/lib/pages/data-protection/data-protection').then(
+        (m) => m.DataProtectionComponent,
+      ),
+  },
+  {
+    path: 'legal-notice',
+    loadComponent: () =>
+      import('../../../shared-lib/src/lib/pages/imprint/imprint').then((m) => m.ImprintComponent),
+  },
+
   // 2. Protected Area (Mit Main Layout)
   {
     path: '',
@@ -55,6 +68,29 @@ export const routes: Routes = [
         path: 'change-password',
         loadComponent: () =>
           import('./pages/change-password/change-password').then((m) => m.ChangePasswordComponent),
+      },
+
+      {
+        path: 'data-protection',
+        loadComponent: () =>
+          import('../../../shared-lib/src/lib/pages/data-protection/data-protection').then(
+            (m) => m.DataProtectionComponent,
+          ),
+      },
+      {
+        path: 'imprint',
+        loadComponent: () =>
+          import('../../../shared-lib/src/lib/pages/imprint/imprint').then(
+            (m) => m.ImprintComponent,
+          ),
+      },
+
+      {
+        path: 'system-infos',
+        loadComponent: () =>
+          import('../../../shared-lib/src/lib/pages/system-infos/system-infos').then(
+            (m) => m.SystemInfosComponent,
+          ),
       },
     ],
   },

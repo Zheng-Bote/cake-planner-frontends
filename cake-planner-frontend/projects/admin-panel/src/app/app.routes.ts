@@ -10,6 +10,19 @@ export const routes: Routes = [
     loadComponent: () => import('./pages/login/login').then((m) => m.AdminLoginComponent),
   },
   {
+    path: 'privacy-policy',
+    loadComponent: () =>
+      import('../../../shared-lib/src/lib/pages/data-protection/data-protection').then(
+        (m) => m.DataProtectionComponent,
+      ),
+  },
+  {
+    path: 'legal-notice',
+    loadComponent: () =>
+      import('../../../shared-lib/src/lib/pages/imprint/imprint').then((m) => m.ImprintComponent),
+  },
+
+  {
     path: '',
     canActivate: [adminGuard],
     loadComponent: () =>

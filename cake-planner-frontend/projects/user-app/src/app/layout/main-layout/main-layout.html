@@ -53,12 +53,12 @@
       </mat-nav-list>
     </mat-sidenav>
 
-    <mat-sidenav-content>
+    <mat-sidenav-content class="main-content-wrapper">
       <mat-toolbar color="primary">
         @if (isHandset()) {
-        <button type="button" mat-icon-button (click)="drawer.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
+          <button type="button" mat-icon-button (click)="drawer.toggle()">
+            <mat-icon>menu</mat-icon>
+          </button>
         }
 
         <div class="logo-area">
@@ -78,10 +78,10 @@
         </button>
         <mat-menu #langMenu="matMenu">
           <button type="button" mat-menu-item (click)="switchLang('de')">
-            <span>🇩🇪 DE</span>
+            <span>DE</span>
           </button>
           <button type="button" mat-menu-item (click)="switchLang('en')">
-            <span>🇬🇧 EN</span>
+            <span>EN</span>
           </button>
         </mat-menu>
 
@@ -93,6 +93,19 @@
       <div class="content">
         <router-outlet></router-outlet>
       </div>
+
+      <footer class="app-footer">
+        <div class="footer-inner">
+          <div class="footer-links">
+            <a routerLink="/system-infos">&copy; {{ copyrightYear }} Cake Planner</a>
+          </div>
+          <span class="spacer"></span>
+          <div class="footer-links">
+            <a routerLink="/imprint">{{ t('MENU.IMPRINT') }}</a>
+            <a routerLink="/data-protection">{{ t('MENU.DATA_PROTECTION') }}</a>
+          </div>
+        </div>
+      </footer>
     </mat-sidenav-content>
   </mat-sidenav-container>
 </ng-container>

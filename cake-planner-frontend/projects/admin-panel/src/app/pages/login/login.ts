@@ -1,12 +1,14 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco'; // Import
 
 import { AuthService, AuthResponse } from 'shared-lib'; //
@@ -22,10 +24,13 @@ import { AuthService, AuthResponse } from 'shared-lib'; //
     MatInputModule,
     MatFormFieldModule,
     MatProgressSpinnerModule,
+    MatIconModule,
+    MatMenuModule,
     TranslocoModule,
+    RouterLink,
   ],
   templateUrl: './login.html',
-  styleUrls: ['./login.css'],
+  styleUrls: ['./login.scss'],
 })
 export class AdminLoginComponent {
   private fb = inject(FormBuilder);
@@ -37,6 +42,9 @@ export class AdminLoginComponent {
   requires2FA = signal(false);
   isLoading = signal(false);
   errorMessage = signal('');
+
+  currentYear = new Date().getFullYear();
+  copyrightYear = this.currentYear > 2026 ? `2026–${this.currentYear}` : '2026';
 
   // Form für Step 1 (Email/Passwort)
   loginForm = this.fb.group({
@@ -122,5 +130,10 @@ export class AdminLoginComponent {
     this.requires2FA.set(false);
     this.codeControl.reset();
     this.errorMessage.set('');
+  }
+
+  switchLanguage(lang: string) {
+    this.translocoService.setActiveLang(lang);
+    localStorage.setItem('admin-lang', lang); // Ggf. separater Key für Admin Präferenz
   }
 }

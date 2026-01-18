@@ -10,6 +10,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 
 import { AuthService } from 'shared-lib';
@@ -29,6 +30,7 @@ import { AuthService } from 'shared-lib';
     MatProgressSpinnerModule,
     MatMenuModule,
     MatIconModule,
+    MatCheckboxModule,
     TranslocoModule,
   ],
   templateUrl: './register-user.html',
@@ -44,6 +46,9 @@ export class RegisterUserComponent {
   isLoading = signal(false);
   errorMessage = signal('');
   successMessage = signal('');
+
+  currentYear = new Date().getFullYear();
+  copyrightYear = this.currentYear > 2026 ? `2026–${this.currentYear}` : '2026';
 
   constructor() {
     this.initializeLanguage();
@@ -77,8 +82,9 @@ export class RegisterUserComponent {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required],
+      privacyPolicy: [false, Validators.requiredTrue],
     },
-    { validators: this.passwordMatchValidator }
+    { validators: this.passwordMatchValidator },
   );
 
   onSubmit() {

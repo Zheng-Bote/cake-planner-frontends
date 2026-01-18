@@ -16,6 +16,7 @@
       "ACTIONS": "Actions",
       "NONE": "None"
     },
+
     "ROLES": {
       "MEMBER": "Member",
       "ADMIN": "Group Admin"
@@ -63,5 +64,9 @@
         "ACTIONS": "Actions"
       }
     }
+  },
+  "MENU": {
+    "IMPRINT": "Legal Notice",
+    "DATA_PROTECTION": "Privacy Policy"
   }
 }

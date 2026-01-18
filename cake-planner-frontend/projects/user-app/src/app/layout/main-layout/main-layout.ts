@@ -12,6 +12,8 @@ import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs/operators';
 
+//import { userAppVersion } from '../../../../package.json';
+
 import { AuthService } from 'shared-lib';
 
 @Component({
@@ -19,7 +21,7 @@ import { AuthService } from 'shared-lib';
   standalone: true,
   imports: [
     CommonModule,
-    RouterModule, // <--- Ermöglicht das Laden der Child-Routes
+    RouterModule,
     MatSidenavModule,
     MatToolbarModule,
     MatListModule,
@@ -36,12 +38,16 @@ export class MainLayoutComponent {
   private translocoService = inject(TranslocoService);
   private breakpointObserver = inject(BreakpointObserver);
 
+  currentYear = new Date().getFullYear();
+  copyrightYear = this.currentYear > 2026 ? `2026–${this.currentYear}` : '2026';
+  //version = userAppVersion;
+
   @ViewChild('drawer') drawer!: MatSidenav;
 
   // Modernes Signal für Responsivität
   isHandset = toSignal(
     this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((result) => result.matches)),
-    { initialValue: false }
+    { initialValue: false },
   );
 
   greetingKey = computed(() => {
