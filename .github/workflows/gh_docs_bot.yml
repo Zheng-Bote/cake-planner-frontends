@@ -24,4 +24,4 @@ jobs:
           template: 'theme/desktop/template.html'
           assets: 'theme/blue/assets'
           output: 'public'
-          docs: 'docs'
+          docs: '/docs'
