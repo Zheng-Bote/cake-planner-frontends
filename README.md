@@ -11,7 +11,7 @@ Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake ne
 
 **Table of Contents**
 
-- [� CakePlanner](#-cakeplanner)
+- [🍰 CakePlanner](#-cakeplanner)
   - [🌟 What is CakePlanner?](#-what-is-cakeplanner)
     - [✨ Key Features](#-key-features)
   - [🚀 How it works](#-how-it-works)
@@ -20,7 +20,7 @@ Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake ne
     - [Admin-Panel](#admin-panel)
       - [Screenshots](#screenshots)
     - [Quick Start](#quick-start)
-    - [Architecture](#architecture)
+- [See more](#see-more)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -66,17 +66,17 @@ CakePlanner is a simple app that helps groups coordinate who brings what and whe
 
 _(some previews from within the dev environment)_
 
-|                Dashboard                |                Calendar                |
-| :-------------------------------------: | :------------------------------------: |
-| ![Dashboard](docs/img/dashboard_en.png) | ![Calendart](docs/img/calendar_en.png) |
+|                         Dashboard                          |                         Calendar                          |
+| :--------------------------------------------------------: | :-------------------------------------------------------: |
+| ![Dashboard](docs/screenshots/frontend-user/dashboard.png) | ![Calendart](docs/screenshots/frontend-user/calendar.png) |
 
-|                 Event Detail                 |                 Hall of Fame                  |
-| :------------------------------------------: | :-------------------------------------------: |
-| ![Dashboard](docs/img/calendar-event_en.png) | ![Hall of Fame](docs/img/hall-of-fame_en.png) |
+|                        Event Detail                         |                           Hall of Fame                           |
+| :---------------------------------------------------------: | :--------------------------------------------------------------: |
+| ![Dashboard](docs/screenshots/frontend-user/cake-event.png) | ![Hall of Fame](docs/screenshots/frontend-user/hall-of-fame.png) |
 
-|               Profile               |   2 Factor Authentication   |
-| :---------------------------------: | :-------------------------: |
-| ![Profile](docs/img/profile_en.png) | ![2FA](docs/img/2fa_de.png) |
+|                        Profile                         |                       System Info                       |
+| :----------------------------------------------------: | :-----------------------------------------------------: |
+| ![Profile](docs/screenshots/frontend-user/profile.png) | ![2FA](docs/screenshots/frontend-user/systemm-info.png) |
 
 ---
 
@@ -95,9 +95,9 @@ CakePlanner is built with performance and modern standards in mind:
 
 #### Screenshots
 
-| user management                            |
-| ------------------------------------------ |
-| ![Profile](docs/img/admin-usermgmt_en.png) |
+|                          user management                          |                          group management                          | system info |
+| :---------------------------------------------------------------: | :----------------------------------------------------------------: | ----------- |
+| ![Profile](docs/screenshots/frontend-admin/admin-usermgmt_en.png) | ![Profile](docs/screenshots/frontend-admin/admin-groupmgmt_en.png) |             |
 
 ### Quick Start
 
@@ -106,9 +106,9 @@ CakePlanner is built with performance and modern standards in mind:
 3.  Build the Angular Frontend (`ng build`).
 4.  Run the executable.
 
-### Architecture
+# See more
 
-architecture overview can be found here [Architecture overview](docs/architecture.md)
+see more here:
 
 ---
 
