@@ -8,17 +8,22 @@ Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake ne
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
+- [🍰 CakePlanner](#-cakeplanner)
   - [🌟 What is CakePlanner?](#-what-is-cakeplanner)
     - [✨ Key Features](#-key-features)
   - [🚀 How it works](#-how-it-works)
-  - [🖼️ Screenshots](#-screenshots)
-  - [🛠️ For Administrators (The Technical Stuff)](#-for-administrators-the-technical-stuff)
+  - [🖼️ Screenshots](#️-screenshots)
+  - [🛠️ For Administrators (The Technical Stuff)](#️-for-administrators-the-technical-stuff)
     - [Admin-Panel](#admin-panel)
       - [Screenshots](#screenshots)
-    - [Quick Start](#quick-start)
+  - [Backend](#backend)
+    - [🍰 Overview](#-overview)
+    - [🚀 Key Features](#-key-features-1)
 - [See more](#see-more)
+- [📄 License](#-license)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -97,16 +102,41 @@ CakePlanner is built with performance and modern standards in mind:
 | :------------------------------------------------------------------: | :-------------------------------------------------------------------: |
 | ![Profile](theme/blue/assets/img/frontend-admin/admin_user-mgmt.png) | ![Profile](theme/blue/assets/img/frontend-admin/admin_group-mgmt.png) |
 
-### Quick Start
+---
 
-1.  Clone the repository.
-2.  Build the C++ Backend (`cmake . && make`).
-3.  Build the Angular Frontend (`ng build`).
-4.  Run the executable.
+## Backend
+
+A high-performance C++ REST API backend for the Cake Planner application, built with the [Crow](https://crowcpp.org/) microframework and [Qt6](https://www.qt.io/).
+
+### 🍰 Overview
+
+The **Cake Planner Backend** serves as the core infrastructure for coordinating cake-baking events. It manages users, departments (groups), and schedules to ensure there is always cake in the office!
+
+The application is designed to be lightweight yet robust, leveraging C++23 for performance and Qt6 for reliable cross-platform core functionalities.
+
+### 🚀 Key Features
+
+- **High Performance API**: Asynchronous REST API powered by Crow.
+- **Security First**:
+  - Stateless Authentication using **JWT** (JSON Web Tokens).
+  - Secure Password Storage using **Argon2id**.
+  - Protection against SQL Injection via **Qt SQL** prepared statements.
+- **Structured Data**: Manages Users, Groups, Events, Ratings, and Photo Galleries.
+- **Easy Deployment**:
+  - Compiles into a single standalone **AppImage**.
+  - Docker-ready with **Docker Compose** support.
+- **Integrated Services**: SMTP Email Notifications (Welcome, Password Reset) and Internal Health Checks.
 
 # See more
 
-see more here: [CakePlanner Github Pages](https://zheng-bote.github.io/cake-planner-frontends/)
+- [CakePlanner Frontend](https://zheng-bote.github.io/cake-planner-frontends/)
+- [CakePlanner Backend](https://zheng-bote.github.io/cake-planner-backend/)
+
+---
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
 
 ---
 

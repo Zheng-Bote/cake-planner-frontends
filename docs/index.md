@@ -33,16 +33,45 @@ CakePlanner is a simple app that helps groups coordinate who brings what and whe
 
 ---
 
-## 🚀 How it works
+### 🚀 How it works
 
 1.  **Dashboard:** Log in and see a friendly greeting and upcoming events.
 2.  **Plan:** Click on a date in the calendar to announce your cake. Add a description and a tasty preview photo.
 3.  **Eat & Rate:** After the event, log in to rate the cake and upload your own photos ("Food Porn") to the gallery.
 4.  **Win:** Check the _Hall of Fame_ to see if your creation made it to the top!
 
+**see also [Screenshots](scrennshots/frontend-user/user-app.html)**
+
+---
+
 ## Backend
 
-For the Backend, please have a look at [CakePlanner Backend](https://zheng-bote.github.io/cake-planner-backend/).
+A high-performance C++ REST API backend for the Cake Planner application, built with the [Crow](https://crowcpp.org/) microframework and [Qt6](https://www.qt.io/).
+
+### 🍰 Overview
+
+The **Cake Planner Backend** serves as the core infrastructure for coordinating cake-baking events. It manages users, departments (groups), and schedules to ensure there is always cake in the office!
+
+The application is designed to be lightweight yet robust, leveraging C++23 for performance and Qt6 for reliable cross-platform core functionalities.
+
+### 🚀 Key Features
+
+- **High Performance API**: Asynchronous REST API powered by Crow.
+- **Security First**:
+  - Stateless Authentication using **JWT** (JSON Web Tokens).
+  - Secure Password Storage using **Argon2id**.
+  - Protection against SQL Injection via **Qt SQL** prepared statements.
+- **Structured Data**: Manages Users, Groups, Events, Ratings, and Photo Galleries.
+- **Easy Deployment**:
+  - Compiles into a single standalone **AppImage**.
+  - Docker-ready with **Docker Compose** support.
+- **Integrated Services**: SMTP Email Notifications (Welcome, Password Reset) and Internal Health Checks.
+
+For the Backend, please have a look here: [CakePlanner Backend](https://zheng-bote.github.io/cake-planner-backend/).
+
+# 📄 License
+
+This project is licensed under the **MIT License**.
 
 ---
 
