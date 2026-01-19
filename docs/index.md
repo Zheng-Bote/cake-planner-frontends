@@ -67,7 +67,7 @@ The application is designed to be lightweight yet robust, leveraging C++23 for p
   - Docker-ready with **Docker Compose** support.
 - **Integrated Services**: SMTP Email Notifications (Welcome, Password Reset) and Internal Health Checks.
 
-For the Backend, please have a look here: [CakePlanner Backend](https://zheng-bote.github.io/cake-planner-backend/).
+**Backend documentation**: [CakePlanner Backend](https://zheng-bote.github.io/cake-planner-backend/).
 
 # 📄 License
 

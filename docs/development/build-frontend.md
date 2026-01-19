@@ -7,8 +7,8 @@ This monorepo project was generated using [Angular CLI](https://github.com/angul
 ## Clone the Repository
 
 ```bash
-    git clone https://github.com/Zheng-Bote/cake-planner-frontends.git
-    cd cake-planner-frontends
+git clone https://github.com/Zheng-Bote/cake-planner-frontends.git
+cd cake-planner-frontends
 ```
 
 ## Build
