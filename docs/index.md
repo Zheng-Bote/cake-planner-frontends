@@ -40,6 +40,10 @@ CakePlanner is a simple app that helps groups coordinate who brings what and whe
 3.  **Eat & Rate:** After the event, log in to rate the cake and upload your own photos ("Food Porn") to the gallery.
 4.  **Win:** Check the _Hall of Fame_ to see if your creation made it to the top!
 
+## Backend
+
+For the Backend, please have a look at [CakePlanner Backend](https://zheng-bote.github.io/cake-planner-backend/).
+
 ---
 
 Made with ❤️ and a lot of sugar.
