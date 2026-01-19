@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CakePlanner | user-app</title>
+    <title>CakePlanner | admin-panel</title>
 
     <link rel="shortcut icon" href="../../assets/favicon.ico" type="image/x-icon" />
     <link rel="icon" type="image/svg+xml" href="../../assets/img/favicon.svg" />
@@ -76,7 +76,7 @@
   <li><a href="../../architecture/workflows.html">workflows</a></li>
   <li><strong>frontend</strong>
 <ul class="nav-list">
-  <li><a href="../../architecture/frontend/admin-panel.html">admin-panel</a></li>
+  <li><a href="../../architecture/frontend/admin-panel.html" class="active">admin-panel</a></li>
   <li><a href="../../architecture/frontend/user-app.html">user-app</a></li>
 </ul>
   </li>
@@ -108,7 +108,7 @@
   </li>
   <li><strong>frontend-user</strong>
 <ul class="nav-list">
-  <li><a href="../../screenshots/frontend-user/user-app.html" class="active">user-app</a></li>
+  <li><a href="../../screenshots/frontend-user/user-app.html">user-app</a></li>
 </ul>
   </li>
 </ul>
@@ -123,81 +123,44 @@
 </nav>
     </aside>
 
-    <main class="main"><h1>User App Screenshots</h1>
-
-<div class="card-wrapper">
-  <div class="card">
-    <img src="../../assets/img/frontend-user/2fa_login.png" alt="2fa_login.png" loading="lazy" />
-    <h3>2fa_login</h3>
-    <p>2FA Login</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/add_event.png" alt="add_event.png" loading="lazy" />
-    <h3>add_event</h3>
-    <p>Add Event</p>
-  </div>
-  <div class="card">
-    <img
-      src="../../assets/img/frontend-user/cake-event_photo.png"
-      alt="cake-event_photo.png"
-      loading="lazy"
-    />
-    <h3>cake-event_photo</h3>
-    <p>Cake Event Photo</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/calendar.png" alt="calendar.png" loading="lazy" />
-    <h3>calendar</h3>
-    <p>Calendar</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/dashboard.png" alt="dashboard.png" loading="lazy" />
-    <h3>dashboard</h3>
-    <p>Dashboard</p>
-  </div>
-  <div class="card">
-    <img
-      src="../../assets/img/frontend-user/dashboard_2.png"
-      alt="dashboard_2.png"
-      loading="lazy"
-    />
-    <h3>dashboard_2</h3>
-    <p>Dashboard 2</p>
-  </div>
-  <div class="card">
-    <img
-      src="../../assets/img/frontend-user/hall-of-fame.png"
-      alt="hall-of-fame.png"
-      loading="lazy"
-    />
-    <h3>hall-of-fame</h3>
-    <p>Hall of Fame</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/profile.png" alt="profile.png" loading="lazy" />
-    <h3>profile</h3>
-    <p>Profile</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/profile_2.png" alt="profile_2.png" loading="lazy" />
-    <h3>profile_2</h3>
-    <p>Profile 2</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/register.png" alt="register.png" loading="lazy" />
-    <h3>register</h3>
-    <p>Register</p>
-  </div>
-  <div class="card">
-    <img
-      src="../../assets/img/frontend-user/system-info.png"
-      alt="system-info.png"
-      loading="lazy"
-    />
-    <h3>system-info</h3>
-    <p>System Info</p>
-  </div>
-</div>
+    <main class="main"><!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#admin-panel-architecture">Admin Panel Architecture</a><ul>
+<li><a href="#components--pages">Components &amp; Pages</a></li>
+<li><a href="#services-shared-library">Services (Shared Library)</a></li>
+<li><a href="#models-shared-library">Models (Shared Library)</a></li>
+<li><a href="#architecture-diagram">Architecture Diagram</a></li>
+</ul>
+</li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h1>Admin Panel Architecture</h1>
+<p>The <strong>Admin Panel</strong> is an Angular application designed for administrators to manage users and departments (groups) within the Cake Planner ecosystem. It leverages a shared library for core services and models.</p>
+<h2>Components &amp; Pages</h2>
+<p>The application is structured into several key pages, each responsible for a specific administrative task:</p>
+<ul>
+<li><strong>Login</strong> (<code>pages/login</code>): Handles administrator authentication.</li>
+<li><strong>User List</strong> (<code>pages/user-list</code>): Displays a paginated list of registered users. Allows admins to manage user roles and details.</li>
+<li><strong>Groups</strong> (<code>pages/groups</code>): Manages the departments or groups available in the system.</li>
+</ul>
+<h2>Services (Shared Library)</h2>
+<p>The Admin Panel relies heavily on the <code>shared-lib</code> for communication with the backend:</p>
+<ul>
+<li><strong>AuthService</strong>: Manages authentication state (JWT), login, and token refresh.</li>
+<li><strong>AdminService</strong>: Provides administrative functions like fetching user lists and managing groups.</li>
+<li><strong>SystemInfoService</strong>: Retrieves backend system information.</li>
+</ul>
+<h2>Models (Shared Library)</h2>
+<p>Key data models used:</p>
+<ul>
+<li><strong>User</strong>: Represents a user entity.</li>
+<li><strong>Group</strong>: Represents a department/group.</li>
+<li><strong>SystemInfo</strong>: Represents backend status information.</li>
+</ul>
+<h2>Architecture Diagram</h2>
+<p><img src="../assets/img/architecture/frontend/architecture_admin-panel.png" alt="Admin Panel Architecture"></p>
 </main>
 
     <footer class="footer">

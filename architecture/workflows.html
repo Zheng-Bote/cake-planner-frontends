@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CakePlanner | build-frontend</title>
+    <title>CakePlanner | workflows</title>
 
     <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon" />
     <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
@@ -73,7 +73,7 @@
   <li><strong>architecture</strong>
 <ul class="nav-list">
   <li><a href="../architecture/overview.html">overview</a></li>
-  <li><a href="../architecture/workflows.html">workflows</a></li>
+  <li><a href="../architecture/workflows.html" class="active">workflows</a></li>
   <li><strong>frontend</strong>
 <ul class="nav-list">
   <li><a href="../architecture/frontend/admin-panel.html">admin-panel</a></li>
@@ -91,7 +91,7 @@
   </li>
   <li><strong>development</strong>
 <ul class="nav-list">
-  <li><a href="../development/build-frontend.html" class="active">build-frontend</a></li>
+  <li><a href="../development/build-frontend.html">build-frontend</a></li>
 </ul>
   </li>
   <li><strong>screenshots</strong>
@@ -123,28 +123,21 @@
 </nav>
     </aside>
 
-    <main class="main"><!-- DOCTOC SKIP -->
-<h1>CakePlanner Frontend</h1>
-<p>This monorepo project was generated using <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 21.0.1.</p>
-<h2>Clone the Repository</h2>
-<pre><code class="language-bash">    git clone https://github.com/Zheng-Bote/cake-planner-frontends.git
-    cd cake-planner-frontends
-</code></pre>
-<h2>Build</h2>
-<p>To build the project, run the following command:</p>
-<pre><code class="language-bash">nvm use --lts
-npm install
-</code></pre>
-<h2>Development server</h2>
-<p>To start the local development instances, run:</p>
-<pre><code class="language-bash">nvm use --lts
-ng serve admin-panel --port 4201
-ng serve user-app
-</code></pre>
-<h2>Production build</h2>
-<pre><code class="language-bash">ng build --project user-app --base-href / --configuration production
-ng build --project admin-panel --base-href / --configuration production
-</code></pre>
+    <main class="main"><h1>Backend Workflows</h1>
+
+<h2>Image Workflow</h2>
+
+<p><strong>📸 Image Upload & Optimization Pipeline</strong></p>
+<p>
+  One of the key technical features is the automatic optimization of user uploads to ensure fast
+  loading times in the "Hall of Fame".
+</p>
+
+<img src="../assets/img/architecture/image-flow.png" alt="Image Workflow" />
+
+<h2>Request Workflow</h2>
+<p><strong>HTTP Request Workflow</strong></p>
+<img src="../assets/img/architecture/request-flow.png" alt="Request Workflow" />
 </main>
 
     <footer class="footer">

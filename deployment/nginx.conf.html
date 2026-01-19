@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>CakePlanner | build-frontend</title>
+    <title>CakePlanner | nginx.conf</title>
 
     <link rel="shortcut icon" href="../assets/favicon.ico" type="image/x-icon" />
     <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg" />
@@ -85,13 +85,13 @@
   <li><strong>deployment</strong>
 <ul class="nav-list">
   <li><a href="../deployment/Dockerfile.nginx.html">Dockerfile.nginx</a></li>
-  <li><a href="../deployment/nginx.conf.html">nginx.conf</a></li>
+  <li><a href="../deployment/nginx.conf.html" class="active">nginx.conf</a></li>
   <li><a href="../deployment/overview.html">overview</a></li>
 </ul>
   </li>
   <li><strong>development</strong>
 <ul class="nav-list">
-  <li><a href="../development/build-frontend.html" class="active">build-frontend</a></li>
+  <li><a href="../development/build-frontend.html">build-frontend</a></li>
 </ul>
   </li>
   <li><strong>screenshots</strong>
@@ -124,26 +124,35 @@
     </aside>
 
     <main class="main"><!-- DOCTOC SKIP -->
-<h1>CakePlanner Frontend</h1>
-<p>This monorepo project was generated using <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 21.0.1.</p>
-<h2>Clone the Repository</h2>
-<pre><code class="language-bash">    git clone https://github.com/Zheng-Bote/cake-planner-frontends.git
-    cd cake-planner-frontends
-</code></pre>
-<h2>Build</h2>
-<p>To build the project, run the following command:</p>
-<pre><code class="language-bash">nvm use --lts
-npm install
-</code></pre>
-<h2>Development server</h2>
-<p>To start the local development instances, run:</p>
-<pre><code class="language-bash">nvm use --lts
-ng serve admin-panel --port 4201
-ng serve user-app
-</code></pre>
-<h2>Production build</h2>
-<pre><code class="language-bash">ng build --project user-app --base-href / --configuration production
-ng build --project admin-panel --base-href / --configuration production
+<h1>nginx.conf Example</h1>
+<pre><code class="language-nginx">events {
+    worker_connections 1024;
+}
+
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+
+    server {
+        listen 80;
+        server_name localhost;
+
+        # Forward all requests to Crow Backend
+        location / {
+            proxy_pass http://cakeplanner:8080;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+        }
+
+        # Optional: Static File Caching for uploads
+        location /public/ {
+             alias /usr/share/nginx/html/public/;
+             expires 30d;
+        }
+    }
+}
 </code></pre>
 </main>
 

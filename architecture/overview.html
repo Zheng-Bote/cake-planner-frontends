@@ -73,16 +73,24 @@
   <li><strong>architecture</strong>
 <ul class="nav-list">
   <li><a href="../architecture/overview.html" class="active">overview</a></li>
+  <li><a href="../architecture/workflows.html">workflows</a></li>
+  <li><strong>frontend</strong>
+<ul class="nav-list">
+  <li><a href="../architecture/frontend/admin-panel.html">admin-panel</a></li>
+  <li><a href="../architecture/frontend/user-app.html">user-app</a></li>
+</ul>
+  </li>
 </ul>
   </li>
   <li><strong>deployment</strong>
 <ul class="nav-list">
+  <li><a href="../deployment/Dockerfile.nginx.html">Dockerfile.nginx</a></li>
+  <li><a href="../deployment/nginx.conf.html">nginx.conf</a></li>
   <li><a href="../deployment/overview.html">overview</a></li>
 </ul>
   </li>
   <li><strong>development</strong>
 <ul class="nav-list">
-  <li><a href="../development/build-backend.html">build-backend</a></li>
   <li><a href="../development/build-frontend.html">build-frontend</a></li>
 </ul>
   </li>
@@ -91,10 +99,6 @@
   <li><strong>architecture</strong>
 <ul class="nav-list">
   <li><a href="../screenshots/architecture/overview.html">overview</a></li>
-  <li><strong>backend</strong>
-<ul class="nav-list">
-</ul>
-  </li>
 </ul>
   </li>
   <li><strong>frontend-admin</strong>
@@ -111,6 +115,7 @@
   </li>
   <li><strong>security</strong>
 <ul class="nav-list">
+  <li><a href="../security/backend_security.html">backend_security</a></li>
   <li><a href="../security/overview.html">overview</a></li>
 </ul>
   </li>
@@ -158,7 +163,7 @@
     <tr>
       <td>Backend</td>
       <td>C++23 (Crow)</td>
-      <td>REST API, Business Logic, Image Processing.</td>
+      <td>REST API, Business Logic, Security.</td>
     </tr>
     <tr>
       <td>Database</td>
@@ -216,29 +221,6 @@
     </p>
   </li>
 </ol>
-
-<h2>4. Key Workflows</h2>
-
-<p><strong>📸 Image Upload & Optimization Pipeline</strong></p>
-<p>
-  One of the key technical features is the automatic optimization of user uploads to ensure fast
-  loading times in the "Hall of Fame".
-</p>
-
-<img src="../assets/img/architecture/workflow.png" alt="Workflow" />
-
-<h2>5. Database Schema (Simplified)</h2>
-
-<p>The database is normalized to ensure data integrity.</p>
-
-<ul>
-  <li><strong>users</strong>: Stores credentials and profile data.</li>
-  <li><strong>groups</strong>: Manages baking circles.</li>
-  <li><strong>group_members</strong>: Links users to groups (n:m).</li>
-  <li><strong>events</strong>: The core entity (Date, Baker, Description).</li>
-  <li><strong>ratings</strong>: Links users to events with a score (1-5).</li>
-  <li><strong>event_photos</strong>: Stores paths to community uploads linked to events.</li>
-</ul>
 </main>
 
     <footer class="footer">

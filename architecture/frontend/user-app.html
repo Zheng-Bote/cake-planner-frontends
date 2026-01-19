@@ -77,7 +77,7 @@
   <li><strong>frontend</strong>
 <ul class="nav-list">
   <li><a href="../../architecture/frontend/admin-panel.html">admin-panel</a></li>
-  <li><a href="../../architecture/frontend/user-app.html">user-app</a></li>
+  <li><a href="../../architecture/frontend/user-app.html" class="active">user-app</a></li>
 </ul>
   </li>
 </ul>
@@ -108,7 +108,7 @@
   </li>
   <li><strong>frontend-user</strong>
 <ul class="nav-list">
-  <li><a href="../../screenshots/frontend-user/user-app.html" class="active">user-app</a></li>
+  <li><a href="../../screenshots/frontend-user/user-app.html">user-app</a></li>
 </ul>
   </li>
 </ul>
@@ -123,81 +123,48 @@
 </nav>
     </aside>
 
-    <main class="main"><h1>User App Screenshots</h1>
-
-<div class="card-wrapper">
-  <div class="card">
-    <img src="../../assets/img/frontend-user/2fa_login.png" alt="2fa_login.png" loading="lazy" />
-    <h3>2fa_login</h3>
-    <p>2FA Login</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/add_event.png" alt="add_event.png" loading="lazy" />
-    <h3>add_event</h3>
-    <p>Add Event</p>
-  </div>
-  <div class="card">
-    <img
-      src="../../assets/img/frontend-user/cake-event_photo.png"
-      alt="cake-event_photo.png"
-      loading="lazy"
-    />
-    <h3>cake-event_photo</h3>
-    <p>Cake Event Photo</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/calendar.png" alt="calendar.png" loading="lazy" />
-    <h3>calendar</h3>
-    <p>Calendar</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/dashboard.png" alt="dashboard.png" loading="lazy" />
-    <h3>dashboard</h3>
-    <p>Dashboard</p>
-  </div>
-  <div class="card">
-    <img
-      src="../../assets/img/frontend-user/dashboard_2.png"
-      alt="dashboard_2.png"
-      loading="lazy"
-    />
-    <h3>dashboard_2</h3>
-    <p>Dashboard 2</p>
-  </div>
-  <div class="card">
-    <img
-      src="../../assets/img/frontend-user/hall-of-fame.png"
-      alt="hall-of-fame.png"
-      loading="lazy"
-    />
-    <h3>hall-of-fame</h3>
-    <p>Hall of Fame</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/profile.png" alt="profile.png" loading="lazy" />
-    <h3>profile</h3>
-    <p>Profile</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/profile_2.png" alt="profile_2.png" loading="lazy" />
-    <h3>profile_2</h3>
-    <p>Profile 2</p>
-  </div>
-  <div class="card">
-    <img src="../../assets/img/frontend-user/register.png" alt="register.png" loading="lazy" />
-    <h3>register</h3>
-    <p>Register</p>
-  </div>
-  <div class="card">
-    <img
-      src="../../assets/img/frontend-user/system-info.png"
-      alt="system-info.png"
-      loading="lazy"
-    />
-    <h3>system-info</h3>
-    <p>System Info</p>
-  </div>
-</div>
+    <main class="main"><!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+<p><strong>Table of Contents</strong></p>
+<ul>
+<li><a href="#user-app-architecture">User App Architecture</a><ul>
+<li><a href="#components--pages">Components &amp; Pages</a></li>
+<li><a href="#services-shared-library">Services (Shared Library)</a></li>
+<li><a href="#models-shared-library">Models (Shared Library)</a></li>
+<li><a href="#architecture-diagram">Architecture Diagram</a></li>
+</ul>
+</li>
+</ul>
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<h1>User App Architecture</h1>
+<p>The <strong>User App</strong> is the main customer-facing Angular application where users can view the cake calendar, announce cakes, and manage their profile.</p>
+<h2>Components &amp; Pages</h2>
+<p>The application offers a rich set of features for general users:</p>
+<ul>
+<li><strong>Login</strong> (<code>pages/login</code>): User authentication.</li>
+<li><strong>Register</strong> (<code>pages/register-user</code>): New user registration flow.</li>
+<li><strong>Dashboard</strong> (<code>pages/dashboard</code>): The landing page showing upcoming events and announcements.</li>
+<li><strong>Calendar</strong> (<code>pages/calendar</code>): Interactive calendar to view and manage cake events.</li>
+<li><strong>Profile</strong> (<code>pages/profile</code>): User profile management, including 2FA settings.</li>
+<li><strong>Change Password</strong> (<code>pages/change-password</code>): Password management.</li>
+</ul>
+<h2>Services (Shared Library)</h2>
+<p>The User App uses the <code>shared-lib</code> for core logic and backend communication:</p>
+<ul>
+<li><strong>AuthService</strong>: Handles login, registration, and session management.</li>
+<li><strong>EventService</strong>: Manages cake events (CRUD operations for calendar).</li>
+<li><strong>SSEService</strong>: Handles Server-Sent Events for real-time updates (e.g., new cake announcements).</li>
+<li><strong>SystemInfoService</strong>: Checks backend connectivity and versions.</li>
+</ul>
+<h2>Models (Shared Library)</h2>
+<p>Key models include:</p>
+<ul>
+<li><strong>User</strong>: User profile data.</li>
+<li><strong>Event</strong>: Represents a cake event (date, type, description).</li>
+<li><strong>2FA</strong>: Two-factor authentication configuration.</li>
+</ul>
+<h2>Architecture Diagram</h2>
+<p><img src="../assets/img/architecture/frontend/architecture_user-app.png" alt="User App Architecture"></p>
 </main>
 
     <footer class="footer">
