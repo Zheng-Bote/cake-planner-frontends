@@ -1,3 +1,5 @@
+<!-- DOCTOC SKIP -->
+
 # Admin Panel Architecture
 
 The **Admin Panel** is an Angular application designed for administrators to manage users and departments (groups) within the Cake Planner ecosystem. It leverages a shared library for core services and models.

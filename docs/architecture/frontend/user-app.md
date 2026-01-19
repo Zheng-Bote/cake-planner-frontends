@@ -1,3 +1,5 @@
+<!-- DOCTOC SKIP -->
+
 # User App Architecture
 
 The **User App** is the main customer-facing Angular application where users can view the cake calendar, announce cakes, and manage their profile.
