@@ -151,15 +151,40 @@ Fully localized for <strong>English</strong> 🇬🇧 and <strong>German</strong
 </li>
 </ul>
 <hr>
-<h2>🚀 How it works</h2>
+<h3>🚀 How it works</h3>
 <ol>
 <li><strong>Dashboard:</strong> Log in and see a friendly greeting and upcoming events.</li>
 <li><strong>Plan:</strong> Click on a date in the calendar to announce your cake. Add a description and a tasty preview photo.</li>
 <li><strong>Eat &amp; Rate:</strong> After the event, log in to rate the cake and upload your own photos (&quot;Food Porn&quot;) to the gallery.</li>
 <li><strong>Win:</strong> Check the <em>Hall of Fame</em> to see if your creation made it to the top!</li>
 </ol>
+<p><strong>see also <a href="scrennshots/frontend-user/user-app.html">Screenshots</a></strong></p>
+<hr>
 <h2>Backend</h2>
-<p>For the Backend, please have a look at <a href="https://zheng-bote.github.io/cake-planner-backend/">CakePlanner Backend</a>.</p>
+<p>A high-performance C++ REST API backend for the Cake Planner application, built with the <a href="https://crowcpp.org/">Crow</a> microframework and <a href="https://www.qt.io/">Qt6</a>.</p>
+<h3>🍰 Overview</h3>
+<p>The <strong>Cake Planner Backend</strong> serves as the core infrastructure for coordinating cake-baking events. It manages users, departments (groups), and schedules to ensure there is always cake in the office!</p>
+<p>The application is designed to be lightweight yet robust, leveraging C++23 for performance and Qt6 for reliable cross-platform core functionalities.</p>
+<h3>🚀 Key Features</h3>
+<ul>
+<li><strong>High Performance API</strong>: Asynchronous REST API powered by Crow.</li>
+<li><strong>Security First</strong>:<ul>
+<li>Stateless Authentication using <strong>JWT</strong> (JSON Web Tokens).</li>
+<li>Secure Password Storage using <strong>Argon2id</strong>.</li>
+<li>Protection against SQL Injection via <strong>Qt SQL</strong> prepared statements.</li>
+</ul>
+</li>
+<li><strong>Structured Data</strong>: Manages Users, Groups, Events, Ratings, and Photo Galleries.</li>
+<li><strong>Easy Deployment</strong>:<ul>
+<li>Compiles into a single standalone <strong>AppImage</strong>.</li>
+<li>Docker-ready with <strong>Docker Compose</strong> support.</li>
+</ul>
+</li>
+<li><strong>Integrated Services</strong>: SMTP Email Notifications (Welcome, Password Reset) and Internal Health Checks.</li>
+</ul>
+<p>For the Backend, please have a look here: <a href="https://zheng-bote.github.io/cake-planner-backend/">CakePlanner Backend</a>.</p>
+<h1>📄 License</h1>
+<p>This project is licensed under the <strong>MIT License</strong>.</p>
 <hr>
 <p>Made with ❤️ and a lot of sugar.</p>
 </main>
