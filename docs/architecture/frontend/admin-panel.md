@@ -30,4 +30,4 @@ Key data models used:
 
 ## Architecture Diagram
 
-![Admin Panel Architecture](../assets/img/architecture/frontend/architecture_admin-panel.png)
+![Admin Panel Architecture](../../assets/img/architecture/frontend/architecture_admin-panel.png)

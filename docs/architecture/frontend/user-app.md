@@ -34,4 +34,4 @@ Key models include:
 
 ## Architecture Diagram
 
-![User App Architecture](../assets/img/architecture/frontend/architecture_user-app.png)
+![User App Architecture](../../assets/img/architecture/frontend/architecture_user-app.png)
