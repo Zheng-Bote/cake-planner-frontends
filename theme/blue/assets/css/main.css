@@ -1,33 +1,35 @@
 :root {
   color-scheme: light dark;
 
-  /* --- 1. VARIABLEN AUS DEINER DATEI --- */
+  /* --- 1. VARIABLEN --- */
   --font-family:
-    'Inter', -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, 'Segeo UI', 'Helvetica Neue', Arial,
+    'Inter', -apple-system, BlinkMacSystemFont, Roboto, Ubuntu, 'Segoe UI', 'Helvetica Neue', Arial,
     sans-serif;
-  --font-family-mono: 'Orbitron', monospace; /* Für Logos/Titel behalten */
+  --font-family-mono: 'Orbitron', monospace;
 
   --font-size: 1rem;
   --font-size-small: 0.8rem;
   --font-size-large: 1.2rem;
 
-  /* Angepasste Farben basierend auf deiner main.css */
+  /* Farben */
   --font-color: light-dark(hsla(0 0% 0% / 0.9), hsla(0 0% 100% / 0.9));
   --font-color-muted: light-dark(hsla(0 0% 0% / 0.6), hsla(0 0% 100% / 0.6));
-  /*--font-color-code: light-dark(#00ff41, #1fbf48);*/
   --font-color-code: light-dark(hsla(0 0% 0% / 0.9), hsla(0 0% 100% / 0.9));
 
-  /* Backgrounds: Light (Hellgrau/Weiß) | Dark (Dunkelblau/Grau) */
+  /* NEU: Hatte gefehlt, wird aber in Table genutzt */
+  --font-color-header: var(--primary-color);
+
+  /* Backgrounds */
   --bg-body: light-dark(#f8f9fa, #0d1117);
   --bg-panel: light-dark(#ffffff, #161b22);
   --bg-code: light-dark(#d9dcde, #161b22);
+  --bg-table-odd: light-dark(#ffffff, #161b22);
+  --bg-table-even: light-dark(#f2f2f2, #0d1117);
+
   --border-color: light-dark(#e1e4e8, #30363d);
 
-  /* Deine Primary Colors (Blue) */
-  --primary-color: light-dark(
-    oklch(0.55 0.15 240),
-    /* Kräftigeres Blau für Light Mode */ oklch(0.7 0.12 240) /* Helleres Blau für Dark Mode */
-  );
+  /* Primary Colors */
+  --primary-color: light-dark(oklch(0.55 0.15 240), oklch(0.7 0.12 240));
 
   --secondary-color: light-dark(oklch(0.8059 0.057 236.25), oklch(0.4956 0.0757 237.94));
 
@@ -59,8 +61,7 @@
   navigation: auto;
 }
 
-/* --- GRUNDLAYOUT (Identisch zur HTML-Struktur) --- */
-
+/* --- GRUNDLAYOUT --- */
 html {
   height: 100%;
   font-family: var(--font-family);
@@ -72,7 +73,6 @@ html {
   scroll-behavior: smooth;
   background-color: var(--bg-body);
   color: var(--font-color);
-  /* Sanfter Übergang beim Theme-Wechsel */
   transition:
     background-color 0.3s,
     color 0.3s;
@@ -123,15 +123,13 @@ footer {
   color: var(--font-color-muted);
 }
 
-/* Flexbox Helfer für Header/Footer */
 .header_left {
   cursor: pointer;
-  & img {
-    width: 30px;
-    height: auto;
-    decoding: auto;
-    vertical-align: middle;
-  }
+}
+.header_left img {
+  width: 30px;
+  height: auto;
+  vertical-align: middle;
 }
 
 .header_left,
@@ -157,15 +155,14 @@ footer {
 }
 
 header h1 {
-  font-family: var(--font-family-mono); /* Optional: Orbitron für Logo lassen */
+  font-family: var(--font-family-mono);
   font-size: 1.4rem;
   font-weight: 700;
   color: var(--primary-color);
   margin-left: 12px;
 }
 
-/* --- BUTTONS (Header) --- */
-/* Statt Neon-Glow jetzt solider Business-Look */
+/* --- BUTTONS --- */
 .tron-btn {
   background-color: transparent;
   border: 1px solid var(--border-color);
@@ -185,13 +182,13 @@ header h1 {
   background-color: light-dark(rgba(0, 0, 0, 0.03), rgba(255, 255, 255, 0.05));
 }
 
-/* --- SIDEBAR NAV (Strukturierter Tree-View) --- */
+/* --- SIDEBAR NAV --- */
 aside {
   grid-area: aside;
   padding: 20px;
-  background-color: var(--bg-body); /* Leichter Kontrast zum Main */
+  background-color: var(--bg-body);
   border-right: 1px solid var(--border-color);
-  border-bottom: 1px solid var(--border-color); /* Mobile fix */
+  border-bottom: 1px solid var(--border-color);
   overflow-y: auto;
 }
 
@@ -206,9 +203,8 @@ aside {
 
 .nav-list {
   gap: 12px;
-} /* Abstand zwischen Hauptkategorien */
+}
 
-/* Level 1: Folder Title */
 .nav-list > li > strong {
   display: block;
   font-size: 0.75rem;
@@ -220,15 +216,13 @@ aside {
   padding-left: 5px;
 }
 
-/* Level 2 & 3: Einrückung und Linie */
 .nav-list ul {
   gap: 2px;
   margin-left: 12px;
   padding-left: 12px;
-  border-left: 1px solid var(--border-color); /* Solide Linie statt Glow */
+  border-left: 1px solid var(--border-color);
 }
 
-/* Links in Navigation */
 .nav-list a {
   display: block;
   padding: 6px 10px;
@@ -240,16 +234,14 @@ aside {
 .nav-list a:hover {
   background-color: light-dark(rgba(0, 0, 0, 0.05), rgba(255, 255, 255, 0.1));
   color: var(--primary-color);
-  text-decoration: none;
 }
 
 .nav-list a.active {
-  background-color: light-dark(#eef2ff, #1c212f); /* Helles Blau im Hintergrund */
+  background-color: light-dark(#eef2ff, #1c212f);
   color: var(--primary-color);
   font-weight: 600;
 }
 
-/* -- Sub-Folder Titel (Level 2+) -- shit */
 .nav-list ul strong {
   display: block;
   font-size: 0.75rem;
@@ -272,22 +264,6 @@ main {
   min-height: 400px;
 }
 
-/*
-main h1 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  color: var(--font-color);
-  border-bottom: 2px solid var(--border-color);
-  padding-bottom: 0.5rem;
-}
-
-main h2 {
-  font-size: 1.5rem;
-  margin-top: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--primary-color);
-}
-*/
 main h1 {
   border-bottom: 2px solid var(--border-color);
   padding-bottom: 0.5rem;
@@ -313,43 +289,38 @@ main p {
   margin-bottom: 1rem;
 }
 
-/* --- coding --- */
+/* --- CODE BLOCKS --- */
 code,
 kbd,
 pre,
 samp {
   font-family: Menlo, Consolas, monospace;
-  /*margin: 0 20px 0 20px;*/
 }
 
 code {
   background: var(--bg-code);
-  color: var(--font-color-code); /* Matrix-Grün (alternativ: 'lime' oder '#4caf50') */
+  color: var(--font-color-code);
   text-wrap: pretty;
-  padding: 2px;
+  padding: 2px 4px;
   width: fit-content;
   max-width: 100%;
-
-  /* Ergänzungen für den "Rechteck"-Look */
-  display: inline-block; /* Stellt sicher, dass es ein Block/Rechteck bildet */
-  border-radius: 4px; /* Optional: Leicht abgerundete Ecken */
-  border: 1px solid var(--border-color); /* Optional: Subtiler Rand zur Abgrenzung */
+  display: inline-block;
+  border-radius: 4px;
+  border: 1px solid var(--border-color);
 }
 
-/* --- BLUE THEME CARD GRID --- */
+/* --- CARD GRID (IMAGE ZOOM LOGIC) --- */
 
-/* Base image reset */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Card grid */
 .card-wrapper {
   list-style: none;
   padding: 0;
-  margin: 2rem 0; /* Etwas Abstand oben/unten */
+  margin: 2rem 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(35ch, 1fr));
   gap: 1.5rem;
@@ -363,17 +334,26 @@ img {
   box-shadow: var(--shadow-sm);
   padding-bottom: 1rem;
   position: relative;
+
+  /* NEU: Wichtig für sauberes "Rauszoomen" ohne Clipping */
+  /* Wir verzögern das Zurücksetzen des z-index um 0.4s (Dauer der Animation) */
   transition:
     box-shadow 0.2s ease,
-    transform 0.2s ease;
+    transform 0.2s ease,
+    z-index 0s 0.4s;
+}
+
+/* Wenn eines der Bilder gehovert wird, heben wir die ganze Karte an */
+.card:has(img:hover) {
+  z-index: 1001;
+  transition: z-index 0s 0s; /* Sofort nach oben */
 }
 
 .card:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-  transform: translateY(-2px); /* Leichtes Anheben */
+  transform: translateY(-2px);
 }
 
-/* Typography inside Card */
 .card h3 {
   margin: 1rem;
   font-size: 1.15rem;
@@ -390,39 +370,85 @@ img {
 }
 
 .card ul {
-  padding-left: 1.2rem; /* Einrückung für Listenpunkte */
+  padding-left: 1.2rem;
 }
 
 /* Image Styling & Zoom Logic */
 .card img {
   width: 100%;
-  /* Radius nur oben passend zur Karte */
   border-radius: var(--border-radius) var(--border-radius) 0 0;
   border-bottom: 1px solid var(--border-color);
 
-  transition:
-    transform 0.35s ease,
-    z-index 0s;
-  transform-origin: center top; /* Zoomt von oben mittig */
+  transform-origin: center top;
   position: relative;
   z-index: 1;
-  background-color: var(--bg-panel); /* Verhindert Transparenz-Probleme beim Zoom */
+  background-color: var(--bg-panel);
+
+  /* Animation */
+  transition:
+    transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+    box-shadow 0.4s ease,
+    border-radius 0.4s ease;
 }
 
-/* Hover zoom outside */
+/* Hover zoom effects */
 .card img:hover {
-  transform: scale(2.2); /* Zoom noch etwas stärker für besseren Fokus */
-  z-index: 1000; /* Muss sehr hoch sein, um über Header/Footer zu liegen */
+  transform: scale(2.2);
+  z-index: 1002;
   cursor: zoom-out;
   border-radius: var(--border-radius);
   border: 1px solid var(--primary-color);
 
-  /* the "TRICK": */
   box-shadow:
-    /* 1. Ein schöner, tiefer Schatten für das Bild selbst */
     0 20px 50px rgba(0, 0, 0, 0.5),
-    /* 2. Ein RIESIGER Schatten, der als "Overlay" fungiert */ 0 0 0 100vmax
-      light-dark(rgba(248, 249, 250, 0.85), rgba(13, 17, 23, 0.85));
+    0 0 0 100vmax light-dark(rgba(248, 249, 250, 0.85), rgba(13, 17, 23, 0.85));
+}
+
+/* --- TABLE (Optimiert für Dark Mode) --- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border: var(--border-width) var(--border-style) var(--border-color);
+  margin-top: 1rem;
+}
+
+/* Dark Mode freundliche Hintergründe */
+tr:nth-child(even) {
+  background-color: var(--bg-table-even);
+}
+
+tr:nth-child(odd) {
+  background-color: var(--bg-table-odd);
+}
+
+th,
+td {
+  border: var(--border-width) var(--border-style) var(--border-color);
+  padding: 8px;
+  text-align: left;
+}
+
+th {
+  color: var(--font-color-header);
+  background-color: var(--bg-panel); /* Header hebt sich leicht ab */
+  font-weight: 600;
+}
+
+td {
+  color: var(--font-color);
+}
+
+td a:link,
+td a:active,
+td a:visited {
+  color: var(--font-color);
+  font-style: italic;
+  text-decoration: underline;
+  text-decoration-color: var(--border-color);
+}
+td a:hover {
+  color: var(--primary-color);
+  text-decoration-color: var(--primary-color);
 }
 
 /* --- RESPONSIVE / DESKTOP --- */
@@ -440,50 +466,13 @@ img {
 
   aside {
     border-bottom: none;
-    background-color: var(--bg-panel); /* Auf Desktop gleicher Hintergrund wie Header */
+    background-color: var(--bg-panel);
   }
 
   main {
     border: none;
     box-shadow: none;
-    background-color: transparent; /* Main Area blendet sich ein */
-    padding: 0 40px; /* Mehr Platz auf Desktop */
-  }
-}
-
-/* --- TABLE --- */
-table {
-  width: 100%;
-  border-collapse: collapse;
-  border: var(--border-width) var(--border-style)
-    light-dark(var(--primary-color), var(--secondary-color));
-}
-
-tr:nth-child(even) {
-  background-color: #f2f2f2;
-}
-
-tr:nth-child(odd) {
-  background-color: #ffffff;
-}
-
-th,
-td {
-  border: var(--border-width) var(--border-style)
-    light-dark(var(--primary-color), var(--secondary-color));
-  padding: 5px;
-}
-
-th {
-  color: var(--font-color-header);
-}
-td {
-  color: black;
-  & a:link,
-  a:active,
-  a:visited {
-    color: black;
-    font-style: italic;
-    text-decoration: none;
+    background-color: transparent;
+    padding: 0 40px;
   }
 }
