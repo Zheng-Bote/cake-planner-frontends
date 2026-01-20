@@ -6,7 +6,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { MatChipsModule } from '@angular/material/chips';
-import { TranslocoModule } from '@jsverse/transloco';
+import { TranslocoModule, provideTranslocoScope } from '@jsverse/transloco';
 import { format, addDays, startOfDay } from 'date-fns';
 
 import { AuthService, TwoFactorSetupComponent, EventService, CakeEvent } from 'shared-lib';
@@ -23,6 +23,7 @@ import { AuthService, TwoFactorSetupComponent, EventService, CakeEvent } from 's
     MatChipsModule,
     TranslocoModule,
   ],
+  providers: [provideTranslocoScope({ scope: 'dashboard', alias: 'dashboard' })],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
 })

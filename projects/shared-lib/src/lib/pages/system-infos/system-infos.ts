@@ -17,6 +17,7 @@ import { SystemInfoService, SystemInfoFrontend, SystemInfoBackend } from 'shared
     MatButtonModule,
     MatDividerModule,
     MatProgressSpinnerModule,
+
     TranslocoModule,
   ],
   providers: [

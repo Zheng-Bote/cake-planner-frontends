@@ -1,0 +1,15 @@
+{
+  "CHANGE_PW": {
+    "TITLE": "Set New Password",
+    "FORCED_MSG": "The administrator requires you to change your password.",
+    "LABEL_NEW": "New Password",
+    "LABEL_CONFIRM": "Confirm Password",
+    "ERR_REQUIRED": "Required field",
+    "ERR_MIN8": "At least 8 characters",
+    "ERR_MISMATCH": "Passwords do not match",
+    "BTN_SAVE": "Saving...",
+    "BTN_CHANGE": "Change Password",
+    "CHANGE_PW_SUCCESS": "Password changed successfully",
+    "CHANGE_PW_FAILED": "Failed to change password"
+  }
+}

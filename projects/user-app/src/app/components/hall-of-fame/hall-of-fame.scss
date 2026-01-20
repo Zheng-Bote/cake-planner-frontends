@@ -24,7 +24,9 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   border-radius: 16px;
   overflow: hidden;
 
@@ -189,6 +191,7 @@ mat-card-content {
   align-items: center;
   animation: fadeIn 0.2s ease-out;
   cursor: zoom-out; // Klick schließt
+  display: flex;
 
   .lightbox-content {
     position: relative;
@@ -203,6 +206,29 @@ mat-card-content {
       box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
       animation: zoomIn 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
       display: block;
+    }
+
+    .image-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      margin: 0;
+      padding: 16px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 500;
+      text-align: center;
+
+      // Halbtransparenter Hintergrund für bessere Lesbarkeit
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.8) 0%, rgba(0, 0, 0, 0) 100%);
+
+      // Wichtig: Die Ecken unten abrunden, passend zum Bild
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+
+      // Animation, damit der Text mit dem Bild erscheint
+      animation: zoomIn 0.3s cubic-bezier(0.1, 0.9, 0.2, 1);
     }
 
     .close-btn,

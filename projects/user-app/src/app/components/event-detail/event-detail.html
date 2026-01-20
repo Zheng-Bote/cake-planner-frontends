@@ -1,120 +1,173 @@
 <ng-container *transloco="let t">
   @if (event(); as e) {
-
-  <div class="dialog-header">
-    <h2 mat-dialog-title>{{ t('EVENT.CAKE_BY') }} {{ e.bakerName }}</h2>
-    @if (e.isOwner) {
-    <span class="owner-badge">{{ t('EVENT.MY_EVENT') }}</span>
-    }
-  </div>
-
-  <mat-dialog-content>
-    <div class="photo-frame">
-      @if (e.photoUrl) {
-      <img
-        [src]="e.photoUrl"
-        class="event-img cover"
-        (click)="openOverlay(e.photoUrl)"
-        matTooltip="Click to zoom"
-      />
-      } @else {
-      <div class="placeholder-logo">
-        <img src="assets/logo_500x500.png" alt="CakePlanner Logo" />
-        <span>{{ t('EVENT.NO_PHOTO_YET') }}</span>
-      </div>
+    <div class="dialog-header">
+      <h2 mat-dialog-title>{{ t('event.EVENT.CAKE_BY') }} {{ e.bakerName }}</h2>
+      @if (e.isOwner) {
+        <span class="owner-badge">{{ t('event.EVENT.MY_EVENT') }}</span>
       }
     </div>
 
-    <div class="meta-info">
-      <div class="date-row">
-        <mat-icon>event</mat-icon>
-        <span>{{ e.date | date : 'fullDate' }}</span>
-      </div>
-      @if (e.groupName) {
-      <div class="group-row">
-        <mat-icon>group</mat-icon>
-        <span>{{ e.groupName }}</span>
-      </div>
-      }
-    </div>
+    <mat-dialog-content>
+      <div class="photo-frame">
+        @if (e.photoUrl) {
+          <picture>
+            <source
+              [srcset]="getWebPUrl(e.photoUrl, 480)"
+              media="(max-width: 600px)"
+              type="image/webp"
+            />
+            <source
+              [srcset]="getWebPUrl(e.photoUrl, 800)"
+              media="(max-width: 1200px)"
+              type="image/webp"
+            />
+            <source [srcset]="getWebPUrl(e.photoUrl, 1280)" type="image/webp" />
 
-    <p class="description">{{ e.description || t('EVENT.NO_DESC') }}</p>
-
-    <mat-divider></mat-divider>
-
-    <div class="rating-section">
-      <div class="stars">
-        @for (star of [1,2,3,4,5]; track star) {
-        <mat-icon
-          (click)="rate(star)"
-          [class.filled]="e.rating.average >= star"
-          [class.my-rating]="e.rating.myRating >= star"
-        >
-          star
-        </mat-icon>
-        }
-      </div>
-      <div class="rating-text">
-        <span class="avg">{{ e.rating.average | number : '1.1-1' }}</span>
-        <span class="count">({{ e.rating.count }} {{ t('EVENT.VOTES') }})</span>
-      </div>
-    </div>
-
-    <mat-divider></mat-divider>
-
-    <div class="gallery-section">
-      <h3>{{ t('EVENT.COMMUNITY_PHOTOS') }}</h3>
-
-      @if (e.gallery && e.gallery.length > 0) {
-      <div class="gallery-list">
-        @for (item of e.gallery; track item.url) {
-        <div class="gallery-item" (click)="openOverlay(item.url)">
-          <img [src]="item.url" class="thumb" />
-          <div class="info">
-            <span class="name">{{ item.userName }}</span>
-            @if (item.isMine) { <span class="me-badge">({{ t('EVENT.ME') }})</span> }
+            <img
+              [src]="e.photoUrl"
+              [alt]="e.bakerName"
+              loading="lazy"
+              onerror="
+                this.style.display = 'none';
+                this.parentElement.nextElementSibling.style.display = 'flex';
+              "
+              class="event-img cover"
+              (click)="openOverlay(e.photoUrl)"
+              matTooltip="Click to zoom"
+            />
+          </picture>
+        } @else {
+          <div class="placeholder-logo">
+            <img src="assets/logo_500x500.png" alt="CakePlanner Logo" loading="lazy" />
+            <span>{{ t('event.EVENT.NO_PHOTO_YET') }}</span>
           </div>
-        </div>
         }
       </div>
-      } @else {
-      <p class="no-photos">{{ t('EVENT.NO_GALLERY') }}</p>
+
+      <div class="meta-info">
+        <div class="date-row">
+          <mat-icon>event</mat-icon>
+          <span>{{ e.date | date: 'fullDate' : undefined : lang() }}</span>
+        </div>
+        @if (e.groupName) {
+          <div class="group-row">
+            <mat-icon>group</mat-icon>
+            <span>{{ e.groupName }}</span>
+          </div>
+        }
+      </div>
+
+      <p class="description">{{ e.description || t('event.EVENT.NO_DESC') }}</p>
+
+      <mat-divider></mat-divider>
+
+      <div class="rating-section">
+        <div class="stars">
+          @for (star of [1, 2, 3, 4, 5]; track star) {
+            <mat-icon
+              (click)="rate(star)"
+              [class.filled]="e.rating.average >= star"
+              [class.my-rating]="e.rating.myRating >= star"
+            >
+              star
+            </mat-icon>
+          }
+        </div>
+        <div class="rating-text">
+          <span class="avg">{{ e.rating.average | number: '1.1-1' }}</span>
+          <span class="count">({{ e.rating.count }} {{ t('event.EVENT.VOTES') }})</span>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <div class="gallery-section">
+        <h3>{{ t('event.EVENT.COMMUNITY_PHOTOS') }}</h3>
+
+        @if (e.gallery && e.gallery.length > 0) {
+          <div class="gallery-list">
+            @for (item of e.gallery; track item.url) {
+              <div class="gallery-item" (click)="openOverlay(item.url)">
+                <picture>
+                  <source
+                    [srcset]="getWebPUrl(item.url, 480)"
+                    media="(max-width: 600px)"
+                    type="image/webp"
+                  />
+                  <source
+                    [srcset]="getWebPUrl(item.url, 800)"
+                    media="(max-width: 1200px)"
+                    type="image/webp"
+                  />
+                  <source [srcset]="getWebPUrl(item.url, 1280)" type="image/webp" />
+
+                  <img
+                    [src]="item.url"
+                    [alt]="e.bakerName"
+                    loading="lazy"
+                    onerror="
+                      this.style.display = 'none';
+                      this.parentElement.nextElementSibling.style.display = 'flex';
+                    "
+                    class="thumb"
+                    matTooltip="Click to zoom"
+                  />
+                </picture>
+                <div class="info">
+                  <span class="name">{{ item.userName }}</span>
+                  @if (item.isMine) {
+                    <span class="me-badge">({{ t('event.EVENT.ME') }})</span>
+                  }
+                </div>
+              </div>
+            }
+          </div>
+        } @else {
+          <p class="no-photos">{{ t('event.EVENT.NO_GALLERY') }}</p>
+        }
+
+        <div class="upload-area">
+          <button mat-stroked-button color="primary" (click)="triggerUpload(fileInput)">
+            <mat-icon>add_a_photo</mat-icon> {{ t('event.EVENT.UPLOAD_YOURS') }}
+          </button>
+          <input #fileInput type="file" hidden (change)="onFileSelected($event)" accept="image/*" />
+        </div>
+      </div>
+    </mat-dialog-content>
+
+    <mat-dialog-actions align="end">
+      <button mat-button (click)="downloadIcs()" matTooltip="{{ t('event.EVENT.DOWNLOAD_ICS') }}">
+        <mat-icon>download</mat-icon> ICS
+      </button>
+
+      @if (e.canDelete) {
+        <button
+          mat-button
+          color="warn"
+          (click)="deleteEvent()"
+          matTooltip="{{ t('event.EVENT.DELETE_EVENT') }}"
+        >
+          <mat-icon>delete</mat-icon> {{ t('BTN.DELETE') }}
+        </button>
       }
 
-      <div class="upload-area">
-        <button mat-stroked-button color="primary" (click)="triggerUpload(fileInput)">
-          <mat-icon>add_a_photo</mat-icon> {{ t('EVENT.UPLOAD_YOURS') }}
+      <button mat-flat-button mat-dialog-close>
+        {{ t('BTN.CLOSE') }}
+      </button>
+    </mat-dialog-actions>
+  } @else {
+    <div class="loading-container">
+      <mat-spinner diameter="40"></mat-spinner>
+    </div>
+  }
+  @if (overlayUrl()) {
+    <div class="lightbox" (click)="closeOverlay()">
+      <div class="lightbox-content" (click)="$event.stopPropagation()">
+        <img [src]="overlayUrl()" />
+        <button mat-icon-button class="close-btn" (click)="closeOverlay()">
+          <mat-icon>close</mat-icon>
         </button>
-        <input #fileInput type="file" hidden (change)="onFileSelected($event)" accept="image/*" />
       </div>
     </div>
-  </mat-dialog-content>
-
-  <mat-dialog-actions align="end">
-    <button mat-button (click)="downloadIcs()"><mat-icon>download</mat-icon> ICS</button>
-
-    @if (e.canDelete) {
-    <button mat-button color="warn" (click)="deleteEvent()">
-      <mat-icon>delete</mat-icon> {{ t('BTN.DELETE') }}
-    </button>
-    }
-
-    <button mat-flat-button mat-dialog-close>
-      {{ t('BTN.CLOSE') }}
-    </button>
-  </mat-dialog-actions>
-  } @else {
-  <div class="loading-container">
-    <mat-spinner diameter="40"></mat-spinner>
-  </div>
-  } @if (overlayUrl()) {
-  <div class="lightbox" (click)="closeOverlay()">
-    <div class="lightbox-content" (click)="$event.stopPropagation()">
-      <img [src]="overlayUrl()" />
-      <button mat-icon-button class="close-btn" (click)="closeOverlay()">
-        <mat-icon>close</mat-icon>
-      </button>
-    </div>
-  </div>
   }
 </ng-container>

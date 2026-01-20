@@ -8,7 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslocoModule } from '@jsverse/transloco';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslocoModule, TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
 
 import { AuthService } from 'shared-lib';
 
@@ -22,8 +23,10 @@ import { AuthService } from 'shared-lib';
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
+    MatTooltipModule,
     TranslocoModule,
   ],
+  providers: [provideTranslocoScope({ scope: 'change_password', alias: 'change-password' })],
   templateUrl: './change-password.html',
   styleUrls: ['./change-password.css'],
 })
@@ -32,6 +35,7 @@ export class ChangePasswordComponent {
   private authService = inject(AuthService);
   private router = inject(Router);
   private snackBar = inject(MatSnackBar);
+  private transloco = inject(TranslocoService);
 
   // Optional: Wenn wir als Dialog geöffnet werden, ist das hier gesetzt.
   // Wenn wir via Route kommen (Forced PW Change), ist es null.
@@ -49,7 +53,7 @@ export class ChangePasswordComponent {
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required],
     },
-    { validators: this.passwordMatchValidator }
+    { validators: this.passwordMatchValidator },
   );
 
   onSubmit() {
@@ -60,7 +64,14 @@ export class ChangePasswordComponent {
       this.authService.changePassword(newPass).subscribe({
         next: () => {
           this.isLoading.set(false);
-          this.snackBar.open('Passwort erfolgreich geändert', 'OK', { duration: 3000 });
+          this.snackBar.open(
+            this.transloco.translate('change-password.CHANGE_PW.CHANGE_PW_SUCCESS'),
+            'OK',
+            {
+              duration: 2000,
+              panelClass: ['success-snackbar'],
+            },
+          );
 
           if (this.dialogRef) {
             // Als Dialog: schließen
@@ -73,7 +84,14 @@ export class ChangePasswordComponent {
         error: (err) => {
           this.isLoading.set(false);
           console.error(err);
-          this.snackBar.open('Fehler beim Ändern des Passworts', 'OK', { duration: 5000 });
+          this.snackBar.open(
+            this.transloco.translate('change-password.CHANGE_PW.CHANGE_PW_FAILED'),
+            'OK',
+            {
+              duration: 5000,
+              panelClass: ['error-snackbar'],
+            },
+          );
         },
       });
     }

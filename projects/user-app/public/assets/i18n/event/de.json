@@ -1,0 +1,22 @@
+{
+  "EVENT": {
+    "CREATE_TITLE": "Neuen Kuchen eintragen",
+    "DETAILS": "Kuchen Details",
+    "CAKE_BY": "Kuchen von",
+    "MY_EVENT": "Mein Event",
+    "DATE_LABEL": "Datum",
+    "DESC_LABEL": "Beschreibung (optional)",
+    "PHOTO_BTN": "Foto hinzufügen (optional)",
+    "PHOTO_SELECTED": "Datei ausgewählt",
+    "NO_DESC": "Keine Beschreibung verfügbar.",
+    "UPLOAD_PHOTO": "Foto hochladen",
+    "VOTES": "Stimmen",
+    "COMMUNITY_PHOTOS": "Community Fotos",
+    "ME": "Ich",
+    "UPLOAD_YOURS": "Eigenes Foto hochladen",
+    "NO_GALLERY": "Noch keine Community-Fotos. Sei der Erste!",
+    "NO_PHOTO_YET": "Noch kein Foto",
+    "DELETE_EVENT": "Event löschen",
+    "DOWNLOAD_ICS": "ICS für Outlook herunterladen"
+  }
+}

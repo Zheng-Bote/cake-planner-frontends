@@ -1,6 +1,6 @@
 <ng-container *transloco="let t">
   <header class="dashboard-header">
-    <p class="subtitle">{{ t('DASHBOARD.SUBTITLE') }}</p>
+    <p class="subtitle">{{ t('dashboard.DASHBOARD.SUBTITLE') }}</p>
   </header>
 
   <div class="dashboard-grid">
@@ -8,67 +8,67 @@
       <mat-card-header>
         <mat-card-title>
           <mat-icon class="cake-icon">cake</mat-icon>
-          {{ t('DASHBOARD.NEXT_CAKE') }}
+          {{ t('dashboard.DASHBOARD.NEXT_CAKE') }}
         </mat-card-title>
       </mat-card-header>
       <mat-card-content>
         @if (isLoadingEvents()) {
-        <p>Loading...</p>
+          <p>Loading...</p>
         } @else if (nextEvent(); as evt) {
-        <div class="next-event-content">
-          <div class="date-badge">
-            <span class="day">{{ evt.date | date : 'dd' }}</span>
-            <span class="month">{{ evt.date | date : 'MMM' }}</span>
+          <div class="next-event-content">
+            <div class="date-badge">
+              <span class="day">{{ evt.date | date: 'dd' }}</span>
+              <span class="month">{{ evt.date | date: 'MMM' }}</span>
+            </div>
+            <div class="details">
+              <h3>{{ evt.bakerName }}</h3>
+              <p>{{ evt.description || t('EVENT.NO_DESC') }}</p>
+              <mat-chip-set>
+                <mat-chip>{{ evt.groupName }}</mat-chip>
+              </mat-chip-set>
+            </div>
           </div>
-          <div class="details">
-            <h3>{{ evt.bakerName }}</h3>
-            <p>{{ evt.description || t('EVENT.NO_DESC') }}</p>
-            <mat-chip-set>
-              <mat-chip>{{ evt.groupName }}</mat-chip>
-            </mat-chip-set>
-          </div>
-        </div>
         } @else {
-        <div class="no-event">
-          <p>{{ t('DASHBOARD.NO_UPCOMING') }}</p>
-          <button mat-stroked-button color="primary" routerLink="/calendar">
-            {{ t('EVENT.CREATE_TITLE') }}
-          </button>
-        </div>
+          <div class="no-event">
+            <p>{{ t('dashboard.DASHBOARD.NO_UPCOMING') }}</p>
+            <button mat-stroked-button color="primary" routerLink="/calendar">
+              {{ t('EVENT.CREATE_TITLE') }}
+            </button>
+          </div>
         }
       </mat-card-content>
     </mat-card>
 
     @if (!user()?.has2FA) {
-    <mat-card class="security-card warning">
-      <mat-card-header>
-        <mat-icon color="warn">warning</mat-icon>
-        <mat-card-title>{{ t('DASHBOARD.SEC_TITLE_WARN') }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{ t('DASHBOARD.SEC_DESC') }}</p>
-      </mat-card-content>
-      <mat-card-actions align="end">
-        <button mat-flat-button color="warn" (click)="open2FASetup()">
-          {{ t('DASHBOARD.BTN_SETUP') }}
-        </button>
-      </mat-card-actions>
-    </mat-card>
+      <mat-card class="security-card warning">
+        <mat-card-header>
+          <mat-icon color="warn">warning</mat-icon>
+          <mat-card-title>{{ t('dashboard.DASHBOARD.SEC_TITLE_WARN') }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ t('dashboard.DASHBOARD.SEC_DESC') }}</p>
+        </mat-card-content>
+        <mat-card-actions align="end">
+          <button mat-flat-button color="warn" (click)="open2FASetup()">
+            {{ t('dashboard.DASHBOARD.BTN_SETUP') }}
+          </button>
+        </mat-card-actions>
+      </mat-card>
     } @else {
-    <mat-card class="security-card success">
-      <mat-card-header>
-        <mat-icon class="shield-icon">verified_user</mat-icon>
-        <mat-card-title>{{ t('DASHBOARD.SEC_TITLE_OK') }}</mat-card-title>
-      </mat-card-header>
-      <mat-card-content>
-        <p>{{ t('DASHBOARD.SEC_DESC_OK') }}</p>
-      </mat-card-content>
-    </mat-card>
+      <mat-card class="security-card success">
+        <mat-card-header>
+          <mat-icon class="shield-icon">verified_user</mat-icon>
+          <mat-card-title>{{ t('dashboard.DASHBOARD.SEC_TITLE_OK') }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{ t('dashboard.DASHBOARD.SEC_DESC_OK') }}</p>
+        </mat-card-content>
+      </mat-card>
     }
 
     <mat-card>
       <mat-card-header>
-        <mat-card-title>{{ t('DASHBOARD.QUICK_ACTIONS') }}</mat-card-title>
+        <mat-card-title>{{ t('dashboard.DASHBOARD.QUICK_ACTIONS') }}</mat-card-title>
       </mat-card-header>
       <mat-card-content class="actions-content">
         <button mat-stroked-button routerLink="/calendar">

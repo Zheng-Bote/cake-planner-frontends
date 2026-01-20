@@ -3,106 +3,141 @@
     <h1>🏆 {{ t('MENU.HALL_OF_FAME') }}</h1>
 
     <div class="grid">
-      @for (evt of events(); track evt.id) { @defer (on viewport) {
-      <mat-card class="event-card">
-        <div class="image-wrapper" (click)="openOverlay(evt)">
-          @if (evt.photoUrl) {
-          <picture>
-            <source
-              [srcset]="getWebPUrl(evt.photoUrl, 480)"
-              media="(max-width: 600px)"
-              type="image/webp"
-            />
-            <source
-              [srcset]="getWebPUrl(evt.photoUrl, 800)"
-              media="(max-width: 1200px)"
-              type="image/webp"
-            />
-            <source [srcset]="getWebPUrl(evt.photoUrl, 1280)" type="image/webp" />
+      @for (evt of events(); track evt.id) {
+        @defer (on viewport) {
+          <mat-card class="event-card">
+            <div class="image-wrapper" (click)="openOverlay(evt, evt.bakerName)">
+              @if (evt.photoUrl) {
+                <picture>
+                  <source
+                    [srcset]="getWebPUrl(evt.photoUrl, 480)"
+                    media="(max-width: 600px)"
+                    type="image/webp"
+                  />
+                  <source
+                    [srcset]="getWebPUrl(evt.photoUrl, 800)"
+                    media="(max-width: 1200px)"
+                    type="image/webp"
+                  />
+                  <source [srcset]="getWebPUrl(evt.photoUrl, 1280)" type="image/webp" />
 
-            <img
-              [src]="evt.photoUrl"
-              [alt]="evt.bakerName"
-              loading="lazy"
-              onerror="this.style.display='none'; this.parentElement.nextElementSibling.style.display='flex'"
-            />
-          </picture>
-          <div
-            class="img-error-fallback"
-            style="
-              display: none;
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              height: 100%;
-              justify-content: center;
-              align-items: center;
-              background: var(--mat-sys-surface-container-high);
-              color: var(--mat-sys-outline);
-            "
-          >
-            <mat-icon style="font-size: 48px; width: 48px; height: 48px">broken_image</mat-icon>
-          </div>
-          } @else {
-          <div class="placeholder">
-            <img src="assets/logo_500x500.png" />
-          </div>
-          }
+                  <img
+                    [src]="evt.photoUrl"
+                    [alt]="evt.bakerName"
+                    loading="lazy"
+                    onerror="
+                      this.style.display = 'none';
+                      this.parentElement.nextElementSibling.style.display = 'flex';
+                    "
+                  />
+                </picture>
+                <div
+                  class="img-error-fallback"
+                  style="
+                    display: none;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    justify-content: center;
+                    align-items: center;
+                    background: var(--mat-sys-surface-container-high);
+                    color: var(--mat-sys-outline);
+                  "
+                >
+                  <mat-icon style="font-size: 48px; width: 48px; height: 48px"
+                    >broken_image</mat-icon
+                  >
+                </div>
+              } @else {
+                <div class="placeholder">
+                  <img src="assets/logo_500x500.png" />
+                </div>
+              }
 
-          <div class="rating-badge">
-            <mat-icon>star</mat-icon> {{ evt.rating.average | number : '1.1-1' }}
-          </div>
-        </div>
+              <div class="rating-badge">
+                <mat-icon>star</mat-icon> {{ evt.rating.average | number: '1.1-1' }}
+              </div>
+            </div>
 
-        <mat-card-content>
-          <h3>{{ evt.bakerName }}</h3>
-          <p class="desc">
-            {{ evt.description | slice : 0 : 50 }}{{ evt.description.length > 50 ? '...' : '' }}
-          </p>
-          <div class="meta">{{ evt.date | date : 'mediumDate' }}</div>
+            <mat-card-content>
+              <h3>{{ evt.bakerName }}</h3>
+              <p class="desc">
+                {{ evt.description | slice: 0 : 50 }}{{ evt.description.length > 50 ? '...' : '' }}
+              </p>
+              <div class="meta">{{ evt.date | date: 'mediumDate' : undefined : lang() }}</div>
 
-          @if (evt.gallery.length > 0) {
-          <div class="mini-gallery">
-            @for (pic of evt.gallery.slice(0, 3); track pic.url) {
-            <img
-              [src]="pic.url"
-              class="mini-thumb clickable"
-              (click)="openOverlay(pic.url); $event.stopPropagation()"
-              matTooltip="{{ pic.userName }}"
-            />
-            } @if (evt.gallery.length > 3) {
-            <span class="more" (click)="openOverlay(evt); $event.stopPropagation()"
-              >+{{ evt.gallery.length - 3 }}</span
-            >
-            }
-          </div>
-          }
-        </mat-card-content>
-      </mat-card>
-      } @placeholder {
-      <div class="skeleton-card">Loading...</div>
-      } }
+              @if (evt.gallery.length > 0) {
+                <div class="mini-gallery">
+                  @for (pic of evt.gallery.slice(0, 3); track pic.url) {
+                    <picture>
+                      <source
+                        [srcset]="getWebPUrl(pic.url, 480)"
+                        media="(max-width: 600px)"
+                        type="image/webp"
+                      />
+                      <source
+                        [srcset]="getWebPUrl(pic.url, 800)"
+                        media="(max-width: 1200px)"
+                        type="image/webp"
+                      />
+                      <source [srcset]="getWebPUrl(pic.url, 1280)" type="image/webp" />
+
+                      <img
+                        [src]="pic.url"
+                        [alt]="pic.userName"
+                        class="mini-thumb clickable"
+                        (click)="openOverlay(pic.url, pic.userName); $event.stopPropagation()"
+                        matTooltip="{{ pic.userName }}"
+                        loading="lazy"
+                        onerror="
+                          this.style.display = 'none';
+                          this.parentElement.nextElementSibling.style.display = 'flex';
+                        "
+                      />
+                    </picture>
+                  }
+                  @if (evt.gallery.length > 3) {
+                    <span class="more" (click)="openOverlay(evt); $event.stopPropagation()"
+                      >+{{ evt.gallery.length - 3 }}</span
+                    >
+                  }
+                </div>
+              }
+            </mat-card-content>
+          </mat-card>
+        } @placeholder {
+          <div class="skeleton-card">Loading...</div>
+        }
+      }
     </div>
   </div>
 
   @if (overlayUrl()) {
-  <div class="lightbox" (click)="closeOverlay()">
-    <div class="lightbox-content" (click)="$event.stopPropagation()">
-      <img [src]="overlayUrl()" />
-      <a
-        [href]="overlayUrl()"
-        download
-        class="download-btn"
-        mat-icon-button
-        (click)="$event.stopPropagation()"
-      >
-        <mat-icon>download</mat-icon>
-      </a>
-      <button mat-icon-button class="close-btn" (click)="closeOverlay()">
-        <mat-icon>close</mat-icon>
-      </button>
+    <div class="lightbox" (click)="closeOverlay()">
+      <div class="lightbox-content" (click)="$event.stopPropagation()">
+        <img [src]="overlayUrl()" />
+
+        @if (overlayUserName()) {
+          <p class="image-caption">
+            <small>{{ t('hall-of-fame.PROVIDED_BY') }}:</small> {{ overlayUserName() }}
+          </p>
+        }
+
+        <a
+          [href]="overlayUrl()"
+          download
+          class="download-btn"
+          mat-icon-button
+          (click)="$event.stopPropagation()"
+        >
+          <mat-icon>download</mat-icon>
+        </a>
+        <button mat-icon-button class="close-btn" (click)="closeOverlay()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
     </div>
-  </div>
   }
 </ng-container>

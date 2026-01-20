@@ -10,7 +10,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar'; // NEU
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { TranslocoModule, TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
 
 import { AuthService, TwoFactorSetupComponent } from 'shared-lib';
 // NEU: Importieren für den Dialog-Aufruf
@@ -29,6 +29,7 @@ import { ChangePasswordComponent } from '../../pages/change-password/change-pass
     MatDividerModule,
     TranslocoModule,
   ],
+  providers: [provideTranslocoScope({ scope: 'user_profile', alias: 'user-profile' })],
   templateUrl: './profile.html',
   styleUrls: ['./profile.scss'],
 })
@@ -62,7 +63,7 @@ export class ProfileComponent implements OnInit {
     this.http.post('/api/user/settings', { languageEmail: lang }).subscribe({
       next: () => {
         // 1a. Hässliches Alert durch SnackBar ersetzt
-        this.snackBar.open(this.transloco.translate('PROFILE.SAVE_SUCCESS'), 'OK', {
+        this.snackBar.open(this.transloco.translate('user-profile.PROFILE.SAVE_SUCCESS'), 'OK', {
           duration: 3000,
           horizontalPosition: 'end',
           verticalPosition: 'bottom',
@@ -70,7 +71,7 @@ export class ProfileComponent implements OnInit {
         });
       },
       error: () => {
-        this.snackBar.open(this.transloco.translate('PROFILE.SAVE_ERROR'), 'OK', {
+        this.snackBar.open(this.transloco.translate('user-profile.PROFILE.SAVE_ERROR'), 'OK', {
           duration: 3000,
           horizontalPosition: 'end',
           verticalPosition: 'bottom',
@@ -84,7 +85,7 @@ export class ProfileComponent implements OnInit {
     this.http.post('/api/user/settings', { language: lang }).subscribe({
       next: () => {
         // 1a. Hässliches Alert durch SnackBar ersetzt
-        this.snackBar.open(this.transloco.translate('PROFILE.SAVE_SUCCESS'), 'OK', {
+        this.snackBar.open(this.transloco.translate('user-profile.PROFILE.SAVE_SUCCESS'), 'OK', {
           duration: 3000,
           horizontalPosition: 'end',
           verticalPosition: 'bottom',
@@ -92,7 +93,7 @@ export class ProfileComponent implements OnInit {
         });
       },
       error: () => {
-        this.snackBar.open(this.transloco.translate('PROFILE.SAVE_ERROR'), 'OK', {
+        this.snackBar.open(this.transloco.translate('user-profile.PROFILE.SAVE_ERROR'), 'OK', {
           duration: 3000,
           horizontalPosition: 'end',
           verticalPosition: 'bottom',
@@ -115,7 +116,7 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteAccount() {
-    if (confirm(this.transloco.translate('PROFILE.DELETE_CONFIRM'))) {
+    if (confirm(this.transloco.translate('user-profile.PROFILE.DELETE_CONFIRM'))) {
       this.http.delete('/api/user').subscribe({
         next: () => {
           this.authService.logout();

@@ -9,7 +9,12 @@
     </div>
 
     <div class="language-switch">
-      <button mat-icon-button [matMenuTriggerFor]="langMenu" aria-label="Sprache wechseln">
+      <button
+        mat-icon-button
+        [matMenuTriggerFor]="langMenu"
+        matTooltip="{{ t('MENU.CHANGE_LANGUAGE') }}"
+        aria-label="{{ t('MENU.CHANGE_LANGUAGE') }}"
+      >
         <mat-icon>language</mat-icon>
       </button>
       <mat-menu #langMenu="matMenu">
@@ -26,20 +31,26 @@
   <main class="main-content">
     <mat-card class="login-card">
       <mat-card-header>
-        <mat-card-title>{{ t('LOGIN.TITLE') }}</mat-card-title>
+        <mat-card-title>{{ t('login_user.LOGIN.TITLE') }}</mat-card-title>
       </mat-card-header>
 
       <mat-card-content>
         @if (!requires2FA()) {
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>{{ t('LOGIN.EMAIL_LABEL') }}</mat-label>
-              <input matInput formControlName="email" type="email" placeholder="max@example.com" />
+              <mat-label>{{ t('login_user.LOGIN.EMAIL_LABEL') }}</mat-label>
+              <input
+                matInput
+                formControlName="email"
+                type="email"
+                placeholder="max@example.com"
+                tabindex="1"
+              />
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>{{ t('LOGIN.PASSWORD_LABEL') }}</mat-label>
-              <input matInput formControlName="password" type="password" />
+              <mat-label>{{ t('login_user.LOGIN.PASSWORD_LABEL') }}</mat-label>
+              <input matInput formControlName="password" type="password" tabindex="2" />
             </mat-form-field>
 
             @if (errorMessage()) {
@@ -52,17 +63,20 @@
               type="submit"
               [disabled]="loginForm.invalid || isLoading()"
               class="submit-btn"
+              tabindex="3"
             >
               @if (isLoading()) {
                 <mat-spinner diameter="20"></mat-spinner>
               } @else {
-                {{ t('LOGIN.LOGIN_BTN') }}
+                {{ t('login_user.LOGIN.LOGIN_BTN') }}
               }
             </button>
           </form>
 
           <div class="register-link-container">
-            <a routerLink="/register" class="register-link"> {{ t('LOGIN.REGISTER_LINK') }} </a>
+            <a routerLink="/register" class="register-link">
+              {{ t('login_user.LOGIN.REGISTER_LINK') }}
+            </a>
           </div>
         }
 
@@ -110,10 +124,18 @@
 
   <footer class="app-footer">
     <div class="footer-inner">
-      <div class="copyright">&copy; {{ copyrightYear }} Cake Planner</div>
+      <div class="copyright footer-links">
+        <a href="https://zheng-bote.github.io/cake-planner-frontends/" title="Cake Planner Homepage"
+          >&copy; {{ copyrightYear }} Cake Planner</a
+        >
+      </div>
       <div class="footer-links">
-        <a routerLink="/legal-notice" target="_blank">{{ t('MENU.IMPRINT') }}</a>
-        <a routerLink="/privacy-policy" target="_blank">{{ t('MENU.DATA_PROTECTION') }}</a>
+        <a routerLink="/legal-notice" title="Legal Notice" target="_blank">{{
+          t('MENU.IMPRINT')
+        }}</a>
+        <a routerLink="/privacy-policy" title="Privacy Policy" target="_blank">{{
+          t('MENU.DATA_PROTECTION')
+        }}</a>
       </div>
     </div>
   </footer>

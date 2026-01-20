@@ -1,10 +1,11 @@
 import { Component, OnInit, signal, inject } from '@angular/core';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop'; // toSignal dazu
 import { CommonModule, DatePipe, DecimalPipe, SlicePipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip'; // <--- WICHTIG
-import { TranslocoModule } from '@jsverse/transloco';
+import { TranslocoModule, provideTranslocoScope, TranslocoService } from '@jsverse/transloco';
 import { EventService, CakeEvent } from 'shared-lib';
 
 @Component({
@@ -21,6 +22,7 @@ import { EventService, CakeEvent } from 'shared-lib';
     DecimalPipe,
     SlicePipe,
   ],
+  providers: [provideTranslocoScope({ scope: 'hall_of_fame', alias: 'hall-of-fame' })],
   templateUrl: './hall-of-fame.html',
   styleUrls: ['./hall-of-fame.scss'],
 })
@@ -30,6 +32,10 @@ export class HallOfFameComponent implements OnInit {
   // Signale für Daten und Overlay-Status
   events = signal<CakeEvent[]>([]);
   overlayUrl = signal<string | null>(null);
+  overlayUserName = signal<string | null>(null);
+
+  private transloco = inject(TranslocoService);
+  lang = toSignal(this.transloco.langChanges$, { initialValue: this.transloco.getActiveLang() });
 
   ngOnInit() {
     this.loadRankedEvents();
@@ -54,12 +60,13 @@ export class HallOfFameComponent implements OnInit {
   }
 
   // --- Overlay Logic ---
-  openOverlay(eventOrUrl: CakeEvent | string) {
+  openOverlay(eventOrUrl: CakeEvent | string, userName?: string | '') {
     if (typeof eventOrUrl === 'string') {
       this.overlayUrl.set(eventOrUrl);
     } else if (eventOrUrl.photoUrl) {
       this.overlayUrl.set(eventOrUrl.photoUrl);
     }
+    this.overlayUserName.set(userName || null);
   }
 
   closeOverlay() {

@@ -1,0 +1,31 @@
+{
+  "LOGIN": {
+    "TITLE": "Cake Planner Login",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Password",
+    "LOGIN_BTN": "Login",
+    "REGISTER_LINK": "No account? Register",
+    "WRONG_CREDENTIALS": "Wrong credentials",
+    "ACCOUNT_INACTIVE": "Account inactive",
+    "SERVER_ERROR": "Server error"
+  },
+  "REGISTER": {
+    "TITLE": "Cake Planner Register",
+    "NAME_LABEL": "Name",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Password",
+    "CONFIRM_PASSWORD_LABEL": "Confirm Password",
+    "MIN_LENGTH_ERROR": "At least 8 characters",
+    "PASSWORD_MISMATCH_ERROR": "Passwords do not match",
+    "SUBMIT_BTN": "Register",
+    "LOGIN_LINK": "Already registered? Login",
+    "ERROR_ACCOUNT_ALREADY_EXISTS": "Account already exists",
+    "ERROR_MSG": "Registration failed",
+    "SUCCESS_MSG": "Registration successful! Please wait for activation by an administrator.",
+    "CLOSE": "Close",
+    "AGREE_TEXT": "I have read the",
+    "PRIVACY_LINK": "Privacy Policy",
+    "PRIVACY_REQUIRED_ERROR": "You must accept the privacy policy.",
+    "PASSWORD_MIN_LENGTH_TOOLTIP": "at least 8 characters"
+  }
+}

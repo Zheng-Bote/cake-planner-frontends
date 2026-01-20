@@ -72,7 +72,8 @@
           type="button"
           mat-icon-button
           [matMenuTriggerFor]="langMenu"
-          aria-label="Sprache wechseln"
+          matTooltip="{{ t('MENU.CHANGE_LANGUAGE') }}"
+          aria-label="{{ t('MENU.CHANGE_LANGUAGE') }}"
         >
           <mat-icon>language</mat-icon>
         </button>
@@ -85,7 +86,12 @@
           </button>
         </mat-menu>
 
-        <button mat-icon-button (click)="logout()">
+        <button
+          mat-icon-button
+          (click)="logout()"
+          matTooltip="{{ t('MENU.LOGOUT') }}"
+          aria-label="{{ t('MENU.LOGOUT') }}"
+        >
           <mat-icon>logout</mat-icon>
         </button>
       </mat-toolbar>
@@ -96,13 +102,15 @@
 
       <footer class="app-footer">
         <div class="footer-inner">
-          <div class="footer-links">
+          <div class="footer-links" matTooltip="Systeminformation">
             <a routerLink="/system-infos">&copy; {{ copyrightYear }} Cake Planner</a>
           </div>
           <span class="spacer"></span>
           <div class="footer-links">
-            <a routerLink="/imprint">{{ t('MENU.IMPRINT') }}</a>
-            <a routerLink="/data-protection">{{ t('MENU.DATA_PROTECTION') }}</a>
+            <a routerLink="/imprint" title="Legal Notice">{{ t('MENU.IMPRINT') }}</a>
+            <a routerLink="/data-protection" title="Privacy Policy">{{
+              t('MENU.DATA_PROTECTION')
+            }}</a>
           </div>
         </div>
       </footer>

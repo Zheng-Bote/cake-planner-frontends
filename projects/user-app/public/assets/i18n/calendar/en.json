@@ -1,0 +1,8 @@
+{
+  "CALENDAR": {
+    "TODAY": "Today",
+    "NEW_MSG": "New Cake! {{baker}} is bringing something on {{date}}.",
+    "NEXT_MONTH": "Next Month",
+    "PREV_MONTH": "Previous Month"
+  }
+}

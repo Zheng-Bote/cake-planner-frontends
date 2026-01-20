@@ -1,0 +1,26 @@
+{
+  "PROFILE": {
+    "TITLE": "Mein Profil",
+    "ROLE": "Rolle",
+    "SETTINGS": "Einstellungen",
+    "LANG": "Sprache",
+    "EMAIL_LANG": "E-Mail Sprache",
+    "LANG_DE": "Deutsch",
+    "LANG_EN": "Englisch",
+    "SECURITY": "Sicherheit",
+    "BTN_PW": "Passwort ändern",
+    "BTN_2FA": "2FA Konfigurieren",
+    "DANGER_ZONE": "Gefahrenzone",
+    "DELETE_ACCOUNT": "Account löschen",
+    "DELETE_DESC": "Vorsicht: Dein Account wird deaktiviert und dein Name anonymisiert. Deine Kuchen bleiben erhalten.",
+    "SAVE_SUCCESS": "Einstellungen gespeichert!",
+    "SAVE_ERROR": "Fehler beim Speichern der Einstellungen",
+    "DELETE_CONFIRM": "Bist du sicher? Dein Account wird unwiderruflich gelöscht!",
+
+    "SEC_TITLE_WARN": "Sicherheit: Handlungsbedarf",
+    "SEC_TITLE_OK": "Sicherheit: Alles im Grünen",
+    "SEC_DESC": "Dein Konto ist nicht optimal geschützt. Bitte aktiviere 2FA.",
+    "SEC_DESC_OK": "Dein Konto ist durch 2-Faktor-Authentifizierung geschützt.",
+    "BTN_SETUP": "2FA Einrichten"
+  }
+}

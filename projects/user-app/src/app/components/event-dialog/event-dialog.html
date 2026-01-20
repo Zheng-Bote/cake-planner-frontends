@@ -1,18 +1,18 @@
 <ng-container *transloco="let t">
-  <h2 mat-dialog-title>{{ t('EVENT.CREATE_TITLE') }}</h2>
+  <h2 mat-dialog-title>{{ t('event.EVENT.CREATE_TITLE') }}</h2>
 
   <br />
   <mat-dialog-content>
     <form [formGroup]="form" class="event-form">
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>{{ t('EVENT.DATE_LABEL') }}</mat-label>
+        <mat-label>{{ t('event.EVENT.DATE_LABEL') }}</mat-label>
         <input matInput [matDatepicker]="picker" formControlName="date" />
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
       <mat-form-field appearance="outline" class="full-width">
-        <mat-label>{{ t('EVENT.DESC_LABEL') }}</mat-label>
+        <mat-label>{{ t('event.EVENT.DESC_LABEL') }}</mat-label>
         <textarea matInput formControlName="description" rows="3"></textarea>
       </mat-form-field>
 
@@ -21,8 +21,8 @@
           <mat-icon>add_photo_alternate</mat-icon>
           {{
             selectedFile
-              ? t('EVENT.PHOTO_SELECTED') + ': ' + selectedFile.name
-              : t('EVENT.PHOTO_BTN')
+              ? t('event.EVENT.PHOTO_SELECTED') + ': ' + selectedFile.name
+              : t('event.EVENT.PHOTO_BTN')
           }}
         </button>
         <input #fileInput type="file" hidden (change)="onFileSelected($event)" accept="image/*" />

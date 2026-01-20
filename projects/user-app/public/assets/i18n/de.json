@@ -10,68 +10,20 @@
     "PASSWORD": "Passwort ändern",
     "HALL_OF_FAME": "Ruhmeshalle",
     "IMPRINT": "Impressum",
-    "DATA_PROTECTION": "Datenschutz"
-  },
-  "PROFILE": {
-    "TITLE": "Mein Profil",
-    "ROLE": "Rolle",
-    "SETTINGS": "Einstellungen",
-    "LANG": "Sprache",
-    "EMAIL_LANG": "E-Mail Sprache",
-    "LANG_DE": "Deutsch",
-    "LANG_EN": "Englisch",
-    "SECURITY": "Sicherheit",
-    "BTN_PW": "Passwort ändern",
-    "BTN_2FA": "2FA Konfigurieren",
-    "DANGER_ZONE": "Gefahrenzone",
-    "DELETE_ACCOUNT": "Account löschen",
-    "DELETE_DESC": "Vorsicht: Dein Account wird deaktiviert und dein Name anonymisiert. Deine Kuchen bleiben erhalten.",
-    "SAVE_SUCCESS": "Einstellungen gespeichert!",
-    "SAVE_ERROR": "Fehler beim Speichern der Einstellungen",
-    "DELETE_CONFIRM": "Bist du sicher? Dein Account wird unwiderruflich gelöscht!",
-
-    "SEC_TITLE_WARN": "Sicherheit: Handlungsbedarf",
-    "SEC_TITLE_OK": "Sicherheit: Alles im Grünen",
-    "SEC_DESC": "Dein Konto ist nicht optimal geschützt. Bitte aktiviere 2FA.",
-    "SEC_DESC_OK": "Dein Konto ist durch 2-Faktor-Authentifizierung geschützt.",
-    "BTN_SETUP": "2FA Einrichten"
+    "DATA_PROTECTION": "Datenschutz",
+    "CHANGE_LANGUAGE": "Sprache wechseln",
+    "LOGOUT": "abmelden"
   },
   "DASHBOARD": {
-    "TITLE": "Übersicht",
     "MORNING": "Guten Morgen",
     "AFTERNOON": "Guten Tag",
-    "EVENING": "Guten Abend",
-    "SUBTITLE": "Hier ist dein Kuchen-Status.",
-    "NEXT_CAKE": "Der nächste Kuchen",
-    "NO_UPCOMING": "Keine Kuchen in Sicht! Zeit, das zu ändern.",
-    "SEC_TITLE_WARN": "Sicherheit: Handlungsbedarf",
-    "SEC_TITLE_OK": "Sicherheit: Alles im Grünen",
-    "SEC_DESC": "Dein Konto ist nicht optimal geschützt. Bitte aktiviere 2FA.",
-    "SEC_DESC_OK": "Dein Konto ist durch 2-Faktor-Authentifizierung geschützt.",
-    "BTN_SETUP": "2FA Einrichten",
-    "QUICK_ACTIONS": "Schnellzugriff"
+    "EVENING": "Guten Abend"
   },
   "CALENDAR": {
-    "TODAY": "Heute",
     "NEW_MSG": "Neuer Kuchen! {{baker}} bringt am {{date}} etwas mit."
   },
-  "EVENT": {
-    "CREATE_TITLE": "Neuen Kuchen eintragen",
-    "DETAILS": "Kuchen Details",
-    "CAKE_BY": "Kuchen von",
-    "MY_EVENT": "Mein Event",
-    "DATE_LABEL": "Datum",
-    "DESC_LABEL": "Beschreibung (optional)",
-    "PHOTO_BTN": "Foto hinzufügen (optional)",
-    "PHOTO_SELECTED": "Datei ausgewählt",
-    "NO_DESC": "Keine Beschreibung verfügbar.",
-    "UPLOAD_PHOTO": "Foto hochladen",
-    "VOTES": "Stimmen",
-    "COMMUNITY_PHOTOS": "Community Fotos",
-    "ME": "Ich",
-    "UPLOAD_YOURS": "Eigenes Foto hochladen",
-    "NO_GALLERY": "Noch keine Community-Fotos. Sei der Erste!",
-    "NO_PHOTO_YET": "Noch kein Foto"
+  "PROFILE": {
+    "TITLE": "Mein Profil"
   },
   "CHANGE_PW": {
     "TITLE": "Neues Passwort festlegen",
@@ -93,6 +45,7 @@
   "MSG": {
     "SAVE_SUCCESS": "Erfolgreich gespeichert!",
     "UPLOAD_SUCCESS": "Foto hochgeladen!",
+    "ULPOAD_FAILED": "Hochladen ist fehlgeschlagen",
     "DELETE_SUCCESS": "Eintrag gelöscht."
   },
   "SHARED": {
@@ -110,33 +63,5 @@
       "BTN_ACTIVATE": "Aktivieren",
       "BTN_ACTIVATING": "Aktiviere..."
     }
-  },
-  "LOGIN": {
-    "TITLE": "Kuchenplaner Login",
-    "EMAIL_LABEL": "Email",
-    "PASSWORD_LABEL": "Passwort",
-    "LOGIN_BTN": "Einloggen",
-    "REGISTER_LINK": "Noch keinen Account? Registrieren",
-    "WRONG_CREDENTIALS": "Falsche Zugangsdaten",
-    "ACCOUNT_INACTIVE": "Account inaktiv",
-    "SERVER_ERROR": "Server Fehler"
-  },
-  "REGISTER": {
-    "TITLE": "Kuchenplaner Registrierung",
-    "NAME_LABEL": "Name",
-    "EMAIL_LABEL": "Email",
-    "PASSWORD_LABEL": "Passwort",
-    "CONFIRM_PASSWORD_LABEL": "Passwort bestätigen",
-    "MIN_LENGTH_ERROR": "Mindestens 8 Zeichen",
-    "PASSWORD_MISMATCH_ERROR": "Passwörter stimmen nicht überein",
-    "SUBMIT_BTN": "Registrieren",
-    "LOGIN_LINK": "Bereits registriert? Einloggen",
-    "ERROR_ACCOUNT_ALREADY_EXISTS": "Account existiert bereits",
-    "ERROR_MSG": "Registrierung fehlgeschlagen",
-    "SUCCESS_MSG": "Registrierung erfolgreich! Bitte warte auf die Freischaltung durch einen Administrator.",
-    "CLOSE": "Schließen",
-    "AGREE_TEXT": "Ich habe die",
-    "PRIVACY_LINK": "Datenschutzerklärung gelesen",
-    "PRIVACY_REQUIRED_ERROR": "Die Datenschutzerklärung muss akzeptiert werden."
   }
 }

@@ -8,7 +8,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { TranslocoService, TranslocoModule } from '@jsverse/transloco';
+import { TranslocoService, TranslocoModule, provideTranslocoScope } from '@jsverse/transloco';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'; // Dazu
 import { map } from 'rxjs/operators'; // Dazu
 import {
@@ -40,6 +40,7 @@ import { EventDetailComponent } from '../../components/event-detail/event-detail
     MatTooltipModule,
     TranslocoModule,
   ],
+  providers: [provideTranslocoScope({ scope: 'calendar', alias: 'calendar' })],
   templateUrl: './calendar.html',
   styleUrl: './calendar.scss',
 })
@@ -52,14 +53,20 @@ export class CalendarComponent {
   private destroyRef = inject(DestroyRef);
   private breakpointObserver = inject(BreakpointObserver); // Inject
 
+  lang = toSignal(this.transloco.langChanges$, { initialValue: this.transloco.getActiveLang() });
+
   viewDate = signal(new Date());
   events = signal<CakeEvent[]>([]);
-  weekDays = ['Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa', 'So'];
+  weekDays: Date[] = (() => {
+    const start = startOfWeek(new Date(), { weekStartsOn: 1 });
+    const end = endOfWeek(new Date(), { weekStartsOn: 1 });
+    return eachDayOfInterval({ start, end });
+  })();
 
   // Signal für Mobile-Erkennung
   isMobile = toSignal(
     this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((result) => result.matches)),
-    { initialValue: false }
+    { initialValue: false },
   );
 
   days = computed(() => {
@@ -85,7 +92,7 @@ export class CalendarComponent {
       .getServerSentEvents('/api/events/stream')
       .pipe(takeUntilDestroyed())
       .subscribe((msg) => {
-        const text = this.transloco.translate('CALENDAR.NEW_MSG', {
+        const text = this.transloco.translate('calendar.CALENDAR.NEW_MSG', {
           baker: msg.bakerName,
           date: msg.date,
         });
@@ -98,7 +105,7 @@ export class CalendarComponent {
     // Range Berechnung abhängig von View (Mobile lädt etwas weniger, aber Logik bleibt gleich)
     const start = format(
       startOfWeek(startOfMonth(this.viewDate()), { weekStartsOn: 1 }),
-      'yyyy-MM-dd'
+      'yyyy-MM-dd',
     );
     const end = format(endOfWeek(endOfMonth(this.viewDate()), { weekStartsOn: 1 }), 'yyyy-MM-dd');
 
@@ -139,6 +146,7 @@ export class CalendarComponent {
           next: () => {
             this.snackBar.open(this.transloco.translate('MSG.SAVE_SUCCESS'), 'OK', {
               duration: 2000,
+              panelClass: ['success-snackbar'],
             });
             this.loadEvents();
           },

@@ -1,0 +1,31 @@
+{
+  "LOGIN": {
+    "TITLE": "Kuchenplaner Login",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Passwort",
+    "LOGIN_BTN": "Einloggen",
+    "REGISTER_LINK": "Noch keinen Account? Registrieren",
+    "WRONG_CREDENTIALS": "Falsche Zugangsdaten",
+    "ACCOUNT_INACTIVE": "Account inaktiv",
+    "SERVER_ERROR": "Server Fehler"
+  },
+  "REGISTER": {
+    "TITLE": "Kuchenplaner Registrierung",
+    "NAME_LABEL": "Name",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Passwort",
+    "CONFIRM_PASSWORD_LABEL": "Passwort bestätigen",
+    "MIN_LENGTH_ERROR": "Mindestens 8 Zeichen",
+    "PASSWORD_MISMATCH_ERROR": "Passwörter stimmen nicht überein",
+    "SUBMIT_BTN": "Registrieren",
+    "LOGIN_LINK": "Bereits registriert? Einloggen",
+    "ERROR_ACCOUNT_ALREADY_EXISTS": "Account existiert bereits",
+    "ERROR_MSG": "Registrierung fehlgeschlagen",
+    "SUCCESS_MSG": "Registrierung erfolgreich! Bitte warte auf die Freischaltung durch einen Administrator.",
+    "CLOSE": "Schließen",
+    "AGREE_TEXT": "Ich habe die",
+    "PRIVACY_LINK": "Datenschutzerklärung gelesen",
+    "PRIVACY_REQUIRED_ERROR": "Die Datenschutzerklärung muss akzeptiert werden.",
+    "PASSWORD_MIN_LENGTH_TOOLTIP": "mindestens 8 Zeichen"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "EVENT": {
+    "CREATE_TITLE": "Add New Cake",
+    "DETAILS": "Cake Details",
+    "CAKE_BY": "Cake by",
+    "MY_EVENT": "My Event",
+    "DATE_LABEL": "Date",
+    "DESC_LABEL": "Description (optional)",
+    "PHOTO_BTN": "Add Photo (optional)",
+    "PHOTO_SELECTED": "File selected",
+    "NO_DESC": "No description available.",
+    "UPLOAD_PHOTO": "Upload Photo",
+    "VOTES": "Votes",
+    "COMMUNITY_PHOTOS": "Community Photos",
+    "ME": "Me",
+    "UPLOAD_YOURS": "Upload yours",
+    "NO_GALLERY": "No community photos yet. Be the first!",
+    "NO_PHOTO_YET": "No photo yet",
+    "DELETE_EVENT": "Delete Event",
+    "DOWNLOAD_ICS": "Download ICS for Outlook"
+  }
+}

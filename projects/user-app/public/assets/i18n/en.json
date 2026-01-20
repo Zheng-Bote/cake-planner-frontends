@@ -10,68 +10,20 @@
     "PASSWORD": "Change Password",
     "HALL_OF_FAME": "Hall of Fame",
     "IMPRINT": "Legal Notice",
-    "DATA_PROTECTION": "Privacy Policy"
-  },
-  "PROFILE": {
-    "TITLE": "My Profile",
-    "ROLE": "Role",
-    "SETTINGS": "Settings",
-    "LANG": "Language",
-    "EMAIL_LANG": "E-Mail Language",
-    "LANG_DE": "German",
-    "LANG_EN": "English",
-    "SECURITY": "Security",
-    "BTN_PW": "Change Password",
-    "BTN_2FA": "Configure 2FA",
-    "DANGER_ZONE": "Danger Zone",
-    "DELETE_ACCOUNT": "Delete Account",
-    "DELETE_DESC": "Warning: Your account will be deactivated and anonymized. Your cakes will remain.",
-    "SAVE_SUCCESS": "Settings saved!",
-    "SAVE_ERROR": "Error saving settings",
-    "DELETE_CONFIRM": "Are you sure? This cannot be undone!",
-
-    "SEC_TITLE_WARN": "Security: Action Required",
-    "SEC_TITLE_OK": "Security: All Good",
-    "SEC_DESC": "Your account is not fully secured. Please enable 2FA.",
-    "SEC_DESC_OK": "Your account is secured with 2-Factor Authentication.",
-    "BTN_SETUP": "Setup 2FA"
+    "DATA_PROTECTION": "Privacy Policy",
+    "CHANGE_LANGUAGE": "change Language",
+    "LOGOUT": "logout"
   },
   "DASHBOARD": {
-    "TITLE": "Overview",
-    "MORNING": "Good morning",
-    "AFTERNOON": "Good afternoon",
-    "EVENING": "Good evening",
-    "SUBTITLE": "Here is your cake status.",
-    "NEXT_CAKE": "Up Next",
-    "NO_UPCOMING": "No cakes in sight! Time to change that.",
-    "SEC_TITLE_WARN": "Security: Action Required",
-    "SEC_TITLE_OK": "Security: All Good",
-    "SEC_DESC": "Your account is not fully secured. Please enable 2FA.",
-    "SEC_DESC_OK": "Your account is secured with 2-Factor Authentication.",
-    "BTN_SETUP": "Setup 2FA",
-    "QUICK_ACTIONS": "Quick Actions"
+    "MORNING": "Good Morning",
+    "AFTERNOON": "Good Afternoon",
+    "EVENING": "Good Evening"
   },
   "CALENDAR": {
-    "TODAY": "Today",
     "NEW_MSG": "New Cake! {{baker}} is bringing something on {{date}}."
   },
-  "EVENT": {
-    "CREATE_TITLE": "Add New Cake",
-    "DETAILS": "Cake Details",
-    "CAKE_BY": "Cake by",
-    "MY_EVENT": "My Event",
-    "DATE_LABEL": "Date",
-    "DESC_LABEL": "Description (optional)",
-    "PHOTO_BTN": "Add Photo (optional)",
-    "PHOTO_SELECTED": "File selected",
-    "NO_DESC": "No description available.",
-    "UPLOAD_PHOTO": "Upload Photo",
-    "VOTES": "Votes",
-    "COMMUNITY_PHOTOS": "Community Photos",
-    "ME": "Me",
-    "UPLOAD_YOURS": "Upload yours",
-    "NO_GALLERY": "No community photos yet. Be the first!",
-    "NO_PHOTO_YET": "No photo yet"
+  "PROFILE": {
+    "TITLE": "My Profile"
   },
   "CHANGE_PW": {
     "TITLE": "Set New Password",
@@ -93,6 +45,7 @@
   "MSG": {
     "SAVE_SUCCESS": "Saved successfully!",
     "UPLOAD_SUCCESS": "Photo uploaded!",
+    "UPLOAD_FAILED": "Upload failed",
     "DELETE_SUCCESS": "Entry deleted."
   },
   "SHARED": {
@@ -110,33 +63,5 @@
       "BTN_ACTIVATE": "Activate",
       "BTN_ACTIVATING": "Activating..."
     }
-  },
-  "LOGIN": {
-    "TITLE": "Cake Planner Login",
-    "EMAIL_LABEL": "Email",
-    "PASSWORD_LABEL": "Password",
-    "LOGIN_BTN": "Login",
-    "REGISTER_LINK": "No account? Register",
-    "WRONG_CREDENTIALS": "Wrong credentials",
-    "ACCOUNT_INACTIVE": "Account inactive",
-    "SERVER_ERROR": "Server error"
-  },
-  "REGISTER": {
-    "TITLE": "Cake Planner Register",
-    "NAME_LABEL": "Name",
-    "EMAIL_LABEL": "Email",
-    "PASSWORD_LABEL": "Password",
-    "CONFIRM_PASSWORD_LABEL": "Confirm Password",
-    "MIN_LENGTH_ERROR": "At least 8 characters",
-    "PASSWORD_MISMATCH_ERROR": "Passwords do not match",
-    "SUBMIT_BTN": "Register",
-    "LOGIN_LINK": "Already registered? Login",
-    "ERROR_ACCOUNT_ALREADY_EXISTS": "Account already exists",
-    "ERROR_MSG": "Registration failed",
-    "SUCCESS_MSG": "Registration successful! Please wait for activation by an administrator.",
-    "CLOSE": "Close",
-    "AGREE_TEXT": "I have read the",
-    "PRIVACY_LINK": "Privacy Policy",
-    "PRIVACY_REQUIRED_ERROR": "You must accept the privacy policy."
   }
 }

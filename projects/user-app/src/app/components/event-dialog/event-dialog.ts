@@ -9,12 +9,15 @@ import { provideNativeDateAdapter } from '@angular/material/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { format } from 'date-fns';
 import { MatIconModule } from '@angular/material/icon';
-import { TranslocoModule } from '@jsverse/transloco';
+import { TranslocoModule, provideTranslocoScope } from '@jsverse/transloco';
 
 @Component({
   selector: 'app-event-dialog',
   standalone: true,
-  providers: [provideNativeDateAdapter()],
+  providers: [
+    provideNativeDateAdapter(),
+    provideTranslocoScope({ scope: 'event', alias: 'event' }),
+  ],
   imports: [
     CommonModule,
     MatDialogModule,

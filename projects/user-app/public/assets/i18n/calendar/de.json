@@ -1,0 +1,8 @@
+{
+  "CALENDAR": {
+    "TODAY": "Heute",
+    "NEW_MSG": "Neuer Kuchen! {{baker}} bringt am {{date}} etwas mit.",
+    "NEXT_MONTH": "Nächster Monat",
+    "PREV_MONTH": "Vorheriger Monat"
+  }
+}

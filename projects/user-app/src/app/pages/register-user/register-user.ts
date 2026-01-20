@@ -11,7 +11,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslocoModule, TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
 
 import { AuthService } from 'shared-lib';
 
@@ -31,7 +32,13 @@ import { AuthService } from 'shared-lib';
     MatMenuModule,
     MatIconModule,
     MatCheckboxModule,
+    MatTooltipModule,
     TranslocoModule,
+  ],
+  providers: [
+    // LÄDT die JSONs aus assets/i18n/system-info/*.json
+    // MAPPED sie auf den Key 'system_info', damit t('system_info.title') funktioniert.
+    provideTranslocoScope({ scope: 'login_register_user', alias: 'register_user' }),
   ],
   templateUrl: './register-user.html',
   styleUrl: './register-user.scss',
@@ -98,11 +105,18 @@ export class RegisterUserComponent {
         .subscribe({
           next: () => {
             this.isLoading.set(false);
-            this.successMessage.set(this.translocoService.translate('REGISTER.SUCCESS_MSG'));
-            this.snackBar.open(this.translocoService.translate('REGISTER.SUCCESS_MSG'), 'OK', {
-              duration: 8000,
-              panelClass: ['success-snackbar'],
-            });
+            this.errorMessage.set('');
+            this.successMessage.set(
+              this.translocoService.translate('register-user.REGISTER.SUCCESS_MSG'),
+            );
+            this.snackBar.open(
+              this.translocoService.translate('register-user.REGISTER.SUCCESS_MSG'),
+              'OK',
+              {
+                duration: 8000,
+                panelClass: ['success-snackbar'],
+              },
+            );
             //this.router.navigate(['/login']);
           },
           error: (err) => {
@@ -110,13 +124,20 @@ export class RegisterUserComponent {
             // Backend sendet 409 bei Konflikt
             const msg =
               err.status === 409
-                ? this.translocoService.translate('REGISTER.ERROR_ACCOUNT_ALREADY_EXISTS')
-                : this.translocoService.translate('REGISTER.ERROR_MSG');
+                ? this.translocoService.translate(
+                    'register-user.REGISTER.ERROR_ACCOUNT_ALREADY_EXISTS',
+                  )
+                : this.translocoService.translate('register-user.REGISTER.ERROR_MSG');
+            this.successMessage.set('');
             this.errorMessage.set(msg);
-            this.snackBar.open(msg, this.translocoService.translate('REGISTER.CLOSE'), {
-              duration: 5000,
-              panelClass: ['error-snackbar'],
-            });
+            this.snackBar.open(
+              msg,
+              this.translocoService.translate('register-user.REGISTER.CLOSE'),
+              {
+                duration: 5000,
+                panelClass: ['error-snackbar'],
+              },
+            );
           },
         });
     }
