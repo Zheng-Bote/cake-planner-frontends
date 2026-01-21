@@ -177,17 +177,35 @@
 </nav>
     </aside>
 
-    <main class="main"><!-- DOCTOC SKIP -->
-<h1>Deployment Overview</h1>
-<h2>Components</h2>
-<h3>Webserver</h3>
+    <main class="main"><h1>Deployment Overview</h1>
+<hr>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<h2>Table of Contents</h2>
+<ul class="toc-level-2">
+<li><a href="#components">Components</a></li>
+<ul class="toc-level-3">
+<li><a href="#webserver">Webserver</a></li>
+<li><a href="#web-applicationserver">Web-Applicationserver</a></li>
+<li><a href="#database">Database</a></li>
+<li><a href="#frontends">Frontends</a></li>
+<ul class="toc-level-4">
+<li><a href="#admin-panel">Admin Panel</a></li>
+<li><a href="#user-frontend">User Frontend</a></li>
+</ul>
+</ul>
+</ul>
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<hr>
+<h2 id="components">Components</h2>
+<h3 id="webserver">Webserver</h3>
 <p>NGINX running in Docker or Podman. Proxy for Web-Applicationserver.</p>
-<h3>Web-Applicationserver</h3>
+<h3 id="web-applicationserver">Web-Applicationserver</h3>
 <p>Qt6 C++23 Crow-Server; running in Docker or Podman.</p>
-<h3>Database</h3>
+<h3 id="database">Database</h3>
 <p>SQLite3 db within Web-Applicationserver.</p>
-<h3>Frontends</h3>
-<h4>Admin Panel</h4>
+<h3 id="frontends">Frontends</h3>
+<h4 id="admin-panel">Admin Panel</h4>
 <p>SPA with Angular v21 and Angular Material v21.</p>
 <p>Provided by the Webserver.</p>
 <p>Functions for admin users:</p>
@@ -206,7 +224,7 @@
 </ul>
 </li>
 </ul>
-<h4>User Frontend</h4>
+<h4 id="user-frontend">User Frontend</h4>
 <p>SPA with Angular v21 and Material v21</p>
 <p>Provided by the Webserver.</p>
 <p>Functions for users:</p>

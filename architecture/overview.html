@@ -184,7 +184,22 @@
   covering the system design, domain boundaries, and key technical workflows.
 </p>
 
-<h2>1. System Context (The Big Picture)</h2>
+<hr />
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<h2>Table of Contents</h2>
+<ul class="toc-level-2">
+<li><a href="#1-system-context-the-big-picture">1. System Context (The Big Picture)</a></li>
+<li><a href="#2-container-architecture">2. Container Architecture</a></li>
+<li><a href="#3-domain-design-bounded-contexts">3. Domain Design (Bounded Contexts)</a></li>
+<ul class="toc-level-3">
+<li><a href="#context-descriptions">🔎 Context Descriptions</a></li>
+</ul>
+</ul>
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<hr />
+
+<h2 id="1-system-context-the-big-picture">1. System Context (The Big Picture)</h2>
 
 <p>
   CakePlanner is designed as a monolithic application that serves baking groups (companies, clubs,
@@ -193,7 +208,7 @@
 
 <img src="../assets/img/architecture/system-context.png" alt="System Context" />
 
-<h2>2. Container Architecture</h2>
+<h2 id="2-container-architecture">2. Container Architecture</h2>
 
 <p>
   The system consists of a modern Single Page Application (SPA) frontend and a high-performance C++
@@ -232,7 +247,7 @@
   </tbody>
 </table>
 
-<h2>3. Domain Design (Bounded Contexts)</h2>
+<h2 id="3-domain-design-bounded-contexts">3. Domain Design (Bounded Contexts)</h2>
 
 <p>
   To keep the logic organized, the application is conceptually divided into distinct Bounded
@@ -241,7 +256,7 @@
 
 <img src="../assets/img/architecture/bounded-context.png" alt="Bounded Contexts" />
 
-<h3>🔎 Context Descriptions</h3>
+<h3 id="context-descriptions">🔎 Context Descriptions</h3>
 
 <ol>
   <li>

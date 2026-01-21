@@ -177,20 +177,31 @@
 </nav>
     </aside>
 
-    <main class="main"><!-- DOCTOC SKIP -->
-<h1>Security Overview</h1>
+    <main class="main"><h1>Security Overview</h1>
 <p>This document outlines the security measures implemented in the application to ensure data protection and secure communication.</p>
-<h2>Network Security</h2>
+<hr>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<h2>Table of Contents</h2>
+<ul class="toc-level-2">
+<li><a href="#network-security">Network Security</a></li>
+<li><a href="#web-server-security">Web Server Security</a></li>
+<li><a href="#authentication-amp-data-protection">Authentication &amp; Data Protection</a></li>
+<li><a href="#email-security">Email Security</a></li>
+</ul>
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<hr>
+<h2 id="network-security">Network Security</h2>
 <p>The application enforces <strong>HTTPS (SSL/TLS)</strong> for all connections to the backend. This ensures that all data transmitted between the client and the server is encrypted and protected from eavesdropping.</p>
-<h2>Web Server Security</h2>
+<h2 id="web-server-security">Web Server Security</h2>
 <p>The NGINX web server is configured with robust <strong>Security Headers</strong> to protect against common web vulnerabilities. This includes:</p>
 <ul>
 <li><strong>Content-Security-Policy (CSP)</strong>: To prevent Cross-Site Scripting (XSS) attacks.</li>
 <li>Other standard security headers to harden the server response.</li>
 </ul>
-<h2>Authentication &amp; Data Protection</h2>
+<h2 id="authentication-amp-data-protection">Authentication &amp; Data Protection</h2>
 <p>User passwords are encrypted using <strong>Argon2id</strong>, a state-of-the-art password hashing algorithm resilient against GPU-based brute-force attacks.</p>
-<h2>Email Security</h2>
+<h2 id="email-security">Email Security</h2>
 <p>All email communications sent by the application use <strong>Secured Mail (STARTLS)</strong> via an authenticated mail user, ensuring that email traffic is encrypted in transit.</p>
 </main>
 

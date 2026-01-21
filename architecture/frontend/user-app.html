@@ -177,10 +177,21 @@
 </nav>
     </aside>
 
-    <main class="main"><!-- DOCTOC SKIP -->
-<h1>User App Architecture</h1>
+    <main class="main"><h1>User App Architecture</h1>
 <p>The <strong>User App</strong> is the main customer-facing Angular application where users can view the cake calendar, announce cakes, and manage their profile.</p>
-<h2>Components &amp; Pages</h2>
+<hr>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<h2>Table of Contents</h2>
+<ul class="toc-level-2">
+<li><a href="#components-amp-pages">Components &amp; Pages</a></li>
+<li><a href="#services-shared-library">Services (Shared Library)</a></li>
+<li><a href="#models-shared-library">Models (Shared Library)</a></li>
+<li><a href="#architecture-diagram">Architecture Diagram</a></li>
+</ul>
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<hr>
+<h2 id="components-amp-pages">Components &amp; Pages</h2>
 <p>The application offers a rich set of features for general users:</p>
 <ul>
 <li><strong>Login</strong> (<code>pages/login</code>): User authentication.</li>
@@ -190,7 +201,7 @@
 <li><strong>Profile</strong> (<code>pages/profile</code>): User profile management, including 2FA settings.</li>
 <li><strong>Change Password</strong> (<code>pages/change-password</code>): Password management.</li>
 </ul>
-<h2>Services (Shared Library)</h2>
+<h2 id="services-shared-library">Services (Shared Library)</h2>
 <p>The User App uses the <code>shared-lib</code> for core logic and backend communication:</p>
 <ul>
 <li><strong>AuthService</strong>: Handles login, registration, and session management.</li>
@@ -198,14 +209,14 @@
 <li><strong>SSEService</strong>: Handles Server-Sent Events for real-time updates (e.g., new cake announcements).</li>
 <li><strong>SystemInfoService</strong>: Checks backend connectivity and versions.</li>
 </ul>
-<h2>Models (Shared Library)</h2>
+<h2 id="models-shared-library">Models (Shared Library)</h2>
 <p>Key models include:</p>
 <ul>
 <li><strong>User</strong>: User profile data.</li>
 <li><strong>Event</strong>: Represents a cake event (date, type, description).</li>
 <li><strong>2FA</strong>: Two-factor authentication configuration.</li>
 </ul>
-<h2>Architecture Diagram</h2>
+<h2 id="architecture-diagram">Architecture Diagram</h2>
 <p><img src="../../assets/img/architecture/frontend/architecture_user-app.png" alt="User App Architecture"></p>
 </main>
 

@@ -177,31 +177,42 @@
 </nav>
     </aside>
 
-    <main class="main"><!-- DOCTOC SKIP -->
-<h1>Admin Panel Architecture</h1>
+    <main class="main"><h1>Admin Panel Architecture</h1>
 <p>The <strong>Admin Panel</strong> is an Angular application designed for administrators to manage users and departments (groups) within the Cake Planner ecosystem. It leverages a shared library for core services and models.</p>
-<h2>Components &amp; Pages</h2>
+<hr>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<h2>Table of Contents</h2>
+<ul class="toc-level-2">
+<li><a href="#components-amp-pages">Components &amp; Pages</a></li>
+<li><a href="#services-shared-library">Services (Shared Library)</a></li>
+<li><a href="#models-shared-library">Models (Shared Library)</a></li>
+<li><a href="#architecture-diagram">Architecture Diagram</a></li>
+</ul>
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<hr>
+<h2 id="components-amp-pages">Components &amp; Pages</h2>
 <p>The application is structured into several key pages, each responsible for a specific administrative task:</p>
 <ul>
 <li><strong>Login</strong> (<code>pages/login</code>): Handles administrator authentication.</li>
 <li><strong>User List</strong> (<code>pages/user-list</code>): Displays a paginated list of registered users. Allows admins to manage user roles and details.</li>
 <li><strong>Groups</strong> (<code>pages/groups</code>): Manages the departments or groups available in the system.</li>
 </ul>
-<h2>Services (Shared Library)</h2>
+<h2 id="services-shared-library">Services (Shared Library)</h2>
 <p>The Admin Panel relies heavily on the <code>shared-lib</code> for communication with the backend:</p>
 <ul>
 <li><strong>AuthService</strong>: Manages authentication state (JWT), login, and token refresh.</li>
 <li><strong>AdminService</strong>: Provides administrative functions like fetching user lists and managing groups.</li>
 <li><strong>SystemInfoService</strong>: Retrieves backend system information.</li>
 </ul>
-<h2>Models (Shared Library)</h2>
+<h2 id="models-shared-library">Models (Shared Library)</h2>
 <p>Key data models used:</p>
 <ul>
 <li><strong>User</strong>: Represents a user entity.</li>
 <li><strong>Group</strong>: Represents a department/group.</li>
 <li><strong>SystemInfo</strong>: Represents backend status information.</li>
 </ul>
-<h2>Architecture Diagram</h2>
+<h2 id="architecture-diagram">Architecture Diagram</h2>
 <p><img src="../../assets/img/architecture/frontend/architecture_admin-panel.png" alt="Admin Panel Architecture"></p>
 </main>
 

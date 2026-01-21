@@ -177,25 +177,36 @@
 </nav>
     </aside>
 
-    <main class="main"><!-- DOCTOC SKIP -->
-<h1>CakePlanner Frontend</h1>
+    <main class="main"><h1>CakePlanner Frontend</h1>
 <p>This monorepo project was generated using <a href="https://github.com/angular/angular-cli">Angular CLI</a> version 21.0.1.</p>
-<h2>Clone the Repository</h2>
+<hr>
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<h2>Table of Contents</h2>
+<ul class="toc-level-2">
+<li><a href="#clone-the-repository">Clone the Repository</a></li>
+<li><a href="#build">Build</a></li>
+<li><a href="#development-server">Development server</a></li>
+<li><a href="#production-build">Production build</a></li>
+</ul>
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+<hr>
+<h2 id="clone-the-repository">Clone the Repository</h2>
 <pre><code class="language-bash">git clone https://github.com/Zheng-Bote/cake-planner-frontends.git
 cd cake-planner-frontends
 </code></pre>
-<h2>Build</h2>
+<h2 id="build">Build</h2>
 <p>To build the project, run the following command:</p>
 <pre><code class="language-bash">nvm use --lts
 npm install
 </code></pre>
-<h2>Development server</h2>
+<h2 id="development-server">Development server</h2>
 <p>To start the local development instances, run:</p>
 <pre><code class="language-bash">nvm use --lts
 ng serve admin-panel --port 4201
 ng serve user-app
 </code></pre>
-<h2>Production build</h2>
+<h2 id="production-build">Production build</h2>
 <pre><code class="language-bash">ng build --project user-app --base-href / --configuration production
 ng build --project admin-panel --base-href / --configuration production
 </code></pre>
