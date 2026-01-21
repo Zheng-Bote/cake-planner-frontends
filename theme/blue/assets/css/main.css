@@ -321,7 +321,8 @@ main .ul-sub > li {
 }
 
 main strong {
-  font-weight: bold;
+  font-weight: 700;
+  color: var(--primary-color);
   font-style: oblique;
 }
 
