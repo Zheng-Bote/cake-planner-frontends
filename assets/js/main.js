@@ -43,7 +43,10 @@ function switchTheme(e) {
 }
 
 function shareBtn() {
+  console.log('shareBtn');
+
   document.addEventListener('DOMContentLoaded', () => {
+    console.log('shareBtn DOMContentLoaded');
     const shareBtn = document.getElementById('share-btn');
     if (!shareBtn) return;
 
@@ -67,6 +70,7 @@ function shareBtn() {
       }
 
       // 2. Fallback: URL in die Zwischenablage kopieren (Desktop)
+      console.log('shareBtn URL in Zwischenablage kopieren');
       try {
         await navigator.clipboard.writeText(window.location.href);
 
