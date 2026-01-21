@@ -1,8 +1,13 @@
-<!-- DOCTOC SKIP -->
-
 # CakePlanner Frontend
 
 This monorepo project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.1.
+
+---
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+---
 
 ## Clone the Repository
 
