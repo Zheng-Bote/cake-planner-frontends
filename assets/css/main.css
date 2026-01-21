@@ -127,7 +127,7 @@ footer {
   cursor: pointer;
 }
 .header_left img {
-  width: 40px;
+  width: 45px;
   height: auto;
   vertical-align: middle;
 }
@@ -185,12 +185,12 @@ header h1 {
 
 .tron-btn.icon-only {
   padding: 0;
-  width: 34px; /* Passt zur Höhe des Theme-Switch Sliders */
+  width: 34px;
   height: 34px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  margin-left: 10px; /* Abstand zu anderen Elementen, falls nötig */
+  margin-left: 10px;
 }
 
 /* Anpassung für SVG im Button */
@@ -310,6 +310,7 @@ main p {
   line-height: 1.6;
   color: var(--font-color);
   margin-bottom: 1rem;
+  font-weight: normal;
 }
 
 main a::before {
