@@ -127,7 +127,7 @@ footer {
   cursor: pointer;
 }
 .header_left img {
-  width: 30px;
+  width: 40px;
   height: auto;
   vertical-align: middle;
 }
@@ -160,6 +160,7 @@ header h1 {
   font-weight: 700;
   color: var(--primary-color);
   margin-left: 12px;
+  text-wrap: pretty;
 }
 
 /* --- BUTTONS --- */
@@ -317,11 +318,12 @@ main a::before {
 
 main .ul-sub > li {
   margin-left: 12px;
+}
 
-  & strong {
-    font-weight: bold;
-    font-style: oblique;
-  }
+main strong {
+  font-weight: 700;
+  color: var(--primary-color);
+  font-style: oblique;
 }
 
 /* --- CODE BLOCKS --- */
