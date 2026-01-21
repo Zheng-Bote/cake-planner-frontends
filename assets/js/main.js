@@ -7,6 +7,31 @@ function start() {
   });
 
   toggleTheme();
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const shareBtn = document.getElementById('share-btn');
+
+    // Prüfen, ob Web Share API unterstützt wird
+    if (navigator.share && shareBtn) {
+      // Button sichtbar machen (inline-flex wegen CSS Klasse)
+      shareBtn.style.display = 'inline-flex';
+
+      shareBtn.addEventListener('click', async () => {
+        try {
+          await navigator.share({
+            title: document.title,
+            text:
+              document.querySelector('meta[name="description"]')?.content ||
+              'Check out CakePlanner!',
+            url: window.location.href,
+          });
+        } catch (err) {
+          // Fehler abfangen (z.B. wenn User Dialog abbricht)
+          console.debug('Share cancelled or failed', err);
+        }
+      });
+    }
+  });
 }
 
 function toggleTheme() {
