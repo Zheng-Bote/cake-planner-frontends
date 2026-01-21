@@ -182,6 +182,28 @@ header h1 {
   background-color: light-dark(rgba(0, 0, 0, 0.03), rgba(255, 255, 255, 0.05));
 }
 
+.tron-btn.icon-only {
+  padding: 0;
+  width: 34px; /* Passt zur Höhe des Theme-Switch Sliders */
+  height: 34px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px; /* Abstand zu anderen Elementen, falls nötig */
+}
+
+/* Anpassung für SVG im Button */
+.tron-btn.icon-only svg {
+  width: 18px;
+  height: 18px;
+  stroke: var(--font-color); /* Nutzt deine CSS Variable */
+  transition: stroke 0.2s ease;
+}
+
+.tron-btn.icon-only:hover svg {
+  stroke: var(--primary-color);
+}
+
 /* --- SIDEBAR NAV --- */
 aside {
   grid-area: aside;
@@ -499,7 +521,7 @@ td a:hover {
   position: absolute;
   right: 0;
   top: 0;
-  transition: .4s;
+  transition: 0.4s;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -515,15 +537,15 @@ td a:hover {
 .slider:before {
   background-color: #fff;
   bottom: 3px; /* Etwas Abstand zum Rand */
-  content: "";
+  content: '';
   height: 20px;
   left: 4px;
   position: absolute;
-  transition: .4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  transition: 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   width: 20px;
   border-radius: 50%;
   z-index: 2;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 /* Wenn Checkbox aktiv (Dark Mode) */
@@ -549,7 +571,7 @@ input:checked + .slider:before {
 /* Icons Farbe anpassen, wenn aktiv */
 input:checked + .slider .icon-sun {
   opacity: 0.5;
-  color: rgba(255,255,255,0.8);
+  color: rgba(255, 255, 255, 0.8);
 }
 input:checked + .slider .icon-moon {
   opacity: 1;
