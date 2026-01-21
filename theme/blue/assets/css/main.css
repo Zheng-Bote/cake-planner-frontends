@@ -311,6 +311,14 @@ main p {
   margin-bottom: 1rem;
 }
 
+main strong {
+  font-weight: bolder;
+}
+
+main .ul-sub {
+  margin-left: 12px;
+}
+
 /* --- CODE BLOCKS --- */
 code,
 kbd,
