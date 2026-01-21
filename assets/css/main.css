@@ -319,8 +319,9 @@ main .ul-sub > li {
   margin-left: 12px;
 
   & strong {
-  font-weight: bold;
-  font-style: oblique;
+    font-weight: bold;
+    font-style: oblique;
+  }
 }
 
 /* --- CODE BLOCKS --- */
