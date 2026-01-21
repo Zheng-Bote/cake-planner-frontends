@@ -322,9 +322,8 @@ main .ul-sub > li {
 }
 
 main strong {
-  font-weight: 700;
-  color: var(--font-color);
-  font-style: oblique;
+  /* font-weight: 700; */
+  color: var(--primary-color);
 }
 
 /* --- CODE BLOCKS --- */
