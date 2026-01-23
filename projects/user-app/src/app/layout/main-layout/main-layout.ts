@@ -1,4 +1,4 @@
-import { Component, inject, ViewChild, computed } from '@angular/core';
+import { Component, inject, ViewChild, computed, HostListener, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router'; // Wichtig für router-outlet
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
@@ -16,6 +16,7 @@ import { map } from 'rxjs/operators';
 //import { userAppVersion } from '../../../../package.json';
 
 import { AuthService } from 'shared-lib';
+import { ThemeService } from 'shared-lib';
 
 @Component({
   selector: 'app-main-layout',
@@ -37,6 +38,7 @@ import { AuthService } from 'shared-lib';
 })
 export class MainLayoutComponent {
   authService = inject(AuthService);
+  themeService = inject(ThemeService);
   private translocoService = inject(TranslocoService);
   private breakpointObserver = inject(BreakpointObserver);
 
@@ -51,6 +53,41 @@ export class MainLayoutComponent {
     this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((result) => result.matches)),
     { initialValue: false },
   );
+
+  // PWA Install Prompt
+  showInstallButton = signal(false);
+  // save Browser-Event
+  private deferredPrompt: any;
+
+  // Event-Listener for PWA Installation
+  @HostListener('window:beforeinstallprompt', ['$event'])
+  onBeforeInstallPrompt(e: any) {
+    // 1. Browser-Standard verhindern (das automatische Banner unten)
+    e.preventDefault();
+
+    // 2. Event speichern, um es später manuell auszulösen
+    this.deferredPrompt = e;
+
+    // 3. Button im Header einblenden
+    this.showInstallButton.set(true);
+  }
+  // Wird vom PWA Button geklickt
+  installPwa() {
+    this.showInstallButton.set(false);
+
+    if (this.deferredPrompt) {
+      // Prompt anzeigen
+      this.deferredPrompt.prompt();
+
+      // Warten auf User-Reaktion (optionales Logging)
+      this.deferredPrompt.userChoice.then((choiceResult: any) => {
+        if (choiceResult.outcome === 'accepted') {
+          console.log('User accepted the PWA install');
+        }
+        this.deferredPrompt = null;
+      });
+    }
+  }
 
   greetingKey = computed(() => {
     const hour = new Date().getHours();

@@ -7,12 +7,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar'; // NEU
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatListModule } from '@angular/material/list';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { TranslocoModule, TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
 
-import { AuthService, TwoFactorSetupComponent } from 'shared-lib';
+import { AuthService, GroupMembership, TwoFactorSetupComponent } from 'shared-lib';
 // NEU: Importieren für den Dialog-Aufruf
 import { ChangePasswordComponent } from '../../pages/change-password/change-password';
 
@@ -27,6 +28,7 @@ import { ChangePasswordComponent } from '../../pages/change-password/change-pass
     MatFormFieldModule,
     MatIconModule,
     MatDividerModule,
+    MatListModule,
     TranslocoModule,
   ],
   providers: [provideTranslocoScope({ scope: 'user_profile', alias: 'user-profile' })],
@@ -45,6 +47,9 @@ export class ProfileComponent implements OnInit {
   selectedLanguage = signal('en');
   selectedEmailLanguage = signal('en');
 
+  groups = signal<GroupMembership[]>([]);
+  isLoadingGroups = signal(true);
+
   constructor() {
     const currentLangMail = this.user()?.emailLanguage;
     if (currentLangMail) {
@@ -56,8 +61,24 @@ export class ProfileComponent implements OnInit {
     }
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loadGroups();
+  }
 
+  // Gruppen laden
+  loadGroups() {
+    this.isLoadingGroups.set(true);
+    this.http.get<GroupMembership[]>('/api/user/groups').subscribe({
+      next: (data) => {
+        this.groups.set(data);
+        this.isLoadingGroups.set(false);
+      },
+      error: (err) => {
+        console.error('Failed to load groups', err);
+        this.isLoadingGroups.set(false);
+      },
+    });
+  }
   saveSettingsEmailLanguage(lang: string) {
     this.selectedEmailLanguage.set(lang);
     this.http.post('/api/user/settings', { languageEmail: lang }).subscribe({

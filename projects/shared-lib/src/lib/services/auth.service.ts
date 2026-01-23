@@ -49,6 +49,10 @@ export class AuthService {
     );
   }
 
+  forgotPassword(email: string) {
+    return this.http.post<{ message: string }>('/api/auth/forgot-password', { email });
+  }
+
   logout() {
     // 1. State bereinigen
     this._token.set(null);

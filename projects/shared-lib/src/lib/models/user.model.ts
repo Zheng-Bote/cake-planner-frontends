@@ -5,6 +5,7 @@ export interface User {
   isAdmin: boolean;
   isActive: boolean;
   mustChangePassword?: boolean;
+  lastLoginAt?: string;
   groupId?: string;
   groupRole?: string; // 'admin' | 'member'
   emailLanguage?: string; // 'de' | 'en'
@@ -33,4 +34,10 @@ export interface TotpSetup {
 export interface Group {
   id: string;
   name: string;
+}
+
+export interface GroupMembership {
+  id: string;
+  name: string;
+  role: string;
 }

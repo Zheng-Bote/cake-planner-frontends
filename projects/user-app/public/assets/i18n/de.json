@@ -12,7 +12,9 @@
     "IMPRINT": "Impressum",
     "DATA_PROTECTION": "Datenschutz",
     "CHANGE_LANGUAGE": "Sprache wechseln",
-    "LOGOUT": "abmelden"
+    "LOGOUT": "abmelden",
+    "TOGGLE_THEME": "Theme wechseln",
+    "INSTALL_APP": "App installieren"
   },
   "DASHBOARD": {
     "MORNING": "Guten Morgen",

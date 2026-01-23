@@ -13,5 +13,8 @@
     "SEC_DESC_OK": "Dein Konto ist durch 2-Faktor-Authentifizierung geschützt.",
     "BTN_SETUP": "2FA Einrichten",
     "QUICK_ACTIONS": "Schnellzugriff"
+  },
+  "EVENT": {
+    "CREATE_TITLE": "Neuen Kuchen eintragen"
   }
 }

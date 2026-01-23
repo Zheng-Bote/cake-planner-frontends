@@ -21,6 +21,9 @@
     "SEC_TITLE_OK": "Sicherheit: Alles im Grünen",
     "SEC_DESC": "Dein Konto ist nicht optimal geschützt. Bitte aktiviere 2FA.",
     "SEC_DESC_OK": "Dein Konto ist durch 2-Faktor-Authentifizierung geschützt.",
-    "BTN_SETUP": "2FA Einrichten"
+    "BTN_SETUP": "2FA Einrichten",
+    "NO_GROUPS": "Keine Gruppen",
+    "GROUPS_TITLE": "Meine Gruppen",
+    "LAST_LOGIN": "Letzter Login"
   }
 }

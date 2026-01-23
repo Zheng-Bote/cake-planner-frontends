@@ -16,11 +16,13 @@
     "SAVE_SUCCESS": "Settings saved!",
     "SAVE_ERROR": "Error saving settings",
     "DELETE_CONFIRM": "Are you sure? This cannot be undone!",
-
+    "LAST_LOGIN": "Last Login",
     "SEC_TITLE_WARN": "Security: Action Required",
     "SEC_TITLE_OK": "Security: All Good",
     "SEC_DESC": "Your account is not fully secured. Please enable 2FA.",
     "SEC_DESC_OK": "Your account is secured with 2-Factor Authentication.",
-    "BTN_SETUP": "Setup 2FA"
+    "BTN_SETUP": "Setup 2FA",
+    "NO_GROUPS": "No groups",
+    "GROUPS_TITLE": "My groups"
   }
 }

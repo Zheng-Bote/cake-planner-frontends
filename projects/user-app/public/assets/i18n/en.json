@@ -12,7 +12,9 @@
     "IMPRINT": "Legal Notice",
     "DATA_PROTECTION": "Privacy Policy",
     "CHANGE_LANGUAGE": "change Language",
-    "LOGOUT": "logout"
+    "LOGOUT": "logout",
+    "TOGGLE_THEME": "Toggle Theme",
+    "INSTALL_APP": "Install App"
   },
   "DASHBOARD": {
     "MORNING": "Good Morning",

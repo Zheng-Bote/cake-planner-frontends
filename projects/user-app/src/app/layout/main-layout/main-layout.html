@@ -68,6 +68,26 @@
 
         <span class="spacer"></span>
 
+        @if (showInstallButton()) {
+          <button
+            mat-icon-button
+            (click)="installPwa()"
+            matTooltip="{{ t('MENU.INSTALL_APP') }}"
+            aria-label="{{ t('MENU.INSTALL_APP') }}"
+          >
+            <mat-icon>download</mat-icon>
+          </button>
+        }
+
+        <button
+          mat-icon-button
+          (click)="themeService.toggle()"
+          matTooltip="{{ t('MENU.TOGGLE_THEME') }}"
+          aria-label="{{ t('MENU.TOGGLE_THEME') }}"
+        >
+          <mat-icon>{{ themeService.darkMode() ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
+
         <button
           type="button"
           mat-icon-button

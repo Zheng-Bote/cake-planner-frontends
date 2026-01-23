@@ -1,0 +1,11 @@
+{
+  "TITLE": "Passwort vergessen?",
+  "INSTRUCTION": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen ein temporäres Passwort.",
+  "EMAIL_LABEL": "E-Mail Adresse",
+  "SEND_BUTTON": "Link senden",
+  "SENDING": "Sende...",
+  "BACK_TO_LOGIN": "Zurück zum Login",
+  "SUCCESS_DEFAULT": "Falls die E-Mail existiert, wurde ein Reset-Link gesendet.",
+  "ERROR_DEFAULT": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+  "EMAIL_INVALID": "Bitte eine gültige E-Mail-Adresse eingeben."
+}

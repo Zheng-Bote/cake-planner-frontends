@@ -6,41 +6,21 @@
       <mat-card>
         <mat-card-header>
           <mat-card-title>{{ user()?.name }}</mat-card-title>
-          <mat-card-subtitle>{{ user()?.email }}</mat-card-subtitle>
+          <mat-card-subtitle
+            >{{ user()?.email }}
+            @if (user()?.lastLoginAt) {
+              <div style="margin-top: 4px; font-size: 0.85em; opacity: 0.8">
+                {{ t('user-profile.PROFILE.LAST_LOGIN') }}:
+                {{ user()?.lastLoginAt | date: 'medium' }}
+              </div>
+            }
+          </mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <p>
             {{ t('user-profile.PROFILE.ROLE') }}:
             {{ user()?.groupRole ? user()?.groupRole : user()?.isAdmin ? 'Global Admin' : 'User' }}
           </p>
-        </mat-card-content>
-      </mat-card>
-
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ t('user-profile.PROFILE.SETTINGS') }}</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <mat-form-field appearance="outline" style="width: 100%; margin-top: 10px">
-            <mat-label>{{ t('user-profile.PROFILE.LANG') }}</mat-label>
-            <mat-select
-              [value]="selectedLanguage()"
-              (selectionChange)="saveSettingsLanguage($event.value)"
-            >
-              <mat-option value="en">{{ t('user-profile.PROFILE.LANG_EN') }}</mat-option>
-              <mat-option value="de">{{ t('user-profile.PROFILE.LANG_DE') }}</mat-option>
-            </mat-select>
-          </mat-form-field>
-          <mat-form-field appearance="outline" style="width: 100%; margin-top: 10px">
-            <mat-label>{{ t('user-profile.PROFILE.EMAIL_LANG') }}</mat-label>
-            <mat-select
-              [value]="selectedLanguage()"
-              (selectionChange)="saveSettingsEmailLanguage($event.value)"
-            >
-              <mat-option value="en">{{ t('user-profile.PROFILE.LANG_EN') }}</mat-option>
-              <mat-option value="de">{{ t('user-profile.PROFILE.LANG_DE') }}</mat-option>
-            </mat-select>
-          </mat-form-field>
         </mat-card-content>
       </mat-card>
 
@@ -81,6 +61,67 @@
           </mat-card-actions>
         </mat-card>
       }
+
+      <mat-card>
+        <mat-card-header>
+          <mat-icon mat-card-avatar>group</mat-icon>
+          <mat-card-title>{{
+            t('user-profile.PROFILE.GROUPS_TITLE') || 'Meine Gruppen'
+          }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          @if (isLoadingGroups()) {
+            <p>Loading...</p>
+          } @else if (groups().length === 0) {
+            <p style="opacity: 0.6; font-style: italic">
+              {{ t('user-profile.PROFILE.NO_GROUPS') || 'Keine Mitgliedschaften' }}
+            </p>
+          } @else {
+            <mat-list>
+              @for (group of groups(); track group.id) {
+                <mat-list-item>
+                  <mat-icon matListItemIcon>group_work</mat-icon>
+                  <span matListItemTitle>{{ group.name }}</span>
+                  <span matListItemLine style="opacity: 0.7">
+                    {{ t('user-profile.PROFILE.ROLE') }}: {{ group.role }}
+                  </span>
+                </mat-list-item>
+                @if (!$last) {
+                  <mat-divider></mat-divider>
+                }
+              }
+            </mat-list>
+          }
+        </mat-card-content>
+      </mat-card>
+
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ t('user-profile.PROFILE.SETTINGS') }}</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+          <mat-form-field appearance="outline" style="width: 100%; margin-top: 10px">
+            <mat-label>{{ t('user-profile.PROFILE.LANG') }}</mat-label>
+            <mat-select
+              [value]="selectedLanguage()"
+              (selectionChange)="saveSettingsLanguage($event.value)"
+            >
+              <mat-option value="en">{{ t('user-profile.PROFILE.LANG_EN') }}</mat-option>
+              <mat-option value="de">{{ t('user-profile.PROFILE.LANG_DE') }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+          <mat-form-field appearance="outline" style="width: 100%; margin-top: 10px">
+            <mat-label>{{ t('user-profile.PROFILE.EMAIL_LANG') }}</mat-label>
+            <mat-select
+              [value]="selectedLanguage()"
+              (selectionChange)="saveSettingsEmailLanguage($event.value)"
+            >
+              <mat-option value="en">{{ t('user-profile.PROFILE.LANG_EN') }}</mat-option>
+              <mat-option value="de">{{ t('user-profile.PROFILE.LANG_DE') }}</mat-option>
+            </mat-select>
+          </mat-form-field>
+        </mat-card-content>
+      </mat-card>
 
       <mat-card class="danger-zone">
         <mat-card-header>

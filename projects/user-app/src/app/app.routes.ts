@@ -13,6 +13,11 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./pages/register-user/register-user').then((m) => m.RegisterUserComponent),
   },
+  {
+    path: 'forgot-password',
+    loadComponent: () =>
+      import('./pages/forgot-password/forgot-password').then((m) => m.ForgotPasswordComponent),
+  },
 
   {
     path: 'privacy-policy',

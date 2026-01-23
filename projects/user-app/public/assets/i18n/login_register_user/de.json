@@ -5,6 +5,7 @@
     "PASSWORD_LABEL": "Passwort",
     "LOGIN_BTN": "Einloggen",
     "REGISTER_LINK": "Noch keinen Account? Registrieren",
+    "FORGOT_PASSWORD_LINK": "Passwort vergessen?",
     "WRONG_CREDENTIALS": "Falsche Zugangsdaten",
     "ACCOUNT_INACTIVE": "Account inaktiv",
     "SERVER_ERROR": "Server Fehler"

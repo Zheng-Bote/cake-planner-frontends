@@ -37,7 +37,17 @@ ng serve user-app
 
 ## Production build
 
+````bash
+ng build --project user-app --base-href / --configuration production
+
+## Testing
+
+PWA testing locally is very limited to localhost, because it requires a secure context (HTTPS).
+
+```bash
+npm install -g http-server
+
 ```bash
 ng build --project user-app --base-href / --configuration production
-ng build --project admin-panel --base-href / --configuration production
-```
+http-server ./dist/user-app/browser --port 8080 --proxy http://localhost:4201
+````

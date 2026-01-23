@@ -13,5 +13,8 @@
     "SEC_DESC_OK": "Your account is secured with 2-Factor Authentication.",
     "BTN_SETUP": "Setup 2FA",
     "QUICK_ACTIONS": "Quick Actions"
+  },
+  "EVENT": {
+    "CREATE_TITLE": "Add New Cake"
   }
 }
