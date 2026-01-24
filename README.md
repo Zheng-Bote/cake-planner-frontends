@@ -1,13 +1,16 @@
-# 🍰 CakePlanner
+<div id="top" align="center">
+<h1>🍰 CakePlanner</h1>
 
-**The sweetest way to organize your cake events.**
+<p>The sweetest way to organize your cake events.</p>
 
-Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake next Friday?" in the group chat. **CakePlanner** makes organizing baking events, office parties, or club gatherings easy, fun, and visually stunning.
+<p>Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake next Friday?" in the group chat. **CakePlanner** makes organizing baking events, office parties, or club gatherings easy, fun, and visually stunning.</p>
 
 [Report Issue](https://github.com/Zheng-Bote/cake-planner-frontends/issues) · [Request Feature](https://github.com/Zheng-Bote/cake-planner-frontends/pulls)
 
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/Zheng-Bote/cake-planner-frontends?logo=GitHub)](https://github.com/Zheng-Bote/cake-planner-frontends/releases)
+
+</div>
 
 ---
 
