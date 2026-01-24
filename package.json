@@ -1,7 +1,7 @@
 {
   "name": "cake-planner-frontend",
-  "version": "0.6.1",
-  "userAppVersion": "0.9.0",
+  "version": "1.0.0",
+  "userAppVersion": "1.0.0",
   "adminPanelVersion": "0.6.0",
   "created": "2026",
   "AngularVersion": "21.0.6",

@@ -4,30 +4,44 @@
 
 Gone are the days of chaotic spreadsheets and asking "Who's bringing the cake next Friday?" in the group chat. **CakePlanner** makes organizing baking events, office parties, or club gatherings easy, fun, and visually stunning.
 
+[Report Issue](https://github.com/Zheng-Bote/cake-planner-frontends/issues) · [Request Feature](https://github.com/Zheng-Bote/cake-planner-frontends/pulls)
+
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/Zheng-Bote/cake-planner-frontends?logo=GitHub)](https://github.com/Zheng-Bote/cake-planner-frontends/releases)
+
 ---
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
+- [🍰 CakePlanner](#-cakeplanner)
   - [🌟 What is CakePlanner?](#-what-is-cakeplanner)
     - [✨ Key Features](#-key-features)
   - [🚀 How it works](#-how-it-works)
-  - [🖼️ Screenshots](#-screenshots)
-  - [🛠️ For Administrators (The Technical Stuff)](#-for-administrators-the-technical-stuff)
+  - [🖼️ Screenshots](#️-screenshots)
+  - [🛠️ For Administrators (The Technical Stuff)](#️-for-administrators-the-technical-stuff)
     - [Admin-Panel](#admin-panel)
       - [Screenshots](#screenshots)
   - [Backend](#backend)
     - [🍰 Overview](#-overview)
-    - [🚀 Key Features](#-key-features)
+    - [🚀 Key Features](#-key-features-1)
 - [See more](#see-more)
 - [📄 License](#-license)
+  - [🤝 Authors](#-authors)
+    - [Code Contributors](#code-contributors)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ---
 
 ## 🌟 What is CakePlanner?
+
+![Angular](https://img.shields.io/badge/Angular-21-red?logo=angular)
+![HTML5](https://img.shields.io/badge/HTML-5-E34F26?logo=html5)
+![Typescript](https://img.shields.io/badge/TypeScript-5+-3178C6?logo=typescript)
+![CSS3](https://img.shields.io/badge/CSS-663399?logo=css3)
 
 CakePlanner is a simple app that helps groups coordinate who brings what and when. It adds a layer of fun by allowing everyone to rate the creations and share photos of the delicious results.
 
@@ -136,6 +150,18 @@ The application is designed to be lightweight yet robust, leveraging C++23 for p
 
 This project is licensed under the **MIT License**.
 
+Copyright (c) 2026 ZHENG Robert
+
+## 🤝 Authors
+
+- [![Zheng Robert - Core Development](https://img.shields.io/badge/Github-Zheng_Robert-black?logo=github)](https://www.github.com/Zheng-Bote)
+
+### Code Contributors
+
+![Contributors](https://img.shields.io/github/contributors/Zheng-Bote/cake-planner-frontends?color=dark-green)
+
+[![Zheng Robert](https://img.shields.io/badge/Github-Zheng_Robert-black?logo=github)](https://www.github.com/Zheng-Bote)
+
 ---
 
-Made with ❤️ and a lot of sugar.
+Made with ❤️ and a lot of sugar. :vulcan_salute:
