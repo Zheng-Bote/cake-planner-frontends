@@ -5,6 +5,14 @@ This monorepo project was generated using [Angular CLI](https://github.com/angul
 ---
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Clone the Repository](#clone-the-repository)
+- [Build](#build)
+- [Development server](#development-server)
+- [Production build](#production-build)
+
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
 ---
