@@ -208,12 +208,22 @@ ng serve user-app
 </code></pre>
 <h2 id="production-build">Production build</h2>
 <pre><code class="language-bash">ng build --project user-app --base-href / --configuration production
-ng build --project admin-panel --base-href / --configuration production
+
+## Testing
+
+PWA testing locally is very limited to localhost, because it requires a secure context (HTTPS).
+
+```bash
+npm install -g http-server
+
+```bash
+ng build --project user-app --base-href / --configuration production
+http-server ./dist/user-app/browser --port 8080 --proxy http://localhost:4201
 </code></pre>
 </main>
 
     <footer class="footer">
-      <div class="footer-section_left">v0.8.0</div>
+      <div class="footer-section_left">v1.0.0</div>
       <div class="footer-section_center">&copy; 2026 ZHENG ROBERT</div>
       <div class="footer-section_right">
         <a href="https://github.com/Zheng-Bote/cake-planner-frontends/" alt="GitHub" title="GitHub">
