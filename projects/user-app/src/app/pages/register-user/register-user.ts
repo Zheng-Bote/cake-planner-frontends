@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
-import { Router, RouterLink } from '@angular/router'; // RouterLink für "Zurück zum Login"
+import { Router, RouterLink } from '@angular/router'; // RouterLink for "Back to Login"
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -36,8 +36,8 @@ import { AuthService } from 'shared-lib';
     TranslocoModule,
   ],
   providers: [
-    // LÄDT die JSONs aus assets/i18n/system-info/*.json
-    // MAPPED sie auf den Key 'system_info', damit t('system_info.title') funktioniert.
+    // LOADS the JSONs from assets/i18n/system-info/*.json
+    // MAPS them to the key 'system_info', so that t('system_info.title') works.
     provideTranslocoScope({ scope: 'login_register_user', alias: 'register_user' }),
   ],
   templateUrl: './register-user.html',
@@ -61,7 +61,9 @@ export class RegisterUserComponent {
     this.initializeLanguage();
   }
 
-  // --- Logik zur Spracherkennung ---
+  /**
+   * @brief Initializes the language for the component.
+   */
   private initializeLanguage() {
     const savedLang = localStorage.getItem('app-lang');
     if (savedLang) {
@@ -74,11 +76,19 @@ export class RegisterUserComponent {
     }
   }
 
+  /**
+   * @brief Switches the language for the component.
+   * @param lang The language to switch to.
+   */
   switchLanguage(lang: string) {
     this.translocoService.setActiveLang(lang);
     localStorage.setItem('app-lang', lang);
   }
 
+  /**
+   * @brief Custom validator to check if password and confirmPassword fields match.
+   * @param g The form control to validate.
+   */
   passwordMatchValidator(g: AbstractControl) {
     return g.get('password')?.value === g.get('confirmPassword')?.value ? null : { mismatch: true };
   }
@@ -94,6 +104,9 @@ export class RegisterUserComponent {
     { validators: this.passwordMatchValidator },
   );
 
+  /**
+   * @brief Handles the submission of the registration form.
+   */
   onSubmit() {
     if (this.regForm.valid) {
       this.isLoading.set(true);
@@ -121,7 +134,7 @@ export class RegisterUserComponent {
           },
           error: (err) => {
             this.isLoading.set(false);
-            // Backend sendet 409 bei Konflikt
+            // Backend sends 409 on conflict
             const msg =
               err.status === 409
                 ? this.translocoService.translate(

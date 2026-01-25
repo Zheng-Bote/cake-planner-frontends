@@ -14,7 +14,7 @@ import { HttpClient } from '@angular/common/http';
 import { TranslocoModule, TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
 
 import { AuthService, GroupMembership, TwoFactorSetupComponent } from 'shared-lib';
-// NEU: Importieren für den Dialog-Aufruf
+// NEW: Import for the dialog call
 import { ChangePasswordComponent } from '../../pages/change-password/change-password';
 
 @Component({
@@ -40,7 +40,7 @@ export class ProfileComponent implements OnInit {
   private http = inject(HttpClient);
   private router = inject(Router);
   private dialog = inject(MatDialog);
-  private snackBar = inject(MatSnackBar); // NEU
+  private snackBar = inject(MatSnackBar); // NEW
   private transloco = inject(TranslocoService);
 
   user = this.authService.currentUser;
@@ -65,7 +65,9 @@ export class ProfileComponent implements OnInit {
     this.loadGroups();
   }
 
-  // Gruppen laden
+  /**
+   * @brief Loads the user's group memberships.
+   */
   loadGroups() {
     this.isLoadingGroups.set(true);
     this.http.get<GroupMembership[]>('/api/user/groups').subscribe({
@@ -79,11 +81,15 @@ export class ProfileComponent implements OnInit {
       },
     });
   }
+  /**
+   * @brief Saves the user's email language setting.
+   * @param lang The selected language.
+   */
   saveSettingsEmailLanguage(lang: string) {
     this.selectedEmailLanguage.set(lang);
     this.http.post('/api/user/settings', { languageEmail: lang }).subscribe({
       next: () => {
-        // 1a. Hässliches Alert durch SnackBar ersetzt
+        // Replaced ugly alert with SnackBar
         this.snackBar.open(this.transloco.translate('user-profile.PROFILE.SAVE_SUCCESS'), 'OK', {
           duration: 3000,
           horizontalPosition: 'end',
@@ -101,11 +107,15 @@ export class ProfileComponent implements OnInit {
       },
     });
   }
+  /**
+   * @brief Saves the user's language setting.
+   * @param lang The selected language.
+   */
   saveSettingsLanguage(lang: string) {
     this.selectedLanguage.set(lang);
     this.http.post('/api/user/settings', { language: lang }).subscribe({
       next: () => {
-        // 1a. Hässliches Alert durch SnackBar ersetzt
+        // Replaced ugly alert with SnackBar
         this.snackBar.open(this.transloco.translate('user-profile.PROFILE.SAVE_SUCCESS'), 'OK', {
           duration: 3000,
           horizontalPosition: 'end',
@@ -124,18 +134,26 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+   * @brief Opens the 2FA setup dialog.
+   */
   open2FA() {
     this.dialog.open(TwoFactorSetupComponent, { width: '400px' });
   }
 
-  // 1b. Passwort ändern als Dialog
+  /**
+   * @brief Opens the change password dialog.
+   */
   changePassword() {
     this.dialog.open(ChangePasswordComponent, {
       width: '400px',
-      disableClose: false, // User kann abbrechen
+      disableClose: false, // User can cancel
     });
   }
 
+  /**
+   * @brief Deletes the user's account after confirmation.
+   */
   deleteAccount() {
     if (confirm(this.transloco.translate('user-profile.PROFILE.DELETE_CONFIRM'))) {
       this.http.delete('/api/user').subscribe({

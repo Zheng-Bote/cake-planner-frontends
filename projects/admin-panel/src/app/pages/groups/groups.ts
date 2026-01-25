@@ -1,10 +1,14 @@
 /**
- * AdminGroupsComponent
- * @description Component for managing groups
- * @author Zheng Bote
+ * @file groups.ts
+ * @brief Component for managing groups in the admin panel.
  * @version 1.1.1
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
  */
-
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -43,36 +47,46 @@ export class AdminGroupsComponent implements OnInit {
   displayedColumns = ['name', 'id', 'actions'];
   newGroupName = signal('');
 
+  /**
+   * @brief Initializes the component and loads the initial group data.
+   */
   ngOnInit() {
     this.loadGroups();
   }
 
   /**
-   * Zeigt eine Erfolgsmeldung per SnackBar an
+   * @brief Displays a success message using the SnackBar.
+   * @param key The translation key for the message.
    */
   private showMsg(key: string) {
     this.snackBar.open(
       this.translocoService.translate(key),
       'OK',
-      { duration: 3000 } // Verschwindet nach 3 Sek.
+      { duration: 3000 } // Disappears after 3 seconds
     );
   }
 
   /**
-   * INTERNE SNACKBAR LOGIK (Fehler)
-   * Nutzt die rote CSS-Klasse analog zur user-list.ts
+   * @brief Displays an error message using the SnackBar.
+   * @param key The translation key for the error message.
    */
   private showError(key: string) {
     this.snackBar.open(this.translocoService.translate(key), 'X', {
-      panelClass: ['error-snackbar'], // Macht die SnackBar rot
-      duration: 5000, // Fehler bleiben länger sichtbar
+      panelClass: ['error-snackbar'], // Makes the SnackBar red
+      duration: 5000, // Errors remain visible for longer
     });
   }
 
+  /**
+   * @brief Fetches and loads the list of groups from the server.
+   */
   loadGroups() {
     this.adminService.getGroups().subscribe((data) => this.groups.set(data));
   }
 
+  /**
+   * @brief Creates a new group based on the name entered by the user.
+   */
   createGroup() {
     const name = this.newGroupName().trim();
     if (!name) return;
@@ -89,6 +103,10 @@ export class AdminGroupsComponent implements OnInit {
     });
   }
 
+  /**
+   * @brief Deletes a selected group after user confirmation.
+   * @param group The group to be deleted.
+   */
   deleteGroup(group: Group) {
     const confirmMsg = this.translocoService.translate('ADMIN.MSGS.GROUPS.CONFIRM_DELETE', {
       name: group.name,

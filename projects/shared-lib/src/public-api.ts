@@ -1,3 +1,14 @@
+/**
+ * @file public-api.ts
+ * @brief Public API surface for the shared library.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 /*
  * Public API Surface of shared-lib
  */

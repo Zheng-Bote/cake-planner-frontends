@@ -1,3 +1,14 @@
+/**
+ * @file user.model.ts
+ * @brief Models for users, authentication, and groups.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 export interface User {
   id: string;
   name: string;
@@ -21,7 +32,7 @@ export interface RegisterUser {
 }
 
 export interface AuthResponse {
-  token?: string; // Jetzt optional, da bei step 1 noch kein Token kommt
+  token?: string; // Now optional, as no token is sent in step 1
   user?: User;
   require2fa?: boolean;
 }

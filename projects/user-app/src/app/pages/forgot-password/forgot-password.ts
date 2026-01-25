@@ -1,3 +1,14 @@
+/**
+ * @file forgot-password.ts
+ * @brief Component for the forgot password page.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -5,7 +16,7 @@ import { Router, RouterLink } from '@angular/router';
 import { TranslocoModule, TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
 import { AuthService } from 'shared-lib';
 
-// Material Imports (passend zur Login Page)
+// Material Imports (matching the Login Page)
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -23,7 +34,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     FormsModule,
     RouterLink,
     TranslocoModule,
-    // Material Modules hinzufügen
+    // Add Material Modules
     MatCardModule,
     MatButtonModule,
     MatInputModule,
@@ -33,7 +44,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatTooltipModule,
   ],
-  // Alias 'forgot-password' wird genutzt
+  // Alias 'forgot-password' is used
   providers: [provideTranslocoScope({ scope: 'forgot_password', alias: 'forgot-password' })],
   templateUrl: './forgot-password.html',
   styleUrls: ['./forgot-password.scss'],
@@ -50,14 +61,20 @@ export class ForgotPasswordComponent {
 
   currentLang = this.translocoService.langChanges$;
 
-  // Copyright Logik (wie in Login)
+  // Copyright logic (as in Login)
   currentYear = new Date().getFullYear();
   copyrightYear = this.currentYear > 2026 ? `2026–${this.currentYear}` : '2026';
 
+  /**
+   * @brief Constructs the component and initializes the language.
+   */
   constructor() {
     this.initializeLanguage();
   }
 
+  /**
+   * @brief Initializes the application language based on saved preferences or browser language.
+   */
   private initializeLanguage() {
     const savedLang = localStorage.getItem('app-lang');
     if (savedLang) {
@@ -69,12 +86,18 @@ export class ForgotPasswordComponent {
     }
   }
 
-  // Neue Methode für den Header (wie in Login)
+  /**
+   * @brief Switches the application language.
+   * @param lang The language to switch to.
+   */
   switchLanguage(lang: string) {
     this.translocoService.setActiveLang(lang);
     localStorage.setItem('app-lang', lang);
   }
 
+  /**
+   * @brief Handles the form submission for the forgot password request.
+   */
   onSubmit() {
     if (!this.email) return;
 

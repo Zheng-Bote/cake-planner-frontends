@@ -1,6 +1,17 @@
+/**
+ * @file main-layout.ts
+ * @brief Component for the main layout of the user application.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Component, inject, ViewChild, computed, HostListener, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; // Wichtig für router-outlet
+import { RouterModule } from '@angular/router'; // Important for router-outlet
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatListModule } from '@angular/material/list';
@@ -48,7 +59,7 @@ export class MainLayoutComponent {
 
   @ViewChild('drawer') drawer!: MatSidenav;
 
-  // Modernes Signal für Responsivität
+  // Modern signal for responsiveness
   isHandset = toSignal(
     this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((result) => result.matches)),
     { initialValue: false },
@@ -59,27 +70,32 @@ export class MainLayoutComponent {
   // save Browser-Event
   private deferredPrompt: any;
 
-  // Event-Listener for PWA Installation
+  /**
+   * @brief Event listener for the 'beforeinstallprompt' event to enable PWA installation.
+   * @param e The event object.
+   */
   @HostListener('window:beforeinstallprompt', ['$event'])
   onBeforeInstallPrompt(e: any) {
-    // 1. Browser-Standard verhindern (das automatische Banner unten)
+    // 1. Prevent the browser's default behavior (the automatic banner at the bottom)
     e.preventDefault();
 
-    // 2. Event speichern, um es später manuell auszulösen
+    // 2. Save the event to trigger it manually later
     this.deferredPrompt = e;
 
-    // 3. Button im Header einblenden
+    // 3. Show the button in the header
     this.showInstallButton.set(true);
   }
-  // Wird vom PWA Button geklickt
+  /**
+   * @brief Initiates the PWA installation prompt.
+   */
   installPwa() {
     this.showInstallButton.set(false);
 
     if (this.deferredPrompt) {
-      // Prompt anzeigen
+      // Show prompt
       this.deferredPrompt.prompt();
 
-      // Warten auf User-Reaktion (optionales Logging)
+      // Wait for user reaction (optional logging)
       this.deferredPrompt.userChoice.then((choiceResult: any) => {
         if (choiceResult.outcome === 'accepted') {
           console.log('User accepted the PWA install');
@@ -89,6 +105,9 @@ export class MainLayoutComponent {
     }
   }
 
+  /**
+   * @brief Computed signal for the greeting key based on the time of day.
+   */
   greetingKey = computed(() => {
     const hour = new Date().getHours();
     if (hour < 12) return 'DASHBOARD.MORNING';
@@ -96,15 +115,24 @@ export class MainLayoutComponent {
     return 'DASHBOARD.EVENING';
   });
 
+  /**
+   * @brief Logs out the current user.
+   */
   logout() {
     this.authService.logout();
   }
 
+  /**
+   * @brief Switches the application language.
+   * @param lang The language to switch to.
+   */
   switchLang(lang: string) {
     this.translocoService.setActiveLang(lang);
   }
 
-  // Schließt Menü auf Mobile nach Klick
+  /**
+   * @brief Closes the sidenav if the view is on a mobile device.
+   */
   closeSideNavIfMobile() {
     if (this.isHandset()) {
       this.drawer.close();

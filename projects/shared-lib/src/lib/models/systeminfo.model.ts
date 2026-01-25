@@ -1,3 +1,14 @@
+/**
+ * @file systeminfo.model.ts
+ * @brief Models for system information.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 export interface SystemInfoFrontend {
   userAppVersion?: string;
   adminAppVersion?: string;

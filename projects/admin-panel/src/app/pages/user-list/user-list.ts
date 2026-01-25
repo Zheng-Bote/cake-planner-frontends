@@ -1,3 +1,14 @@
+/**
+ * @file user-list.ts
+ * @brief Component for displaying and managing a list of users in the admin panel.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Component, inject, signal, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTableModule } from '@angular/material/table';
@@ -36,33 +47,47 @@ export class UserListComponent implements OnInit {
   private adminService = inject(AdminService);
   authService = inject(AuthService);
   private snackBar = inject(MatSnackBar);
-  translocoService = inject(TranslocoService); // Optional, falls wir im Code übersetzen müssen
+  translocoService = inject(TranslocoService); // Optional, if we need to translate in the code
 
   users = signal<User[]>([]);
   groups = signal<Group[]>([]);
 
-  // 'isAdmin' Spalte nicht vergessen, falls wir sie vorhin hinzugefügt haben
+  // Don't forget the 'isAdmin' column if we added it earlier
   cols = ['name', 'email', 'group', 'role', 'isAdmin', 'active', 'actions'];
 
+  /**
+   * @brief Initializes the component, loading initial user and group data.
+   */
   ngOnInit() {
     this.loadData();
     this.adminService.getGroups().subscribe((g) => this.groups.set(g));
   }
 
+  /**
+   * @brief Fetches and loads the list of users from the server.
+   */
   loadData() {
     this.adminService.getUsers().subscribe((data) => this.users.set(data));
   }
 
+  /**
+   * @brief Logs out the current user and reloads the page.
+   */
   logout() {
     this.authService.logout();
-    // Optional: Weiterleitung passiert meist im authService oder hier
+    // Optional: Redirection usually happens in the authService or here
     location.reload();
   }
 
+  /**
+   * @brief Toggles the active status of a user.
+   * @param user The user to modify.
+   * @param isActive The new active status.
+   */
   toggleUser(user: User, isActive: boolean) {
     this.adminService.toggleUserActive(user.id, isActive).subscribe({
       next: () => {
-        // Dynamische Übersetzung mit Parameter {{name}}
+        // Dynamic translation with parameter {{name}}
         const msg = this.translocoService.translate('ADMIN.MSGS.STATUS_UPDATED', {
           name: user.name,
         });
@@ -80,13 +105,17 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  /**
+   * @brief Toggles the "must change password" flag for a user.
+   * @param user The user to modify.
+   */
   togglePasswordForce(user: User) {
     const newState = !user.mustChangePassword;
     this.adminService.forcePasswordChange(user.id, newState).subscribe({
       next: () => {
         user.mustChangePassword = newState;
 
-        // Dynamische Nachricht je nach Status
+        // Dynamic message depending on the status
         const key = newState ? 'ADMIN.MSGS.PWD_FORCE_ON' : 'ADMIN.MSGS.PWD_FORCE_OFF';
         const msg = this.translocoService.translate(key, { name: user.name });
 
@@ -100,6 +129,11 @@ export class UserListComponent implements OnInit {
     });
   }
 
+  /**
+   * @brief Assigns a user to a different group.
+   * @param user The user to modify.
+   * @param groupId The ID of the new group.
+   */
   onGroupChange(user: User, groupId: string) {
     this.adminService.assignGroup(user.id, groupId).subscribe({
       next: () => {
@@ -116,14 +150,18 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  // NEU: Rolle ändern
+  /**
+   * @brief Changes the role of a user within their group.
+   * @param user The user to modify.
+   * @param newRole The new role ('admin' or 'member').
+   */
   onRoleChange(user: User, newRole: string) {
-    if (!user.groupId) return; // Sicherheitscheck
+    if (!user.groupId) return; // Safety check
 
     this.adminService.setGroupRole(user.id, user.groupId, newRole as 'admin' | 'member').subscribe({
       next: () => {
-        // Optimistisches Update im Frontend (falls wir das Feld im Model hätten)
-        // Besser: Liste neu laden oder User patchen
+        // Optimistic update in the frontend (if we had the field in the model)
+        // Better: reload the list or patch the user
         this.snackBar.open(this.translocoService.translate('ADMIN.MSGS.ROLE_UPDATED'), 'OK', {
           duration: 2000,
         });
@@ -136,7 +174,10 @@ export class UserListComponent implements OnInit {
     });
   }
 
-  // Hilfsfunktion zum Umschalten der Sprache (Button dafür kann in die Toolbar)
+  /**
+   * @brief Switches the application language.
+   * @param lang The language to switch to ('en' or 'de').
+   */
   switchLang(lang: 'en' | 'de') {
     this.translocoService.setActiveLang(lang);
   }

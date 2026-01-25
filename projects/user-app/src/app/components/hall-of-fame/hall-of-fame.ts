@@ -1,3 +1,14 @@
+/**
+ * @file hall-of-fame.ts
+ * @brief Component for displaying the Hall of Fame of cake events.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Component, OnInit, signal, inject } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop'; // toSignal dazu
 import { CommonModule, DatePipe, DecimalPipe, SlicePipe } from '@angular/common';
@@ -37,10 +48,16 @@ export class HallOfFameComponent implements OnInit {
   private transloco = inject(TranslocoService);
   lang = toSignal(this.transloco.langChanges$, { initialValue: this.transloco.getActiveLang() });
 
+  /**
+   * @brief Initializes the component and loads the ranked events.
+   */
   ngOnInit() {
     this.loadRankedEvents();
   }
 
+  /**
+   * @brief Loads the ranked events from the server.
+   */
   loadRankedEvents() {
     this.eventService.getRankedEvents().subscribe({
       next: (data) => this.events.set(data),
@@ -48,7 +65,12 @@ export class HallOfFameComponent implements OnInit {
     });
   }
 
-  // --- Helper für WebP ---
+  /**
+   * @brief Generates a WebP URL for an image with a specified width.
+   * @param originalUrl The original URL of the image.
+   * @param width The desired width of the WebP image.
+   * @returns The URL of the WebP image.
+   */
   getWebPUrl(originalUrl: string | undefined, width: number): string {
     if (!originalUrl) return '';
 
@@ -59,7 +81,11 @@ export class HallOfFameComponent implements OnInit {
     return `${baseUrl}__${width}.webp`;
   }
 
-  // --- Overlay Logic ---
+  /**
+   * @brief Opens the image overlay (lightbox).
+   * @param eventOrUrl The event object or the URL of the image to display.
+   * @param userName The name of the user who uploaded the image.
+   */
   openOverlay(eventOrUrl: CakeEvent | string, userName?: string | '') {
     if (typeof eventOrUrl === 'string') {
       this.overlayUrl.set(eventOrUrl);
@@ -69,6 +95,9 @@ export class HallOfFameComponent implements OnInit {
     this.overlayUserName.set(userName || null);
   }
 
+  /**
+   * @brief Closes the image overlay.
+   */
   closeOverlay() {
     this.overlayUrl.set(null);
   }

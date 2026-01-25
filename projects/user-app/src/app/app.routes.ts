@@ -1,3 +1,14 @@
+/**
+ * @file app.routes.ts
+ * @brief Application routes for the user app.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Routes } from '@angular/router';
 import { authGuard } from '../../../shared-lib/src/lib/guards/auth.guard';
 

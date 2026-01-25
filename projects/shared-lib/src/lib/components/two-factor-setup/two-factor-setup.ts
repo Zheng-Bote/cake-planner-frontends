@@ -1,3 +1,14 @@
+/**
+ * @file two-factor-setup.ts
+ * @brief Component for setting up two-factor authentication.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { QRCodeComponent } from 'angularx-qrcode';
@@ -41,6 +52,9 @@ export class TwoFactorSetupComponent {
 
   codeControl = new FormControl('', [Validators.required, Validators.pattern('^[0-9]{6}$')]);
 
+  /**
+   * @brief Constructs the component and fetches 2FA setup data from the backend.
+   */
   constructor() {
     // Beim Öffnen sofort Daten vom Backend holen
     this.authService.setup2FA().subscribe({
@@ -55,6 +69,9 @@ export class TwoFactorSetupComponent {
     });
   }
 
+  /**
+   * @brief Activates 2FA using the provided code from the user.
+   */
   activate() {
     if (this.codeControl.valid && this.setupData()) {
       this.isActivating.set(true);
@@ -76,6 +93,9 @@ export class TwoFactorSetupComponent {
     }
   }
 
+  /**
+   * @brief Closes the dialog without activating 2FA.
+   */
   close() {
     this.dialogRef.close(false);
   }

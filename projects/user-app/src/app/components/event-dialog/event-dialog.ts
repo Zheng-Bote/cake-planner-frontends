@@ -1,3 +1,14 @@
+/**
+ * @file event-dialog.ts
+ * @brief Component for the dialog to create or edit a cake event.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Component, Inject, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialogModule } from '@angular/material/dialog';
@@ -38,18 +49,26 @@ export class EventDialogComponent {
 
   selectedFile: File | null = null;
 
-  // KORREKTUR: bakerName entfernt. Das Backend nimmt den User aus dem Token.
+  // CORRECTION: bakerName removed. The backend takes the user from the token.
   form = this.fb.group({
     date: [new Date(), Validators.required],
     description: [''],
   });
 
+  /**
+   * @brief Constructs the component and initializes the form with the provided date.
+   * @param data The data injected into the dialog, containing the date for the event.
+   */
   constructor(@Inject(MAT_DIALOG_DATA) public data: { date: Date }) {
     if (data?.date) {
       this.form.patchValue({ date: data.date });
     }
   }
 
+  /**
+   * @brief Handles the file selection for the event image.
+   * @param event The file selection event.
+   */
   onFileSelected(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -57,6 +76,9 @@ export class EventDialogComponent {
     }
   }
 
+  /**
+   * @brief Saves the event data and closes the dialog.
+   */
   save() {
     if (this.form.valid) {
       const rawVal = this.form.value;
@@ -72,6 +94,9 @@ export class EventDialogComponent {
     }
   }
 
+  /**
+   * @brief Cancels the dialog.
+   */
   cancel() {
     this.dialogRef.close();
   }

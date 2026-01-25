@@ -1,12 +1,23 @@
+/**
+ * @file app.routes.ts
+ * @brief Application routes for the admin panel.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Routes } from '@angular/router';
-// WICHTIG: Wir nutzen den lokalen Guard, der zur Admin-Login Seite leitet
+// IMPORTANT: We use the local guard that redirects to the admin login page
 import { adminGuard } from 'shared-lib';
 
 export const routes: Routes = [
   {
     path: 'login',
-    // Lazy Loading der Login-Komponente
-    // Hinweis: Pfad '.component' ergänzt, falls Ihre Datei so heißt (Standard)
+    // Lazy loading of the login component
+    // Note: Path '.component' added, in case your file is named that way (standard)
     loadComponent: () => import('./pages/login/login').then((m) => m.AdminLoginComponent),
   },
   {
@@ -35,9 +46,9 @@ export const routes: Routes = [
       },
       {
         path: 'users',
-        // Hier schützt der adminGuard die Route
+        // The adminGuard protects this route
         canActivate: [adminGuard],
-        // Lazy Loading der Listen-Komponente
+        // Lazy loading of the list component
         loadComponent: () => import('./pages/user-list/user-list').then((m) => m.UserListComponent),
       },
       {
@@ -47,7 +58,7 @@ export const routes: Routes = [
       },
     ],
   },
-  // FALLBACK: Fängt alle unbekannten URLs ab und leitet zum Login
+  // FALLBACK: Catches all unknown URLs and redirects to login
   {
     path: '**',
     redirectTo: 'login',

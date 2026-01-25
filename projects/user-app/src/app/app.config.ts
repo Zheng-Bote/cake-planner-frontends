@@ -1,3 +1,14 @@
+/**
+ * @file app.config.ts
+ * @brief Application configuration for the user app.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { ApplicationConfig, isDevMode } from '@angular/core';
 import { provideRouter, withComponentInputBinding } from '@angular/router';
 import { provideHttpClient, withInterceptors } from '@angular/common/http';
@@ -20,15 +31,15 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes, withComponentInputBinding()),
     provideAnimationsAsync(),
 
-    // Auth Interceptor ist wichtig für die Token-Übertragung
+    // Auth Interceptor is important for token transmission
     provideHttpClient(withInterceptors([authInterceptor])),
 
-    // Behebt den Fehler NG0201 (No provider found for Transloco)
+    // Fixes the error NG0201 (No provider found for Transloco)
     provideTransloco({
       config: {
         availableLangs: ['en', 'de'],
         defaultLang: 'en',
-        // In Zoneless Apps triggert das Signal-Update das Re-Render automatisch
+        // In Zoneless Apps, the signal update automatically triggers re-rendering
         reRenderOnLangChange: true,
         prodMode: !isDevMode(),
       },

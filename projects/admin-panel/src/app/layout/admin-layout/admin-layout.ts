@@ -1,10 +1,14 @@
 /**
- * AdminLayoutComponent
- * @description Component for the admin layout
- * @author Zheng Bote
+ * @file admin-layout.ts
+ * @brief Component for the admin layout.
  * @version 1.0.1
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
  */
-
 import { Component, inject, ViewChild, computed } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';

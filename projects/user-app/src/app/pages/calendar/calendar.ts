@@ -1,5 +1,16 @@
+/**
+ * @file calendar.ts
+ * @brief Component for displaying the event calendar.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Component, inject, signal, computed, effect, DestroyRef } from '@angular/core';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop'; // toSignal dazu
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop'; // Added toSignal
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
@@ -9,8 +20,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TranslocoService, TranslocoModule, provideTranslocoScope } from '@jsverse/transloco';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'; // Dazu
-import { map } from 'rxjs/operators'; // Dazu
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout'; // Added
+import { map } from 'rxjs/operators'; // Added
 import {
   startOfMonth,
   endOfMonth,
@@ -63,15 +74,15 @@ export class CalendarComponent {
     return eachDayOfInterval({ start, end });
   })();
 
-  // Signal für Mobile-Erkennung
+  // Signal for mobile detection
   isMobile = toSignal(
     this.breakpointObserver.observe(Breakpoints.Handset).pipe(map((result) => result.matches)),
     { initialValue: false },
   );
 
   days = computed(() => {
-    // Auf Mobile zeigen wir nur den Monat selbst an, um Scrollen zu sparen,
-    // auf Desktop zeigen wir das volle Grid (inkl. Vor/Nach-Monatstage)
+    // On mobile, we only show the month itself to save scrolling,
+    // on desktop, we show the full grid (including previous/next month days)
     if (this.isMobile()) {
       const start = startOfMonth(this.viewDate());
       const end = endOfMonth(this.viewDate());
@@ -83,6 +94,9 @@ export class CalendarComponent {
     }
   });
 
+  /**
+   * @brief Constructs the component, sets up an effect to load events, and subscribes to SSE messages.
+   */
   constructor() {
     effect(() => {
       this.loadEvents();
@@ -101,8 +115,11 @@ export class CalendarComponent {
       });
   }
 
+  /**
+   * @brief Loads events for the current view date range.
+   */
   loadEvents() {
-    // Range Berechnung abhängig von View (Mobile lädt etwas weniger, aber Logik bleibt gleich)
+    // Range calculation depends on the view (mobile loads a bit less, but the logic is the same)
     const start = format(
       startOfWeek(startOfMonth(this.viewDate()), { weekStartsOn: 1 }),
       'yyyy-MM-dd',
@@ -115,25 +132,51 @@ export class CalendarComponent {
       .subscribe((data) => this.events.set(data));
   }
 
+  /**
+   * @brief Checks if two dates are in the same month.
+   * @param d1 The first date.
+   * @param d2 The second date.
+   * @returns True if the dates are in the same month, false otherwise.
+   */
   isSameMonth(d1: Date, d2: Date) {
     return isSameMonth(d1, d2);
   }
+  /**
+   * @brief Checks if a date is today.
+   * @param d The date to check.
+   * @returns True if the date is today, false otherwise.
+   */
   isToday(d: Date) {
     return isSameDay(d, new Date());
   }
 
+  /**
+   * @brief Gets the events for a specific day.
+   * @param date The date to get events for.
+   * @returns An array of CakeEvent objects for the specified day.
+   */
   getEventsForDay(date: Date): CakeEvent[] {
     const dateStr = format(date, 'yyyy-MM-dd');
     return this.events().filter((e) => e.date === dateStr);
   }
 
+  /**
+   * @brief Navigates to the next month in the calendar.
+   */
   nextMonth() {
     this.viewDate.update((d) => addMonths(d, 1));
   }
+  /**
+   * @brief Navigates to the previous month in the calendar.
+   */
   prevMonth() {
     this.viewDate.update((d) => subMonths(d, 1));
   }
 
+  /**
+   * @brief Opens the dialog to add a new event.
+   * @param day The day to pre-select in the dialog.
+   */
   openAddDialog(day: Date) {
     const dialogRef = this.dialog.open(EventDialogComponent, {
       width: '400px',
@@ -156,6 +199,11 @@ export class CalendarComponent {
     });
   }
 
+  /**
+   * @brief Opens the dialog to view the details of an event.
+   * @param event The event to view.
+   * @param e The click event.
+   */
   openEventDetails(event: CakeEvent, e: Event) {
     e.stopPropagation();
     const dialogRef = this.dialog.open(EventDetailComponent, {

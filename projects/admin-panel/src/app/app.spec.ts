@@ -1,3 +1,14 @@
+/**
+ * @file app.spec.ts
+ * @brief Unit tests for the main application component of the admin panel.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { TestBed } from '@angular/core/testing';
 import { App } from './app';
 

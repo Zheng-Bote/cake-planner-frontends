@@ -1,8 +1,19 @@
+/**
+ * @file change-password.ts
+ * @brief Component for the change password page.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Component, inject, signal, Optional } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
-// Dialog Module statt Card Module
+// Dialog Module instead of Card Module
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
@@ -19,7 +30,7 @@ import { AuthService } from 'shared-lib';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    MatDialogModule, // NEU: Für Dialog-Layouts
+    MatDialogModule, // NEW: For dialog layouts
     MatButtonModule,
     MatInputModule,
     MatFormFieldModule,
@@ -37,13 +48,18 @@ export class ChangePasswordComponent {
   private snackBar = inject(MatSnackBar);
   private transloco = inject(TranslocoService);
 
-  // Optional: Wenn wir als Dialog geöffnet werden, ist das hier gesetzt.
-  // Wenn wir via Route kommen (Forced PW Change), ist es null.
+  // Optional: If we are opened as a dialog, this is set.
+  // If we come via route (Forced PW Change), it is null.
   private dialogRef = inject(MatDialogRef, { optional: true });
 
   isLoading = signal(false);
   isForced = this.authService.currentUser()?.mustChangePassword;
 
+  /**
+   * @brief Custom validator to check if the password and confirm password fields match.
+   * @param g The form group to validate.
+   * @returns An object with a 'mismatch' property if the passwords don't match, otherwise null.
+   */
   passwordMatchValidator(g: AbstractControl) {
     return g.get('password')?.value === g.get('confirmPassword')?.value ? null : { mismatch: true };
   }
@@ -56,6 +72,9 @@ export class ChangePasswordComponent {
     { validators: this.passwordMatchValidator },
   );
 
+  /**
+   * @brief Handles the form submission for changing the password.
+   */
   onSubmit() {
     if (this.pwForm.valid) {
       this.isLoading.set(true);
@@ -74,10 +93,10 @@ export class ChangePasswordComponent {
           );
 
           if (this.dialogRef) {
-            // Als Dialog: schließen
+            // As a dialog: close
             this.dialogRef.close(true);
           } else {
-            // Als Route: weiterleiten
+            // As a route: redirect
             this.router.navigate(['/dashboard']);
           }
         },
@@ -97,11 +116,14 @@ export class ChangePasswordComponent {
     }
   }
 
+  /**
+   * @brief Handles the cancellation of the password change.
+   */
   onCancel() {
     if (this.dialogRef) {
       this.dialogRef.close();
     } else {
-      // Falls als Route, aber abgebrochen wird (sollte bei Forced nicht gehen, aber zur Sicherheit)
+      // If as a route, but canceled (should not be possible with Forced, but for safety)
       this.router.navigate(['/dashboard']);
     }
   }

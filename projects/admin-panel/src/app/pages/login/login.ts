@@ -1,3 +1,14 @@
+/**
+ * @file login.ts
+ * @brief Component for the admin login page.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, Validators, FormControl } from '@angular/forms';
@@ -55,7 +66,9 @@ export class AdminLoginComponent {
   // Control für Step 2 (2FA Code)
   codeControl = new FormControl('', [Validators.required, Validators.minLength(6)]);
 
-  // --- Step 1: Initiale Anmeldung ---
+  /**
+   * @brief Handles the initial login submission with email and password.
+   */
   onSubmit() {
     if (this.loginForm.valid) {
       this.isLoading.set(true);
@@ -85,7 +98,9 @@ export class AdminLoginComponent {
     }
   }
 
-  // --- Step 2: Code Verifikation ---
+  /**
+   * @brief Handles the submission of the 2FA code.
+   */
   onCodeSubmit() {
     if (this.codeControl.valid) {
       this.isLoading.set(true);
@@ -108,7 +123,10 @@ export class AdminLoginComponent {
     }
   }
 
-  // Gemeinsame Logik für den Abschluss (Admin-Check)
+  /**
+   * @brief Finalizes the login process after a successful authentication response.
+   * @param res The authentication response from the server.
+   */
   private finalizeLogin(res: AuthResponse) {
     const user = res.user;
 
@@ -126,12 +144,19 @@ export class AdminLoginComponent {
     }
   }
 
+  /**
+   * @brief Cancels the 2FA process and returns to the initial login form.
+   */
   cancel2FA() {
     this.requires2FA.set(false);
     this.codeControl.reset();
     this.errorMessage.set('');
   }
 
+  /**
+   * @brief Switches the application language.
+   * @param lang The language to switch to.
+   */
   switchLanguage(lang: string) {
     this.translocoService.setActiveLang(lang);
     localStorage.setItem('admin-lang', lang); // Ggf. separater Key für Admin Präferenz

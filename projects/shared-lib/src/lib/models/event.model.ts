@@ -1,3 +1,14 @@
+/**
+ * @file event.model.ts
+ * @brief Models for events.
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 export interface GalleryItem {
   userName: string;
   url: string;
@@ -7,7 +18,7 @@ export interface GalleryItem {
 export interface EventRating {
   average: number;
   count: number;
-  myRating: number; // 0 = noch nicht bewertet
+  myRating: number; // 0 = not yet rated
 }
 
 export interface CakeEvent {
@@ -18,10 +29,10 @@ export interface CakeEvent {
   bakerName: string;
   date: string; // YYYY-MM-DD
   description: string;
-  photoUrl?: string; // Pfad zum Bild des Erstellers bzw. logo als Default
-  gallery: GalleryItem[]; // Liste der Community Fotos
+  photoUrl?: string; // Path to the creator's image or logo as default
+  gallery: GalleryItem[]; // List of community photos
 
-  // Berechtigungen & Status
+  // Permissions & Status
   isOwner: boolean;
   isFuture: boolean;
   canDelete: boolean;

@@ -117,7 +117,7 @@ server {
     }
 
     location /api {
-        proxy_pass http://172.17.0.1:8888;
+        proxy_pass http://192.168.1.100:8888;
         proxy_http_version 1.1;
         proxy_set_header Connection "";
         proxy_set_header Host $host;

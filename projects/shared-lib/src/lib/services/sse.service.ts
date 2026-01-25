@@ -1,3 +1,14 @@
+/**
+ * @file sse.service.ts
+ * @brief Service for handling Server-Sent Events (SSE).
+ * @version 1.0.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
+ */
 import { Injectable, NgZone, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AuthService } from './auth.service';
@@ -14,6 +25,11 @@ export class SseService {
   private zone = inject(NgZone);
   private auth = inject(AuthService);
 
+  /**
+   * @brief Establishes a connection to a Server-Sent Events endpoint and returns an Observable of messages.
+   * @param url The URL of the SSE endpoint.
+   * @returns An Observable emitting SseMessage objects.
+   */
   getServerSentEvents(url: string): Observable<SseMessage> {
     return new Observable((observer) => {
       const controller = new AbortController();
@@ -21,12 +37,12 @@ export class SseService {
 
       const fetchData = async () => {
         try {
-          // KORREKTUR: getToken() statt token()
+          // CORRECTION: getToken() instead of token()
           const token = this.auth.getToken();
 
           if (!token) {
-            // Falls kein Token da ist, können wir nicht verbinden -> Silent fail oder Error
-            // Hier werfen wir einen Error, damit der Kalender ggf. reagieren kann
+            // If no token is available, we cannot connect -> Silent fail or Error
+            // Here we throw an error so that the calendar can react if necessary
             throw new Error('No token available for SSE connection');
           }
 

@@ -1,10 +1,14 @@
 /**
- * SystemInfoService
- * @description Service for system info operations
- * @author Zheng Bote
+ * @file systeminfo.service.ts
+ * @brief Service for retrieving system information.
  * @version 0.1.0
+ * @date 2026-01-25
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ *
+ * @license MIT License
  */
-
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
@@ -26,10 +30,18 @@ export class SystemInfoService {
   private http = inject(HttpClient);
   private readonly baseUrl = '/api/system';
 
+  /**
+   * @brief Retrieves backend system information.
+   * @returns An Observable emitting the backend system information.
+   */
   getBackendSystemInfo(): Observable<SystemInfoBackend> {
     return this.http.get<SystemInfoBackend>(`${this.baseUrl}/sysinfo`);
   }
 
+  /**
+   * @brief Retrieves frontend system information from the package.json file.
+   * @returns An Observable emitting the frontend system information.
+   */
   getFrontendSystemInfo(): Observable<SystemInfoFrontend> {
     const systemInfo: SystemInfoFrontend = {
       userAppVersion,
