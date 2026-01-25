@@ -6,13 +6,15 @@ This document outlines the security measures implemented in the application to e
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+
 **Table of Contents**
 
-- [Network Security](#network-security)
-- [Web Server Security](#web-server-security)
-- [Authentication & Data Protection](#authentication--data-protection)
-- [Data Protection](#data-protection)
-- [Email Security](#email-security)
+- [Security Overview](#security-overview)
+  - [Network Security](#network-security)
+  - [Web Server Security](#web-server-security)
+  - [Authentication \& Data Protection](#authentication--data-protection)
+  - [Data Protection](#data-protection)
+  - [Email Security](#email-security)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -24,12 +26,12 @@ The application enforces **HTTPS (SSL/TLS)** for all connections to the backend.
 
 ## Web Server Security
 
-The NGINX web server is configured with robust **Security Headers** to protect against common web vulnerabilities. This includes:
+The NGINX web server is configured with **Rate Limiting** to prevent Brute Force or DDoS attacks.
+
+also, the NGINX web server is configured with robust **Security Headers** to protect against common web vulnerabilities. This includes:
 
 - **Content-Security-Policy (CSP)**: To prevent Cross-Site Scripting (XSS) attacks.
 - Other standard security headers to harden the server response.
-\
-The NGINX web server is configured with **Rate Limiting** to prevent Brute Force or DDoS attacks.
 
 ## Authentication & Data Protection
 
