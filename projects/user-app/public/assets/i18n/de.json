@@ -65,5 +65,46 @@
       "BTN_ACTIVATE": "Aktivieren",
       "BTN_ACTIVATING": "Aktiviere..."
     }
+  },
+  "LOGIN": {
+    "TITLE": "Kuchenplaner Login",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Passwort",
+    "LOGIN_BTN": "Einloggen",
+    "REGISTER_LINK": "Noch keinen Account? Registrieren",
+    "FORGOT_PASSWORD_LINK": "Passwort vergessen?",
+    "WRONG_CREDENTIALS": "Falsche Zugangsdaten",
+    "ACCOUNT_INACTIVE": "Account inaktiv",
+    "SERVER_ERROR": "Server Fehler"
+  },
+  "REGISTER": {
+    "TITLE": "Kuchenplaner Registrierung",
+    "NAME_LABEL": "Name",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Passwort",
+    "CONFIRM_PASSWORD_LABEL": "Passwort bestätigen",
+    "MIN_LENGTH_ERROR": "Mindestens 8 Zeichen",
+    "PASSWORD_MISMATCH_ERROR": "Passwörter stimmen nicht überein",
+    "SUBMIT_BTN": "Registrieren",
+    "LOGIN_LINK": "Bereits registriert? Einloggen",
+    "ERROR_ACCOUNT_ALREADY_EXISTS": "Account existiert bereits",
+    "ERROR_MSG": "Registrierung fehlgeschlagen",
+    "SUCCESS_MSG": "Registrierung erfolgreich! Bitte warte auf die Freischaltung durch einen Administrator.",
+    "CLOSE": "Schließen",
+    "AGREE_TEXT": "Ich habe die",
+    "PRIVACY_LINK": "Datenschutzerklärung gelesen",
+    "PRIVACY_REQUIRED_ERROR": "Die Datenschutzerklärung muss akzeptiert werden.",
+    "PASSWORD_MIN_LENGTH_TOOLTIP": "mindestens 8 Zeichen"
+  },
+  "PASSWORD": {
+    "TITLE": "Passwort vergessen?",
+    "INSTRUCTION": "Geben Sie Ihre E-Mail-Adresse ein und wir senden Ihnen ein temporäres Passwort.",
+    "EMAIL_LABEL": "E-Mail Adresse",
+    "SEND_BUTTON": "Link senden",
+    "SENDING": "Sende...",
+    "BACK_TO_LOGIN": "Zurück zum Login",
+    "SUCCESS_DEFAULT": "Falls die E-Mail existiert, wurde ein Reset-Link gesendet.",
+    "ERROR_DEFAULT": "Etwas ist schief gelaufen. Bitte versuchen Sie es erneut.",
+    "EMAIL_INVALID": "Bitte eine gültige E-Mail-Adresse eingeben."
   }
 }

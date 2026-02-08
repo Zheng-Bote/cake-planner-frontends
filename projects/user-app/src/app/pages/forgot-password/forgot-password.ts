@@ -13,7 +13,7 @@ import { Component, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
-import { TranslocoModule, TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 import { AuthService } from 'shared-lib';
 
 // Material Imports (matching the Login Page)
@@ -44,8 +44,6 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     MatIconModule,
     MatTooltipModule,
   ],
-  // Alias 'forgot-password' is used
-  providers: [provideTranslocoScope({ scope: 'forgot_password', alias: 'forgot-password' })],
   templateUrl: './forgot-password.html',
   styleUrls: ['./forgot-password.scss'],
 })
@@ -107,13 +105,13 @@ export class ForgotPasswordComponent {
 
     this.authService.forgotPassword(this.email).subscribe({
       next: (response) => {
-        const defaultSuccess = this.translocoService.translate('forgot-password.SUCCESS_DEFAULT');
+        const defaultSuccess = this.translocoService.translate('PASSWORD.SUCCESS_DEFAULT');
         this.successMessage.set(defaultSuccess);
         this.isLoading.set(false);
       },
       error: (err) => {
         console.error('Forgot Password Error:', err);
-        const defaultError = this.translocoService.translate('forgot-password.ERROR_DEFAULT');
+        const defaultError = this.translocoService.translate('PASSWORD.ERROR_DEFAULT');
         this.errorMessage.set(defaultError);
         this.isLoading.set(false);
       },

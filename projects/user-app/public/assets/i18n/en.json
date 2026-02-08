@@ -65,5 +65,46 @@
       "BTN_ACTIVATE": "Activate",
       "BTN_ACTIVATING": "Activating..."
     }
+  },
+  "LOGIN": {
+    "TITLE": "Cake Planner Login",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Password",
+    "LOGIN_BTN": "Login",
+    "REGISTER_LINK": "No account? Register",
+    "FORGOT_PASSWORD_LINK": "Forgot Password?",
+    "WRONG_CREDENTIALS": "Wrong credentials",
+    "ACCOUNT_INACTIVE": "Account inactive",
+    "SERVER_ERROR": "Server error"
+  },
+  "REGISTER": {
+    "TITLE": "Cake Planner Register",
+    "NAME_LABEL": "Name",
+    "EMAIL_LABEL": "Email",
+    "PASSWORD_LABEL": "Password",
+    "CONFIRM_PASSWORD_LABEL": "Confirm Password",
+    "MIN_LENGTH_ERROR": "At least 8 characters",
+    "PASSWORD_MISMATCH_ERROR": "Passwords do not match",
+    "SUBMIT_BTN": "Register",
+    "LOGIN_LINK": "Already registered? Login",
+    "ERROR_ACCOUNT_ALREADY_EXISTS": "Account already exists",
+    "ERROR_MSG": "Registration failed",
+    "SUCCESS_MSG": "Registration successful! Please wait for activation by an administrator.",
+    "CLOSE": "Close",
+    "AGREE_TEXT": "I have read the",
+    "PRIVACY_LINK": "Privacy Policy",
+    "PRIVACY_REQUIRED_ERROR": "You must accept the privacy policy.",
+    "PASSWORD_MIN_LENGTH_TOOLTIP": "at least 8 characters"
+  },
+  "PASSWORD": {
+    "TITLE": "Forgot Password?",
+    "INSTRUCTION": "Enter your email address and we will send you a temporary password.",
+    "EMAIL_LABEL": "Email Address",
+    "SEND_BUTTON": "Send Reset Link",
+    "SENDING": "Sending...",
+    "BACK_TO_LOGIN": "Back to Login",
+    "SUCCESS_DEFAULT": "If the email exists, a reset link has been sent.",
+    "ERROR_DEFAULT": "Something went wrong. Please try again.",
+    "EMAIL_INVALID": "Please enter a valid email address."
   }
 }

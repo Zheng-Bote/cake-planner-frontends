@@ -22,7 +22,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router, RouterLink } from '@angular/router';
-import { TranslocoModule, TranslocoService, provideTranslocoScope } from '@jsverse/transloco';
+import { TranslocoModule, TranslocoService } from '@jsverse/transloco';
 
 import { AuthService, AuthResponse } from 'shared-lib';
 import { RegisterUserComponent } from '../register-user/register-user';
@@ -46,7 +46,6 @@ import { RegisterUserComponent } from '../register-user/register-user';
     RouterLink,
     TranslocoModule,
   ],
-  providers: [provideTranslocoScope({ scope: 'login_register_user', alias: 'login_user' })],
 })
 export class LoginComponent {
   private fb = inject(FormBuilder);
@@ -186,32 +185,24 @@ export class LoginComponent {
    */
   handleError(err: any) {
     if (err.status === 401) {
-      this.errorMessage.set(this.translocoService.translate('login_user.LOGIN.WRONG_CREDENTIALS'));
-      this.snackBar.open(
-        this.translocoService.translate('login_user.LOGIN.WRONG_CREDENTIALS'),
-        'OK',
-        {
-          duration: 3000,
-          horizontalPosition: 'end',
-          verticalPosition: 'bottom',
-          panelClass: ['error-snackbar'],
-        },
-      );
+      this.errorMessage.set(this.translocoService.translate('LOGIN.WRONG_CREDENTIALS'));
+      this.snackBar.open(this.translocoService.translate('LOGIN.WRONG_CREDENTIALS'), 'OK', {
+        duration: 3000,
+        horizontalPosition: 'end',
+        verticalPosition: 'bottom',
+        panelClass: ['error-snackbar'],
+      });
     } else if (err.status === 403) {
-      this.errorMessage.set(this.translocoService.translate('login_user.LOGIN.ACCOUNT_INACTIVE'));
-      this.snackBar.open(
-        this.translocoService.translate('login_user.LOGIN.ACCOUNT_INACTIVE'),
-        'OK',
-        {
-          duration: 3000,
-          horizontalPosition: 'end',
-          verticalPosition: 'bottom',
-          panelClass: ['error-snackbar'],
-        },
-      );
+      this.errorMessage.set(this.translocoService.translate('LOGIN.ACCOUNT_INACTIVE'));
+      this.snackBar.open(this.translocoService.translate('LOGIN.ACCOUNT_INACTIVE'), 'OK', {
+        duration: 3000,
+        horizontalPosition: 'end',
+        verticalPosition: 'bottom',
+        panelClass: ['error-snackbar'],
+      });
     } else {
-      this.errorMessage.set(this.translocoService.translate('login_user.LOGIN.SERVER_ERROR'));
-      this.snackBar.open(this.translocoService.translate('login_user.LOGIN.SERVER_ERROR'), 'OK', {
+      this.errorMessage.set(this.translocoService.translate('LOGIN.SERVER_ERROR'));
+      this.snackBar.open(this.translocoService.translate('LOGIN.SERVER_ERROR'), 'OK', {
         duration: 3000,
         horizontalPosition: 'end',
         verticalPosition: 'bottom',

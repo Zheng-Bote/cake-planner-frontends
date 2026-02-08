@@ -31,14 +31,14 @@
   <main class="main-content">
     <mat-card class="login-card">
       <mat-card-header>
-        <mat-card-title>{{ t('login_user.LOGIN.TITLE') }}</mat-card-title>
+        <mat-card-title>{{ t('LOGIN.TITLE') }}</mat-card-title>
       </mat-card-header>
 
       <mat-card-content>
         @if (!requires2FA()) {
           <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>{{ t('login_user.LOGIN.EMAIL_LABEL') }}</mat-label>
+              <mat-label>{{ t('LOGIN.EMAIL_LABEL') }}</mat-label>
               <input
                 matInput
                 formControlName="email"
@@ -49,7 +49,7 @@
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="full-width">
-              <mat-label>{{ t('login_user.LOGIN.PASSWORD_LABEL') }}</mat-label>
+              <mat-label>{{ t('LOGIN.PASSWORD_LABEL') }}</mat-label>
               <input matInput formControlName="password" type="password" tabindex="2" />
             </mat-form-field>
 
@@ -68,19 +68,19 @@
               @if (isLoading()) {
                 <mat-spinner diameter="20"></mat-spinner>
               } @else {
-                {{ t('login_user.LOGIN.LOGIN_BTN') }}
+                {{ t('LOGIN.LOGIN_BTN') }}
               }
             </button>
           </form>
 
           <div class="register-link-container">
             <a routerLink="/register" class="register-link">
-              {{ t('login_user.LOGIN.REGISTER_LINK') }}
+              {{ t('LOGIN.REGISTER_LINK') }}
             </a>
-            <div style="margin-top: 8px;">
-                <a routerLink="/forgot-password" class="register-link">
-                    {{ t('login_user.LOGIN.FORGOT_PASSWORD_LINK') }}
-                </a>
+            <div style="margin-top: 8px">
+              <a routerLink="/forgot-password" class="register-link">
+                {{ t('LOGIN.FORGOT_PASSWORD_LINK') }}
+              </a>
             </div>
           </div>
         }
