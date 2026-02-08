@@ -45,12 +45,19 @@
                 type="email"
                 placeholder="max@example.com"
                 tabindex="1"
+                autocomplete="email"
               />
             </mat-form-field>
 
             <mat-form-field appearance="outline" class="full-width">
               <mat-label>{{ t('LOGIN.PASSWORD_LABEL') }}</mat-label>
-              <input matInput formControlName="password" type="password" tabindex="2" />
+              <input
+                matInput
+                formControlName="password"
+                type="password"
+                tabindex="2"
+                autocomplete="current-password"
+              />
             </mat-form-field>
 
             @if (errorMessage()) {

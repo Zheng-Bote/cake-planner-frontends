@@ -1,15 +1,15 @@
 /**
  * @file hall-of-fame.ts
  * @brief Component for displaying the Hall of Fame of cake events.
- * @version 1.0.0
- * @date 2026-01-25
+ * @version 1.1.0
+ * @date 2026-02-08
  *
  * @author ZHENG Robert (robert@hase-zheng.net)
  * @copyright Copyright (c) 2026 ZHENG Robert
  *
  * @license MIT License
  */
-import { Component, OnInit, signal, inject } from '@angular/core';
+import { Component, OnInit, signal, inject, computed } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop'; // toSignal dazu
 import { CommonModule, DatePipe, DecimalPipe, SlicePipe } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -101,4 +101,27 @@ export class HallOfFameComponent implements OnInit {
   closeOverlay() {
     this.overlayUrl.set(null);
   }
+
+  /**
+   * @brief Calculates the top bakers based on the number of events.
+   * @returns An array of the top 3 bakers.
+   */
+  bakerStats = computed(() => {
+    const statsMap = new Map<string, { name: string; count: number; avgRating: number }>();
+
+    this.events().forEach((evt) => {
+      const current = statsMap.get(evt.bakerName) || {
+        name: evt.bakerName,
+        count: 0,
+        avgRating: 0,
+      };
+      current.count++;
+      // Weighted average or just count for the leaderboard
+      statsMap.set(evt.bakerName, current);
+    });
+
+    return Array.from(statsMap.values())
+      .sort((a, b) => b.count - a.count)
+      .slice(0, 3); // Top 3
+  });
 }

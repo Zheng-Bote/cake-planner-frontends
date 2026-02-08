@@ -1,8 +1,8 @@
 /**
  * @file login.ts
  * @brief Component for the login page.
- * @version 1.0.0
- * @date 2026-01-25
+ * @version 1.1.0
+ * @date 2026-02-08
  *
  * @author ZHENG Robert (robert@hase-zheng.net)
  * @copyright Copyright (c) 2026 ZHENG Robert

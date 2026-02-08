@@ -38,12 +38,24 @@
         <form [formGroup]="regForm" (ngSubmit)="onSubmit()">
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>{{ t('REGISTER.NAME_LABEL') }}</mat-label>
-            <input matInput formControlName="name" placeholder="Max Mustermann" tabindex="1" />
+            <input
+              matInput
+              formControlName="name"
+              placeholder="Max Mustermann"
+              tabindex="1"
+              autocomplete="name"
+            />
           </mat-form-field>
 
           <mat-form-field appearance="outline" class="full-width">
             <mat-label>{{ t('REGISTER.EMAIL_LABEL') }}</mat-label>
-            <input matInput formControlName="email" type="email" tabindex="2" />
+            <input
+              matInput
+              formControlName="email"
+              type="email"
+              tabindex="2"
+              autocomplete="email"
+            />
           </mat-form-field>
 
           <div class="row-inputs">

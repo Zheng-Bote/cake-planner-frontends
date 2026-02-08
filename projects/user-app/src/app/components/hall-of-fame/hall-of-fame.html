@@ -2,6 +2,43 @@
   <div class="hof-container">
     <h1>🏆 {{ t('MENU.HALL_OF_FAME') }}</h1>
 
+    <div class="baker-leaderboard">
+      <h2 class="section-title">✨ {{ t('hall-of-fame.TOP_BAKERS') }}</h2>
+
+      <div class="podium">
+        @for (baker of bakerStats(); track baker.name; let i = $index) {
+          <div
+            class="podium-item"
+            [class.gold]="i === 0"
+            [class.silver]="i === 1"
+            [class.bronze]="i === 2"
+          >
+            <div class="rank-badge">
+              @if (i === 0) {
+                🥇
+              } @else if (i === 1) {
+                🥈
+              } @else {
+                🥉
+              }
+            </div>
+            <div class="baker-avatar">
+              {{ baker.name.charAt(0) }}
+            </div>
+            <div class="baker-info">
+              <span class="name">{{ baker.name }}</span>
+              <span class="count">{{ baker.count }} {{ t('hall-of-fame.CAKES') }}</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+    <hr class="section-divider" />
+
+    <div class="baker-eventboard">
+      <h2 class="section-title">✨ {{ t('hall-of-fame.TOP_EVENTS') }}</h2>
+    </div>
     <div class="grid">
       @for (evt of events(); track evt.id) {
         @defer (on viewport) {

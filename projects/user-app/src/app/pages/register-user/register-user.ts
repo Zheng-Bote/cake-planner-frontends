@@ -1,3 +1,13 @@
+/**
+ * @file register-user.ts
+ * @brief Component for the register user page.
+ * @version 1.1.0
+ * @date 2026-02-08
+ *
+ * @author ZHENG Robert (robert@hase-zheng.net)
+ * @copyright Copyright (c) 2026 ZHENG Robert
+ */
+
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, ReactiveFormsModule, Validators, AbstractControl } from '@angular/forms';
